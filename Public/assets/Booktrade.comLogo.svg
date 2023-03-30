@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118.822" height="88.06" viewBox="0 0 118.822 88.06">
+  <defs>
+    <filter id="Ellipse_3" x="0" y="0" width="118.822" height="88.06" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_4">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Booktrade.com_Logo" data-name="Booktrade.com Logo" transform="translate(9 1.772)">
+    <g transform="matrix(1, 0, 0, 1, -9, -1.77)" filter="url(#Ellipse_3)">
+      <ellipse id="Ellipse_3-2" data-name="Ellipse 3" cx="50.411" cy="35.03" rx="50.411" ry="35.03" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <g data-type="innerShadowGroup">
+      <ellipse id="Ellipse_4-2" data-name="Ellipse 4" cx="36.562" cy="26.476" rx="36.562" ry="26.476" transform="translate(13.849 13.19)" fill="#e7fdaf"/>
+      <g transform="matrix(1, 0, 0, 1, -9, -1.77)" filter="url(#Ellipse_4)">
+        <ellipse id="Ellipse_4-3" data-name="Ellipse 4" cx="36.562" cy="26.476" rx="36.562" ry="26.476" transform="translate(22.85 14.96)" fill="#fff"/>
+      </g>
+    </g>
+    <rect id="Rectangle_58" data-name="Rectangle 58" width="8.961" height="30.957" transform="translate(52.328 35.185)" fill="#fff"/>
+    <rect id="Rectangle_59" data-name="Rectangle 59" width="8.961" height="30.957" transform="translate(40.551 35.185)" fill="#fff"/>
+    <rect id="Rectangle_60" data-name="Rectangle 60" width="8.961" height="30.957" transform="translate(35.739 36.55) rotate(45)" fill="#fff"/>
+    <path id="Path_12" data-name="Path 12" d="M940.4-282.982l9.18-11.591V-304.8l2.314-5.506-4.506-5.277h-9.609l9.609-1.895,2.192,1.895,2.314,3.124v17.886l-4.506,9.349-2.1,9.626L940.4-273.17Z" transform="translate(-877.903 339.312)" fill="#fff"/>
+    <path id="Path_13" data-name="Path 13" d="M931.834-318.667l-14.9-6.994H904.09l-12.544,6.994,15.738,5.372h15.152Z" transform="translate(-870.755 342.385)" fill="#fff"/>
+    <path id="Path_14" data-name="Path 14" d="M954.838-301.354l8.922-5.746,7.473-1.753,8.09,1.753,5.015,3.588L979.322-300l-10.148,3.007h-5.414l-4.987-1.946Z" transform="translate(-883.762 325.421)" fill="#fff"/>
+    <path id="Path_15" data-name="Path 15" d="M948.341-307.357l5.751-4.837,2.566-6.062-2.566-5.475-4.537-3.848-6.51-1.612h-8.526l2.258,3.49v5.294l1.808,3.732,1.88,2.069,2.58,2.412,4.027,2.765Z" transform="translate(-878.98 329.19)" fill="#fff"/>
+    <rect id="Rectangle_61" data-name="Rectangle 61" width="65.791" height="12.22" rx="5" transform="translate(17.108 53.922)" fill="#ebfcb7"/>
+    <text id="BookTrade.com" transform="translate(40.598 59.108)" fill="#fff" font-size="5" font-family="Noteworthy-Bold, Noteworthy" font-weight="700"><tspan x="-16.506" y="0">BookTrade.com</tspan></text>
+  </g>
+</svg>

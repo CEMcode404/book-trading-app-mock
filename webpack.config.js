@@ -10,13 +10,14 @@ module.exports = {
   },
   output: {
     filename: "[name][contenthash].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
+    assetModuleFilename: "images/[hash][ext][query]",
     clean: true,
   },
   devtool: "source-map",
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "dist"),
+      directory: path.resolve(__dirname, "build"),
     },
     port: 3000,
     open: true,
@@ -35,13 +36,17 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, "Public"),
-          to: path.resolve(__dirname, "dist"),
+          to: path.resolve(__dirname, "build"),
         },
       ],
     }),
   ],
   module: {
     rules: [
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
+        type: "asset/resource",
+      },
       {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],

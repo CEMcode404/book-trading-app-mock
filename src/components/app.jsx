@@ -1,17 +1,10 @@
 import React from "react";
+import logo from "../assets/logo.svg";
 
 const App = () => {
   return (
     <div>
-      <h1>Hello there!</h1>
-      <object
-        type="image/svg+xml"
-        data="./assets/Booktrade.comLogo.svg"
-        className="logo__svg"
-      >
-        Logo
-      </object>
-      <img src="./assets/Booktrade.comLogo.svg"></img>
+      <img src={logo}></img>
     </div>
   );
 };

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30.756" height="32.224" viewBox="0 0 30.756 32.224">
+  <style>
+    :hover {
+      cursor: pointer;
+    }
+    :active {
+      cursor: grabbing;
+    }
+  </style>
+  <g id="_7754979_media_player_button_playlist_list_audio_icon" data-name="7754979_media player_button_playlist_list_audio_icon" transform="translate(-51.567 -52.86)">
+    <path id="Path_4" data-name="Path 4" d="M60.168,52.86a4.218,4.218,0,1,0,4.219,4.219A4.218,4.218,0,0,0,60.168,52.86Z" transform="translate(-4.05)" fill="#fff"/>
+    <path id="Path_5" data-name="Path 5" d="M210.809,92.4h15.9a1.429,1.429,0,1,0,0-2.859h-15.9a1.429,1.429,0,0,0,0,2.859Z" transform="translate(-145.814 -33.891)" fill="#fff"/>
+    <path id="Path_6" data-name="Path 6" d="M67.07,214.62a3.65,3.65,0,1,0,3.65,3.65A3.65,3.65,0,0,0,67.07,214.62Z" transform="translate(-10.952 -149.461)" fill="#fff"/>
+    <path id="Path_7" data-name="Path 7" d="M226.707,243.78h-15.9a1.429,1.429,0,0,0,0,2.859h15.9a1.429,1.429,0,0,0,0-2.859Z" transform="translate(-145.814 -176.403)" fill="#fff"/>
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="3.218" cy="3.218" r="3.218" transform="translate(51.567 80.533) rotate(-45)" fill="#fff"/>
+    <path id="Path_8" data-name="Path 8" d="M226.707,398h-15.9a1.429,1.429,0,0,0,0,2.859h15.9a1.429,1.429,0,0,0,0-2.859Z" transform="translate(-145.814 -318.897)" fill="#fff"/>
+  </g>
+</svg> 

@@ -1,0 +1,43 @@
+@keyframes slideIn {
+    from { left: -200% }
+    to { left: 0;}
+}
+
+@keyframes slideOut {
+    from { left: 0;}
+    to { left: -200%;}
+}
+
+.animate--slideIn {
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.animate--slideOut {
+    animation-name: slideOut;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideDown {
+    from {  overflow:hidden; max-height: 0; visibility: hidden; }
+    to { overflow: hidden; max-height: 5000px; visibility: visible;}
+}
+  
+@keyframes slideUp {
+    from { overflow: hidden; max-height: 500px; visibility: visible;}
+    to { overflow: hidden; max-height: 0; visibility: hidden;}
+}
+
+.animate--slideDown {
+    animation-name: slideDown;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+}
+  
+.animate--slideUp {
+    animation-name: slideUp;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}

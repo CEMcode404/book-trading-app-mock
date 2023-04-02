@@ -1,0 +1,15 @@
+$boxShadow: 0 5px 30px gray;
+$primaryColor: #93A466;
+$secondaryColor: #9A60B5;
+$ThirdColor: darkgray;
+
+@mixin title($color: black, $fontSize: 1rem) {
+    color: $color;
+    font-size: $fontSize;
+    font-weight: bold;
+}
+
+@mixin theme($bg: #93A466, $color: white ) {
+    background-color: $bg;
+    color: $color;
+}

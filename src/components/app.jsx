@@ -1,11 +1,12 @@
-import React from "react";
-import logo from "../assets/logo.svg";
+import { Route, Routes } from "react-router-dom";
+import React, { Fragment } from "react";
+import NavBar from "./common/NavBar.jsx";
 
 const App = () => {
   return (
-    <div>
-      <img src={logo}></img>
-    </div>
+    <Fragment>
+      <NavBar />
+    </Fragment>
   );
 };
 

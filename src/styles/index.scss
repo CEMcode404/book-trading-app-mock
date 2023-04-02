@@ -1,3 +1,12 @@
-h1 {
-    color: green;
+@use "normalize";
+@use "animation";
+@use "common";
+@use "navbar";
+
+@media only screen and (min-width: 1101px) {
+    body {
+        margin-top: 110px;
+    }
 }
+
+// organize and clean the css

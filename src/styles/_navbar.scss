@@ -1,0 +1,187 @@
+@use "variables";
+
+.navbar {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    @include variables.theme();
+    width: 100%;
+    box-shadow: variables.$boxShadow;
+    z-index: 1;
+}
+  
+.navbar__ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0; 
+    overflow: hidden;
+    height: 50px;
+}
+
+.navbar__li {
+    margin: 0 2%;
+    font-size: .8rem;
+}
+
+.navbar__NavLink {
+    @include variables.title($color: white);
+    text-decoration: none;
+}
+
+.navbar__li:hover {
+    position: relative;
+    bottom: 1.5%;
+    box-shadow: 0 10px 50px white;
+    background-color:  #a6b57a;
+    cursor: pointer;
+}
+
+.navbar__NavLink:active {
+    cursor: grabbing;
+}
+
+.logo:hover {
+    bottom: 0;
+    box-shadow: none;
+    background-color: #93A466;
+}
+
+.logo__svg {
+    width: 50px;
+}
+
+.search-icon__svg {
+    width: 15px;
+}
+
+.search-icon {
+    margin-left: 1%;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.search-bar {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.search-bar__input {
+    border: none;
+    border-radius: 5px;
+}
+
+.navbar-overlay__side-bar {
+    height: 0;
+    visibility: hidden;
+}
+
+@media only screen and (min-width: 1101px) {
+    .navbar {
+        @include variables.theme($bg: gray);
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .navbar {
+        @include variables.theme($bg: yellow);
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .navbar {
+        @include variables.theme($bg: black);
+    }
+
+    .navbar__li {
+        display: none;
+    }
+    
+    .logo, .menu-icon, .search-bar, .search-icon {
+        display: flex;
+    }
+
+    .menu-icon__svg {
+        width: 30px;
+    } 
+
+    .navbar-overlay__background {
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 2;
+        min-width: 320px;
+        visibility: visible;
+    }
+    
+    .navbar-overlay__side-bar {
+        position: fixed;
+        left: -200%;
+        background-color: #93a466ab;
+        width: 100px;
+        height: 100%;
+        padding: 0 40px;
+        z-index: 2;
+        visibility: visible;
+    }
+    
+    .navbar_overlay__NavLink {
+        display: block;
+        text-decoration: none;
+        color: white;
+        font-size: .8rem;
+        font-weight: bolder;
+        margin: 10% 5%;
+    }
+
+    .navbar-overlay__headbar {
+        width: 185px;
+        height:  50px; 
+        background-color: #6c8131;
+        position: relative;
+        right: 40%;
+        min-height: 35px;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .navbar {
+        @include variables.theme($bg: blue);
+    }
+
+    .navbar__ul{
+        height: 35px;
+    }
+
+    .logo__svg {
+        width: 40px;
+    }
+     
+    .menu-icon__svg {
+        width: 20px;
+    } 
+
+    .navbar-overlay__headbar {
+        height: 30px;
+        width: 170px;
+    }
+
+    .navbar-overlay__side-bar {
+        width: 96px;
+        padding: 0 30px;
+        
+    }
+}
+    
+@media only screen and (max-width: 320px) {
+    .navbar {
+        @include variables.theme($bg: red);
+        width: 320px;
+    }
+}

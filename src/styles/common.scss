@@ -1,0 +1,63 @@
+@use "variables";
+
+.bttn--slide-up--green {
+    background-color: #93A466;
+    color: white;
+    cursor: pointer;
+}
+  
+.bttn--slide-up--gray {
+    background-color: darkgray;
+    color: white;
+    cursor: pointer;
+}
+  
+.bttn--slide-up--purple {
+    background-color: #9A60B5;
+    color: white;
+    cursor: pointer;
+}
+
+.bttn--slide-up--green:hover {
+    position: relative;
+    bottom: 2px;
+    background-color: #87965d;
+}
+
+.bttn--slide-up--gray:hover {
+    position: relative;
+    bottom: 2px;
+    background-color: rgb(157, 152, 152);
+}
+
+.bttn--slide-up--purple:hover {
+    position: relative;
+    bottom: 2px;
+    background-color: #8229ab;
+}
+
+.bttn--slide-up--green:active {
+    background-color: #7c8a55;
+    cursor: grabbing;
+}
+
+.bttn--slide-up--gray:active {
+    background-color: rgb(141, 131, 131);
+    cursor: grabbing;
+}
+
+.bttn--slide-up--purple:active {
+    background-color: #7806ac;
+    cursor: grabbing;
+}
+
+.highlight:focus {
+    box-shadow: 0 0 5px green;
+    border: 1px solid green;
+    outline: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

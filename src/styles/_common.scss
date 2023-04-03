@@ -13,7 +13,7 @@
 }
   
 .bttn--slide-up--purple {
-    background-color: #9A60B5;
+    background-color: #8229ab;
     color: white;
     cursor: pointer;
 }
@@ -33,7 +33,7 @@
 .bttn--slide-up--purple:hover {
     position: relative;
     bottom: 2px;
-    background-color: #8229ab;
+    background-color: #8930b1;
 }
 
 .bttn--slide-up--green:active {
@@ -47,7 +47,7 @@
 }
 
 .bttn--slide-up--purple:active {
-    background-color: #7806ac;
+    background-color: #8e37b6;
     cursor: grabbing;
 }
 
@@ -61,3 +61,38 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.dropDownV2__triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 6px solid #79845D;
+    position: absolute;
+    top: 10%;
+    right: 2%;
+}
+
+.dropDownV2 {
+    width: 100%;
+    height: 100%;
+}
+
+.dropDownV2__body {
+    max-height: 0;
+    overflow: hidden;
+}
+
+.dropDownV2__title {
+    margin: 0;
+    @include variables.title($color:white, $fontWeight: normal, $fontSize: 0.8rem)
+}
+
+.dropDownV2__hr {
+    border-color: #E4FF9D;
+}
+
+.dropDownV2__headbar {
+    position: relative;
+}
+

@@ -1,0 +1,114 @@
+@use "variables";
+
+.footer {
+    background-color: #2b3811;
+    color: white;
+    padding: 5px 0;
+    margin-top: 7%;
+} 
+
+.footer__twitter, .footer__facebook, .footer__instagram {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.footer__socmed-icons {
+    text-align: center;
+    padding: 1%;
+}
+
+.footer__logo-wrapper {
+    text-align: center;
+    @include variables.font($color: white);
+}
+
+.footer__textarea, .footer__input-text, .footer__send-bttn{
+    display: block;
+    margin: 15px;
+}
+
+.footer__input-text {
+    width: 50%;
+    max-width: 300px;
+    @include variables.font();
+    padding: 5px;
+}
+
+.footer__textarea {
+    width: 50%;
+    height: 100px;
+    resize: none;
+    max-width: 300px;
+    @include variables.font();
+    padding: 5px;
+}
+
+.footer__textarea::placeholder, .footer__input-text::placeholder {
+    @include variables.font($color: white);
+    color: lightgray;
+}
+
+.footer__send-bttn {
+    border-radius: 5%;
+    border: none;
+    padding: 8px;
+    width: 100px;
+    @include variables.font($color: white);
+}
+
+.footer__p--margin-top0 {
+    margin-top: 0;
+}
+
+.footer__p {
+    @include variables.font($color: white);
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.footer__hr {
+    border: 1px solid #79845D;
+}
+
+.footer__links {
+    padding: 0 5%;
+    text-align: center;
+}
+
+.footer__dropDowns {
+    padding: 0 8%;
+    margin: 40px auto 50px;
+    max-width: 1000px;
+}
+
+.footer__logo {
+    width: 50px;
+}
+
+@media only screen and (min-width: 1101px) {
+    .footer {
+        margin-top: 80px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .footer__logo-wrapper {
+        text-align: center;
+    }
+
+    .footer__p {
+        display: block;
+        margin: 16px;
+    }
+
+    .footer__links {
+        padding: 0 5%;
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .footer {
+        width: 320px;
+    }
+}

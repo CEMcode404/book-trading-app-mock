@@ -2,11 +2,11 @@
 @use "animation";
 @use "common";
 @use "navbar";
+@use "homepage";
+@use "footer";
 
 @media only screen and (min-width: 1101px) {
     body {
-        margin-top: 110px;
+        margin-top: 50px;
     }
 }
-
-// organize and clean the css

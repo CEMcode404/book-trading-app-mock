@@ -41,3 +41,25 @@
     animation-duration: .3s;
     animation-fill-mode: forwards;
 }
+
+@keyframes rotateDown {
+    from { transform: rotateX(0deg);}
+    to { transform: rotateX(180deg);}
+}
+
+@keyframes rotateUp {
+    from { transform: rotateX(180deg);}
+    to { transform: rotateX(0deg);}
+}
+
+.animate--rotateDown {
+    animation-name: rotateDown;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.animate--rotateUp {
+    animation-name: rotateUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}

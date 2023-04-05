@@ -1,10 +1,8 @@
 @use "variables";
 
 .footer {
-    background-color: #2b3811;
-    color: white;
+    @include variables.theme($bg: rgb(24, 81, 47));
     padding: 1px 0;
-    margin-top: 7%;
 } 
 
 .footer__twitter, .footer__facebook, .footer__instagram {

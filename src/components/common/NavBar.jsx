@@ -6,7 +6,11 @@ import bugerMenu from "../../assets/menu_icon.svg";
 import logo from "../../assets/noBG-logo.svg";
 import findIcon from "../../assets/find_icon.svg";
 
-const NavBar = () => {
+const NavBar = ({ showHeadBar = true }) => {
+  if (!showHeadBar) {
+    return null;
+  }
+
   const [slideStatus, setSlide] = useState("");
   const open_closeSidebar = () => {
     switch (slideStatus) {

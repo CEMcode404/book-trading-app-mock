@@ -6,9 +6,6 @@ import Parallax from "./common/Parallax.jsx";
 const HomePage = () => {
   return (
     <div className="home-page">
-      {/* <div className="banner">
-        <img className="banner__img" alt=""></img>
-      </div> */}
       <Parallax />
       <BookCardList title={"TRENDING RIGHT NOW..."} />
       <BookCardList title={"NEW UPLOADS..."} />

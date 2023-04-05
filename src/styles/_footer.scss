@@ -3,7 +3,7 @@
 .footer {
     background-color: #2b3811;
     color: white;
-    padding: 5px 0;
+    padding: 1px 0;
     margin-top: 7%;
 } 
 
@@ -14,17 +14,20 @@
 
 .footer__socmed-icons {
     text-align: center;
-    padding: 1%;
 }
 
 .footer__logo-wrapper {
     text-align: center;
     @include variables.font($color: white);
+    
+    p {
+        margin: 5px;
+    }
 }
 
 .footer__textarea, .footer__input-text, .footer__send-bttn{
     display: block;
-    margin: 15px;
+    margin: 10px;
 }
 
 .footer__input-text {
@@ -51,8 +54,8 @@
 .footer__send-bttn {
     border-radius: 5%;
     border: none;
-    padding: 8px;
-    width: 100px;
+    padding: 5px;
+    width: 50px;
     @include variables.font($color: white);
 }
 
@@ -77,7 +80,7 @@
 
 .footer__dropDowns {
     padding: 0 8%;
-    margin: 40px auto 50px;
+    margin: 25px auto;
     max-width: 1000px;
 }
 

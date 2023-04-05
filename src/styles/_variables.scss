@@ -3,12 +3,12 @@ $primaryColor: #93A466;
 $secondaryColor: #9A60B5;
 $ThirdColor: darkgray;
 
-@mixin font($color: black, $fontSize: 0.6rem) {
+@mixin font($color: black, $fontSize: 1.2rem) {
     color: $color;
     font-size: $fontSize;
 }
 
-@mixin title($color: black, $fontSize: 1rem, $fontWeight: bold) {
+@mixin title($color: black, $fontSize: 1.5rem, $fontWeight: bold) {
     color: $color;
     font-size: $fontSize;
     font-weight: $fontWeight;

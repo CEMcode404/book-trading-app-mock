@@ -63,7 +63,7 @@
         stroke-width: .88px;
       }
     </style>
-    <linearGradient id="linear-gradient" x1="683.5" y1="1328.83" x2="683.5" y2="573.94" gradientUnits="userSpaceOnUse">
+    <linearGradient id="linear-gradient" x1="683.5" y1="304.83" x2="683.5" y2="619.49" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#00ff50"/>
       <stop offset="1" stop-color="#000"/>
     </linearGradient>

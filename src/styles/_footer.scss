@@ -6,12 +6,13 @@
 } 
 
 .footer__twitter, .footer__facebook, .footer__instagram {
-    width: 20px;
+    width: 35px;
     margin-right: 10px;
 }
 
 .footer__socmed-icons {
     text-align: center;
+    margin: 15px 0;
 }
 
 .footer__logo-wrapper {
@@ -21,11 +22,12 @@
     p {
         margin: 5px;
     }
-}
+    margin: 30px 0;
+} 
 
 .footer__textarea, .footer__input-text, .footer__send-bttn{
     display: block;
-    margin: 10px;
+    margin: 15px;
 }
 
 .footer__input-text {
@@ -52,13 +54,9 @@
 .footer__send-bttn {
     border-radius: 5%;
     border: none;
-    padding: 5px;
-    width: 50px;
+    padding: 7px;
+    width: 100px;
     @include variables.font($color: white);
-}
-
-.footer__p--margin-top0 {
-    margin-top: 0;
 }
 
 .footer__p {
@@ -74,16 +72,17 @@
 .footer__links {
     padding: 0 5%;
     text-align: center;
+    margin: 15px 0;
 }
 
 .footer__dropDowns {
     padding: 0 8%;
-    margin: 25px auto;
+    margin: 50px auto;
     max-width: 1000px;
 }
 
 .footer__logo {
-    width: 50px;
+    width: 100px;
 }
 
 @media only screen and (min-width: 1101px) {

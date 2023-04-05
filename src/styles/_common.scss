@@ -65,9 +65,9 @@
 .dropDownV2__triangle-up {
     width: 0;
     height: 0;
-    border-left: 3px solid transparent;
-    border-right: 3px solid transparent;
-    border-bottom: 6px solid #79845D;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #79845D;
     position: absolute;
     top: 10%;
     right: 2%;
@@ -85,7 +85,7 @@
 
 .dropDownV2__title {
     margin: 0;
-    @include variables.title($color:white, $fontWeight: normal, $fontSize: 0.8rem)
+    @include variables.title($color:white, $fontSize: 1.2rem, $fontWeight: normal);
 }
 
 .dropDownV2__hr {

@@ -3,7 +3,15 @@
     overflow: hidden;
     width: 100vw;
     height: 50vw;
+    background-color: black;
     object {
         position: absolute;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .parallax {
+      width: 320px;
+      height: 160px;
     }
 }

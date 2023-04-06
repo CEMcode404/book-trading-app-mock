@@ -9,6 +9,7 @@ const HomePage = () => {
       <Parallax />
       <BookCardList title={"TRENDING RIGHT NOW..."} />
       <BookCardList title={"NEW UPLOADS..."} />
+      <div className="home-page__diagonal-separator"></div>
       <Footer />
     </div>
   );

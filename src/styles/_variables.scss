@@ -18,3 +18,11 @@ $ThirdColor: darkgray;
     background-color: $bg;
     color: $color;
 }
+
+@mixin diagonal-separator($color: black) {
+    width: 0;
+    height: 0;
+    border-right: 100vw solid transparent;
+    border-bottom: 13.9vw solid $color;
+    margin-top: -13.9vw;
+}

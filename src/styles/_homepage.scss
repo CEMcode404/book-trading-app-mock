@@ -1,69 +1,79 @@
 @use "variables";
 
 .book-card {
+    overflow: hidden;
     text-align: center;
     display: inline-block;
     padding: 1%;
     background-color: white;
     border-radius: 3%;
-    width: 190px;
-    height: 85%;
-    margin: 0 0.5% 3% 0.5%;
+    width: 200px;
+    height: 200px;
+    margin: 0.5% 0.5% 10% 0.5%;
     position: relative;
     cursor: pointer;
-}
-  
-.book-card:hover {
-    bottom: 1%;
-}
-  
-.book-card__picture {
-    width: 100%;
-    height: 78%;
-    margin:  0 auto 6% auto;
-}
-  
-.book-card__bttn {
-    border: none;
-    border-radius: 5%;
-    padding: 5%;
-    width: 95%;
-    font-size: 100%;
-    height: 15%;
+    z-index: 1;
+    @include variables.font($color: transparent);
+    transition: color 250ms ease-in-out;
 }
 
-.home-page {
+.book-card:hover {
+    color: white;
+}
+
+.book-card__p {
+    position: relative;
+    top: 30%;
+}
+
+.book-card::after {
+    content:"";
     width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    z-index: -1;
+    color: black;
+    transition: transform 250ms ease-in-out;
+}
+
+.book-card:hover::after {
+    transform: scale(1);
+    transform-origin: left;
+}
+
+
+.home-page {
     background: black;
     min-width: 320px;
     overflow-x: hidden;
     height: 100vh;
+
+    table {
+        margin:  0 auto;
+        text-align: center;
+        padding: 0 10%;
+    }
+
+    th {
+        text-align: left;
+    }
 }
   
 .book-card-list {
-    width: 90%;
-    height: 35vw;
+    height: 230px;
+    display: inline-block;
     margin: 0 auto;
     overflow: hidden;
-    max-height: 400px;
-    max-width: 1700px;
-}
-  
-.book-list{
-    padding-top: 1%;
-    width: 100%;
-    height: 80%;
-    overflow: hidden;
-    display: flex;
-    justify-content:space-around;
-    flex-wrap: wrap;
 }
   
 .book-card-list__header {
-    width: 100%;
-    font-size: 2.8vw;
-    color: white;
-    max-width: 1650px;
+    @include variables.title($color: white);
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
 }
@@ -72,79 +82,28 @@
     @include variables.diagonal-separator($color: rgb(24, 81, 47));
 }
 
-@media only screen and (min-width: 1101px) {
-    .book-card-list__header {
-        font-size: 30px;
-    }
-}
-
-@media screen and (max-width: 991px) {
-    .book-card-list__header {
-        width: 100%;
-    }
-
+@media only screen and (max-width: 831px) {
     .book-card {
-        width: 145px;
-    }
-
-    .book-card__bttn {
-        font-size: 1.8vw;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .book-card {
-        width: 28%;
-    }
-
-    .book-card__bttn {
-        font-size: 2.3vw;
-    }
-  
-    .book-card-list {
-        height: 45vw;
-    }
-    
-    .book-list{
-        height: 90%;
-    }
-}
-
-@media screen and (max-width: 479px) {
-    .book-card {
-        width: 43%;
-        margin-bottom: 7%;
-    }
-
-    .book-card__bttn {
-        font-size: 3vw;
+        width: 150px;
+        height: 150px;
     }
 
     .book-card-list {
-        height: 63vw;
+        height: 180px;
     }
 }
 
-@media only screen and (max-width: 320px) {
-    .home-page { 
-        min-width: 320px;
-    }
-
-    .book-card-list__header {
-        width: 100%;
-        font-size: 10px;
-    }
-
+@media only screen and (max-width: 406px) {
     .book-card {
-        width: 43%;
-        margin-bottom: 7.5%;
-    }
-
-    .book-card__bttn {
-        font-size: 11px;
+        width: 110px;
+        height: 110px;
     }
 
     .book-card-list {
-        height: 202px;
-    }  
+        height: 130px;
+    }
+
+    .book-card__p {
+        top: 20%;
+    }
 }

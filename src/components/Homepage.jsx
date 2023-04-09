@@ -14,12 +14,14 @@ const HomePage = () => {
         setParallaxState(scrollRef.current.scrollTop);
       }}
     >
-      <Parallax parallaxState={parallaxState} />
-      <h1>Book, we got it!</h1>
-      <BookCardList title={"TRENDING RIGHT NOW..."} />
-      <BookCardList title={"NEW UPLOADS..."} />
-      <div className="home-page__diagonal-separator"></div>
-      <Footer />
+      <div className="home-page__contents-max-width">
+        <Parallax parallaxState={parallaxState} />
+        <h1>Book, we got it!</h1>
+        <BookCardList title={"TRENDING RIGHT NOW..."} />
+        <BookCardList title={"NEW UPLOADS..."} />
+        <div className="home-page__diagonal-separator"></div>
+        <Footer />
+      </div>
     </div>
   );
 };

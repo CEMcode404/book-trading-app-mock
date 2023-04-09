@@ -16,11 +16,11 @@ $ThirdColor: darkgray;
     color: $color;
 }
 
-@mixin diagonal-separator($color: black, $marginTop: -13.9vw) {
+@mixin diagonal-separator($color: black, $marginTop: -13.9vw, $b-right: 100vw, $b-bottom: 13.9vw) {
     width: 0;
     height: 0;
-    border-right: 100vw solid transparent;
-    border-bottom: 13.9vw solid $color;
+    border-right: $b-right solid transparent;
+    border-bottom: $b-bottom solid $color;
     margin-top: $marginTop;
 }
 

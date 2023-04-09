@@ -7,7 +7,7 @@ const BookCardList = ({ title }) => {
       <thead>
         <tr>
           <th>
-            <h1 className="book-card-list__header">{title}</h1>
+            <h2 className="book-card-list__header">{title}</h2>
           </th>
         </tr>
       </thead>

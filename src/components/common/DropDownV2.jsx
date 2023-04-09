@@ -20,7 +20,7 @@ const DropDownV2 = ({ children, title = "Title" }) => {
   return (
     <div className="dropDownV2">
       <div className="dropDownV2__headbar" onClick={downUp}>
-        <h3 className="dropDownV2__title">{title}</h3>
+        <p className="dropDownV2__title">{title}</p>
         <hr className="dropDownV2__hr"></hr>
         <div
           className={"dropDownV2__triangle-up animate--rotate" + slideStatus}

@@ -6,8 +6,20 @@
 @use "footer";
 @use "parallax";
 
+// defaults
+
+body {
+    font-size: 1.2rem;
+}
+
 @media only screen and (min-width: 1101px) {
     // body {
     //     margin-top: 50px;
     // }
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 1rem;
+    }
 }

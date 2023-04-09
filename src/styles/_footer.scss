@@ -17,7 +17,6 @@
 
 .footer__logo-wrapper {
     text-align: center;
-    @include variables.font($color: white);
     
     p {
         margin: 5px;
@@ -33,7 +32,6 @@
 .footer__input-text {
     width: 50%;
     max-width: 300px;
-    @include variables.font();
     padding: 5px;
 }
 
@@ -42,12 +40,10 @@
     height: 100px;
     resize: none;
     max-width: 300px;
-    @include variables.font();
     padding: 5px;
 }
 
 .footer__textarea::placeholder, .footer__input-text::placeholder {
-    @include variables.font($color: white);
     color: lightgray;
 }
 
@@ -56,11 +52,9 @@
     border: none;
     padding: 7px;
     width: 100px;
-    @include variables.font($color: white);
 }
 
 .footer__p {
-    @include variables.font($color: white);
     display: inline-block;
     margin: 5px 10px;
 }

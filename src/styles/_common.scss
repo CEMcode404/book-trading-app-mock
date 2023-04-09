@@ -73,11 +73,6 @@
     right: 2%;
 }
 
-.dropDownV2 {
-    width: 100%;
-    height: 100%;
-}
-
 .dropDownV2__body {
     max-height: 0;
     overflow: hidden;
@@ -85,7 +80,7 @@
 
 .dropDownV2__title {
     margin: 0;
-    @include variables.title($color:white, $fontSize: 1.2rem, $fontWeight: normal);
+    @include variables.title($fontSize: 1.4rem);
 }
 
 .dropDownV2__hr {
@@ -96,3 +91,8 @@
     position: relative;
 }
 
+@media screen and (max-width: 767px) {
+    .dropDownV2__title {
+        @include variables.title();
+    }
+}

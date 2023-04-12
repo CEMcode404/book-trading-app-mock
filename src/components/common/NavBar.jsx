@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import NavBarOverlay from "./NavBarOverlay.jsx";
 
-import bugerMenu from "../../assets/menu_icon.svg";
+import burgerMenu from "../../assets/menu_icon.svg";
 import logo from "../../assets/noBG-logo.svg";
 import findIcon from "../../assets/find_icon.svg";
 
@@ -42,7 +42,7 @@ const NavBar = ({ showHeadBar = true }) => {
             <object
               style={{ pointerEvents: "none" }}
               type="image/svg+xml"
-              data={bugerMenu}
+              data={burgerMenu}
               className="menu-icon__svg"
             >
               Menu Icon

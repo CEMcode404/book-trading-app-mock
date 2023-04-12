@@ -1,3 +1,5 @@
+@use "variables";
+
 .parallax {
     max-width: 2000px;
     max-height: 1000px;
@@ -11,9 +13,76 @@
     }
 }
 
+.parallax__navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    padding: 10px 0;
+}
+
+.parallax__navlink {
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.parallax__navlink:hover {
+    background-color: gray;
+}
+
+.parallax__menu-icon {
+    cursor: pointer;
+    display: none;
+    margin-left: 15px;
+    border-radius: 50px;
+}
+
+.parallax__menu-icon:hover {
+    background-color: gray;
+}
+
+object.parallax__menu-icon-svg {
+    position: static;
+    width: 20px;
+    margin: 0 5px
+}
+
+.parallax__search-icon {
+    margin: 0 30px 0 10px;
+
+}
+
+object.parallax__search-icon-svg {
+    position: static;
+    width: 20px;
+}
+
+.parallax__search-bar {
+    margin-left: auto;
+    margin-right: 0;
+    border: none;
+    border-radius: 5px;
+}
+
 @media only screen and (max-width: 320px) {
     .parallax {
       width: 320px;
       height: 160px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .parallax__menu-icon {
+        display: inline-block;
+    }
+
+    .parallax__navlink {
+        display: none;
     }
 }

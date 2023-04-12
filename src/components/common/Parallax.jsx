@@ -1,13 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import welcomeSign from "../../assets/Foreground-welcome.svg";
 import books from "../../assets/Foreground-books.svg";
 import background from "../../assets/Background.svg";
 import closeEyesBookman from "../../assets/Close_eyes_bookman.svg";
 import bookman from "../../assets/Bookman.svg";
+import NavBarOverlay from "./NavBarOverlay.jsx";
+import burgerMenu from "../../assets/menu_icon.svg";
+import findIcon from "../../assets/find_icon.svg";
 
 const Parallax = ({ parallaxState }) => {
+  const [slideStatus, setSlide] = useState("");
+  const open_closeSidebar = () => {
+    switch (slideStatus) {
+      case "":
+        setSlide("slideIn");
+        break;
+      case "slideIn":
+        setSlide("slideOut");
+        break;
+      case "slideOut":
+        setSlide("slideIn");
+        break;
+      default:
+    }
+  };
+
   return (
     <div className="parallax">
+      {
+        <NavBarOverlay
+          slideStatus={slideStatus}
+          open_closeSidebar={open_closeSidebar}
+        />
+      }
+      <nav className="parallax__navbar">
+        <span className="parallax__menu-icon" onClick={open_closeSidebar}>
+          <object
+            style={{ pointerEvents: "none" }}
+            type="image/svg+xml"
+            data={burgerMenu}
+            className="parallax__menu-icon-svg"
+          >
+            Menu Icon
+          </object>
+        </span>
+        <NavLink className="parallax__navlink" to="/">
+          Home
+        </NavLink>
+        <NavLink className="parallax__navlink" to="/login">
+          Log-in
+        </NavLink>
+        <NavLink className="parallax__navlink" to="/signup">
+          Sign up
+        </NavLink>
+        <NavLink className="parallax__navlink" to="/account">
+          Account
+        </NavLink>
+        <input
+          type="text"
+          className="parallax__search-bar highlight"
+          placeholder="Find books..."
+        ></input>
+        <span className="parallax__search-icon">
+          <object
+            type="image/svg+xml"
+            data={findIcon}
+            className="parallax__search-icon-svg"
+          >
+            Search Icon
+          </object>
+        </span>
+      </nav>
+
       <object
         type="image/svg+xml"
         data={background}

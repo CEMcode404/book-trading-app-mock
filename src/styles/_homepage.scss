@@ -80,9 +80,6 @@
     margin-right: auto;
 }
 
-.home-page__diagonal-separator {
-    @include variables.diagonal-separator($color: rgb(24, 81, 47));
-}
 
 @media only screen and (max-width: 831px) {
     .book-card {
@@ -119,19 +116,5 @@
         h2 {
             font-size: 1.2rem;
         }
-    }
-}
-
-@media screen and (min-width: 1700px){
-    .home-page__diagonal-separator {
-        @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -278px, 
-                                                    $b-right: 2000px, $b-bottom: 278px )
-    }
-}
-
-@media screen and (max-width: 320px){
-    .home-page__diagonal-separator {
-        @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -44.480px, 
-                                                    $b-right: 320px, $b-bottom: 44px)
     }
 }

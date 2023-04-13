@@ -6,6 +6,7 @@
 @use "footer";
 @use "parallax";
 @use "loginPage";
+@use "signUp";
 
 // defaults
 
@@ -13,10 +14,9 @@ body {
     font-size: 1.2rem;
 }
 
-@media only screen and (min-width: 1101px) {
-    // body {
-    //     margin-top: 50px;
-    // }
+.app {
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 767px) {

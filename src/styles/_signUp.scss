@@ -1,0 +1,103 @@
+.sign-up {
+    margin: 50px auto;
+    max-width: 2000px;
+    min-width: 320px;
+}
+
+.sign-up__book-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign-up__book {
+    display: flex;
+    width: 800px;
+    margin-bottom: 50px;
+}
+
+.book-page1, .book-page2 {
+    text-align: center;
+    border: 1px solid black;
+    width: 100%;
+    box-shadow:  0 5px 15px gray;
+}
+
+.book-page1 {
+    background-color: lightgray;
+    padding: 2%;
+    border-radius: 5px 0 0 5px;
+    border: none;
+}
+
+.book-page2 {
+    border-radius: 0 5px 5px 0;
+    border: solid 1px lightgrey;
+    padding-top: 20%;
+    background-color: white;
+}
+
+.book-page2__svg {
+    width: 60%;
+}
+
+.sign-up__input {
+    width: 80%;
+    margin: 2%;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    padding: 3% 5%;
+}
+
+.sign-up__input::placeholder {
+    color: lightgray;
+}
+
+.sign-up__input:focus  {
+    border: 1.5px solid #93A466;
+    outline: none;
+}
+
+.sign-up__submit-bttn {
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.sign-up__p {
+    margin: 5% auto 5% auto;
+    color: white;
+    width: 70%;
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 885px){
+    .book-page2 {
+        display: none;
+    }
+
+    .sign-up__book {
+        display: flex;
+        width: 400px;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 479px){
+
+    .sign-up__book {
+        display: flex;
+        width: 300px;
+        margin-bottom: 50px;
+    }
+
+    .sign-up__p {
+        font-size: .8rem;
+    }
+}
+
+
+  

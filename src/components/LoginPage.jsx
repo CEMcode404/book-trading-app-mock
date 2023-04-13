@@ -25,9 +25,9 @@ const LoginPage = () => {
         />
 
         <div className="login-page__links"></div>
-        <p className="login-page__p link">Forgot your password?</p>
+        <p className="login-page__p">Forgot your password?</p>
         <hr className="login-page__hr"></hr>
-        <p className="login-page__p link">Not Sign up Yet?</p>
+        <p className="login-page__p">Not Sign up Yet?</p>
       </div>
     </div>
   );

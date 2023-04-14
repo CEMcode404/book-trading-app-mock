@@ -1,0 +1,125 @@
+@use "variables";
+
+.transaction {
+    box-sizing: border-box;
+    padding: 0 30px;
+    color: gray;
+    margin: 5% auto;
+}
+
+.transaction__h1 {
+    text-align: center;
+    color: #93A466;
+}
+
+.picviewer {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.picviewer__picture-list {
+    text-align: center;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.picviewer__picture {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    border-radius: 5px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.picviewer__hr {
+    width: 100%;
+    border-top: 1px solid lightgray;
+}
+
+.transaction__details {
+    margin: 0 auto;
+    position: relative;
+    width: 90%;
+}
+
+.transaction__span {
+    position: absolute;
+    right: 0;
+}
+
+.transaction-contact {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.transaction-contact__chat, .transaction-contact__request {
+    width: 45%;
+}
+
+.transaction-contact__chat-bttn, .transaction-contact__request-bttn {
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    height: 50px;
+}
+
+.transaction-contact__hr {
+    border-top: solid 1px lightgray;
+}
+
+.transaction__status-box {
+    display: inline-block;
+    background-color: #2DFC75;
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+@media screen and (max-width: 320px){
+    .diagonal-separator {
+        @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -44.480px, 
+                                                    $b-right: 320px, $b-bottom: 44px)
+    }
+}
+@media only screen and (max-width: 500px){
+    .transaction-contact {
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .transaction-contact__chat, .transaction-contact__request {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .picviewer__picture {
+        width: 75px;
+        height: 75px;
+    }
+    
+}
+
+@media only screen and (max-width: 320px){
+    .transaction {
+        width: 320px;
+    }
+}
+
+
+
+
+
+

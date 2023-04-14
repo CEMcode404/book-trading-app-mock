@@ -5,6 +5,7 @@ import HomePage from "./Homepage.jsx";
 import LoginPage from "./LoginPage.jsx";
 import isNavbarAllowed from "../scripts/isNavbarAllowed.js";
 import SignUpPage from "./SignUpPage.jsx";
+import TransactionPage from "./TransactionPage.jsx";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/index" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/transaction" element={<TransactionPage />} />
       </Routes>
     </div>
   );

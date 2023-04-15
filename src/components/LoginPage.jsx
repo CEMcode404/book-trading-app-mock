@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/bookTrade-fontLogo.svg";
+import Footer from "./common/Footer.jsx";
 
 const LoginPage = () => {
   return (
@@ -23,7 +24,6 @@ const LoginPage = () => {
           value="Log in"
           className="login-page__bttn bttn--slide-up--green"
         />
-
         <div className="login-page__links"></div>
         <p className="login-page__p">Forgot your password?</p>
         <hr className="login-page__hr"></hr>

@@ -13,7 +13,7 @@
       }
     </style>
     <radialGradient id="radial-gradient" cx="683" cy="384" fx="683" fy="384" r="685.9" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#00ff50"/>
+      <stop offset="0" stop-color="#18512f"/>
       <stop offset="1" stop-color="#000"/>
     </radialGradient>
   </defs>

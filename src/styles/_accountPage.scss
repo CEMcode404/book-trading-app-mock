@@ -1,0 +1,49 @@
+@use "variables";
+
+.account {
+    min-width: 320px;
+}
+
+.account__body {
+    display: flex;
+    margin-bottom: 75px;
+}
+
+.account__content-wrapper {
+    padding: 0 50px;
+}
+
+.account__toc {
+    margin-right: 50px;
+    height: 50vh;
+    p {
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+}
+
+.account__vertical-title-active {
+    @include variables.theme()
+}
+
+@media only screen and (max-width: 767px) {
+    .account__body {
+        flex-direction: column;
+    }
+
+    .account__content-wrapper {
+        padding: 0 9%;
+    }
+
+    .account__toc {
+        margin-right: 0;
+        height: auto;
+
+        p {
+            text-align: left;
+        }
+    }
+}

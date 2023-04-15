@@ -7,7 +7,7 @@ import instagramLogo from "../../assets/Twitter.svg";
 
 const Footer = ({ fclass, display = true }) => {
   const footer = !display ? null : (
-    <div className={"footer " + fclass}>
+    <footer className={"footer " + fclass}>
       <div className="footer__dropDowns">
         <DropDownV2 title="ABOUT US">
           <p className="footer__p">
@@ -74,7 +74,7 @@ const Footer = ({ fclass, display = true }) => {
         </object>
         <p>Copyright 2023. All rights reserved</p>
       </div>
-    </div>
+    </footer>
   );
 
   return footer;

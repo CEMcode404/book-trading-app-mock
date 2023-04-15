@@ -6,6 +6,7 @@ import LoginPage from "./LoginPage.jsx";
 import isNavbarAllowed from "../scripts/isNavbarAllowed.js";
 import SignUpPage from "./SignUpPage.jsx";
 import TransactionPage from "./TransactionPage.jsx";
+import AccounPage from "./AccountPage.jsx";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/transaction" element={<TransactionPage />} />
+        <Route path="/account" element={<AccounPage />} />
       </Routes>
     </div>
   );

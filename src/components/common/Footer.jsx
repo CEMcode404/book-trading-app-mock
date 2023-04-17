@@ -35,16 +35,19 @@ const Footer = ({ fclass, display = true }) => {
       </div>
 
       <hr className="footer__hr"></hr>
-      <div className="footer__links">
+      <section className="footer__links" aria-label="links">
         <p className="footer__p">Reviews and Testimonials</p>
         <p className="footer__p">Safety and Security</p>
         <p className="footer__p">Terms of Use</p>
         <p className="footer__p">Data Privacy</p>
         <p className="footer__p">Credits</p>
         <p className="footer__p">Donate</p>
-      </div>
+      </section>
       <hr className="footer__hr"></hr>
-      <div className="footer__socmed-icons">
+      <section
+        aria-label="social media accounts"
+        className="footer__socmed-icons"
+      >
         <object
           type="image/svg+xml"
           data={twitterLogo}
@@ -66,7 +69,7 @@ const Footer = ({ fclass, display = true }) => {
         >
           Facebook
         </object>
-      </div>
+      </section>
       <hr className="footer__hr"></hr>
       <div className="footer__logo-wrapper">
         <object type="image/svg+xml" data={logo} className="footer__logo">

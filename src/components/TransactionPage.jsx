@@ -6,7 +6,7 @@ import Footer from "./common/Footer.jsx";
 const TransactionPage = () => {
   return (
     <div>
-      <div className="transaction">
+      <main className="transaction">
         <h1 className="transaction__h1">Transaction Details</h1>
         <PicViewer />
         <div className="transaction__details">
@@ -31,7 +31,7 @@ const TransactionPage = () => {
           </p>
         </div>
         <TransactionContacts />
-      </div>
+      </main>
       <Footer fclass="footer--bg-light-green" />
     </div>
   );

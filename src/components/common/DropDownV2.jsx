@@ -18,9 +18,9 @@ const DropDownV2 = ({ children, title = "Title" }) => {
   };
 
   return (
-    <div className="dropDownV2">
+    <section aria-label={title} className="dropDownV2">
       <div className="dropDownV2__headbar" onClick={downUp}>
-        <p className="dropDownV2__title">{title}</p>
+        <h2 className="dropDownV2__title">{title}</h2>
         <hr className="dropDownV2__hr"></hr>
         <div
           className={"dropDownV2__triangle-up animate--rotate" + slideStatus}
@@ -30,7 +30,7 @@ const DropDownV2 = ({ children, title = "Title" }) => {
         {children}
         <hr className="dropDownV2__hr"></hr>
       </div>
-    </div>
+    </section>
   );
 };
 

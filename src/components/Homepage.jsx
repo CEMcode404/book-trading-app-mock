@@ -15,10 +15,14 @@ const HomePage = () => {
       }}
     >
       <div className="home-page__contents-max-width">
-        <Parallax parallaxState={parallaxState} />
-        <h1>Book, we got it!</h1>
-        <BookCardList title={"TRENDING RIGHT NOW..."} />
-        <BookCardList title={"NEW UPLOADS..."} />
+        <header>
+          <Parallax parallaxState={parallaxState} />
+          <h1>Book, we got it!</h1>
+        </header>
+        <main>
+          <BookCardList title={"TRENDING RIGHT NOW..."} />
+          <BookCardList title={"NEW UPLOADS..."} />
+        </main>
         <div className="diagonal-separator"></div>
         <Footer />
       </div>

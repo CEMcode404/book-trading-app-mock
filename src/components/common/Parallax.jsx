@@ -34,7 +34,7 @@ const Parallax = ({ parallaxState }) => {
           open_closeSidebar={open_closeSidebar}
         />
       }
-      <nav className="parallax__navbar">
+      <nav aria-label="Primary Navigation" className="parallax__navbar">
         <span className="parallax__menu-icon" onClick={open_closeSidebar}>
           <object
             style={{ pointerEvents: "none" }}
@@ -73,46 +73,48 @@ const Parallax = ({ parallaxState }) => {
         </span>
       </nav>
 
-      <object
-        type="image/svg+xml"
-        data={background}
-        style={{ top: -(parallaxState * 0.1) + "px" }}
-      >
-        Background
-      </object>
-      <object
-        type="image/svg+xml"
-        data={closeEyesBookman}
-        style={{ top: -(parallaxState * 0.3) + "px" }}
-      >
-        Bookman
-      </object>
-      <object
-        type="image/svg+xml"
-        data={bookman}
-        className="animate--blink"
-        style={{ top: -(parallaxState * 0.3) + "px" }}
-      >
-        Bookman
-      </object>
-      <object
-        type="image/svg+xml"
-        data={books}
-        style={{ top: -(parallaxState * 0.6) + "px" }}
-      >
-        Books
-      </object>
-      <object
-        type="image/svg+xml"
-        data={welcomeSign}
-        style={{
-          top: -(parallaxState * 0.6) + "px",
-          right: -(parallaxState * 0.6) + "px",
-        }}
-        className="animate--swing"
-      >
-        Welcome Sign
-      </object>
+      <div>
+        <object
+          type="image/svg+xml"
+          data={background}
+          style={{ top: -(parallaxState * 0.1) + "px" }}
+        >
+          Background
+        </object>
+        <object
+          type="image/svg+xml"
+          data={closeEyesBookman}
+          style={{ top: -(parallaxState * 0.3) + "px" }}
+        >
+          Bookman
+        </object>
+        <object
+          type="image/svg+xml"
+          data={bookman}
+          className="animate--blink"
+          style={{ top: -(parallaxState * 0.3) + "px" }}
+        >
+          Bookman
+        </object>
+        <object
+          type="image/svg+xml"
+          data={books}
+          style={{ top: -(parallaxState * 0.6) + "px" }}
+        >
+          Books
+        </object>
+        <object
+          type="image/svg+xml"
+          data={welcomeSign}
+          style={{
+            top: -(parallaxState * 0.6) + "px",
+            right: -(parallaxState * 0.6) + "px",
+          }}
+          className="animate--swing"
+        >
+          Welcome Sign
+        </object>
+      </div>
     </div>
   );
 };

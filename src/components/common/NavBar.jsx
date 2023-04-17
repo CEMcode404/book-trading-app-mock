@@ -29,8 +29,8 @@ const NavBar = ({ showHeadBar = true }) => {
 
   return (
     <Fragment>
-      <nav className="navPlaceHolder"></nav>
-      <nav className="navbar">
+      <div className="navPlaceHolder"></div>
+      <nav className="navbar" aria-label="Primary Navigation">
         {
           <NavBarOverlay
             slideStatus={slideStatus}

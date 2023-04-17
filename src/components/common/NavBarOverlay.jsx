@@ -10,7 +10,7 @@ const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
   ];
   const slideType = " animate--" + slideStatus;
   return (
-    <Fragment>
+    <div>
       <div
         className={"navbar-overlay__background"}
         onClick={open_closeSidebar}
@@ -18,15 +18,15 @@ const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
           slideStatus === "slideIn" ? { display: "block" } : { display: "none" }
         }
       ></div>
-      <div className={"navbar-overlay__side-bar" + slideType}>
+      <aside className={"navbar-overlay__side-bar" + slideType}>
         <div className="navbar-overlay__headbar"></div>
         {headersProps.map(([title, path]) => (
           <NavLink to={path} className="navbar_overlay__NavLink" key={title}>
             {title}
           </NavLink>
         ))}
-      </div>
-    </Fragment>
+      </aside>
+    </div>
   );
 };
 

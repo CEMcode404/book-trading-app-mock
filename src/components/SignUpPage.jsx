@@ -15,10 +15,10 @@ const SignUpPage = () => {
 
   return (
     <Fragment>
-      <div className="sign-up">
+      <main className="sign-up">
         <div className="sign-up__book-wrapper">
           <div className="sign-up__book">
-            <div className="book-page1">
+            <section aria-label="sign up" className="book-page1">
               <form className="signup__form">
                 <h1 className="sign-up__h1">Sign Up</h1>
                 {inputName.map((name) => (
@@ -39,7 +39,7 @@ const SignUpPage = () => {
                   and Cookies Policy.
                 </p>
               </form>
-            </div>
+            </section>
             <div className="book-page2">
               <object
                 type="image/svg+xml"
@@ -58,7 +58,7 @@ const SignUpPage = () => {
         </div>
         <div className="diagonal-separator"></div>
         <Footer fclass="footer--bg-light-green" />
-      </div>
+      </main>
     </Fragment>
   );
 };

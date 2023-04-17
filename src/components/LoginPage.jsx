@@ -1,11 +1,10 @@
 import React from "react";
 import logo from "../assets/bookTrade-fontLogo.svg";
-import Footer from "./common/Footer.jsx";
 
 const LoginPage = () => {
   return (
     <div className="login-page-wrapper">
-      <div className="login-page">
+      <main className="login-page">
         <object type="image/svg+xml" data={logo} className="login-page__logo">
           2nd booktrade logo
         </object>
@@ -28,7 +27,7 @@ const LoginPage = () => {
         <p className="login-page__p">Forgot your password?</p>
         <hr className="login-page__hr"></hr>
         <p className="login-page__p">Not Sign up Yet?</p>
-      </div>
+      </main>
     </div>
   );
 };

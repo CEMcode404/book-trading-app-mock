@@ -35,7 +35,7 @@ const AccounPage = () => {
             </nav>
           </aside>
           <main>
-            <section>
+            <section aria-label={activeNavTitle}>
               <h2>{activeNavTitle}</h2>
               <div className="account__data-display"></div>
             </section>

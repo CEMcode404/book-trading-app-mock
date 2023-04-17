@@ -79,7 +79,7 @@
     width: 100px;
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 30em) { //479px
     .footer__logo-wrapper {
         text-align: center;
     }
@@ -95,7 +95,7 @@
     }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 20em) { //320px
     .footer {
         width: 320px;
     }

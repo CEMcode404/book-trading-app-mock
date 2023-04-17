@@ -74,7 +74,7 @@
     font-size: 1rem;
 }
 
-@media only screen and (max-width: 885px){
+@media only screen and (max-width: 55em){ //885px
     .book-page2 {
         display: none;
     }
@@ -86,7 +86,7 @@
     }
 }
 
-@media only screen and (max-width: 479px){
+@media only screen and (max-width: 30em){ //479px
 
     .sign-up__book {
         display: flex;

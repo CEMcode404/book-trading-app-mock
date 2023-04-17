@@ -81,7 +81,7 @@
 }
 
 
-@media only screen and (max-width: 831px) {
+@media only screen and (max-width: 52em) { //831px
     .book-card {
         width: 150px;
         height: 150px;
@@ -92,7 +92,7 @@
     }
 }
 
-@media only screen and (max-width: 406px) {
+@media only screen and (max-width: 25em) { //406px
     .book-card {
         width: 110px;
         height: 110px;
@@ -107,7 +107,7 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 48em) { //767px
     .home-page {
         h1 {
             font-size: 2rem;

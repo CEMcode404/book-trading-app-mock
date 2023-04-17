@@ -29,7 +29,7 @@
     @include variables.theme()
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 48em) { //767px
     .account__body {
         flex-direction: column;
     }

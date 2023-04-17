@@ -70,14 +70,14 @@ object.parallax__search-icon-svg {
     border-radius: 5px;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 20em) { //320px
     .parallax {
       width: 320px;
       height: 160px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 48em) { //767px
     .parallax__menu-icon {
         display: inline-block;
     }

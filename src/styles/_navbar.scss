@@ -86,23 +86,7 @@
     visibility: hidden;
 }
 
-// @media only screen and (min-width: 1101px) {
-//     .navbar {
-//         @include variables.theme($bg: gray);
-//     }
-// }
-
-// @media screen and (max-width: 991px) {
-//     .navbar {
-//         @include variables.theme($bg: yellow);
-//     }
-// }
-
-@media screen and (max-width: 767px) {
-
-    // .navbar {
-    //     @include variables.theme($bg: black);
-    // }
+@media screen and (max-width: 48em) { //767px
 
     .navbar__li {
         display: none;
@@ -154,10 +138,7 @@
     }
 }
 
-@media only screen and (max-width: 479px) {
-    // .navbar {
-    //     @include variables.theme($bg: blue);
-    // }
+@media only screen and (max-width: 30em) { //479px
 
     .navPlaceHolder {
         height: 35px;
@@ -185,11 +166,4 @@
         padding: 0 30px;
         
     }
-}
-    
-@media only screen and (max-width: 320px) {
-    // .navbar {
-    //     @include variables.theme($bg: red);
-    //     width: 320px;
-    // }
 }

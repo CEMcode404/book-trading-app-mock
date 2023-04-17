@@ -85,13 +85,17 @@
     margin-right: 10px;
     border-radius: 5px;
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 20em){ //320px
     .diagonal-separator {
         @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -44.480px, 
                                                     $b-right: 320px, $b-bottom: 44px)
     }
+
+    .transaction {
+        width: 320px;
+    }
 }
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 31em){ //500px
     .transaction-contact {
         flex-direction: column;
         justify-content: space-around;
@@ -111,13 +115,6 @@
     }
     
 }
-
-@media only screen and (max-width: 320px){
-    .transaction {
-        width: 320px;
-    }
-}
-
 
 
 

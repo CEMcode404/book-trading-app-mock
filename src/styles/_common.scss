@@ -91,7 +91,7 @@
     position: relative;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 48em) { //757px
     .dropDownV2__title {
         @include variables.title();
     }
@@ -101,14 +101,14 @@
     @include variables.diagonal-separator($color: rgb(24, 81, 47));
 }
 
-@media screen and (min-width: 2000px){
+@media screen and (min-width: 125em){ //2000px
     .diagonal-separator {
         @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -278px, 
                                                     $b-right: 2000px, $b-bottom: 278px )
     }
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 20em){ //320px
     .diagonal-separator {
         @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -44.480px, 
                                                     $b-right: 320px, $b-bottom: 44px)

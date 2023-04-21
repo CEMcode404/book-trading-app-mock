@@ -26,7 +26,7 @@ const schema = yup
   })
   .required();
 
-function haveErrors(errObject) {
+function checkInputErrors(errObject) {
   const isTrue = Object.values(errObject).length;
   return isTrue;
 }
@@ -50,7 +50,8 @@ const SignUpPage = () => {
   };
 
   const scrolltoRef = useRef();
-  if (haveErrors(errors)) {
+  const haveErrors = checkInputErrors(errors);
+  if (haveErrors) {
     scrolltoRef.current.scrollIntoView({ block: "center" });
   }
 
@@ -105,7 +106,7 @@ const SignUpPage = () => {
           ></input>
           <div
             className={
-              "sign-up__error-container" + (!haveErrors(errors) ? "-hide" : "")
+              "sign-up__error-container" + (!haveErrors ? "-hide" : "")
             }
             ref={scrolltoRef}
           >

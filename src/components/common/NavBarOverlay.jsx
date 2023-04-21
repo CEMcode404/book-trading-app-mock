@@ -18,7 +18,10 @@ const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
           slideStatus === "slideIn" ? { display: "block" } : { display: "none" }
         }
       ></div>
-      <aside className={"navbar-overlay__side-bar" + slideType}>
+      <aside
+        aria-label="Pop up Navigation"
+        className={"navbar-overlay__side-bar" + slideType}
+      >
         <div className="navbar-overlay__headbar"></div>
         {headersProps.map(([title, path]) => (
           <NavLink to={path} className="navbar_overlay__NavLink" key={title}>

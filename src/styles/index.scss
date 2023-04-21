@@ -11,6 +11,9 @@
 @use "accountPage";
 
 // defaults
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-size: 1.2rem;

@@ -1,5 +1,7 @@
+@use "variables";
+
 .sign-up {
-    margin: 50px auto;
+    margin: 50px auto 0;
     max-width: 2000px;
     min-width: 320px;
 }
@@ -72,6 +74,22 @@
     color: white;
     width: 70%;
     font-size: 1rem;
+}
+
+.sign-up__error-container {
+    @include variables.theme($bg: rgba(0, 0, 0, 0.252), $color:white);
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    div {
+        padding: 2rem;
+    }
+}
+.sign-up__error-container-hide {
+    height: 0;
+    width: 0;
+    overflow: hidden;
 }
 
 @media only screen and (max-width: 55em){ //885px

@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import signupIllustration from "../assets/signup_illustration.svg";
 import getPhoneCodes from "../services/PhoneNoRules.js";
+import checkFormErrors from "../utility/checkFormErrors.js";
 
 const schema = yup
   .object()
@@ -26,11 +27,6 @@ const schema = yup
   })
   .required();
 
-function checkInputErrors(errObject) {
-  const isTrue = Object.values(errObject).length;
-  return isTrue;
-}
-
 const SignUpPage = () => {
   const {
     register,
@@ -50,7 +46,7 @@ const SignUpPage = () => {
   };
 
   const scrolltoRef = useRef();
-  const haveErrors = checkInputErrors(errors);
+  const haveErrors = checkFormErrors(errors);
   if (haveErrors) {
     scrolltoRef.current.scrollIntoView({ block: "center" });
   }

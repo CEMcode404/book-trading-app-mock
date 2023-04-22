@@ -53,6 +53,23 @@
     margin-top: 10%;
 }
 
+.login-page__errors-display {
+    text-align: left;
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #93a4663f;
+    border-radius: 5px;
+    p {
+        color: gray;
+    }
+}
+
+.login-page__errors-display-hide {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
 @media screen and (max-width: 30em) { //479px
     .login-page {
         width: 200px;

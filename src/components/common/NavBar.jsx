@@ -5,7 +5,7 @@ import NavBarOverlay from "./NavBarOverlay.jsx";
 import burgerMenu from "../../assets/menu_icon.svg";
 import logo from "../../assets/noBG-logo.svg";
 import findIcon from "../../assets/find_icon.svg";
-
+import { searchBookWithName } from "../../services/search.js";
 const NavBar = ({ showHeadBar = true }) => {
   if (!showHeadBar) {
     return null;
@@ -25,6 +25,11 @@ const NavBar = ({ showHeadBar = true }) => {
         break;
       default:
     }
+  };
+
+  const [searchInput, setSearchInput] = useState("");
+  const handleSearchInput = (e) => {
+    setSearchInput(e.currentTarget.value);
   };
 
   return (
@@ -78,10 +83,17 @@ const NavBar = ({ showHeadBar = true }) => {
               type="text"
               className="search-bar__input highlight"
               placeholder="Find books..."
+              onInput={handleSearchInput}
             ></input>
           </li>
-          <li className="navbar__li search-icon">
+          <li
+            className="navbar__li search-icon"
+            onClick={() => {
+              searchBookWithName(searchInput);
+            }}
+          >
             <object
+              style={{ pointerEvents: "none" }}
               type="image/svg+xml"
               data={findIcon}
               className="search-icon__svg"

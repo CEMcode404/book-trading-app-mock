@@ -63,6 +63,11 @@ module.exports = {
       },
     ],
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
 };
 
 // PS. Use and install style-loader instead of mini-css-extract-plugin if you want to bundle css files and main files together

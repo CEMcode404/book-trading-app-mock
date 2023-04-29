@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../assets/bookTrade-fontLogo.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import checkFormErrors from "../utility/checkFormErrors";
 import userService from "../services/userService";
+import { Navigate } from "react-router-dom";
+import { UserContext } from "./app.jsx";
 
 const schema = yup
   .object()
@@ -15,6 +17,8 @@ const schema = yup
   .required();
 
 const LoginPage = () => {
+  const currentUser = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
@@ -25,6 +29,8 @@ const LoginPage = () => {
 
   const haveErrors = checkFormErrors(errors);
   const onSubmit = userService.login;
+
+  if (currentUser) return <Navigate to="/" replace={true} />;
 
   return (
     <div className="login-page-wrapper">

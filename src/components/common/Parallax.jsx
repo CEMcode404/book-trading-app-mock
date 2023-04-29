@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../app.jsx";
 import welcomeSign from "../../assets/Foreground-welcome.svg";
 import books from "../../assets/Foreground-books.svg";
 import background from "../../assets/Background.svg";
@@ -26,6 +27,7 @@ const Parallax = ({ parallaxState }) => {
     }
   };
 
+  const currentUser = useContext(UserContext);
   return (
     <div className="parallax">
       {
@@ -48,15 +50,22 @@ const Parallax = ({ parallaxState }) => {
         <NavLink className="parallax__navlink" to="/">
           Home
         </NavLink>
-        <NavLink className="parallax__navlink" to="/login">
-          Log-in
+        <NavLink
+          className="parallax__navlink"
+          to={currentUser ? "#" : "/login"}
+        >
+          {currentUser ? "Log-out" : "Log-in"}
         </NavLink>
-        <NavLink className="parallax__navlink" to="/signup">
-          Sign up
-        </NavLink>
-        <NavLink className="parallax__navlink" to="/account">
-          Account
-        </NavLink>
+        {!currentUser && (
+          <NavLink className="parallax__navlink" to="/signup">
+            Sign up
+          </NavLink>
+        )}
+        {currentUser && (
+          <NavLink className="parallax__navlink" to="/account">
+            {currentUser}
+          </NavLink>
+        )}
         <input
           type="text"
           className="parallax__search-bar highlight"

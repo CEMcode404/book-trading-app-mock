@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useRef, useContext } from "react";
 import Footer from "./common/Footer.jsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,6 +7,8 @@ import signupIllustration from "../assets/signup_illustration.svg";
 import getPhoneCodes from "../services/PhoneNoRulesService.js";
 import checkFormErrors from "../utility/checkFormErrors.js";
 import userService from "../services/userService.js";
+import { Navigate } from "react-router-dom";
+import { UserContext } from "./app.jsx";
 
 const schema = yup
   .object()
@@ -47,12 +49,15 @@ const SignUpPage = () => {
   };
 
   const scrolltoRef = useRef();
+  const currentUser = useContext(UserContext);
   const haveErrors = checkFormErrors(errors);
   if (haveErrors) {
     scrolltoRef.current.scrollIntoView({ block: "center" });
   }
 
   const onSubmit = userService.register;
+
+  if (currentUser) return <Navigate to="/" replace={true} />;
 
   return (
     <Fragment>

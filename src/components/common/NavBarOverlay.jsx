@@ -1,13 +1,9 @@
-import React, { Fragment } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../app.jsx";
 
 const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
-  const headersProps = [
-    ["HOME", "/"],
-    ["LOG IN", "/login"],
-    ["SIGN UP", "/signup"],
-    ["ACCOUNT", "/account"],
-  ];
+  const currentUser = useContext(UserContext);
   const slideType = " animate--" + slideStatus;
   return (
     <div>
@@ -23,11 +19,23 @@ const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
         className={"navbar-overlay__side-bar" + slideType}
       >
         <div className="navbar-overlay__headbar"></div>
-        {headersProps.map(([title, path]) => (
-          <NavLink to={path} className="navbar_overlay__NavLink" key={title}>
-            {title}
+        <NavLink to="/" className="navbar_overlay__NavLink">
+          HOME
+        </NavLink>
+        <NavLink
+          to={currentUser ? "#" : "/login"}
+          className="navbar_overlay__NavLink"
+        >
+          {currentUser ? "LOG OUT" : "LOG IN"}
+        </NavLink>
+        {!currentUser && (
+          <NavLink to="/signup" className="navbar_overlay__NavLink">
+            SIGNUP
           </NavLink>
-        ))}
+        )}
+        <NavLink to="/account" className="navbar_overlay__NavLink">
+          {currentUser && currentUser.toUpperCase()}
+        </NavLink>
       </aside>
     </div>
   );

@@ -68,20 +68,27 @@ const NavBar = ({ showHeadBar = true }) => {
             </NavLink>
           </li>
           <li className="navbar__li">
-            <NavLink className="navbar__NavLink" to="/login">
-              Log-in
+            <NavLink
+              className="navbar__NavLink"
+              to={currentUser ? "#" : "/login"}
+            >
+              {currentUser ? "Log-out" : "Log-in"}
             </NavLink>
           </li>
-          <li className="navbar__li">
-            <NavLink className="navbar__NavLink" to="/signup">
-              Sign up
-            </NavLink>
-          </li>
-          <li className="navbar__li">
-            <NavLink className="navbar__NavLink" to="/account">
-              {currentUser || "Acccount"}
-            </NavLink>
-          </li>
+          {!currentUser && (
+            <li className="navbar__li">
+              <NavLink className="navbar__NavLink" to="/signup">
+                Sign up
+              </NavLink>
+            </li>
+          )}
+          {currentUser && (
+            <li className="navbar__li">
+              <NavLink className="navbar__NavLink" to="/account">
+                {currentUser}
+              </NavLink>
+            </li>
+          )}
           <li className="navbar__li search-bar">
             <input
               type="text"

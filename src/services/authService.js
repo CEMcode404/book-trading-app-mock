@@ -6,8 +6,11 @@ function storeToken(token) {
 
 function getCurrentUser() {
   const token = localStorage.getItem("token");
-  const { firstName } = jwtDecode(token);
-  return firstName;
+  if (token) {
+    const { firstName } = jwtDecode(token);
+    return firstName;
+  }
+  return;
 }
 
 export { storeToken, getCurrentUser };

@@ -1,13 +1,13 @@
 import React from "react";
-import { Route, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { getCurrentUser } from "../../services/authService";
 
-const ProtectedRoute = ({ path, element, ...rest }) => {
+const ProtectedRoute = ({ component: Component, ...rest }) => {
   const currentUser = getCurrentUser();
   return currentUser ? (
-    <Route path={path} element={element} {...rest} />
+    <Component {...rest} />
   ) : (
-    <Navigate to={"/login"} replace={true} />
+    <Navigate to="/login" replace={true} />
   );
 };
 

@@ -22,8 +22,14 @@ const App = () => {
           <Route path="/index" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <ProtectedRoute path="/transaction" element={<TransactionPage />} />
-          <Route path="/account" element={<AccounPage />} />
+          <Route
+            path="/transaction"
+            element={<ProtectedRoute component={TransactionPage} />}
+          />
+          <Route
+            path="/account"
+            element={<ProtectedRoute component={AccounPage} />}
+          />
         </Routes>
       </UserContext.Provider>
     </div>

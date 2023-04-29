@@ -4,8 +4,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import signupIllustration from "../assets/signup_illustration.svg";
-import getPhoneCodes from "../services/PhoneNoRules.js";
+import getPhoneCodes from "../services/PhoneNoRulesService.js";
 import checkFormErrors from "../utility/checkFormErrors.js";
+import userService from "../services/userService.js";
 
 const schema = yup
   .object()
@@ -18,7 +19,7 @@ const schema = yup
       .label("Mobile No.")
       .required(),
     email: yup.string().email().label("Email").required(),
-    password: yup.string().max(20).min(5).label("Pasword").required(),
+    password: yup.string().max(50).min(5).label("Pasword").required(),
     confirmPassword: yup
       .string()
       .label("Confirm Password")
@@ -51,6 +52,8 @@ const SignUpPage = () => {
     scrolltoRef.current.scrollIntoView({ block: "center" });
   }
 
+  const onSubmit = userService.register;
+
   return (
     <Fragment>
       <main className="sign-up">
@@ -61,7 +64,7 @@ const SignUpPage = () => {
               <form
                 id="sign-up-form-id"
                 className="signup__form"
-                onSubmit={handleSubmit((data) => console.log(data))}
+                onSubmit={handleSubmit(onSubmit)}
               >
                 {Object.entries(inputFields).map((fieldName) => (
                   <input

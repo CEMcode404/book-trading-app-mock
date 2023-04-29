@@ -4,12 +4,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import checkFormErrors from "../utility/checkFormErrors";
+import userService from "../services/userService";
 
 const schema = yup
   .object()
   .shape({
     email: yup.string().email().label("Email").required(),
-    password: yup.string().max(20).min(5).label("Pasword").required(),
+    password: yup.string().max(50).min(5).label("Pasword").required(),
   })
   .required();
 
@@ -23,6 +24,7 @@ const LoginPage = () => {
   });
 
   const haveErrors = checkFormErrors(errors);
+  const onSubmit = userService.login;
 
   return (
     <div className="login-page-wrapper">
@@ -30,7 +32,7 @@ const LoginPage = () => {
         <object type="image/svg+xml" data={logo} className="login-page__logo">
           2nd booktrade logo
         </object>
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
             className="login-page__input-field highlight"

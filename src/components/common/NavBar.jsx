@@ -1,11 +1,13 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import NavBarOverlay from "./NavBarOverlay.jsx";
 
 import burgerMenu from "../../assets/menu_icon.svg";
 import logo from "../../assets/noBG-logo.svg";
 import findIcon from "../../assets/find_icon.svg";
-import { searchBookWithName } from "../../services/search.js";
+import { searchBookWithName } from "../../services/searchService.js";
+import { UserContext } from "../app.jsx";
+
 const NavBar = ({ showHeadBar = true }) => {
   if (!showHeadBar) {
     return null;
@@ -31,6 +33,8 @@ const NavBar = ({ showHeadBar = true }) => {
   const handleSearchInput = (e) => {
     setSearchInput(e.currentTarget.value);
   };
+
+  const currentUser = useContext(UserContext);
 
   return (
     <Fragment>
@@ -75,7 +79,7 @@ const NavBar = ({ showHeadBar = true }) => {
           </li>
           <li className="navbar__li">
             <NavLink className="navbar__NavLink" to="/account">
-              Account
+              {currentUser || "Acccount"}
             </NavLink>
           </li>
           <li className="navbar__li search-bar">

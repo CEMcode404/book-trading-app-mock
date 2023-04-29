@@ -1,7 +1,7 @@
-import axios from "axios";
+import http from "./httpService";
 
 function searchBookWithName(bookName) {
-  axios
+  http
     .get("/api/books/" + bookName)
     .then((result) => {
       console.log(result);

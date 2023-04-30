@@ -9,6 +9,7 @@ import checkFormErrors from "../utility/checkFormErrors.js";
 import { register as regisForm } from "../services/userService.js";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "./app.jsx";
+import { getCurrentUser } from "../services/authService.js";
 
 const schema = yup
   .object()
@@ -49,13 +50,17 @@ const SignUpPage = () => {
   };
 
   const scrolltoRef = useRef();
-  const { user } = useContext(UserContext);
+  const { user, changeUser } = useContext(UserContext);
   const haveErrors = checkFormErrors(errors);
   if (haveErrors) {
     scrolltoRef.current.scrollIntoView({ block: "center" });
   }
 
-  const onSubmit = regisForm;
+  const onSubmit = (data) => {
+    regisForm(data, () => {
+      changeUser(getCurrentUser());
+    });
+  };
 
   if (user) return <Navigate to="/" replace={true} />;
 

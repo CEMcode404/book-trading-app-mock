@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import checkFormErrors from "../utility/checkFormErrors";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { UserContext } from "./app.jsx";
 import { login } from "../services/userService";
 import { getCurrentUser } from "../services/authService";
@@ -19,7 +19,6 @@ const schema = yup
 
 const LoginPage = () => {
   const { user, changeUser } = useContext(UserContext);
-  const navigate = useNavigate();
 
   const {
     register,
@@ -30,10 +29,10 @@ const LoginPage = () => {
   });
 
   const haveErrors = checkFormErrors(errors);
-  const onSubmit = async (data) => {
-    await login(data);
-    changeUser(getCurrentUser());
-    navigate("/");
+  const onSubmit = (data) => {
+    login(data, () => {
+      changeUser(getCurrentUser());
+    });
   };
 
   if (user) return <Navigate to="/" replace={true} />;

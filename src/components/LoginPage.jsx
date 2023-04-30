@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import checkFormErrors from "../utility/checkFormErrors";
-import userService from "../services/userService";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "./app.jsx";
+import { login } from "../services/userService";
+import { getCurrentUser } from "../services/authService";
 
 const schema = yup
   .object()
@@ -17,7 +18,8 @@ const schema = yup
   .required();
 
 const LoginPage = () => {
-  const currentUser = useContext(UserContext);
+  const { user, changeUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -28,9 +30,13 @@ const LoginPage = () => {
   });
 
   const haveErrors = checkFormErrors(errors);
-  const onSubmit = userService.login;
+  const onSubmit = async (data) => {
+    await login(data);
+    changeUser(getCurrentUser());
+    navigate("/");
+  };
 
-  if (currentUser) return <Navigate to="/" replace={true} />;
+  if (user) return <Navigate to="/" replace={true} />;
 
   return (
     <div className="login-page-wrapper">

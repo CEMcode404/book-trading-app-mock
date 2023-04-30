@@ -1,6 +1,6 @@
 import "jwt-decode";
 import http from "./httpService";
-import { getCurrentUser, storeToken } from "./authService";
+import { storeToken, removeToken } from "./authService";
 
 function register(data) {
   http
@@ -13,16 +13,17 @@ function register(data) {
     });
 }
 
-function login(data) {
-  http
-    .post("/api/auth", data)
-    .then((result) => {
-      storeToken(result.data);
-      getCurrentUser();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+async function login(data) {
+  try {
+    const result = await http.post("/api/auth", data);
+    storeToken(result.data);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-export default { register, login };
+function logout() {
+  removeToken();
+}
+
+export { register, login, logout };

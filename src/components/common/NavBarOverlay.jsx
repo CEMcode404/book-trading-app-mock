@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../app.jsx";
+import { logout } from "../../services/userService.js";
 
 const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
-  const currentUser = useContext(UserContext);
+  const { user, changeUser } = useContext(UserContext);
   const slideType = " animate--" + slideStatus;
   return (
     <div>
@@ -22,19 +23,31 @@ const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
         <NavLink to="/" className="navbar_overlay__NavLink">
           HOME
         </NavLink>
-        <NavLink
-          to={currentUser ? "#" : "/login"}
-          className="navbar_overlay__NavLink"
-        >
-          {currentUser ? "LOG OUT" : "LOG IN"}
-        </NavLink>
-        {!currentUser && (
+        {!user && (
+          <NavLink to="/login" className="navbar_overlay__NavLink">
+            LOG IN
+          </NavLink>
+        )}
+        {user && (
+          <NavLink
+            to="#"
+            className="navbar_overlay__NavLink"
+            onClick={() => {
+              logout();
+              changeUser(null);
+            }}
+          >
+            LOG OUT
+          </NavLink>
+        )}
+
+        {!user && (
           <NavLink to="/signup" className="navbar_overlay__NavLink">
             SIGNUP
           </NavLink>
         )}
         <NavLink to="/account" className="navbar_overlay__NavLink">
-          {currentUser && currentUser.toUpperCase()}
+          {user && user.toUpperCase()}
         </NavLink>
       </aside>
     </div>

@@ -1,4 +1,5 @@
 import React, { useState, Fragment, useContext } from "react";
+import { logout } from "../../services/userService.js";
 import { NavLink } from "react-router-dom";
 import NavBarOverlay from "./NavBarOverlay.jsx";
 
@@ -34,7 +35,7 @@ const NavBar = ({ showHeadBar = true }) => {
     setSearchInput(e.currentTarget.value);
   };
 
-  const currentUser = useContext(UserContext);
+  const { user, changeUser } = useContext(UserContext);
 
   return (
     <Fragment>
@@ -67,25 +68,38 @@ const NavBar = ({ showHeadBar = true }) => {
               Home
             </NavLink>
           </li>
-          <li className="navbar__li">
-            <NavLink
-              className="navbar__NavLink"
-              to={currentUser ? "#" : "/login"}
-            >
-              {currentUser ? "Log-out" : "Log-in"}
-            </NavLink>
-          </li>
-          {!currentUser && (
+          {!user && (
+            <li className="navbar__li">
+              <NavLink className="navbar__NavLink" to="/login">
+                Log-in
+              </NavLink>
+            </li>
+          )}
+          {user && (
+            <li className="navbar__li">
+              <NavLink
+                to="#"
+                className="navbar__NavLink"
+                onClick={() => {
+                  logout();
+                  changeUser(null);
+                }}
+              >
+                Log-out
+              </NavLink>
+            </li>
+          )}
+          {!user && (
             <li className="navbar__li">
               <NavLink className="navbar__NavLink" to="/signup">
                 Sign up
               </NavLink>
             </li>
           )}
-          {currentUser && (
+          {user && (
             <li className="navbar__li">
               <NavLink className="navbar__NavLink" to="/account">
-                {currentUser}
+                {user}
               </NavLink>
             </li>
           )}

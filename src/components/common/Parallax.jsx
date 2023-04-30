@@ -9,6 +9,7 @@ import bookman from "../../assets/Bookman.svg";
 import NavBarOverlay from "./NavBarOverlay.jsx";
 import burgerMenu from "../../assets/menu_icon.svg";
 import findIcon from "../../assets/find_icon.svg";
+import { logout } from "../../services/userService.js";
 
 const Parallax = ({ parallaxState }) => {
   const [slideStatus, setSlide] = useState("");
@@ -27,7 +28,8 @@ const Parallax = ({ parallaxState }) => {
     }
   };
 
-  const currentUser = useContext(UserContext);
+  const { user, changeUser } = useContext(UserContext);
+
   return (
     <div className="parallax">
       {
@@ -50,20 +52,31 @@ const Parallax = ({ parallaxState }) => {
         <NavLink className="parallax__navlink" to="/">
           Home
         </NavLink>
-        <NavLink
-          className="parallax__navlink"
-          to={currentUser ? "#" : "/login"}
-        >
-          {currentUser ? "Log-out" : "Log-in"}
-        </NavLink>
-        {!currentUser && (
+        {!user && (
+          <NavLink className="parallax__navlink" to="/login">
+            Log-in
+          </NavLink>
+        )}
+        {user && (
+          <NavLink
+            to="#"
+            className="parallax__navlink"
+            onClick={() => {
+              logout();
+              changeUser(null);
+            }}
+          >
+            Log-out
+          </NavLink>
+        )}
+        {!user && (
           <NavLink className="parallax__navlink" to="/signup">
             Sign up
           </NavLink>
         )}
-        {currentUser && (
+        {user && (
           <NavLink className="parallax__navlink" to="/account">
-            {currentUser}
+            {user}
           </NavLink>
         )}
         <input

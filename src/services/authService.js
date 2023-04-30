@@ -13,4 +13,8 @@ function getCurrentUser() {
   return;
 }
 
-export { storeToken, getCurrentUser };
+function removeToken() {
+  localStorage.removeItem("token");
+}
+
+export { storeToken, getCurrentUser, removeToken };

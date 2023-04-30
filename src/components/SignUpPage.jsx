@@ -6,7 +6,7 @@ import * as yup from "yup";
 import signupIllustration from "../assets/signup_illustration.svg";
 import getPhoneCodes from "../services/PhoneNoRulesService.js";
 import checkFormErrors from "../utility/checkFormErrors.js";
-import userService from "../services/userService.js";
+import { register as regisForm } from "../services/userService.js";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "./app.jsx";
 
@@ -49,15 +49,15 @@ const SignUpPage = () => {
   };
 
   const scrolltoRef = useRef();
-  const currentUser = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const haveErrors = checkFormErrors(errors);
   if (haveErrors) {
     scrolltoRef.current.scrollIntoView({ block: "center" });
   }
 
-  const onSubmit = userService.register;
+  const onSubmit = regisForm;
 
-  if (currentUser) return <Navigate to="/" replace={true} />;
+  if (user) return <Navigate to="/" replace={true} />;
 
   return (
     <Fragment>

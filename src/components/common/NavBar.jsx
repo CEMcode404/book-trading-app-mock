@@ -7,7 +7,7 @@ import burgerMenu from "../../assets/menu_icon.svg";
 import logo from "../../assets/noBG-logo.svg";
 import findIcon from "../../assets/find_icon.svg";
 import { searchBookWithName } from "../../services/searchService.js";
-import { UserContext } from "../app.jsx";
+import { UserContext } from "../context/userContext.js";
 
 const NavBar = ({ showHeadBar = true }) => {
   if (!showHeadBar) {
@@ -99,7 +99,7 @@ const NavBar = ({ showHeadBar = true }) => {
           {user && (
             <li className="navbar__li">
               <NavLink className="navbar__NavLink" to="/account">
-                {user}
+                {user.firstName}
               </NavLink>
             </li>
           )}

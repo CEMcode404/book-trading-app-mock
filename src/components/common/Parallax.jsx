@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { UserContext } from "../app.jsx";
 import welcomeSign from "../../assets/Foreground-welcome.svg";
 import books from "../../assets/Foreground-books.svg";
 import background from "../../assets/Background.svg";
@@ -10,6 +9,7 @@ import NavBarOverlay from "./NavBarOverlay.jsx";
 import burgerMenu from "../../assets/menu_icon.svg";
 import findIcon from "../../assets/find_icon.svg";
 import { logout } from "../../services/userService.js";
+import { UserContext } from "../context/userContext.js";
 
 const Parallax = ({ parallaxState }) => {
   const [slideStatus, setSlide] = useState("");
@@ -76,7 +76,7 @@ const Parallax = ({ parallaxState }) => {
         )}
         {user && (
           <NavLink className="parallax__navlink" to="/account">
-            {user}
+            {user.firstName}
           </NavLink>
         )}
         <input

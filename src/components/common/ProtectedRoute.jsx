@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { getCurrentUser } from "../../services/authService";
+import { getCurrentUser } from "../../services/tokenService";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const currentUser = getCurrentUser();

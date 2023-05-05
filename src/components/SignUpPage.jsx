@@ -8,8 +8,8 @@ import getPhoneCodes from "../services/PhoneNoRulesService.js";
 import checkFormErrors from "../utility/checkFormErrors.js";
 import { register as regisForm } from "../services/userService.js";
 import { Navigate } from "react-router-dom";
-import { UserContext } from "./app.jsx";
-import { getCurrentUser } from "../services/authService.js";
+import { getCurrentUser } from "../services/tokenService.js";
+import { UserContext } from "./context/userContext.js";
 
 const schema = yup
   .object()

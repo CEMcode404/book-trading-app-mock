@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 import NavBar from "./common/NavBar.jsx";
 import HomePage from "./Homepage.jsx";
 import LoginPage from "./LoginPage.jsx";
@@ -8,10 +8,9 @@ import SignUpPage from "./SignUpPage.jsx";
 import TransactionPage from "./TransactionPage.jsx";
 import AccounPage from "./AccountPage.jsx";
 import ProtectedRoute from "./common/ProtectedRoute.jsx";
-import { getCurrentUser } from "../services/authService.js";
+import { getCurrentUser } from "../services/tokenService.js";
+import { UserContext } from "./context/userContext.js";
 
-export const UserContext = createContext();
-UserContext.displayName = "UserContext";
 const App = () => {
   const [user, changeUser] = useState(getCurrentUser());
 

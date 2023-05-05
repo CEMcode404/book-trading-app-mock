@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { UserContext } from "../app.jsx";
 import { logout } from "../../services/userService.js";
+import { UserContext } from "../context/userContext.js";
 
 const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
   const { user, changeUser } = useContext(UserContext);
@@ -47,7 +47,7 @@ const NavBarOverlay = ({ slideStatus, open_closeSidebar }) => {
           </NavLink>
         )}
         <NavLink to="/account" className="navbar_overlay__NavLink">
-          {user && user.toUpperCase()}
+          {user && user.firstName.toUpperCase()}
         </NavLink>
       </aside>
     </div>

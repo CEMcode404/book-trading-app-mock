@@ -1,20 +1,16 @@
-import jwtDecode from "jwt-decode";
+import http from "../services/httpService";
 
-function storeToken(token) {
-  localStorage.setItem("token", token);
+function changeUserInfo(data, cb) {
+  http
+    .put("/api/user", data)
+    .then((result) => {
+      let err;
+      cb(result, err);
+    })
+    .catch((err) => {
+      let result;
+      cb(result, err);
+    });
 }
 
-function getCurrentUser() {
-  const token = localStorage.getItem("token");
-  if (token) {
-    const { firstName } = jwtDecode(token);
-    return firstName;
-  }
-  return;
-}
-
-function removeToken() {
-  localStorage.removeItem("token");
-}
-
-export { storeToken, getCurrentUser, removeToken };
+export { changeUserInfo };

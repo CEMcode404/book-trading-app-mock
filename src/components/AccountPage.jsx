@@ -1,12 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Footer from "./common/Footer.jsx";
+import MyDetails from "./MyDetails.jsx";
+import AccountSettings from "./AccountSettings.jsx";
+import Transaction from "./Transaction.jsx";
+import { fetchUserData } from "../services/userService.js";
+import { UserContext } from "./context/userContext.js";
 
 const AccounPage = () => {
-  const verticalNavTitles = ["My Details", "Transactions", "Account Settings"];
-  const [activeNavTitle, setActiveNavTitle] = useState("My Details");
+  const { user } = useContext(UserContext);
 
-  const handleVNavTitleChange = (title) => {
-    setActiveNavTitle(title);
+  const accountSections = [
+    { title: "My Details", component: MyDetails },
+    { title: "Transactions", component: AccountSettings },
+    { title: "Account Settings", component: Transaction },
+  ];
+
+  const [userInfo, setUserInfo] = useState({
+    firstName: "",
+    lastName: "",
+    mobileNo: "",
+    email: "",
+  });
+
+  useEffect(() => {
+    fetchUserData(user._id, (result) => {
+      setUserInfo(result.data);
+    });
+  }, []);
+
+  const [activeSection, setActiveSection] = useState(accountSections[0]);
+
+  const handleSectionChange = (title) => {
+    setActiveSection(title);
   };
 
   return (
@@ -19,25 +44,30 @@ const AccounPage = () => {
           <aside>
             <h2>Contents</h2>
             <nav aria-label="table of contents" className="account__toc">
-              {verticalNavTitles.map((title) => (
+              {accountSections.map((title) => (
                 <p
-                  onClick={() => handleVNavTitleChange(title)}
+                  onClick={() => handleSectionChange(title)}
                   className={
-                    title === activeNavTitle
+                    title.title === activeSection.title
                       ? "account__vertical-title-active"
                       : null
                   }
-                  key={title}
+                  key={title.title}
                 >
-                  {title}
+                  {title.title}
                 </p>
               ))}
             </nav>
           </aside>
           <main>
-            <section aria-label={activeNavTitle}>
-              <h2>{activeNavTitle}</h2>
-              <div className="account__data-display"></div>
+            <section aria-label={activeSection.title}>
+              <h2>{activeSection.title}</h2>
+              <div className="account__data-display">
+                <activeSection.component
+                  userInfo={userInfo}
+                  setUserInfo={setUserInfo}
+                />
+              </div>
             </section>
           </main>
         </div>

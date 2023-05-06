@@ -9,14 +9,6 @@ const EditableDisplayInput = ({
   ...rest
 }) => {
   const editable = isReadOnly ? "none" : "auto";
-  const errorStyle = errorMessage
-    ? {
-        marginTop: ".5rem",
-        marginBottm: ".5rem",
-        paddingLeft: "5ch",
-        color: "red",
-      }
-    : null;
   return (
     <Fragment>
       <label style={{ pointerEvents: editable }}>
@@ -30,7 +22,7 @@ const EditableDisplayInput = ({
           style={{ pointerEvents: editable }}
         />
       </label>
-      <p style={errorStyle}>{errorMessage}</p>
+      <p>{errorMessage}</p>
     </Fragment>
   );
 };

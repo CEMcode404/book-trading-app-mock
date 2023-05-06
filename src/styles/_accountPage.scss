@@ -40,11 +40,38 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
   transition: background-color 5000s ease-in-out 0s;
 }
 
+.myDetails__form {
+    p {
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+        padding-left: 5ch;
+        color: red;
+    }
+}
+
 .myDetails__inputTxt {
     border: none;
     display: inline-block;
     width: 70%;
     background-color: transparent;
+    color: black;
+}
+
+.myDetails__phone-input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.myDetails__inputMobileNo--edit-state {
+    margin-left: 0.5rem;
+    width: 50%;
+
+    input {
+        border: none;
+        width: 100%;
+        background-color: transparent;
+        color: black;
+    }
 }
 
 .myDetails__inputBttn {

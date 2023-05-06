@@ -51,6 +51,24 @@
     padding: 3% 5%;
 }
 
+.sign-up__input--mobileNo {
+    background-color: white;
+    width: 80%;
+    margin: 2% auto;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+    padding: 3% 5%;
+
+    input { 
+        border: none;
+        outline: none;
+    }
+
+    input::placeholder {
+        color: lightgray;
+    }
+}
+
 .sign-up__input::placeholder {
     color: lightgray;
 }

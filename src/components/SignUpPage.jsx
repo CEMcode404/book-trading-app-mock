@@ -1,26 +1,38 @@
-import React, { Fragment, useRef, useContext } from "react";
+import React, { Fragment, useRef, useContext, useState } from "react";
 import Footer from "./common/Footer.jsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import signupIllustration from "../assets/signup_illustration.svg";
-import getPhoneCodes from "../services/PhoneNoRulesService.js";
 import checkFormErrors from "../utility/checkFormErrors.js";
 import { register as regisForm } from "../services/userService.js";
 import { Navigate } from "react-router-dom";
 import { getCurrentUser } from "../services/tokenService.js";
 import { UserContext } from "./context/userContext.js";
+import PhoneInput from "react-phone-number-input/react-hook-form";
+import { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+
+yup.addMethod(
+  yup.string,
+  "isValidPhoneNumber",
+  function (options = { message: "Invalid Phone Number." }) {
+    const { message } = options;
+    return this.test("isValidPhoneNo", message, function (value) {
+      const { path, createError } = this;
+      const phoneNumber = isValidPhoneNumber(value);
+      if (!phoneNumber) return createError({ path, message });
+      return true;
+    });
+  }
+);
 
 const schema = yup
   .object()
   .shape({
     firstName: yup.string().max(15).label("First Name").required(),
     lastName: yup.string().max(15).label("Last Name").required(),
-    mobileNo: yup
-      .string()
-      .matches(getPhoneCodes(), "Invalid Phone Number.")
-      .label("Mobile No.")
-      .required(),
+    mobileNo: yup.string().isValidPhoneNumber().label("Mobile No.").required(),
     email: yup.string().email().label("Email").required(),
     password: yup.string().max(50).min(5).label("Pasword").required(),
     confirmPassword: yup
@@ -33,6 +45,7 @@ const schema = yup
 
 const SignUpPage = () => {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -76,20 +89,32 @@ const SignUpPage = () => {
                 className="signup__form"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                {Object.entries(inputFields).map((fieldName) => (
-                  <input
-                    aria-invalid={errors[fieldName[0]] ? "true" : "false"}
-                    key={fieldName[0]}
-                    type={
-                      fieldName[0].toLowerCase().indexOf("password") < 0
-                        ? "text"
-                        : "password"
-                    }
-                    className="sign-up__input"
-                    {...register(fieldName[0])}
-                    placeholder={fieldName[1]}
-                  ></input>
-                ))}
+                {Object.entries(inputFields).map((fieldName) => {
+                  if (fieldName[0] === "mobileNo")
+                    return (
+                      <PhoneInput
+                        name="mobileNo"
+                        control={control}
+                        placeholder="Mobile No."
+                        defaultCountry="PH"
+                        className="sign-up__input--mobileNo"
+                      />
+                    );
+                  return (
+                    <input
+                      aria-invalid={errors[fieldName[0]] ? "true" : "false"}
+                      key={fieldName[0]}
+                      type={
+                        fieldName[0].toLowerCase().indexOf("password") < 0
+                          ? "text"
+                          : "password"
+                      }
+                      className="sign-up__input"
+                      {...register(fieldName[0])}
+                      placeholder={fieldName[1]}
+                    ></input>
+                  );
+                })}
 
                 <p className="sign-up__p">
                   By clicking Submit, you agree to our Terms, Privacy Policy and

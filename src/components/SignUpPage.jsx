@@ -43,12 +43,16 @@ yup.addMethod(
         .string()
         .matches(getEmailRules())
         .isValidSync(email);
-
+      const invalidErrorMessage = "Email must be a valid email";
       if (!isEmailValid)
-        return createError({ path, message: "Email must be a valid email" });
+        return createError({ path, message: invalidErrorMessage });
 
       const result = await checkEmailAvailability({ email });
       if (result.status) return result.status === 200;
+
+      if (result.response.data !== message) {
+        return createError({ path, message: invalidErrorMessage });
+      }
       return createError({ path, message });
     });
   }

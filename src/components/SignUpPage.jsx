@@ -5,18 +5,22 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import signupIllustration from "../assets/signup_illustration.svg";
 import checkFormErrors from "../utility/checkFormErrors.js";
-import { register as regisForm } from "../services/userService.js";
+import {
+  register as regisForm,
+  checkEmailAvailability,
+} from "../services/userService.js";
 import { Navigate } from "react-router-dom";
 import { getCurrentUser } from "../services/tokenService.js";
 import { UserContext } from "./context/userContext.js";
 import PhoneInput from "react-phone-number-input/react-hook-form";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import getEmailRules from "../utility/getEmailRules.js";
 
 yup.addMethod(
   yup.string,
   "isValidPhoneNumber",
-  function (options = { message: "Invalid Phone Number." }) {
+  function (options = { message: "Invalid Phone Number" }) {
     const { message } = options;
     return this.test("isValidPhoneNo", message, function (value) {
       const { path, createError } = this;
@@ -27,13 +31,36 @@ yup.addMethod(
   }
 );
 
+yup.addMethod(
+  yup.string,
+  "isEmailTaken",
+  function (options = { message: "Email is already taken" }) {
+    const { message } = options;
+    return this.test("isEmailTaken", message, async function (email) {
+      const { path, createError } = this;
+
+      const isEmailValid = yup
+        .string()
+        .matches(getEmailRules())
+        .isValidSync(email);
+
+      if (!isEmailValid)
+        return createError({ path, message: "Email must be a valid email" });
+
+      const result = await checkEmailAvailability({ email });
+      if (result.status) return result.status === 200;
+      return createError({ path, message });
+    });
+  }
+);
+
 const schema = yup
   .object()
   .shape({
     firstName: yup.string().max(15).label("First Name").required(),
     lastName: yup.string().max(15).label("Last Name").required(),
     mobileNo: yup.string().isValidPhoneNumber().label("Mobile No.").required(),
-    email: yup.string().email().label("Email").required(),
+    email: yup.string().email().isEmailTaken().label("Email").required(),
     password: yup.string().max(50).min(5).label("Pasword").required(),
     confirmPassword: yup
       .string()
@@ -70,8 +97,8 @@ const SignUpPage = () => {
   }
 
   const onSubmit = (data) => {
-    regisForm(data, () => {
-      changeUser(getCurrentUser());
+    regisForm(data, (result, err) => {
+      if (result) return changeUser(getCurrentUser());
     });
   };
 

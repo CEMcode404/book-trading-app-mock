@@ -6,12 +6,22 @@ function register(data, cb) {
   http
     .post("/api/signup", data)
     .then((response) => {
+      let err;
       storeToken(response.headers.get("Authorization"));
-      cb();
+      cb(response, err);
     })
     .catch((err) => {
-      console.log(err);
+      let response;
+      cb(response, err);
     });
+}
+
+async function checkEmailAvailability(email) {
+  try {
+    return await http.post("/api/signup/email", email);
+  } catch (err) {
+    return err;
+  }
 }
 
 function login(data, cb) {
@@ -54,4 +64,11 @@ function verifyUserIdentity(password, id, cb) {
     });
 }
 
-export { register, login, logout, fetchUserData, verifyUserIdentity };
+export {
+  register,
+  login,
+  logout,
+  fetchUserData,
+  verifyUserIdentity,
+  checkEmailAvailability,
+};

@@ -30,10 +30,16 @@ yup.addMethod(
 yup.addMethod(
   yup.string,
   "isEmailTaken",
-  function (options = { message: "Email is already taken" }) {
-    const { message } = options;
+  function (
+    options = { message: "Email is already taken", currentEmail: null }
+  ) {
+    const { message, currentEmail } = options;
     return this.test("isEmailTaken", message, async function (email) {
       const { path, createError } = this;
+
+      if (currentEmail === email) {
+        return true;
+      }
 
       const isEmailValid = yup
         .string()
@@ -55,19 +61,29 @@ yup.addMethod(
   }
 );
 
-const schema = yup
-  .object()
-  .shape({
-    firstName: yup.string().max(15).label("First Name").required(),
-    lastName: yup.string().max(15).label("Last Name").required(),
-    mobileNo: yup.string().isValidPhoneNumber().label("Mobile No.").required(),
-    email: yup.string().email().isEmailTaken().label("Email").required(),
-    password: yup.string().max(50).min(5).label("Pasword").required(),
-  })
-  .required();
-
-const MyDetails = ({ userInfo, setUserInfo }) => {
+const MyDetails = ({ getProps }) => {
+  const { userInfo, setUserInfo } = getProps("myDetails");
   const currentUser = useContext(UserContext);
+
+  const schema = yup
+    .object()
+    .shape({
+      firstName: yup.string().max(15).label("First Name").required(),
+      lastName: yup.string().max(15).label("Last Name").required(),
+      mobileNo: yup
+        .string()
+        .isValidPhoneNumber()
+        .label("Mobile No.")
+        .required(),
+      email: yup
+        .string()
+        .email()
+        .isEmailTaken({ currentEmail: userInfo.email })
+        .label("Email")
+        .required(),
+      password: yup.string().max(50).min(5).label("Pasword").required(),
+    })
+    .required();
 
   const {
     control,
@@ -77,6 +93,11 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(schema) });
+
+  useEffect(() => {
+    let defaultValues = { ...userInfo };
+    reset({ ...defaultValues });
+  }, [userInfo]);
 
   const [password, setPassword] = useState("");
   const [apiError, setApiError] = useState("");
@@ -106,7 +127,10 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
           setApiError("Request failed..");
         }
       });
+      return;
     }
+
+    handleCancel();
   }
 
   function updateFormState(password) {
@@ -135,17 +159,12 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
     setPassword("");
   }
 
-  useEffect(() => {
-    let defaultValues = { ...userInfo };
-    reset({ ...defaultValues });
-  }, [userInfo]);
-
   return (
     <div>
       <form onSubmit={handleSubmit(save)} className="my-details__form">
         <EditableDisplayInput
           label={"First Name"}
-          className="my-details__inputTxt"
+          className="my-details__input-txt"
           isReadOnly={!isEdit}
           defaultValues={userInfo.firstName}
           register={register("firstName")}
@@ -154,7 +173,7 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
         />
         <EditableDisplayInput
           label={"Last Name"}
-          className="my-details__inputTxt"
+          className="my-details__input-txt"
           isReadOnly={!isEdit}
           defaultValues={userInfo.lastName}
           register={register("lastName")}
@@ -182,7 +201,7 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
 
         <EditableDisplayInput
           label={"Email"}
-          className="my-details__inputTxt"
+          className="my-details__input-txt"
           isReadOnly={!isEdit}
           defaultValues={userInfo.email}
           register={register("email")}
@@ -192,7 +211,7 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
         <EditableDisplayInput
           inputType={"password"}
           label={"Password"}
-          className="my-details__inputTxt"
+          className="my-details__input-txt"
           isReadOnly={!isEdit}
           register={register("password")}
           errorMessage={errors.password?.message}

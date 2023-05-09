@@ -9,18 +9,27 @@ import { UserContext } from "./context/userContext.js";
 const AccounPage = () => {
   const { user } = useContext(UserContext);
 
-  const accountSections = [
-    { title: "My Details", component: MyDetails },
-    { title: "Transactions", component: AccountSettings },
-    { title: "Account Settings", component: Transaction },
-  ];
-
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
     mobileNo: "",
     email: "",
   });
+
+  function getProps(title) {
+    switch (title) {
+      case "myDetails":
+        return { userInfo, setUserInfo };
+      default:
+        return null;
+    }
+  }
+
+  const accountSections = [
+    { title: "My Details", component: MyDetails },
+    { title: "Transactions", component: Transaction },
+    { title: "Account Settings", component: AccountSettings },
+  ];
 
   useEffect(() => {
     fetchUserData(user._id, (result) => {
@@ -63,10 +72,7 @@ const AccounPage = () => {
             <section aria-label={activeSection.title}>
               <h2>{activeSection.title}</h2>
               <div className="account__data-display">
-                <activeSection.component
-                  userInfo={userInfo}
-                  setUserInfo={setUserInfo}
-                />
+                <activeSection.component getProps={getProps} />
               </div>
             </section>
           </main>

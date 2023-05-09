@@ -77,7 +77,7 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
           return;
         } else if (err) {
           reset({ ...defaultValues });
-          setApiError(err.response.data);
+          setApiError("Email is invalid or already taken.");
         }
       });
       return;
@@ -194,4 +194,3 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
 };
 
 export default MyDetails;
-//check if you can change the form while it is loading

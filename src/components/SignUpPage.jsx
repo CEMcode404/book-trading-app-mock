@@ -16,6 +16,7 @@ import PhoneInput from "react-phone-number-input/react-hook-form";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import getEmailRules from "../utility/getEmailRules.js";
+import bookLoading from "../assets/bookLoading.gif";
 
 yup.addMethod(
   yup.string,
@@ -48,6 +49,7 @@ yup.addMethod(
         return createError({ path, message: invalidErrorMessage });
 
       const result = await checkEmailAvailability({ email });
+
       if (result.status) return result.status === 200;
 
       if (result.response.data !== message) {
@@ -79,7 +81,7 @@ const SignUpPage = () => {
     control,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -94,10 +96,16 @@ const SignUpPage = () => {
   };
 
   const scrolltoRef = useRef();
+
   const { user, changeUser } = useContext(UserContext);
   const haveErrors = checkFormErrors(errors);
+
+  const [firstScroll, triggerFirstScroll] = useState(false);
   if (haveErrors) {
-    scrolltoRef.current.scrollIntoView({ block: "center" });
+    if (!firstScroll) {
+      scrolltoRef.current.scrollIntoView({ block: "center" });
+      triggerFirstScroll(true);
+    }
   }
 
   const onSubmit = (data) => {
@@ -129,6 +137,7 @@ const SignUpPage = () => {
                         placeholder="Mobile No."
                         defaultCountry="PH"
                         className="sign-up__input--mobileNo"
+                        disabled={isSubmitting}
                       />
                     );
                   return (
@@ -143,9 +152,18 @@ const SignUpPage = () => {
                       className="sign-up__input"
                       {...register(fieldName[0])}
                       placeholder={fieldName[1]}
+                      readOnly={isSubmitting}
                     ></input>
                   );
                 })}
+
+                {isSubmitting && (
+                  <img
+                    src={bookLoading}
+                    className="sign-up__loading-gif"
+                    alt="Loading..."
+                  />
+                )}
 
                 <p className="sign-up__p">
                   By clicking Submit, you agree to our Terms, Privacy Policy and
@@ -168,6 +186,7 @@ const SignUpPage = () => {
             type="submit"
             value="Submit"
             className="sign-up__submit-bttn bttn--slide-up--green"
+            disabled={isSubmitting}
           ></input>
           <div
             className={

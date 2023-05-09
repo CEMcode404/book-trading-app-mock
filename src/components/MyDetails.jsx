@@ -10,6 +10,8 @@ import bookLoading from "../assets/bookLoading.gif";
 import PhoneInput from "react-phone-number-input/react-hook-form";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { checkEmailAvailability } from "../services/userService.js";
+import getEmailRules from "../utility/getEmailRules.js";
 
 yup.addMethod(
   yup.string,
@@ -25,13 +27,41 @@ yup.addMethod(
   }
 );
 
+yup.addMethod(
+  yup.string,
+  "isEmailTaken",
+  function (options = { message: "Email is already taken" }) {
+    const { message } = options;
+    return this.test("isEmailTaken", message, async function (email) {
+      const { path, createError } = this;
+
+      const isEmailValid = yup
+        .string()
+        .matches(getEmailRules())
+        .isValidSync(email);
+      const invalidErrorMessage = "Email must be a valid email";
+      if (!isEmailValid)
+        return createError({ path, message: invalidErrorMessage });
+
+      const result = await checkEmailAvailability({ email });
+
+      if (result.status) return result.status === 200;
+
+      if (result.response.data !== message) {
+        return createError({ path, message: invalidErrorMessage });
+      }
+      return createError({ path, message });
+    });
+  }
+);
+
 const schema = yup
   .object()
   .shape({
     firstName: yup.string().max(15).label("First Name").required(),
     lastName: yup.string().max(15).label("Last Name").required(),
     mobileNo: yup.string().isValidPhoneNumber().label("Mobile No.").required(),
-    email: yup.string().email().label("Email").required(),
+    email: yup.string().email().isEmailTaken().label("Email").required(),
     password: yup.string().max(50).min(5).label("Pasword").required(),
   })
   .required();
@@ -45,15 +75,14 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
     reset,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(schema) });
 
   const [password, setPassword] = useState("");
   const [apiError, setApiError] = useState("");
-  const [isLoading, setLoadingAnimation] = useState(false);
 
   function save(data) {
-    if (isLoading) return;
+    if (isSubmitting) return;
 
     let newUserInfo = { ...data };
     let oldUserInfo = { ...userInfo };
@@ -66,27 +95,18 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
 
     let defaultValues = userInfo;
     if (Object.values(newUserInfo).length > 0) {
-      setLoadingAnimation(true);
       changeUserInfo(newUserInfo, (result, err) => {
-        setLoadingAnimation(false);
         if (result) {
           setUserInfo(result.data);
           setValue("password", "");
           setPassword("");
           setToEdit(false);
-          return;
         } else if (err) {
           reset({ ...defaultValues });
-          setApiError("Email is invalid or already taken.");
+          setApiError("Request failed..");
         }
       });
-      return;
     }
-
-    reset({ ...defaultValues });
-    setValue("password", "");
-    setToEdit(false);
-    setApiError("");
   }
 
   function updateFormState(password) {
@@ -98,10 +118,21 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
   const passwdPromptRef = useRef(null);
   const [isEdit, setToEdit] = useState(false);
 
-  function handleClick() {
+  function handleEdit() {
     if (!isEdit) {
       passwdPromptRef.current.showModal();
     }
+  }
+
+  function handleCancel() {
+    if (isSubmitting) return;
+
+    let defaultValues = { ...userInfo };
+    reset({ ...defaultValues });
+    setValue("password", "");
+    setToEdit(false);
+    setApiError("");
+    setPassword("");
   }
 
   useEffect(() => {
@@ -111,28 +142,28 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(save)} className="myDetails__form">
+      <form onSubmit={handleSubmit(save)} className="my-details__form">
         <EditableDisplayInput
           label={"First Name"}
-          className="myDetails__inputTxt"
+          className="my-details__inputTxt"
           isReadOnly={!isEdit}
           defaultValues={userInfo.firstName}
           register={register("firstName")}
           errorMessage={errors.firstName?.message}
-          disabled={isLoading}
+          disabled={isSubmitting}
         />
         <EditableDisplayInput
           label={"Last Name"}
-          className="myDetails__inputTxt"
+          className="my-details__inputTxt"
           isReadOnly={!isEdit}
           defaultValues={userInfo.lastName}
           register={register("lastName")}
           errorMessage={errors.lastName?.message}
-          disabled={isLoading}
+          disabled={isSubmitting}
         />
 
         <div>
-          <div className="myDetails__phone-input-wrapper">
+          <div className="my-details__phone-input-wrapper">
             <label htmlFor="mobileNoField">Mobile No. :</label>
             <PhoneInput
               id="mobileNoField"
@@ -140,44 +171,55 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
               control={control}
               placeholder="Mobile No."
               defaultCountry="PH"
-              className="myDetails__inputMobileNo--edit-state"
-              disabled={!isEdit || isLoading}
+              className="my-details__inputMobileNo--edit-state"
+              disabled={!isEdit || isSubmitting}
             />
           </div>
-          <p className="myDetails__error-message">{errors.mobileNo?.message}</p>
+          <p className="my-details__error-message">
+            {errors.mobileNo?.message}
+          </p>
         </div>
 
         <EditableDisplayInput
           label={"Email"}
-          className="myDetails__inputTxt"
+          className="my-details__inputTxt"
           isReadOnly={!isEdit}
           defaultValues={userInfo.email}
           register={register("email")}
           errorMessage={errors.email?.message}
-          disabled={isLoading}
+          disabled={isSubmitting}
         />
         <EditableDisplayInput
           inputType={"password"}
           label={"Password"}
-          className="myDetails__inputTxt"
+          className="my-details__inputTxt"
           isReadOnly={!isEdit}
           register={register("password")}
           errorMessage={errors.password?.message}
-          disabled={isLoading}
+          disabled={isSubmitting}
         />
         <input
           type={isEdit ? "submit" : "button"}
           value={isEdit ? "SAVE" : "EDIT"}
-          onClick={handleClick}
-          className="myDetails__inputBttn bttn--slide-up--gray"
-          disabled={Object.values(errors).length > 0 || isLoading}
+          onClick={handleEdit}
+          className="my-details__edit-bttn bttn--slide-up--gray"
+          disabled={Object.values(errors).length > 0 || isSubmitting}
         />
-        <span className="myDetails__span-api-error">{apiError}</span>
+        {isEdit && (
+          <input
+            type="button"
+            value="CANCEL"
+            onClick={handleCancel}
+            className="my-details__cancel-bttn bttn--slide-up--gray"
+            disabled={isSubmitting}
+          />
+        )}
+        <span className="my-details__span-api-error">{apiError}</span>
         <img
           className={
-            isLoading
-              ? "myDetails__loading-gif"
-              : "myDetails__loading-gif--hide"
+            isSubmitting
+              ? "my-details__loading-gif"
+              : "my-details__loading-gif--hide"
           }
           src={bookLoading}
           alt="loading..."
@@ -186,7 +228,7 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
       <PsswdPromptPopUp
         userId={currentUser.user._id}
         updateFormState={updateFormState}
-        className="myDetails__passwd-prompt"
+        className="my-details__passwd-prompt"
         ref={passwdPromptRef}
       />
     </div>

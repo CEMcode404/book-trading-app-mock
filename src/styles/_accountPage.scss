@@ -40,7 +40,7 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
   transition: background-color 5000s ease-in-out 0s;
 }
 
-.myDetails__form {
+.my-details__form {
     p {
         margin-top: .5rem;
         margin-bottom: .5rem;
@@ -49,7 +49,7 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     }
 }
 
-.myDetails__inputTxt {
+.my-details__inputTxt {
     border: none;
     display: inline-block;
     width: 70%;
@@ -57,12 +57,12 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     color: black;
 }
 
-.myDetails__phone-input-wrapper {
+.my-details__phone-input-wrapper {
     display: flex;
     align-items: center;
 }
 
-.myDetails__inputMobileNo--edit-state {
+.my-details__inputMobileNo--edit-state {
     margin-left: 0.5rem;
     width: 50%;
 
@@ -74,13 +74,20 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     }
 }
 
-.myDetails__inputBttn {
+.my-details__edit-bttn {
     border-radius: 5px;
     border: none;
     padding: .3rem 1rem;
 }
 
-.myDetails__passwd-prompt {
+.my-details__cancel-bttn {
+    margin-left: 1rem;
+    border-radius: 5px;
+    border: none;
+    padding: .3rem 1rem;
+}
+
+.my-details__passwd-prompt {
     text-align: center;
    background-color: lightgray;
    border: 1px solid white;
@@ -95,16 +102,16 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
    }
 }
 
-.myDetails__span-api-error {
+.my-details__span-api-error {
     color: red;
     padding-left: 1rem;
 }
 
-.myDetails__loading-gif {
+.my-details__loading-gif {
     width: 50px;
 }
 
-.myDetails__loading-gif--hide {
+.my-details__loading-gif--hide {
     display: none;
 }
 

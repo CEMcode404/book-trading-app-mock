@@ -23,7 +23,7 @@ const LoginPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -49,17 +49,20 @@ const LoginPage = () => {
             className="login-page__input-field highlight"
             placeholder="Email"
             {...register("email")}
+            disabled={isSubmitting}
           />
           <input
             type="password"
             className="login-page__input-field highlight"
             placeholder="Password"
             {...register("password")}
+            disabled={isSubmitting}
           />
           <input
             type="submit"
             value="Log in"
             className="login-page__bttn bttn--slide-up--green"
+            disabled={isSubmitting}
           />
         </form>
         <div

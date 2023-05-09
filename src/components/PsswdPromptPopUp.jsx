@@ -21,7 +21,7 @@ const PsswdPromptPopUp = forwardRef(function PasswdPromptPopUp(
     reset,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(passwdSchema) });
 
   function onSubmit(data) {
@@ -66,8 +66,13 @@ const PsswdPromptPopUp = forwardRef(function PasswdPromptPopUp(
       >
         <label htmlFor="psswdPrompt">Enter your password:</label>
         <div>
-          <input id="psswdPrompt" type="password" {...register("password")} />
-          <input type="submit" />
+          <input
+            id="psswdPrompt"
+            type="password"
+            {...register("password")}
+            disabled={isSubmitting}
+          />
+          <input type="submit" disabled={isSubmitting} />
         </div>
         <p>{errors.password?.message}</p>
         <p>{errors.apiErrors?.message}</p>

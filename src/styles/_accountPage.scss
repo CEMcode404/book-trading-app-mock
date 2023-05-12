@@ -30,7 +30,11 @@
         border-radius: 15px;
         text-align: center;
     }
+    
+}
 
+.account__vertical-title-active {
+    @include variables.theme()
 }
 
 input:-webkit-autofill,
@@ -116,9 +120,50 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     display: none;
 }
 
+.transaction-card {
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px gray;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem 1rem;
+    background-color: white;
 
-.account__vertical-title-active {
-    @include variables.theme()
+    p {
+        margin: 0
+    }
+}
+
+.transaction-card__delete-bttn {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    transform: rotate(45deg);
+    border: none;
+    background-color: transparent;
+    color: red;
+    width: 25px;
+    font-size: 2rem;
+}
+
+.my-transaction__add-bttn {
+    position: relative;
+    z-index: -2;
+    margin: 0 auto;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: transparent;
+    border: rgba(0, 0, 0, 0.248) solid 1px;
+}
+
+.my-transaction__add-bttn-wrapper {
+    box-shadow:  0 5px 15px gray;
+    background-color: rgba(255, 255, 255, 0.418);
+    padding: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 48em) { //767px

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import Footer from "./common/Footer.jsx";
 import MyDetails from "./MyDetails.jsx";
 import AccountSettings from "./AccountSettings.jsx";
-import Transaction from "./Transaction.jsx";
+import MyTransaction from "./MyTransaction.jsx";
 import { fetchUserData } from "../services/userService.js";
 import { UserContext } from "./context/userContext.js";
 
@@ -27,7 +27,7 @@ const AccounPage = () => {
 
   const accountSections = [
     { title: "My Details", component: MyDetails },
-    { title: "Transactions", component: Transaction },
+    { title: "My Transactions", component: MyTransaction },
     { title: "Account Settings", component: AccountSettings },
   ];
 

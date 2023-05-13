@@ -1,20 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import TransactionCard from "./common/TransactionCard.jsx";
 import Pagination from "./common/Pagination.jsx";
+import AddBookTransaction from "./AddBookTransaction.jsx";
 
 const MyTransaction = () => {
   let mockData = [
     {
+      transactionId: "9999",
       title: "Harry Potter",
-      bookCondition: "Good",
+      bookCondition: "Used",
+      currency: "$",
       price: 300,
-      useDuration: "5 years",
+      useDuration: "5",
+      timeUnit: "Year/s",
+      authors: "unknown",
+      isbn: "",
     },
     {
+      transactionId: "9998",
       title: "Quantum Prophecy",
-      bookCondition: "Good",
+      bookCondition: "New",
+      currency: "$",
       price: 300,
-      useDuration: "5 years",
+      useDuration: "5",
+      timeUnit: "Year/s",
+      authors: "unknown",
+      isbn: "",
     },
   ];
 
@@ -30,22 +41,23 @@ const MyTransaction = () => {
     changeCurrentPageNo(parseInt(e.target.textContent));
   };
 
-  const handleAddBook = () => {
+  const handleShowBookFormModal = () => {
     bookFormRef.current.showModal();
   };
 
-  function handleClosePrompt(e) {
-    const dialogElement = bookFormRef.current;
-    const dialogDimensions = dialogElement.getBoundingClientRect();
-    if (
-      e.clientY < dialogDimensions.top ||
-      e.clientY > dialogDimensions.bottom ||
-      e.clientX < dialogDimensions.left ||
-      e.clientX > dialogDimensions.right
-    ) {
-      dialogElement.close();
-    }
-  }
+  const handleAddBook = (book) => {
+    const data = [...booksData, book];
+    setBooksData(data);
+  };
+
+  const handleDeleteBookTrasaction = (transactionId) => {
+    const originalBooks = [...booksData];
+    const changeBooks = originalBooks.filter(
+      (book) => book.transactionId !== transactionId
+    );
+
+    setBooksData(changeBooks);
+  };
 
   const pageShown = 7;
   const itemCount = booksData.length;
@@ -58,9 +70,12 @@ const MyTransaction = () => {
   return (
     <div>
       {dataOnDisplay.map((data) => (
-        <TransactionCard data={data} />
+        <TransactionCard data={data} onDelete={handleDeleteBookTrasaction} />
       ))}
-      <div className="my-transaction__add-bttn-wrapper" onClick={handleAddBook}>
+      <div
+        className="my-transaction__add-bttn-wrapper"
+        onClick={handleShowBookFormModal}
+      >
         <input type="button" value="+" className="my-transaction__add-bttn" />
       </div>
       <Pagination
@@ -70,14 +85,7 @@ const MyTransaction = () => {
         maxItemsPerPage={maxItemsPerPage}
         onClick={handlePageChange}
       />
-      <dialog ref={bookFormRef} onClick={handleClosePrompt}>
-        <form>
-          <input type="text" placeholder="Price" />
-          <input type="text" placeholder="Book Condition" />
-          <input type="text" placeholder="Use Duration" />
-          <input type="submit" />
-        </form>
-      </dialog>
+      <AddBookTransaction ref={bookFormRef} onSubmitHookFunc={handleAddBook} />
     </div>
   );
 };

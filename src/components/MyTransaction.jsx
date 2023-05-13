@@ -2,39 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import TransactionCard from "./common/TransactionCard.jsx";
 import Pagination from "./common/Pagination.jsx";
 import AddBookTransaction from "./AddBookTransaction.jsx";
+import transactionsData from "../../mockDatas/bookTransactions.json";
 
 const MyTransaction = () => {
-  let mockData = [
-    {
-      transactionId: "9999",
-      title: "Harry Potter",
-      bookCondition: "Used",
-      currency: "$",
-      price: 300,
-      useDuration: "5",
-      timeUnit: "Year/s",
-      authors: "unknown",
-      isbn: "",
-    },
-    {
-      transactionId: "9998",
-      title: "Quantum Prophecy",
-      bookCondition: "New",
-      currency: "$",
-      price: 300,
-      useDuration: "5",
-      timeUnit: "Year/s",
-      authors: "unknown",
-      isbn: "",
-    },
-  ];
-
   const [booksData, setBooksData] = useState([]);
   const [currentPage, changeCurrentPageNo] = useState(1);
   const bookFormRef = useRef();
 
   useEffect(() => {
-    setBooksData(mockData);
+    setBooksData(transactionsData);
   }, [setBooksData]);
 
   const handlePageChange = (e) => {
@@ -91,7 +67,3 @@ const MyTransaction = () => {
 };
 
 export default MyTransaction;
-
-//to do
-//add card
-//delete card

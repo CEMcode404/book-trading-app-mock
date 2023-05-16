@@ -20,6 +20,7 @@
     "react-hook-form": "^7.43.9",
     "react-phone-number-input": "^3.2.21",
     "react-router-dom": "^6.10.0",
+    "uploader": "^3.29.0",
     "yup": "^1.1.1"
   },
   "devDependencies": {

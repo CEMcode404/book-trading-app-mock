@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import bookLoading from "../assets/bookLoading.gif";
+import ImageUploader from "./common/ImageUploader.jsx";
 
 const schema = yup
   .object({
@@ -58,7 +59,14 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
   const onSubmit = async (data) => {
     console.log(data);
     await onSubmitHookFunc(data);
-    reset({ title: "", authors: "", price: "", useDuration: "", isbn: "" });
+    reset({
+      title: "",
+      authors: "",
+      price: "",
+      useDuration: "",
+      isbn: "",
+      images: "",
+    });
     ref.current.close();
   };
 
@@ -83,7 +91,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             placeholder="Meriam-Webster"
             disabled={isSubmitting}
           />
-          <p>{errors.title?.message}</p>
+          <p className="my-transaction__p--error">{errors.title?.message}</p>
         </div>
         <div>
           <label
@@ -99,7 +107,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             placeholder="George Meriam/Charles Merriam"
             disabled={isSubmitting}
           />
-          <p>{errors.authors?.message}</p>
+          <p className="my-transaction__p--error">{errors.authors?.message}</p>
         </div>
         <div>
           <label
@@ -123,7 +131,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             placeholder="50"
             disabled={isSubmitting}
           />
-          <p>{errors.price?.message}</p>
+          <p className="my-transaction__p--error">{errors.price?.message}</p>
         </div>
         <div>
           <label
@@ -164,7 +172,9 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             <option>Day/s</option>
             <option>Year/s</option>
           </select>
-          <p>{errors.useDuration?.message}</p>
+          <p className="my-transaction__p--error">
+            {errors.useDuration?.message}
+          </p>
         </div>
         <div>
           <label
@@ -180,8 +190,17 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             placeholder="9780877799306"
             disabled={isSubmitting}
           />
-          <p>{errors.isbn?.message}</p>
+          <p className="my-transaction__p--error">{errors.isbn?.message}</p>
         </div>
+        <ImageUploader
+          ref={ref}
+          disabled={isSubmitting}
+          id={"my-transaction__img-uploader"}
+          register={register}
+          name="images"
+          maxImages={2}
+          maxByteSize={5000000}
+        />
         <img
           className={
             isSubmitting

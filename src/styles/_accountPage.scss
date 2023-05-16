@@ -180,26 +180,26 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     box-shadow:  0 5px 15px gray;
     border-radius: 5px;
     
-    p {
-        margin: 0;
-        color: red;
-        padding-left: 10rem;
-    }
-    
     div {
         margin: 1rem;
     }
-
+    
     input, select {
         outline: none;
         border: none;
         padding: .5rem;
         border-radius: 5px;
     }
-
+    
     input::placeholder {
         color: lightgrey;
     }
+}
+
+.my-transaction__p--error {
+    margin: 0;
+    color: red;
+    padding-left: 10rem;
 }
 
 .my-transaction__currency-select {

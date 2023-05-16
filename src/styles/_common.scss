@@ -112,6 +112,60 @@
     }
 }
 
+.image-uploader {
+    max-width: 500px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px gray dashed;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        text-align: center;
+        margin: 1rem;
+    }
+
+    label {
+        display: inline-block;
+        margin:  0 auto;
+    }
+}
+
+.image-uploader__input-image-hider {
+    margin: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.image-uploader__upload-to-cloud-icon {
+    cursor: pointer;
+    border-radius: 5px;
+    width: 75px;
+    padding: .5rem;
+}
+
+.image-uploader__upload-to-cloud-icon:hover {
+    background-color: lightgray;
+}
+
+.image-uploader__preview {
+    display: flex;
+    overflow-y: hidden;
+    justify-content: center;
+
+    img {
+        border-radius: 5px;
+        margin: .5rem;
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+
+.image-uploader__errors {
+    overflow-x: hidden;
+}
+
 @media screen and (max-width: 48em) { //757px
     .dropDownV2__title {
         @include variables.title();

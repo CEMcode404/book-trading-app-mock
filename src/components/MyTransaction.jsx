@@ -7,6 +7,7 @@ import transactionsData from "../../mockDatas/bookTransactions.json";
 const MyTransaction = () => {
   const [booksData, setBooksData] = useState([]);
   const [currentPage, changeCurrentPageNo] = useState(1);
+
   const bookFormRef = useRef();
 
   useEffect(() => {
@@ -21,7 +22,10 @@ const MyTransaction = () => {
     bookFormRef.current.showModal();
   };
 
+  const [id, setId] = useState(0);
   const handleAddBook = (book) => {
+    book.transactionId = id + 1;
+    setId(book.transactionId);
     const data = [...booksData, book];
     setBooksData(data);
   };

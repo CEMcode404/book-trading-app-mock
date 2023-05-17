@@ -77,7 +77,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
       className="my-transaction__add-book-dialog"
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className="my-transaction__fied-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__title-id"
@@ -93,7 +93,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           />
           <p className="my-transaction__p--error">{errors.title?.message}</p>
         </div>
-        <div>
+        <div className="my-transaction__fied-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__author-id"
@@ -109,7 +109,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           />
           <p className="my-transaction__p--error">{errors.authors?.message}</p>
         </div>
-        <div>
+        <div className="my-transaction__fied-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__price-id"
@@ -133,7 +133,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           />
           <p className="my-transaction__p--error">{errors.price?.message}</p>
         </div>
-        <div>
+        <div className="my-transaction__fied-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__book-condition"
@@ -149,7 +149,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             <option>New</option>
           </select>
         </div>
-        <div>
+        <div className="my-transaction__fied-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__use-duration-id"
@@ -176,7 +176,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             {errors.useDuration?.message}
           </p>
         </div>
-        <div>
+        <div className="my-transaction__fied-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__isbn-id"
@@ -214,6 +214,12 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           type="submit"
           className="my-transaction__submit-bttn"
           disabled={isSubmitting}
+        />
+        <input
+          type="button"
+          className="my-transaction__cancel-bttn"
+          disabled={isSubmitting}
+          value="Cancel"
         />
       </form>
     </dialog>

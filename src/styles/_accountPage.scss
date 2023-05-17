@@ -174,11 +174,20 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     margin-right: .5rem;
 }
 
+#my-transaction__use-duration-id {
+    width: 5.2rem;
+}
+
+#my-transaction__price-id {
+    width: 8.4rem;
+}
+
 .my-transaction__add-book-dialog {
     background-color: lightgray;
     border: 1px solid white;
     box-shadow:  0 5px 15px gray;
     border-radius: 5px;
+    text-align: center;
     
     div {
         margin: 1rem;
@@ -210,9 +219,9 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     margin-left: .5rem;
 }
 
-.my-transaction__submit-bttn {
-    margin: 0 auto;
-    display: block;
+.my-transaction__submit-bttn, .my-transaction__cancel-bttn {
+    margin: 0 .5rem;
+    display: inline-block;
 }
 
 .my-transaction__loading-gif {
@@ -242,9 +251,18 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
             text-align: left;
         }
     }
+        
+    #my-transaction__use-duration-id {
+        width: 4rem;
+    }
+    
+    #my-transaction__price-id {
+        width: 6.5rem;
+    }
+
 }
 
-@media only screen and (max-width: 30em) {
+@media only screen and (max-width: 30em) {//479
 
     .my-details__form {
         overflow: hidden;
@@ -265,5 +283,37 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
         display: block;
         margin-left: 2ch;
         width: 100%;
+    }
+
+    .my-transaction__form-label {
+        text-align: left;
+        width: 10rem;
+        display: block;
+        margin-right: .5rem;
+    }
+
+    .my-transaction__add-book-dialog {
+        width: 320px;
+    }
+
+    .my-transaction__p--error {
+        padding-left: 0;
+    }
+
+    .my-transaction__fied-wrapper {
+        text-align: left;
+    }
+
+    #my-transaction__use-duration-id {
+        width: 4rem;
+    }
+    
+    #my-transaction__price-id {
+        width: 6.5rem;
+    }
+
+    #my-transaction__author-id, #my-transaction__title-id,
+    #my-transaction__isbn-id {
+        width: 94%;
     }
 }

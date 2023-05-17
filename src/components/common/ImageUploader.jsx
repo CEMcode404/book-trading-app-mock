@@ -104,6 +104,6 @@ const ImageUploader = forwardRef(function ImageUploader(
       </div>
     </div>
   );
-}); //fix the form interactivity in smalller viewport widths
+});
 
 export default ImageUploader;

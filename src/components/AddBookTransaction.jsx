@@ -53,6 +53,12 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     ) {
       clearErrors();
       dialogElement.close();
+      return;
+    }
+
+    if (e.target.className.indexOf("my-transaction__cancel-bttn") > -1) {
+      clearErrors();
+      dialogElement.close();
     }
   }
 
@@ -212,14 +218,15 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
         />
         <input
           type="submit"
-          className="my-transaction__submit-bttn"
+          className="my-transaction__submit-bttn bttn--slide-up--green"
           disabled={isSubmitting}
         />
         <input
           type="button"
-          className="my-transaction__cancel-bttn"
+          className="my-transaction__cancel-bttn bttn--slide-up--gray"
           disabled={isSubmitting}
           value="Cancel"
+          onClick={handleClosePrompt}
         />
       </form>
     </dialog>

@@ -222,6 +222,7 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
 .my-transaction__submit-bttn, .my-transaction__cancel-bttn {
     margin: 0 .5rem;
     display: inline-block;
+    cursor: pointer;
 }
 
 .my-transaction__loading-gif {

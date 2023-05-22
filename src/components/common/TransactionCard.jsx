@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 const TransactionCard = ({
   data: {
@@ -11,9 +11,30 @@ const TransactionCard = ({
     isbn,
     currency,
     timeUnit,
+    imgSrcs,
   },
   onDelete,
 }) => {
+  const dialogRef = useRef();
+
+  function handleOpenImagesDialog() {
+    const dialogElement = dialogRef.current;
+    dialogElement.showModal();
+  }
+
+  function handleCloseImagesDialog(e) {
+    const dialogElement = dialogRef.current;
+    const dialogDimensions = dialogElement.getBoundingClientRect();
+    if (
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom ||
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right
+    ) {
+      dialogElement.close();
+    }
+  }
+
   return (
     <section className="transaction-card">
       <input
@@ -48,6 +69,22 @@ const TransactionCard = ({
       <div>
         <label>ISBN:</label>
         <span>{isbn}</span>
+      </div>
+      <div>
+        <input
+          type="button"
+          onClick={handleOpenImagesDialog}
+          value="Show Image/s"
+          className="transaction-card__show-images-bttn"
+        />
+        <dialog
+          ref={dialogRef}
+          onClick={handleCloseImagesDialog}
+          className="transaction-card__images-dialog"
+        >
+          {imgSrcs && imgSrcs.map((src) => <img src={src}></img>)}
+          {!imgSrcs && <p>No image/s uploaded</p>}
+        </dialog>
       </div>
     </section>
   );

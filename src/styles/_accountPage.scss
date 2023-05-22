@@ -146,6 +146,20 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     font-size: 2rem;
 }
 
+.transaction-card__images-dialog {
+    border: none;
+    border-radius: 5px;
+}
+
+.transaction-card__show-images-bttn {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: .5rem;
+    cursor: pointer;
+    color: gray;
+}
+
 .my-transaction__add-bttn {
     position: relative;
     z-index: -2;

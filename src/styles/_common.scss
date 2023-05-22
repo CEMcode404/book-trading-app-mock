@@ -166,6 +166,18 @@
     overflow-x: hidden;
 }
 
+.image-uploader__clear-bttn {
+    background-color: lightgray;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.image-uploader__clear-bttn:active {
+    background-color: rgb(192, 192, 192);
+}
+
 @media screen and (max-width: 48em) { //767px
     .dropDownV2__title {
         @include variables.title();

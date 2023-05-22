@@ -95,6 +95,8 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
   ref
 ) {
   const {
+    getValues,
+    setValue,
     reset,
     clearErrors,
     register,
@@ -121,6 +123,12 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
       clearErrors();
       dialogElement.close();
     }
+  }
+
+  function handleClearImagesHook() {
+    console.log(getValues("images"));
+    setValue("images", []);
+    console.log(getValues("images"));
   }
 
   const onSubmit = async (data) => {
@@ -269,8 +277,11 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           name="images"
           maxImages={2}
           maxByteSize={5000000}
+          clearImagesHook={handleClearImagesHook}
         />
-        <p className="my-transaction__p--error">{errors.images?.message}</p>
+        <p className="my-transaction__p--error--img">
+          {errors.images?.message}
+        </p>
 
         <img
           className={

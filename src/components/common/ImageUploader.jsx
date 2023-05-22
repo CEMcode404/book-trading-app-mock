@@ -13,6 +13,7 @@ const ImageUploader = forwardRef(function ImageUploader(
     name,
     maxImages,
     maxByteSize,
+    clearImagesHook,
   },
   ref
 ) {
@@ -66,6 +67,12 @@ const ImageUploader = forwardRef(function ImageUploader(
     setErrors(errors);
   }
 
+  function clearImagesPreview() {
+    if (clearImagesHook) clearImagesHook();
+    setImagesURL([]);
+    setErrors([]);
+  }
+
   return (
     <div className={"image-uploader " + className}>
       <p>{label}</p>
@@ -101,6 +108,14 @@ const ImageUploader = forwardRef(function ImageUploader(
         {imageErrors.map((error) => (
           <p>{error}</p>
         ))}
+      </div>
+      <div>
+        <input
+          type="button"
+          value="Clear Images"
+          className="image-uploader__clear-bttn"
+          onClick={clearImagesPreview}
+        />
       </div>
     </div>
   );

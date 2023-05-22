@@ -4,6 +4,62 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import bookLoading from "../assets/bookLoading.gif";
 import ImageUploader from "./common/ImageUploader.jsx";
+import getISBNrules from "../utility/getISBNrules.js";
+
+yup.addMethod(
+  yup.string,
+  "isValidISBN",
+  function (options = { message: "Invalid ISBN" }) {
+    const { message } = options;
+    return this.test("isValidISBN", message, function (value) {
+      const { path, createError } = this;
+      if (value === "") return true;
+
+      const isValidISBN = yup
+        .string()
+        .matches(getISBNrules())
+        .isValidSync(value);
+
+      if (!isValidISBN) return createError({ path, message });
+      return true;
+    });
+  }
+);
+
+yup.addMethod(yup.mixed, "areImagesValid", function (options = {}) {
+  const {
+    message = "Invalid Images",
+    allowedExtensions = ["png", "jpg", "jpeg"],
+    maxByteSize = 5000000,
+    maxImageLimit = 2,
+    required = false,
+  } = options;
+  return this.test("areImagesValid", message, function (images) {
+    const { path, createError } = this;
+    if (required && images.length < 1)
+      return createError({ path, message: `Image/s required` });
+
+    if (images.length > maxImageLimit)
+      return createError({
+        path,
+        message: `Exceeded ${maxImageLimit} image limit`,
+      });
+
+    for (let i = 0; i < images.length; i++) {
+      if (images[i].size > maxByteSize)
+        return createError({
+          path,
+          message: `Exceeded ${maxByteSize} bytes limit`,
+        });
+
+      const imageExtension = images[i].name.split(".").pop();
+      if (!allowedExtensions.includes(imageExtension))
+        return createError({ path, message });
+    }
+
+    return true;
+  });
+});
 
 const schema = yup
   .object({
@@ -25,7 +81,12 @@ const schema = yup
       .integer()
       .required()
       .label("Use Duration"),
-    isbn: yup.string().max(13).label("ISBN"),
+    isbn: yup.string().isValidISBN().label("ISBN"),
+    images: yup
+      .mixed()
+      .areImagesValid({ required: true })
+      .required()
+      .label("Images"),
   })
   .required();
 
@@ -71,7 +132,9 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
       price: "",
       useDuration: "",
       isbn: "",
-      images: "",
+      // images: [], //this should be called after the api call to not cause issue
+      //don't reset this field until imageuploader and react-hook-form out of
+      //sync issue is solved
     });
     ref.current.close();
   };
@@ -207,6 +270,8 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           maxImages={2}
           maxByteSize={5000000}
         />
+        <p className="my-transaction__p--error">{errors.images?.message}</p>
+
         <img
           className={
             isSubmitting

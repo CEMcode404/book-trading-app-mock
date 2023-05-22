@@ -16,6 +16,9 @@ const ImageUploader = forwardRef(function ImageUploader(
   },
   ref
 ) {
+  const [imagesURL, setImagesURL] = useState([]);
+  const [imageErrors, setErrors] = useState([]);
+
   function onClick() {
     ref.current.close();
 
@@ -29,9 +32,6 @@ const ImageUploader = forwardRef(function ImageUploader(
 
     window.addEventListener("focus", focusOnExit);
   }
-
-  const [imagesURL, setImagesURL] = useState([]);
-  const [imageErrors, setErrors] = useState([]);
 
   function updatePreviewDisplay(e) {
     let urlObjects = [];

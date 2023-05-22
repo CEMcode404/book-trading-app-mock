@@ -126,9 +126,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
   }
 
   function handleClearImagesHook() {
-    console.log(getValues("images"));
     setValue("images", []);
-    console.log(getValues("images"));
   }
 
   const onSubmit = async (data) => {

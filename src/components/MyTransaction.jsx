@@ -15,7 +15,11 @@ const MyTransaction = () => {
   }, [setBooksData]);
 
   const handlePageChange = (e) => {
-    changeCurrentPageNo(parseInt(e.target.textContent));
+    //an event or pageNo
+    if (e?.target?.textContent)
+      return changeCurrentPageNo(parseInt(e.target.textContent));
+
+    changeCurrentPageNo(e);
   };
 
   const handleShowBookFormModal = () => {
@@ -63,7 +67,7 @@ const MyTransaction = () => {
         itemCount={itemCount}
         currentPage={currentPage}
         maxItemsPerPage={maxItemsPerPage}
-        onClick={handlePageChange}
+        pageChange={handlePageChange}
       />
       <AddBookTransaction ref={bookFormRef} onSubmitHookFunc={handleAddBook} />
     </div>

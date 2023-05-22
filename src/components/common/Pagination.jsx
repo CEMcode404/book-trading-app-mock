@@ -6,10 +6,15 @@ const Pagination = ({
   itemCount,
   currentPage = 1,
   maxItemsPerPage = 5,
-  onClick,
+  pageChange,
   className = "",
   activeColor = "lightgray",
 }) => {
+  const pageNo = Math.ceil(itemCount / maxItemsPerPage);
+  const currentPageClamp = Math.max(1, Math.min(currentPage, pageNo));
+
+  if (currentPageClamp !== currentPage) pageChange(currentPageClamp);
+
   const pagesArray = paginate(
     pageShown,
     itemCount,
@@ -23,7 +28,7 @@ const Pagination = ({
         {pagesArray &&
           pagesArray.map((number) => (
             <li
-              onClick={onClick}
+              onClick={pageChange}
               style={
                 number === currentPage ? { backgroundColor: activeColor } : null
               }

@@ -4,8 +4,30 @@ import logo from "../../assets/noBG-logo.svg";
 import facebookLogo from "../../assets/Facebook.svg";
 import twitterLogo from "../../assets/Twitter.svg";
 import instagramLogo from "../../assets/Twitter.svg";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup
+  .object({
+    message: yup.string().max(10000).required().label("Message"),
+    email: yup.string().email().required().label("Email"),
+  })
+  .required();
 
 const Footer = ({ fclass, display = true }) => {
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+
   const footer = !display ? null : (
     <footer className={"footer " + fclass}>
       <div className="footer__dropDowns">
@@ -17,20 +39,28 @@ const Footer = ({ fclass, display = true }) => {
           </p>
         </DropDownV2>
         <DropDownV2 title="MESSAGE US">
-          <textarea
-            className="footer__textarea highlight"
-            placeholder="Your message..."
-          ></textarea>
-          <input
-            type="text"
-            className="footer__input-text highlight"
-            placeholder="Your email..."
-          ></input>
-          <input
-            type="button"
-            value="Send"
-            className="footer__send-bttn bttn--slide-up--purple"
-          />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <textarea
+              className="footer__textarea highlight"
+              placeholder="Your message..."
+              {...register("message")}
+              disabled={isSubmitting}
+            ></textarea>
+            <input
+              type="text"
+              className="footer__input-text highlight"
+              placeholder="Your email..."
+              {...register("email")}
+              disabled={isSubmitting}
+            ></input>
+            <p className="footer__error-message">{errors.message?.message}</p>
+            <p className="footer__error-message">{errors.email?.message}</p>
+            <input
+              type="submit"
+              value="Send"
+              className="footer__send-bttn bttn--slide-up--purple"
+            />
+          </form>
         </DropDownV2>
       </div>
 

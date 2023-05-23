@@ -79,6 +79,10 @@
     width: 100px;
 }
 
+.footer__error-message {
+    padding-left: 15px;
+}
+
 @media screen and (max-width: 30em) { //479px
     .footer__logo-wrapper {
         text-align: center;

@@ -6,6 +6,7 @@ import twitterLogo from "../../assets/Twitter.svg";
 import instagramLogo from "../../assets/Twitter.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { NavLink } from "react-router-dom";
 import * as yup from "yup";
 
 const schema = yup
@@ -66,12 +67,24 @@ const Footer = ({ fclass, display = true }) => {
 
       <hr className="footer__hr"></hr>
       <section className="footer__links" aria-label="links">
-        <p className="footer__p">Reviews and Testimonials</p>
-        <p className="footer__p">Safety and Security</p>
-        <p className="footer__p">Terms of Use</p>
-        <p className="footer__p">Data Privacy</p>
-        <p className="footer__p">Credits</p>
-        <p className="footer__p">Donate</p>
+        <NavLink className="footer__navlink">Reviews and Testimonials</NavLink>
+        <NavLink
+          className="footer__navlink"
+          to="/policies#safetyAndSecurity"
+          replace
+        >
+          Safety and Security
+        </NavLink>
+        <NavLink className="footer__navlink" to="/policies#termsOfUse" replace>
+          Terms of Use
+        </NavLink>
+        <NavLink className="footer__navlink" to="/policies#dataPrivacy" replace>
+          Data Privacy
+        </NavLink>
+        <NavLink className="footer__navlink" to="/policies#credits" replace>
+          Credits
+        </NavLink>
+        <NavLink className="footer__navlink">Donate</NavLink>
       </section>
       <hr className="footer__hr"></hr>
       <section

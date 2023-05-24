@@ -59,6 +59,18 @@
     margin: 5px 10px;
 }
 
+.footer__navlink {
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 10px;
+    color: white;
+}
+
+.footer__navlink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .footer__hr {
     border: 1px solid white;
 }
@@ -88,7 +100,7 @@
         text-align: center;
     }
 
-    .footer__p {
+    .footer__navlink {
         display: block;
         margin: 16px;
     }

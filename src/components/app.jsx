@@ -7,6 +7,7 @@ import isNavbarAllowed from "../utility/isNavbarAllowed.js";
 import SignUpPage from "./SignUpPage.jsx";
 import TransactionPage from "./TransactionPage.jsx";
 import AccounPage from "./AccountPage.jsx";
+import PolicyPage from "./PolicyPage.jsx";
 import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import { getCurrentUser } from "../services/tokenService.js";
 import { UserContext } from "./context/userContext.js";
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/index" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/policies" element={<PolicyPage />} />
           <Route
             path="/transaction"
             element={<ProtectedRoute component={TransactionPage} />}

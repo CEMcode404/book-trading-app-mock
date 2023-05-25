@@ -258,17 +258,21 @@ const PolicyPage = () => {
           </main>
         </section>
         <aside className="policy-page__toc">
-          <nav>
-            <NavLink to="#termsOfUse" className="policy-page__navlink">
+          <nav aria-label="policy nav">
+            <NavLink to="#termsOfUse" className="policy-page__navlink" replace>
               Terms of Use
             </NavLink>
-            <NavLink to="#safetyAndSecurity" className="policy-page__navlink">
+            <NavLink
+              to="#safetyAndSecurity"
+              className="policy-page__navlink"
+              replace
+            >
               Safety and Security
             </NavLink>
-            <NavLink to="#dataPrivacy" className="policy-page__navlink">
+            <NavLink to="#dataPrivacy" className="policy-page__navlink" replace>
               Data Privacy
             </NavLink>
-            <NavLink to="#credits" className="policy-page__navlink">
+            <NavLink to="#credits" className="policy-page__navlink" replace>
               Credits
             </NavLink>
           </nav>

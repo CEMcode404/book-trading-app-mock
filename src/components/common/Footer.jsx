@@ -67,7 +67,9 @@ const Footer = ({ fclass, display = true }) => {
 
       <hr className="footer__hr"></hr>
       <section className="footer__links" aria-label="links">
-        <NavLink className="footer__navlink">Reviews and Testimonials</NavLink>
+        <NavLink className="footer__navlink" to="/reviews">
+          Reviews and Testimonials
+        </NavLink>
         <NavLink
           className="footer__navlink"
           to="/policies#safetyAndSecurity"

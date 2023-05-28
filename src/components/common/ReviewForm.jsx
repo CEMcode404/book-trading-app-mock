@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../context/userContext";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -26,7 +26,6 @@ const ReviewForm = () => {
   };
 
   const { user } = useContext(UserContext);
-  const navigate = useNavigate();
   const gotoDialogRef = useRef();
 
   function handleClosePrompt(e) {
@@ -80,7 +79,7 @@ const ReviewForm = () => {
             <input
               type="button"
               value="Send"
-              className="review-form__submit bttn--slide-up--green"
+              className="review-form__redirect-login bttn--slide-up--green"
               onClick={onSubmitRedirect}
               disabled={isSubmitting}
             />

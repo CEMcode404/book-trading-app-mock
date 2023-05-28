@@ -21,6 +21,8 @@ const LoginPage = () => {
   const { user, changeUser } = useContext(UserContext);
 
   const {
+    clearErrors,
+    setError,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -28,10 +30,16 @@ const LoginPage = () => {
     resolver: yupResolver(schema),
   });
 
+  const handleOnChange = () => {
+    if (errors.apiError?.message) clearErrors("apiError");
+  };
+
   const haveErrors = checkFormErrors(errors);
   const onSubmit = (data) => {
-    login(data, () => {
-      changeUser(getCurrentUser());
+    login(data, (result, err) => {
+      if (result) return changeUser(getCurrentUser());
+      if (err && err.response.status === 400)
+        setError("apiError", { message: err.response.data });
     });
   };
 
@@ -48,14 +56,14 @@ const LoginPage = () => {
             type="text"
             className="login-page__input-field highlight"
             placeholder="Email"
-            {...register("email")}
+            {...register("email", { onChange: handleOnChange })}
             disabled={isSubmitting}
           />
           <input
             type="password"
             className="login-page__input-field highlight"
             placeholder="Password"
-            {...register("password")}
+            {...register("password", { onChange: handleOnChange })}
             disabled={isSubmitting}
           />
           <input
@@ -72,6 +80,7 @@ const LoginPage = () => {
         >
           <p>{errors.email?.message}</p>
           <p>{errors.password?.message}</p>
+          <p>{errors.apiError?.message}</p>
         </div>
         <div className="login-page__links"></div>
         <p className="login-page__p">Forgot your password?</p>

@@ -28,11 +28,13 @@ function login(data, cb) {
   http
     .post("/api/auth", data)
     .then((result) => {
+      let err;
       storeToken(result.data);
-      cb();
+      cb(result, err);
     })
     .catch((err) => {
-      console.log(err);
+      let result;
+      cb(result, err);
     });
 }
 

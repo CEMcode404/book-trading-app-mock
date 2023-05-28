@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "demo": "nodemon ./demoServer/index.js"
   },
   "keywords": [],
   "author": "",

@@ -4,13 +4,17 @@ import ReviewCard from "./common/ReviewCard.jsx";
 import reviewDatas from "../../mockDatas/reviewCardComments.json";
 import Pagination from "./common/Pagination.jsx";
 import ReviewForm from "./common/ReviewForm.jsx";
+import { getReviews } from "../services/reviewService.js";
 
 const ReviewsAndTestimonials = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    const fetchedReviews = [...reviewDatas];
-    setReviews(fetchedReviews);
-  }, []);
+    getReviews((res, err) => {
+      if (res) {
+        setReviews(res.data);
+      }
+    });
+  }, [getReviews]);
 
   const [currentPage, changeCurrentPageNo] = useState(1);
 

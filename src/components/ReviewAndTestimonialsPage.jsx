@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Footer from "./common/Footer.jsx";
 import ReviewCard from "./common/ReviewCard.jsx";
-import reviewDatas from "../../mockDatas/reviewCardComments.json";
 import Pagination from "./common/Pagination.jsx";
 import ReviewForm from "./common/ReviewForm.jsx";
 import { getReviews } from "../services/reviewService.js";

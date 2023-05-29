@@ -43,6 +43,12 @@
     color: lightgray;
 }
 
+.login-page__p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #93a466;
+}
+
 .login-page__hr {
     width: 60%;
     border-top: lightgray 0.1px solid;
@@ -68,6 +74,43 @@
     height: 0;
     width: 0;
     overflow: hidden;
+}
+
+.forgot-password {
+   border: none;
+   border-radius: 5px;
+   box-shadow:  0 5px 15px gray;
+   p {
+    text-align: center;
+   }
+
+   div {
+    display: flex;
+    justify-content: center;
+   }
+}
+
+.forgot-password__email-input {
+    outline: none;
+    border-radius: 5px 0 0 5px;
+    border: .5px solid lightgray;
+    padding: .5rem;
+}
+
+.forgot-password__submit-bttn {
+    border-radius: 0 5px 5px 0;
+    border: none;
+    padding: .5rem;
+}
+
+.forgot-password__label {
+    text-align: center;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.forgot-password__error {
+    color: red;
 }
 
 @media screen and (max-width: 30em) { //479px

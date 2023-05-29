@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import TransactionCard from "./common/TransactionCard.jsx";
 import Pagination from "./common/Pagination.jsx";
 import AddBookTransaction from "./AddBookTransaction.jsx";
-import transactionsData from "../../mockDatas/bookTransactions.json";
+import { getTransactions } from "../services/transactionsService.js";
 
 const MyTransaction = () => {
   const [booksData, setBooksData] = useState([]);
@@ -11,8 +11,12 @@ const MyTransaction = () => {
   const bookFormRef = useRef();
 
   useEffect(() => {
-    setBooksData(transactionsData);
-  }, [setBooksData]);
+    getTransactions((res, err) => {
+      if (res) {
+        setBooksData(res.data);
+      }
+    });
+  }, [setBooksData, getTransactions]);
 
   const handlePageChange = (e) => {
     //an event or pageNo

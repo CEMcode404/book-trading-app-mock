@@ -1,7 +1,7 @@
 import React from "react";
 import BookCard from "./BookCard.jsx";
 
-const BookCardList = ({ title }) => {
+const BookCardList = ({ title, data }) => {
   return (
     <table>
       <thead>
@@ -15,12 +15,13 @@ const BookCardList = ({ title }) => {
         <tr>
           <td>
             <div className="book-card-list">
-              <BookCard />
-              <BookCard />
-              <BookCard />
-              <BookCard />
-              <BookCard />
-              <BookCard />
+              {data.map((bookData) => (
+                <BookCard
+                  imgSrc={bookData?.imgSrc}
+                  title={bookData?.title}
+                  authors={bookData?.authors}
+                />
+              ))}
             </div>
           </td>
         </tr>

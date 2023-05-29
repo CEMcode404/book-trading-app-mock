@@ -94,3 +94,20 @@
     animation-iteration-count: infinite;
 }
 
+@keyframes moveElementToRight{
+  from {
+      transform: translateX(200%);
+    }
+to {
+      transform: translateX(-200%);
+    }
+}
+
+.animate--moveToRight {
+    animation-name: moveElementToRight;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+

@@ -54,6 +54,19 @@
     color: white;
 }
 
+.book-card__title {
+    display: inline-block;
+    color: black;
+    white-space: nowrap;
+}
+
+.book-card__title-wrapper {
+    position: absolute;
+    width: 90%;
+    bottom: 1rem;
+    overflow: hidden;
+}
+
 .book-card__p {
     position: relative;
     top: 30%;

@@ -1,12 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import BookCardList from "./common/BookCardList.jsx";
 import Footer from "./common/Footer.jsx";
 import Parallax from "./common/Parallax.jsx";
-import booksData from "../../bookTransactions.json";
+import { getTransactions } from "../services/transactionsService.js";
 
 const HomePage = () => {
   const scrollRef = useRef(null);
   const [parallaxState, setParallaxState] = useState(0);
+  const [booksData, setBooksData] = useState([]);
+
+  useEffect(() => {
+    getTransactions((res, err) => {
+      if (res) {
+        setBooksData(res.data.slice(0, 6));
+      }
+    });
+  }, []);
+
   return (
     <div
       className="home-page"

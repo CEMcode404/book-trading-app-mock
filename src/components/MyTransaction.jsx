@@ -32,17 +32,15 @@ const MyTransaction = () => {
 
   const [id, setId] = useState(0);
   const handleAddBook = (book) => {
-    book.transactionId = id + 1;
-    setId(book.transactionId);
+    book._id = id + 1;
+    setId(book._id);
     const data = [...booksData, book];
     setBooksData(data);
   };
 
-  const handleDeleteBookTrasaction = (transactionId) => {
+  const handleDeleteBookTrasaction = (_id) => {
     const originalBooks = [...booksData];
-    const changeBooks = originalBooks.filter(
-      (book) => book.transactionId !== transactionId
-    );
+    const changeBooks = originalBooks.filter((book) => book._id !== _id);
 
     setBooksData(changeBooks);
   };

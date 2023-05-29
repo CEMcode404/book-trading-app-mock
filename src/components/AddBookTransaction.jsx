@@ -1,10 +1,11 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useContext } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import bookLoading from "../assets/bookLoading.gif";
 import ImageUploader from "./common/ImageUploader.jsx";
 import getISBNrules from "../utility/getISBNrules.js";
+import { UserContext } from "./context/userContext";
 
 yup.addMethod(
   yup.string,
@@ -95,7 +96,6 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
   ref
 ) {
   const {
-    getValues,
     setValue,
     reset,
     clearErrors,
@@ -103,6 +103,8 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(schema) });
+
+  const { user } = useContext(UserContext);
 
   function handleClosePrompt(e) {
     const dialogElement = ref.current;
@@ -130,6 +132,9 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
   }
 
   const onSubmit = async (data) => {
+    const { firstName, lastName } = user;
+    data.status = false;
+    data.owner = `${firstName} ${lastName}`;
     console.log(data);
     await onSubmitHookFunc(data);
     reset({

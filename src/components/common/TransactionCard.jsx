@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 const TransactionCard = ({
   data: {
-    transactionId,
+    _id,
     title,
     price,
     bookCondition,
@@ -41,7 +41,7 @@ const TransactionCard = ({
         value="+"
         type="button"
         className="transaction-card__delete-bttn"
-        onClick={() => onDelete(transactionId)}
+        onClick={() => onDelete(_id)}
       />
       <h3>{title}</h3>
       <div>

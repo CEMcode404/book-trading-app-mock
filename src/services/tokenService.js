@@ -19,6 +19,7 @@ function getToken() {
 
 function removeToken() {
   localStorage.removeItem("token");
+  localStorage.clear();
 }
 
 export { storeToken, getCurrentUser, removeToken, getToken };

@@ -20,6 +20,7 @@ const BookCardList = ({ title, data }) => {
                   imgSrc={bookData?.imgSrc}
                   title={bookData?.title}
                   authors={bookData?.authors}
+                  _id={bookData?._id}
                 />
               ))}
             </div>

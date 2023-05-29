@@ -1,11 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../../assets/book-no-image.svg";
+import { storeBookId } from "../../services/transactionsService.js";
 
-const BookCard = ({ imgSrc, title, authors }) => {
+const BookCard = ({ imgSrc, title, authors, _id }) => {
   const navigate = useNavigate();
 
   function gotoDetails() {
+    storeBookId(_id);
     navigate("/transaction");
   }
 

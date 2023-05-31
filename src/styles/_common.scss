@@ -178,6 +178,25 @@
     background-color: rgb(192, 192, 192);
 }
 
+.binary-prompt {
+    border: none;
+    border-radius: 5px;
+    box-shadow:  0 5px 15px gray;
+}
+
+.binary-prompt__bttns-wrapper {
+    display: flex;
+    justify-content: center;
+    
+    input {
+        margin: 1rem .5rem;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
 @media screen and (max-width: 48em) { //767px
     .dropDownV2__title {
         @include variables.title();

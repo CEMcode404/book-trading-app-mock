@@ -2,10 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import TransactionCard from "./common/TransactionCard.jsx";
 import Pagination from "./common/Pagination.jsx";
 import AddBookTransaction from "./AddBookTransaction.jsx";
-import { getTransactions } from "../services/transactionsService.js";
+import {
+  getTransactions,
+  requestTransactionUpdate,
+} from "../services/transactionsService.js";
 
 const MyTransaction = () => {
-  const [booksData, setBooksData] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   const [currentPage, changeCurrentPageNo] = useState(1);
 
   const bookFormRef = useRef();
@@ -13,10 +16,10 @@ const MyTransaction = () => {
   useEffect(() => {
     getTransactions((res, err) => {
       if (res) {
-        setBooksData(res.data);
+        setTransactions(res.data);
       }
     });
-  }, [setBooksData, getTransactions]);
+  }, []);
 
   const handlePageChange = (e) => {
     //an event or pageNo
@@ -31,32 +34,37 @@ const MyTransaction = () => {
   };
 
   const [id, setId] = useState(0);
-  const handleAddBook = (book) => {
+  const handleAddBookTransaction = (book) => {
     book._id = id + 1;
     setId(book._id);
-    const data = [...booksData, book];
-    setBooksData(data);
+    const data = [...transactions, book];
+    setTransactions(data);
   };
 
   const handleDeleteBookTrasaction = (_id) => {
-    const originalBooks = [...booksData];
+    const originalBooks = [...transactions];
     const changeBooks = originalBooks.filter((book) => book._id !== _id);
-
-    setBooksData(changeBooks);
+    setTransactions(changeBooks);
   };
 
+  const handleChangeStatus = (transactionId) => {}; //skipped this
+
   const pageShown = 7;
-  const itemCount = booksData.length;
+  const itemCount = transactions.length;
   const maxItemsPerPage = 5;
 
   const startingIndex = maxItemsPerPage * currentPage - maxItemsPerPage;
   const endingIndex = maxItemsPerPage * currentPage;
-  const dataOnDisplay = booksData.slice(startingIndex, endingIndex);
+  const dataOnDisplay = transactions.slice(startingIndex, endingIndex);
 
   return (
     <div>
       {dataOnDisplay.map((data) => (
-        <TransactionCard data={data} onDelete={handleDeleteBookTrasaction} />
+        <TransactionCard
+          data={data}
+          onDelete={handleDeleteBookTrasaction}
+          onChangeStatus={handleChangeStatus}
+        />
       ))}
       <div
         className="my-transaction__add-bttn-wrapper"
@@ -71,7 +79,10 @@ const MyTransaction = () => {
         maxItemsPerPage={maxItemsPerPage}
         pageChange={handlePageChange}
       />
-      <AddBookTransaction ref={bookFormRef} onSubmitHookFunc={handleAddBook} />
+      <AddBookTransaction
+        ref={bookFormRef}
+        onSubmitHookFunc={handleAddBookTransaction}
+      />
     </div>
   );
 };

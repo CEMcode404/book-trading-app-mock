@@ -144,6 +144,7 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     color: red;
     width: 25px;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .transaction-card__images-dialog {
@@ -151,13 +152,14 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     border-radius: 5px;
 }
 
-.transaction-card__show-images-bttn {
+.transaction-card__show-images-bttn, .transaction-card__change-status-bttn {
     width: 100%;
     border: none;
     border-radius: 5px;
     padding: .5rem;
     cursor: pointer;
     color: gray;
+    margin-bottom: .5rem;
 }
 
 .my-transaction__add-bttn {

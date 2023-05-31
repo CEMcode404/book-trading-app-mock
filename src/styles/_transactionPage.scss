@@ -5,6 +5,7 @@
     padding: 0 30px;
     color: gray;
     margin: 5% auto;
+    max-width: 1000px;
 }
 
 .transaction__h1 {
@@ -63,7 +64,8 @@
 }
 
 .transaction-contact__chat {
-    width: 45%;
+    width: 100%;
+    max-width: 400px;
 }
 
 .transaction-contact__chat-bttn {

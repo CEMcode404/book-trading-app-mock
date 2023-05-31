@@ -26,6 +26,19 @@ function getTransactionById(_id, cb) {
     });
 }
 
+function requestTransactionUpdate(_id, data, cb) {
+  http
+    .put("/api/bookTransactions" + _id, data)
+    .then((transaction) => {
+      let err;
+      cb(transaction, err);
+    })
+    .catch((err) => {
+      let transaction;
+      cb(transaction, err);
+    });
+}
+
 function storeBookId(_id) {
   localStorage.setItem("bookId", _id);
 }
@@ -34,4 +47,10 @@ function getBookId() {
   return localStorage.getItem("bookId");
 }
 
-export { getTransactions, storeBookId, getBookId, getTransactionById };
+export {
+  getTransactions,
+  storeBookId,
+  getBookId,
+  getTransactionById,
+  requestTransactionUpdate,
+};

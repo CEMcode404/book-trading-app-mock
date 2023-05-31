@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import BinaryPrompt from "./BinaryPrompt.jsx";
 
 const TransactionCard = ({
   data: {
@@ -12,18 +13,25 @@ const TransactionCard = ({
     currency,
     timeUnit,
     imgSrcs,
+    status,
   },
   onDelete,
+  onChangeStatus,
 }) => {
-  const dialogRef = useRef();
+  const imagesDialogRef = useRef();
+  const statusDialogRef = useRef();
 
   function handleOpenImagesDialog() {
-    const dialogElement = dialogRef.current;
+    const dialogElement = imagesDialogRef.current;
     dialogElement.showModal();
   }
 
+  function handleOpenStatusDialog() {
+    statusDialogRef?.current?.open();
+  }
+
   function handleCloseImagesDialog(e) {
-    const dialogElement = dialogRef.current;
+    const dialogElement = imagesDialogRef.current;
     const dialogDimensions = dialogElement.getBoundingClientRect();
     if (
       e.clientY < dialogDimensions.top ||
@@ -34,6 +42,11 @@ const TransactionCard = ({
       dialogElement.close();
     }
   }
+
+  const interpretStatus = (currentStatus) => {
+    if (currentStatus) return "PENDING";
+    return "AVAILABLE";
+  };
 
   return (
     <section className="transaction-card">
@@ -71,6 +84,10 @@ const TransactionCard = ({
         <span>{isbn}</span>
       </div>
       <div>
+        <label>Status:</label>
+        <span>{interpretStatus(status)}</span>
+      </div>
+      <div>
         <input
           type="button"
           onClick={handleOpenImagesDialog}
@@ -78,13 +95,28 @@ const TransactionCard = ({
           className="transaction-card__show-images-bttn"
         />
         <dialog
-          ref={dialogRef}
+          ref={imagesDialogRef}
           onClick={handleCloseImagesDialog}
           className="transaction-card__images-dialog"
         >
           {imgSrcs && imgSrcs.map((src) => <img src={src}></img>)}
           {!imgSrcs && <p>No image/s uploaded</p>}
         </dialog>
+      </div>
+      <div>
+        <input
+          type="button"
+          onClick={handleOpenStatusDialog}
+          value="Change Status"
+          className="transaction-card__change-status-bttn"
+        />
+        <BinaryPrompt
+          ref={statusDialogRef}
+          message={`Are you sure you want to change status?`}
+          yesBttnClass="bttn--slide-up--green"
+          noBttnClass="bttn--slide-up--gray"
+          yesBttnHookFunc={() => onChangeStatus(_id)}
+        />
       </div>
     </section>
   );

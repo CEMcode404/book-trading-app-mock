@@ -1,6 +1,6 @@
 import React from "react";
 
-const TransactionContacts = () => {
+const TransactionContacts = ({ openChat }) => {
   return (
     <div aria-label="Contact Owner" className="transaction-contact">
       <div className="transaction-contact__chat">
@@ -12,6 +12,7 @@ const TransactionContacts = () => {
           type="button"
           value="Chat Owner"
           className="transaction-contact__chat-bttn bttn--slide-up--gray"
+          onClick={openChat}
         />
       </div>
       <div className="transaction-contact__request">

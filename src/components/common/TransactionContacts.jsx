@@ -15,17 +15,6 @@ const TransactionContacts = ({ openChat }) => {
           onClick={openChat}
         />
       </div>
-      <div className="transaction-contact__request">
-        <hr className="transaction-contact__hr"></hr>
-        <p className="transaction-contact__p">
-          Request the owner contact details:
-        </p>
-        <input
-          type="button"
-          value="Request"
-          className="transaction-contact__request-bttn bttn--slide-up--green"
-        />
-      </div>
     </div>
   );
 };

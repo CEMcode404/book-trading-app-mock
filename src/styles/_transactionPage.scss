@@ -62,11 +62,11 @@
     margin: 0 auto;
 }
 
-.transaction-contact__chat, .transaction-contact__request {
+.transaction-contact__chat {
     width: 45%;
 }
 
-.transaction-contact__chat-bttn, .transaction-contact__request-bttn {
+.transaction-contact__chat-bttn {
     width: 100%;
     border: 0;
     border-radius: 5px;
@@ -192,7 +192,7 @@
         margin: 0 auto;
     }
 
-    .transaction-contact__chat, .transaction-contact__request {
+    .transaction-contact__chat {
         width: 90%;
         margin: 0 auto;
     }

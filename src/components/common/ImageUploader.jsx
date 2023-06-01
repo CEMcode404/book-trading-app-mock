@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState, useImperativeHandle } from "react";
 import uploadToCloudIcon from "../../assets/upload-to-cloud-icon.svg";
 
 const ImageUploader = forwardRef(function ImageUploader(
@@ -14,6 +14,8 @@ const ImageUploader = forwardRef(function ImageUploader(
     maxImages,
     maxByteSize,
     clearImagesHook,
+    closeDialog,
+    openDialog,
   },
   ref
 ) {
@@ -21,13 +23,13 @@ const ImageUploader = forwardRef(function ImageUploader(
   const [imageErrors, setErrors] = useState([]);
 
   function onClick() {
-    ref.current.close();
+    closeDialog();
 
     function focusOnExit() {
       removeEventListener("focus", focusOnExit);
 
       setTimeout(() => {
-        ref.current.showModal();
+        openDialog();
       }, 275);
     }
 
@@ -72,6 +74,36 @@ const ImageUploader = forwardRef(function ImageUploader(
     setImagesURL([]);
     setErrors([]);
   }
+
+  let base64Imgs = [];
+  function convertImgsToBase64(files, startingIndex, cb) {
+    let counter = startingIndex;
+    if (counter === files.length) return cb(base64Imgs);
+
+    const fileName = files[counter].name;
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      base64Imgs.push({ fileName, img: reader.result });
+      counter++;
+      convertImgsToBase64(files, counter, cb);
+    };
+
+    reader.readAsDataURL(files[counter]);
+  }
+
+  function getBase64Imgs(files, cb) {
+    convertImgsToBase64(files, 0, cb);
+  }
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        getBase64Imgs,
+      };
+    },
+    []
+  );
 
   return (
     <div className={"image-uploader " + className}>

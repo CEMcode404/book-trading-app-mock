@@ -39,6 +39,19 @@ function requestTransactionUpdate(_id, data, cb) {
     });
 }
 
+function addTransaction(data, cb) {
+  http
+    .post("/api/bookTransactions", data)
+    .then((transaction) => {
+      let err;
+      cb(transaction, err);
+    })
+    .catch((err) => {
+      let transaction;
+      cb(transaction, err);
+    });
+}
+
 function storeBookId(_id) {
   localStorage.setItem("bookId", _id);
 }
@@ -53,4 +66,5 @@ export {
   getBookId,
   getTransactionById,
   requestTransactionUpdate,
+  addTransaction,
 };

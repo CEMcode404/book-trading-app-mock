@@ -1,4 +1,9 @@
-import React, { forwardRef, useContext } from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -105,9 +110,11 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
   } = useForm({ resolver: yupResolver(schema) });
 
   const { user } = useContext(UserContext);
+  const dialogRef = useRef();
+  const imgUploaderRef = useRef();
 
   function handleClosePrompt(e) {
-    const dialogElement = ref.current;
+    const dialogElement = dialogRef.current;
     const dialogDimensions = dialogElement.getBoundingClientRect();
     if (isSubmitting) return;
     if (
@@ -131,12 +138,15 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     setValue("images", []);
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     const { firstName, lastName } = user;
     data.status = false;
     data.owner = `${firstName} ${lastName}`;
     console.log(data);
-    await onSubmitHookFunc(data);
+    imgUploaderRef.current.getBase64Imgs(data.images, (img) => {
+      data.images = img;
+      onSubmitHookFunc(data);
+    });
     reset({
       title: "",
       authors: "",
@@ -147,12 +157,26 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
       //don't reset this field until imageuploader and react-hook-form out of
       //sync issue is solved
     });
-    ref.current.close();
+    dialogRef.current.close();
   };
+
+  const handleOpenForm = () => {
+    dialogRef.current.showModal();
+  };
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        openForm: handleOpenForm,
+      };
+    },
+    []
+  );
 
   return (
     <dialog
-      ref={ref}
+      ref={dialogRef}
       onClick={handleClosePrompt}
       className="my-transaction__add-book-dialog"
     >
@@ -273,7 +297,9 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           <p className="my-transaction__p--error">{errors.isbn?.message}</p>
         </div>
         <ImageUploader
-          ref={ref}
+          openDialog={handleOpenForm}
+          closeDialog={() => dialogRef?.current?.close()}
+          ref={imgUploaderRef}
           disabled={isSubmitting}
           id={"my-transaction__img-uploader"}
           register={register}

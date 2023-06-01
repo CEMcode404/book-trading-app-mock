@@ -1,17 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import TransactionCard from "./common/TransactionCard.jsx";
 import Pagination from "./common/Pagination.jsx";
 import AddBookTransaction from "./AddBookTransaction.jsx";
 import {
   getTransactions,
   requestTransactionUpdate,
+  addTransaction,
 } from "../services/transactionsService.js";
+import { UserContext } from "./context/userContext.js";
 
 const MyTransaction = () => {
   const [transactions, setTransactions] = useState([]);
   const [currentPage, changeCurrentPageNo] = useState(1);
 
   const bookFormRef = useRef();
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getTransactions((res, err) => {
@@ -29,16 +32,14 @@ const MyTransaction = () => {
     changeCurrentPageNo(e);
   };
 
-  const handleShowBookFormModal = () => {
-    bookFormRef.current.showModal();
-  };
-
-  const [id, setId] = useState(0);
-  const handleAddBookTransaction = (book) => {
-    book._id = id + 1;
-    setId(book._id);
-    const data = [...transactions, book];
-    setTransactions(data);
+  const handleAddBookTransaction = (transaction) => {
+    const { _id } = user;
+    addTransaction({ transaction, _id }, (res, err) => {
+      if (res) {
+        console.log(res.data);
+        setTransactions([...transactions, res.data]);
+      }
+    });
   };
 
   const handleDeleteBookTrasaction = (_id) => {
@@ -68,7 +69,7 @@ const MyTransaction = () => {
       ))}
       <div
         className="my-transaction__add-bttn-wrapper"
-        onClick={handleShowBookFormModal}
+        onClick={bookFormRef?.current?.openForm}
       >
         <input type="button" value="+" className="my-transaction__add-bttn" />
       </div>

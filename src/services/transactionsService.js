@@ -65,6 +65,19 @@ function addTransaction(data, cb) {
     });
 }
 
+function deleteTransaction(_id, cb) {
+  http
+    .delete("/api/bookTransactions/" + _id)
+    .then((result) => {
+      let err;
+      cb(result, err);
+    })
+    .catch((err) => {
+      let result;
+      cb(result, err);
+    });
+}
+
 function storeBookId(_id) {
   localStorage.setItem("bookId", _id);
 }
@@ -81,4 +94,5 @@ export {
   requestTransactionUpdate,
   addTransaction,
   getUserTransactions,
+  deleteTransaction,
 };

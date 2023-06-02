@@ -3,10 +3,10 @@ import TransactionCard from "./common/TransactionCard.jsx";
 import Pagination from "./common/Pagination.jsx";
 import AddBookTransaction from "./AddBookTransaction.jsx";
 import {
-  getTransactions,
   requestTransactionUpdate,
   getUserTransactions,
   addTransaction,
+  deleteTransaction,
 } from "../services/transactionsService.js";
 import { UserContext } from "./context/userContext.js";
 
@@ -20,9 +20,7 @@ const MyTransaction = () => {
   useEffect(() => {
     const { _id } = user;
     getUserTransactions(_id, (res, err) => {
-      if (res) {
-        setTransactions(res.data);
-      }
+      if (res) setTransactions(res.data);
     });
   }, []);
 
@@ -37,17 +35,19 @@ const MyTransaction = () => {
   const handleAddBookTransaction = (transaction) => {
     const { _id } = user;
     addTransaction({ transaction, _id }, (res, err) => {
-      if (res) {
-        setTransactions([...transactions, res.data]);
-      }
+      if (res) setTransactions([...transactions, res.data]);
     });
   };
 
   const handleDeleteBookTrasaction = (_id) => {
-    //connect to server
     const originalBooks = [...transactions];
     const changeBooks = originalBooks.filter((book) => book._id !== _id);
     setTransactions(changeBooks);
+    deleteTransaction(_id, (res, err) => {
+      if (err) {
+        setTransactions(originalBooks);
+      }
+    });
   };
 
   const handleChangeStatus = (transactionId) => {}; //skipped this

@@ -95,7 +95,7 @@ const TransactionCard = ({
           message={`Are you sure you want to change status?`}
           yesBttnClass="bttn--slide-up--green"
           noBttnClass="bttn--slide-up--gray"
-          yesBttnHookFunc={() => onChangeStatus(_id)}
+          yesBttnHookFunc={(prompt) => onChangeStatus(_id, status, prompt)}
         />
       </div>
     </section>

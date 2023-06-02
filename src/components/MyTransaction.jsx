@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TransactionCard from "./common/TransactionCard.jsx";
 import Pagination from "./common/Pagination.jsx";
 import AddBookTransaction from "./AddBookTransaction.jsx";
@@ -8,18 +8,15 @@ import {
   addTransaction,
   deleteTransaction,
 } from "../services/transactionsService.js";
-import { UserContext } from "./context/userContext.js";
 
 const MyTransaction = () => {
   const [transactions, setTransactions] = useState([]);
   const [currentPage, changeCurrentPageNo] = useState(1);
 
   const bookFormRef = useRef();
-  const { user } = useContext(UserContext);
 
   useEffect(() => {
-    const { _id } = user;
-    getUserTransactions(_id, (res, err) => {
+    getUserTransactions((res, err) => {
       if (res) setTransactions(res.data);
     });
   }, []);
@@ -33,16 +30,15 @@ const MyTransaction = () => {
   };
 
   const handleAddBookTransaction = (transaction) => {
-    const { _id } = user;
-    addTransaction({ transaction, _id }, (res, err) => {
+    addTransaction({ transaction }, (res, err) => {
       if (res) setTransactions([...transactions, res.data]);
     });
   };
 
   const handleDeleteBookTrasaction = (_id) => {
     const originalBooks = [...transactions];
-    const changeBooks = originalBooks.filter((book) => book._id !== _id);
-    setTransactions(changeBooks);
+    const changedBooks = originalBooks.filter((book) => book._id !== _id);
+    setTransactions(changedBooks);
     deleteTransaction(_id, (res, err) => {
       if (err) {
         setTransactions(originalBooks);
@@ -50,7 +46,24 @@ const MyTransaction = () => {
     });
   };
 
-  const handleChangeStatus = (transactionId) => {}; //skipped this
+  const handleChangeStatus = (transactionId, status, prompt) => {
+    const originalBooks = transactions.map((transaction) =>
+      Object.assign({}, transaction)
+    );
+    const index = originalBooks.findIndex((book) => book._id === transactionId);
+    const modifiedCopy = originalBooks.map((transaction) =>
+      Object.assign({}, transaction)
+    );
+    modifiedCopy[index].status = !status;
+    setTransactions(modifiedCopy);
+    prompt.disableButtons(true);
+
+    requestTransactionUpdate(transactionId, { status: !status }, (res, err) => {
+      if (err) setTransactions(originalBooks);
+      prompt.closeBinaryPrompt();
+      prompt.disableButtons(false);
+    });
+  }; //skipped this
 
   const handleOpenAddTransactionForm = () => {
     bookFormRef?.current?.openForm();

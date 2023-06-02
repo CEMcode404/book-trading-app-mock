@@ -42,9 +42,9 @@ function logout() {
   removeToken();
 }
 
-function fetchUserData(userId, cb) {
+function fetchUserData(cb) {
   http
-    .get("/api/user/" + userId)
+    .get("/api/user")
     .then((result) => {
       cb(result);
     })
@@ -53,9 +53,9 @@ function fetchUserData(userId, cb) {
     });
 }
 
-function verifyUserIdentity(password, id, cb) {
+function verifyUserIdentity(password, cb) {
   http
-    .post("/api/auth/withID", { password, id })
+    .post("/api/auth/withID", { password })
     .then((result) => {
       let err;
       cb(result, err);

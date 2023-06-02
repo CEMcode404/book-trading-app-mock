@@ -12,7 +12,7 @@ const passwdSchema = yup
   .required();
 
 const PsswdPromptPopUp = forwardRef(function PasswdPromptPopUp(
-  { userId, updateFormState, className },
+  { updateFormState, className },
   ref
 ) {
   const {
@@ -25,7 +25,7 @@ const PsswdPromptPopUp = forwardRef(function PasswdPromptPopUp(
   } = useForm({ resolver: yupResolver(passwdSchema) });
 
   function onSubmit(data) {
-    verifyUserIdentity(data.password, userId, (result, err) => {
+    verifyUserIdentity(data.password, (result, err) => {
       if (err) {
         reset({ password: "" });
         setError("apiErrors", {

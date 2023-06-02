@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import EditableDisplayInput from "./common/EditableDisplayInput.jsx";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import PsswdPromptPopUp from "./PsswdPromptPopUp.jsx";
-import { UserContext } from "./context/userContext.js";
 import { changeUserInfo } from "../services/authService.js";
 import bookLoading from "../assets/bookLoading.gif";
 import PhoneInput from "react-phone-number-input/react-hook-form";
@@ -63,7 +62,6 @@ yup.addMethod(
 
 const MyDetails = ({ getProps }) => {
   const { userInfo, setUserInfo } = getProps("myDetails");
-  const currentUser = useContext(UserContext);
 
   const schema = yup
     .object()
@@ -245,7 +243,6 @@ const MyDetails = ({ getProps }) => {
         />
       </form>
       <PsswdPromptPopUp
-        userId={currentUser.user._id}
         updateFormState={updateFormState}
         className="my-details__passwd-prompt"
         ref={passwdPromptRef}

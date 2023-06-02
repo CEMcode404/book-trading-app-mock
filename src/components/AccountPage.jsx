@@ -1,13 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./common/Footer.jsx";
 import MyDetails from "./MyDetails.jsx";
 import MyTransaction from "./MyTransaction.jsx";
 import { fetchUserData } from "../services/userService.js";
-import { UserContext } from "./context/userContext.js";
 
 const AccounPage = () => {
-  const { user } = useContext(UserContext);
-
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -30,7 +27,7 @@ const AccounPage = () => {
   ];
 
   useEffect(() => {
-    fetchUserData(user._id, (result) => {
+    fetchUserData((result) => {
       setUserInfo(result.data);
     });
   }, []);

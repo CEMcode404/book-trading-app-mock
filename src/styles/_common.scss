@@ -197,6 +197,25 @@
     }
 }
 
+.image-viewer {
+    border: none;
+    border-radius: 5px;
+    box-shadow:  0 5px 15px gray;
+}
+
+.image-viewer__img-list {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    overflow-y: hidden;
+}
+
+.image-viewer__imgs {
+    margin: .5rem;
+    width: 500px;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 48em) { //767px
     .dropDownV2__title {
         @include variables.title();

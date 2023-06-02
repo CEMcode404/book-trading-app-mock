@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import BinaryPrompt from "./BinaryPrompt.jsx";
+import ImageViewer from "./ImageViewer.jsx";
 
 const TransactionCard = ({
   data: {
@@ -12,35 +13,21 @@ const TransactionCard = ({
     isbn,
     currency,
     timeUnit,
-    images: imgSrcs,
+    images,
     status,
   },
   onDelete,
   onChangeStatus,
 }) => {
-  const imagesDialogRef = useRef();
   const statusDialogRef = useRef();
-
-  function handleOpenImagesDialog() {
-    const dialogElement = imagesDialogRef.current;
-    dialogElement.showModal();
-  }
+  const imageViewerRef = useRef();
 
   function handleOpenStatusDialog() {
     statusDialogRef?.current?.open();
   }
 
-  function handleCloseImagesDialog(e) {
-    const dialogElement = imagesDialogRef.current;
-    const dialogDimensions = dialogElement.getBoundingClientRect();
-    if (
-      e.clientY < dialogDimensions.top ||
-      e.clientY > dialogDimensions.bottom ||
-      e.clientX < dialogDimensions.left ||
-      e.clientX > dialogDimensions.right
-    ) {
-      dialogElement.close();
-    }
+  function handleOpenImageViewer() {
+    imageViewerRef.current.open();
   }
 
   const interpretStatus = (currentStatus) => {
@@ -90,24 +77,11 @@ const TransactionCard = ({
       <div>
         <input
           type="button"
-          onClick={handleOpenImagesDialog}
+          onClick={handleOpenImageViewer}
           value="Show Image/s"
           className="transaction-card__show-images-bttn"
         />
-        <dialog
-          ref={imagesDialogRef}
-          onClick={handleCloseImagesDialog}
-          className="transaction-card__images-dialog"
-        >
-          {imgSrcs && (
-            <div className="transaction-card__image-list">
-              {imgSrcs.map((src) => (
-                <img className="transaction-card__images" src={src.img}></img>
-              ))}
-            </div>
-          )}
-          {!imgSrcs && <p>No image/s uploaded</p>}
-        </dialog>
+        <ImageViewer ref={imageViewerRef} imgSrcs={images} />
       </div>
       <div>
         <input

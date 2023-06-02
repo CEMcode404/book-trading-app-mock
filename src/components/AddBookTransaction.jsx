@@ -143,10 +143,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     data.status = false;
     data.owner = `${firstName} ${lastName}`;
     imgUploaderRef.current.getBase64Imgs((img) => {
-      console.log(img, "img");
-      console.log(data.images, "data images before");
       data.images = img;
-      console.log(data.images, "data images after");
       onSubmitHookFunc(data);
       reset();
       imgUploaderRef.current.clearImagesPreview();

@@ -13,6 +13,19 @@ function getTransactions(cb) {
     });
 }
 
+function getUserTransactions(userId, cb) {
+  http
+    .get("/api/bookTransactions/user/" + userId)
+    .then((transactions) => {
+      let err;
+      cb(transactions, err);
+    })
+    .catch((err) => {
+      let transactions;
+      cb(transactions, err);
+    });
+}
+
 function getTransactionById(_id, cb) {
   http
     .get("/api/bookTransactions/" + _id)
@@ -67,4 +80,5 @@ export {
   getTransactionById,
   requestTransactionUpdate,
   addTransaction,
+  getUserTransactions,
 };

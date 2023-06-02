@@ -5,6 +5,7 @@ import AddBookTransaction from "./AddBookTransaction.jsx";
 import {
   getTransactions,
   requestTransactionUpdate,
+  getUserTransactions,
   addTransaction,
 } from "../services/transactionsService.js";
 import { UserContext } from "./context/userContext.js";
@@ -17,7 +18,8 @@ const MyTransaction = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    getTransactions((res, err) => {
+    const { _id } = user;
+    getUserTransactions(_id, (res, err) => {
       if (res) {
         setTransactions(res.data);
       }
@@ -42,12 +44,17 @@ const MyTransaction = () => {
   };
 
   const handleDeleteBookTrasaction = (_id) => {
+    //connect to server
     const originalBooks = [...transactions];
     const changeBooks = originalBooks.filter((book) => book._id !== _id);
     setTransactions(changeBooks);
   };
 
   const handleChangeStatus = (transactionId) => {}; //skipped this
+
+  const handleOpenAddTransactionForm = () => {
+    bookFormRef?.current?.openForm();
+  };
 
   const pageShown = 7;
   const itemCount = transactions.length;
@@ -68,7 +75,7 @@ const MyTransaction = () => {
       ))}
       <div
         className="my-transaction__add-bttn-wrapper"
-        onClick={bookFormRef?.current?.openForm}
+        onClick={handleOpenAddTransactionForm}
       >
         <input type="button" value="+" className="my-transaction__add-bttn" />
       </div>

@@ -1,4 +1,9 @@
-import React, { forwardRef, useState, useImperativeHandle } from "react";
+import React, {
+  forwardRef,
+  useState,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import uploadToCloudIcon from "../../assets/upload-to-cloud-icon.svg";
 
 const ImageUploader = forwardRef(function ImageUploader(
@@ -17,10 +22,11 @@ const ImageUploader = forwardRef(function ImageUploader(
     closeDialog,
     openDialog,
   },
-  ref
+  externalRef
 ) {
   const [imagesURL, setImagesURL] = useState([]);
   const [imageErrors, setErrors] = useState([]);
+  const inputFileRef = useRef();
 
   function onClick() {
     closeDialog();
@@ -69,13 +75,18 @@ const ImageUploader = forwardRef(function ImageUploader(
     setErrors(errors);
   }
 
+  let base64Imgs = [];
+
   function clearImagesPreview() {
+    inputFileRef.current.files = null;
     if (clearImagesHook) clearImagesHook();
     setImagesURL([]);
     setErrors([]);
+    while (base64Imgs.length > 0) {
+      base64Imgs.pop();
+    }
   }
 
-  let base64Imgs = [];
   function convertImgsToBase64(files, startingIndex, cb) {
     let counter = startingIndex;
     if (counter === files.length) return cb(base64Imgs);
@@ -91,20 +102,22 @@ const ImageUploader = forwardRef(function ImageUploader(
     reader.readAsDataURL(files[counter]);
   }
 
-  function getBase64Imgs(files, cb) {
-    convertImgsToBase64(files, 0, cb);
+  function getBase64Imgs(cb) {
+    convertImgsToBase64(inputFileRef.current.files, 0, cb);
   }
 
   useImperativeHandle(
-    ref,
+    externalRef,
     () => {
       return {
         getBase64Imgs,
+        clearImagesPreview,
       };
     },
     []
   );
 
+  const { ref, ...rest } = register(name, { onChange: updatePreviewDisplay });
   return (
     <div className={"image-uploader " + className}>
       <p>{label}</p>
@@ -123,9 +136,12 @@ const ImageUploader = forwardRef(function ImageUploader(
           accept={accept}
           onClick={onClick}
           disabled={disabled}
-          {...register(name, {
-            onChange: updatePreviewDisplay,
-          })}
+          {...rest}
+          name={name}
+          ref={(e) => {
+            ref(e);
+            inputFileRef.current = e;
+          }}
         />
       </div>
       <div className="image-uploader__preview">

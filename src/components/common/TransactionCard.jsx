@@ -12,7 +12,7 @@ const TransactionCard = ({
     isbn,
     currency,
     timeUnit,
-    imgSrcs,
+    images: imgSrcs,
     status,
   },
   onDelete,
@@ -99,7 +99,13 @@ const TransactionCard = ({
           onClick={handleCloseImagesDialog}
           className="transaction-card__images-dialog"
         >
-          {imgSrcs && imgSrcs.map((src) => <img src={src}></img>)}
+          {imgSrcs && (
+            <div className="transaction-card__image-list">
+              {imgSrcs.map((src) => (
+                <img className="transaction-card__images" src={src.img}></img>
+              ))}
+            </div>
+          )}
           {!imgSrcs && <p>No image/s uploaded</p>}
         </dialog>
       </div>

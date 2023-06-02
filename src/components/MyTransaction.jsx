@@ -36,7 +36,6 @@ const MyTransaction = () => {
     const { _id } = user;
     addTransaction({ transaction, _id }, (res, err) => {
       if (res) {
-        console.log(res.data);
         setTransactions([...transactions, res.data]);
       }
     });

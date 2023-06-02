@@ -142,20 +142,14 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     const { firstName, lastName } = user;
     data.status = false;
     data.owner = `${firstName} ${lastName}`;
-    console.log(data);
-    imgUploaderRef.current.getBase64Imgs(data.images, (img) => {
+    imgUploaderRef.current.getBase64Imgs((img) => {
+      console.log(img, "img");
+      console.log(data.images, "data images before");
       data.images = img;
+      console.log(data.images, "data images after");
       onSubmitHookFunc(data);
-    });
-    reset({
-      title: "",
-      authors: "",
-      price: "",
-      useDuration: "",
-      isbn: "",
-      // images: [], //this should be called after the api call to not cause issue
-      //don't reset this field until imageuploader and react-hook-form out of
-      //sync issue is solved
+      reset();
+      imgUploaderRef.current.clearImagesPreview();
     });
     dialogRef.current.close();
   };

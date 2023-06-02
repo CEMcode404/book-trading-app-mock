@@ -150,6 +150,20 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
 .transaction-card__images-dialog {
     border: none;
     border-radius: 5px;
+    box-shadow:  0 5px 15px gray;
+}
+
+.transaction-card__image-list {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    overflow-y: hidden;
+}
+
+.transaction-card__images {
+    margin: .5rem;
+    width: 500px;
+    border-radius: 5px;
 }
 
 .transaction-card__show-images-bttn, .transaction-card__change-status-bttn {

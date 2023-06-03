@@ -35,14 +35,16 @@ const MyTransaction = () => {
     });
   };
 
-  const handleDeleteBookTrasaction = (_id) => {
+  const handleDeleteBookTrasaction = (_id, prompt) => {
     const originalBooks = [...transactions];
     const changedBooks = originalBooks.filter((book) => book._id !== _id);
-    setTransactions(changedBooks);
+    prompt.disableButtons(true);
+
     deleteTransaction(_id, (res, err) => {
-      if (err) {
-        setTransactions(originalBooks);
-      }
+      if (res) setTransactions(changedBooks);
+
+      prompt.closeBinaryPrompt();
+      prompt.disableButtons(false);
     });
   };
 
@@ -60,6 +62,7 @@ const MyTransaction = () => {
 
     requestTransactionUpdate(transactionId, { status: !status }, (res, err) => {
       if (err) setTransactions(originalBooks);
+
       prompt.closeBinaryPrompt();
       prompt.disableButtons(false);
     });

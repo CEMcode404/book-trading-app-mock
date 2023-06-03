@@ -21,6 +21,7 @@ const TransactionCard = ({
 }) => {
   const statusDialogRef = useRef();
   const imageViewerRef = useRef();
+  const deleletTransactionBttnRef = useRef();
 
   function handleOpenStatusDialog() {
     statusDialogRef?.current?.open();
@@ -28,6 +29,10 @@ const TransactionCard = ({
 
   function handleOpenImageViewer() {
     imageViewerRef.current.open();
+  }
+
+  function handleOpenDeletePrompt() {
+    deleletTransactionBttnRef.current.open();
   }
 
   const interpretStatus = (currentStatus) => {
@@ -41,7 +46,7 @@ const TransactionCard = ({
         value="+"
         type="button"
         className="transaction-card__delete-bttn"
-        onClick={() => onDelete(_id)}
+        onClick={handleOpenDeletePrompt}
       />
       <h3>{title}</h3>
       <div>
@@ -96,6 +101,15 @@ const TransactionCard = ({
           yesBttnClass="bttn--slide-up--green"
           noBttnClass="bttn--slide-up--gray"
           yesBttnHookFunc={(prompt) => onChangeStatus(_id, status, prompt)}
+        />
+      </div>
+      <div>
+        <BinaryPrompt
+          ref={deleletTransactionBttnRef}
+          message={"Are you sure you want to delete this transaction?"}
+          yesBttnClass="bttn--slide-up--green"
+          noBttnClass="bttn--slide-up-gray"
+          yesBttnHookFunc={(prompt) => onDelete(_id, prompt)}
         />
       </div>
     </section>

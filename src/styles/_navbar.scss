@@ -3,7 +3,6 @@
 .navbar {
     max-width: 2000px;
     min-width: 320px;
-    overflow: hidden;
     position: fixed;
     top: 0;
     @include variables.theme();
@@ -20,16 +19,69 @@
 .navbar__ul{
     list-style-type: none;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 auto 0 0;
     padding: 0; 
     overflow: hidden;
     height: 50px;
+    flex-grow: 1;
+}
+
+.navbar__ul-wrapper {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 .navbar__li {
+    white-space: nowrap;
     margin: 0 2%;
+}
+
+.navbar__search-bar {
+    margin-right: 1rem;
+}
+
+.navbar__search-result-list {
+    border-radius: 5px;
+    display: flex;
+    margin: .5rem;
+    align-items: center;
+    background-color: rgba(211, 211, 211, 0.202);
+}
+
+.navbar__search-result-list:hover {
+    cursor: pointer;
+    background-color: lightgray;
+
+    p {
+        color: black;
+    }
+}
+
+.navbar__search-result-img {
+    width: 35px;
+}
+
+.navbar__search-result-title {
+    text-align: center;
+    flex-grow: 1;
+    font-size: 1rem;
+    font-weight: 100;
+    color: gray;
+}
+
+.navbar__search-bar {
+    input:focus {
+        box-shadow: 0 0 5px green;
+        border: .5px solid green;
+    }
+
+    input {
+        padding: .3rem;
+    }
 }
 
 .navbar__NavLink {
@@ -59,26 +111,8 @@
     width: 50px;
 }
 
-.search-icon__svg {
-    width: 20px;
-}
-
-.search-icon {
-    margin-left: 1%;
-}
-
 .menu-icon {
     display: none;
-}
-
-.search-bar {
-    margin-left: auto;
-    margin-right: 0;
-}
-
-.search-bar__input {
-    border: none;
-    border-radius: 5px;
 }
 
 .navbar-overlay__side-bar {
@@ -92,7 +126,7 @@
         display: none;
     }
     
-    .logo, .menu-icon, .search-bar, .search-icon {
+    .logo, .menu-icon  {
         display: flex;
     }
 

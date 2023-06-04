@@ -220,6 +220,65 @@
     border-radius: 5px;
 }
 
+.search-bar__input-wrapper {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+}
+
+.search-bar__input {
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.search-bar__find-icon {
+    width: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.search-bar__find-icon:hover {
+    top: 1px;
+}
+
+.search-bar__suggestion-list {
+    margin-top: .5rem;
+    margin-top: .5rem;
+    max-height: 300px;
+    overflow-x: hidden;
+    box-shadow:  0 5px 15px gray;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    min-width: 200px;
+    padding: 1rem;
+
+    p {
+        margin: 0;
+    }
+}
+
+.search-bar__typing {
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow:  0 5px 15px gray;
+    border: none;
+    color: black;
+    z-index: 1;
+    min-width: 200px;
+    padding: 1rem;
+    p {
+        margin: 0;
+    }
+}
+
+
 @media screen and (max-width: 48em) { //767px
     .dropDownV2__title {
         @include variables.title();

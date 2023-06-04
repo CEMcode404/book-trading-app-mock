@@ -1,13 +1,15 @@
 import http from "./httpService";
 
-function searchBookWithName(bookName) {
+function searchBookWithName(bookName, cb) {
   http
     .get("/api/books/" + bookName)
-    .then((result) => {
-      console.log(result);
+    .then((searchResult) => {
+      let err;
+      cb(searchResult, err);
     })
     .catch((err) => {
-      console.log(err);
+      let searchResult;
+      cb(searchResult, err);
     });
 }
 

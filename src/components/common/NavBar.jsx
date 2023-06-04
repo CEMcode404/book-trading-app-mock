@@ -52,13 +52,6 @@ const NavBar = ({ showHeadBar = true }) => {
     setTimeOutHandle(timeOutId);
   };
 
-  // const handleSearchClick = (search) => {
-  //   if (!searchInput) return console.log("no input");
-  //   searchBookWithName(searchInput, (res, err) => {
-  //     if (res) search.showSuggestionList(res.data.items);
-  //   });
-  // };
-
   const { user, changeUser } = useContext(UserContext);
 
   return (
@@ -133,7 +126,6 @@ const NavBar = ({ showHeadBar = true }) => {
             <SearchBar
               placeholder="Find books..."
               className="navbar__search-bar"
-              // onClick={(e, search) => handleSearchClick(search)}
               onChange={(searchString) => handleSearchInput(searchString)}
               formatFunc={(test) =>
                 test.map((book) => (

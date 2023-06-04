@@ -54,7 +54,7 @@ const Parallax = ({ parallaxState }) => {
   const { user, changeUser } = useContext(UserContext);
 
   return (
-    <div className="test">
+    <div className="parallax__wrapper">
       {
         <NavBarOverlay
           slideStatus={slideStatus}

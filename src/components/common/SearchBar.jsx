@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import findIcon from "../../assets/find_icon.svg";
 
 const SearchBar = ({
@@ -12,11 +12,13 @@ const SearchBar = ({
   const [inputValue, changeInputValue] = useState("");
   const [isListHidden, setListHidden] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
+  const inputElementRef = useRef();
 
   function showSuggestionList(data) {
     if (Array.isArray(data) && data.length > 0) {
       setSearchResultList(data);
-      setListHidden(false);
+      if (document.activeElement?.id === inputElementRef.current?.id)
+        setListHidden(false);
     }
   }
 
@@ -47,6 +49,7 @@ const SearchBar = ({
     <div className={"search-bar " + className}>
       <div className={"search-bar__input-wrapper"}>
         <input
+          ref={inputElementRef}
           type="text"
           className="search-bar__input"
           placeholder={placeholder}
@@ -54,6 +57,7 @@ const SearchBar = ({
           value={inputValue}
           onFocus={() => setListHidden(false)}
           onBlur={handleOnBlur}
+          id="#search-bar-id"
         ></input>
         <img
           onClick={handleOnClick}
@@ -65,7 +69,7 @@ const SearchBar = ({
       </div>
       {isTyping && (
         <div className="search-bar__typing">
-          <p>typing...</p>
+          <p>is typing...</p>
         </div>
       )}
       <div

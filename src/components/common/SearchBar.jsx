@@ -29,6 +29,7 @@ const SearchBar = ({
 
   function handleOnBlur() {
     setTimeout(() => {
+      setIsTyping(false);
       setListHidden(true);
     }, 100);
   }
@@ -69,7 +70,7 @@ const SearchBar = ({
       </div>
       {isTyping && (
         <div className="search-bar__typing">
-          <p>is typing...</p>
+          <p>typing...</p>
         </div>
       )}
       <div

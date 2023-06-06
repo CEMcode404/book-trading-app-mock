@@ -7,11 +7,14 @@ const ShowMoreDropDown = ({
   dynamicContent = null,
 }) => {
   const contentsContainerRef = useRef();
+  const contentsRef = useRef();
   const [isHidden, setHidden] = useState(true);
   const [isTimeOut, setIsTimeOut] = useState(false);
+  const [bttnValue, setBttnValue] = useState("");
 
   function resizeHandler() {
     const contentsContainerElement = contentsContainerRef.current;
+    setBttnValue(determineBttnValue());
 
     if (!isHidden) {
       contentsContainerElement.style.height = "auto";
@@ -19,6 +22,7 @@ const ShowMoreDropDown = ({
   }
 
   useEffect(() => {
+    setBttnValue(determineBttnValue());
     const contentsContainerElement = contentsContainerRef.current;
 
     if (!isHidden) {
@@ -27,10 +31,23 @@ const ShowMoreDropDown = ({
   }, [dynamicContent]);
 
   useEffect(() => {
+    setBttnValue(determineBttnValue());
     window.addEventListener("resize", resizeHandler);
 
     return () => window.removeEventListener("resize", resizeHandler);
   }, [isHidden]);
+
+  function determineBttnValue() {
+    const scrollHeight = contentsContainerRef?.current?.scrollHeight;
+    const initHeight = parseInt(height.replace("px", ""));
+    if (isHidden) {
+      if (scrollHeight <= initHeight) return "";
+      return "show more...";
+    }
+
+    if (scrollHeight <= initHeight) return "";
+    return "show less...";
+  }
 
   return (
     <div className="show-more-drop-down">
@@ -39,7 +56,7 @@ const ShowMoreDropDown = ({
         style={{ height, transition }}
         ref={contentsContainerRef}
       >
-        {children}
+        <div ref={contentsRef}>{children}</div>
       </div>
       <div className="show-more-drop-down__bttn-wrapper">
         <span
@@ -65,7 +82,7 @@ const ShowMoreDropDown = ({
             }
           }}
         >
-          show more...
+          {bttnValue}
         </span>
       </div>
     </div>

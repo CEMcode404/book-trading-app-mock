@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useContext } from "react";
 import { logout } from "../../services/userService.js";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import NavBarOverlay from "./NavBarOverlay.jsx";
 
 import burgerMenu from "../../assets/menu_icon.svg";
@@ -14,6 +14,8 @@ const NavBar = ({ showHeadBar = true }) => {
   if (!showHeadBar) {
     return null;
   }
+
+  const navigate = useNavigate();
 
   const [slideStatus, setSlide] = useState("");
   const open_closeSidebar = () => {
@@ -131,7 +133,11 @@ const NavBar = ({ showHeadBar = true }) => {
                 test.map((book) => (
                   <div
                     className="navbar__search-result-list"
-                    onClick={() => alert("yeah")}
+                    onClick={() =>
+                      navigate("/search-results", {
+                        state: book.volumeInfo,
+                      })
+                    }
                   >
                     <img
                       className="navbar__search-result-img"

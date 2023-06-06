@@ -12,6 +12,7 @@ import ReviewsAndTestimonials from "./ReviewAndTestimonialsPage.jsx";
 import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import { getCurrentUser } from "../services/tokenService.js";
 import { UserContext } from "./context/userContext.js";
+import SearchResults from "./SearchResults.jsx";
 
 const App = () => {
   const [user, changeUser] = useState(getCurrentUser());
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/policies" element={<PolicyPage />} />
           <Route path="/reviews" element={<ReviewsAndTestimonials />} />
+          <Route path="/search-results" element={<SearchResults />} />
           <Route
             path="/transaction"
             element={<ProtectedRoute component={TransactionPage} />}

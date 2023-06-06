@@ -91,6 +91,28 @@
     position: relative;
 }
 
+.show-more-drop-down__contents {
+    overflow: hidden;
+}
+
+.show-more-drop-down__bttn-wrapper {
+    text-align: center;
+}
+.show-more-drop-down__bttn-wrapper::before {
+    content: '';
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+    display: block;
+    height: 10px;
+}
+
+.show-more-drop-down__bttn {
+    color: gray;
+}
+.show-more-drop-down__bttn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .pagination {
     overflow: hidden;
 

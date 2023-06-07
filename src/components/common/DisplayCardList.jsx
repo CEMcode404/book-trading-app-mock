@@ -1,22 +1,22 @@
 import React from "react";
-import BookCard from "./BookCard.jsx";
+import DisplayCard from "./DisplayCard.jsx";
 
-const BookCardList = ({ title, data }) => {
+const DisplayCardList = ({ title, data }) => {
   return (
     <table>
       <thead>
         <tr>
           <th>
-            <h2 className="book-card-list__header">{title}</h2>
+            <h2 className="display-card-list__header">{title}</h2>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>
-            <div className="book-card-list">
+            <div className="display-card-list">
               {data.map((bookData) => (
-                <BookCard
+                <DisplayCard
                   imgSrc={bookData?.imgSrc}
                   title={bookData?.title}
                   authors={bookData?.authors}
@@ -31,4 +31,4 @@ const BookCardList = ({ title, data }) => {
   );
 };
 
-export default BookCardList;
+export default DisplayCardList;

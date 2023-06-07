@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import BookCardList from "./common/BookCardList.jsx";
+import DisplayCardList from "./common/DisplayCardList.jsx";
 import Footer from "./common/Footer.jsx";
 import Parallax from "./common/Parallax.jsx";
 import { getTransactions } from "../services/transactionsService.js";
@@ -31,8 +31,8 @@ const HomePage = () => {
           <h1>Book, we got it!</h1>
         </header>
         <main>
-          <BookCardList title={"TRENDING RIGHT NOW..."} data={booksData} />
-          <BookCardList title={"NEW UPLOADS..."} data={booksData} />
+          <DisplayCardList title={"TRENDING RIGHT NOW..."} data={booksData} />
+          <DisplayCardList title={"NEW UPLOADS..."} data={booksData} />
         </main>
         <div className="diagonal-separator"></div>
         <Footer />

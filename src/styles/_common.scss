@@ -300,6 +300,64 @@
     }
 }
 
+.list-slider__contents-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-y: hidden;
+    width: 100%;
+    flex-wrap: nowrap;
+    position: relative;
+
+    .slider-item {
+        flex-shrink: 0;
+    }
+
+    .left {
+        position: sticky;
+        left: 2rem;
+    }
+    
+    .right {
+        position: sticky;
+        right: 2rem;
+    }
+    
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.arrow:hover {
+    cursor: pointer;
+    border-width: 0 6px 6px 0;
+    padding: 6px;
+}
+  
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+  
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+  
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+  
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
 @media screen and (max-width: 48em) { //767px
     .dropDownV2__title {
         @include variables.title();

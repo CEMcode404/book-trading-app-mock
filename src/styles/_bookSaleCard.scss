@@ -1,0 +1,22 @@
+.book-sale-card {
+    width: 200px;
+    display: inline-block;
+    padding: 1rem;
+    background-color: white;
+}
+
+.book-sale-card__img-wrapper {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 1rem;
+    width: 100%;
+    height: 200px;
+}
+
+.book-sale-card__info {
+    height: 100px;
+}
+
+.book-sale-card__img-info-wrapper {
+    border: 1px solid lightgray;
+}

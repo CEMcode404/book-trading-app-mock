@@ -1,7 +1,27 @@
+.search-results {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-results__footer {
+    margin-bottom: auto;
+    flex-shrink: 0;
+}
+
+.search-results__ds {
+    position: relative;
+    z-index: -1;
+}
+
+.search-results__main {
+    flex-grow: 1;
+    min-height: 750px;
+}
+
 .search-results__book-info-bar {
-    height: 300px;
+    box-sizing: border-box;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.168);
     display: flex;
 }
 
@@ -34,4 +54,50 @@
 
 .search-results__field-col2 {
     margin: 0.5rem;
+}
+
+.search-results__no-data {
+    border-radius: 5px;
+    background-color: white;
+    box-shadow:  0 1px 15px gray inset;
+    overflow: hidden;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        color: gray;
+    }
+}
+
+
+.search-results__data {
+    box-sizing: border-box;
+    background-color: rgba(206, 206, 206, 0.292);
+    margin-top: 1rem;
+    border-top: 1px solid gray;
+    padding: 1rem;
+}
+
+.search-results__book-list {
+    margin: 1rem;
+}
+
+@media only screen and (max-width: 58em){//940px
+    .search-results__book-info-bar {
+        padding: 1rem;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-results__book-details {
+        box-shadow:  none;
+        border-radius: none;
+        width: 100%;
+        margin: 0;
+    }
 }

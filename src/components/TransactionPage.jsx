@@ -3,10 +3,7 @@ import { useLocation } from "react-router-dom";
 import PicViewer from "./common/PicViewer.jsx";
 import TransactionContacts from "./common/TransactionContacts.jsx";
 import Footer from "./common/Footer.jsx";
-import {
-  getBookId,
-  getTransactionById,
-} from "../services/transactionsService.js";
+import { getTransactionById } from "../services/transactionsService.js";
 import ChatBox from "./common/ChatBox.jsx";
 
 const TransactionPage = () => {
@@ -15,7 +12,7 @@ const TransactionPage = () => {
   const { state: id } = useLocation();
 
   useEffect(() => {
-    const bookId = id || getBookId();
+    const bookId = id;
     getTransactionById(bookId, (res, err) => {
       if (res) {
         setTransaction({ ...res.data });

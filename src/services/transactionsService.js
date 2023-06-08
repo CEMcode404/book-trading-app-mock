@@ -78,18 +78,8 @@ function deleteTransaction(_id, cb) {
     });
 }
 
-function storeBookId(_id) {
-  localStorage.setItem("bookId", _id);
-}
-
-function getBookId() {
-  return localStorage.getItem("bookId");
-}
-
 export {
   getTransactions,
-  storeBookId,
-  getBookId,
   getTransactionById,
   requestTransactionUpdate,
   addTransaction,

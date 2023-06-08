@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import welcomeSign from "../../assets/Foreground-welcome.svg";
 import books from "../../assets/Foreground-books.svg";
 import background from "../../assets/Background.svg";
@@ -14,6 +14,7 @@ import SearchBar from "./SearchBar.jsx";
 import { searchBookWithName } from "../../services/searchService.js";
 
 const Parallax = ({ parallaxState }) => {
+  const navigate = useNavigate();
   const [slideStatus, setSlide] = useState("");
   const open_closeSidebar = () => {
     switch (slideStatus) {
@@ -107,11 +108,15 @@ const Parallax = ({ parallaxState }) => {
           placeholder="Find books..."
           className="parallax__search-bar"
           onChange={(searchString) => handleSearchInput(searchString)}
-          formatFunc={(test) =>
-            test.map((book) => (
+          formatFunc={(searchResult) =>
+            searchResult.map((book) => (
               <div
                 className="navbar__search-result-list"
-                onClick={() => alert("yeah")}
+                onClick={() =>
+                  navigate("/search-results", {
+                    state: book.volumeInfo,
+                  })
+                }
               >
                 <img
                   className="navbar__search-result-img"

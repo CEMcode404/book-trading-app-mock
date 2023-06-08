@@ -1,20 +1,18 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import bgImage from "../../assets/book-no-image.svg";
-import { storeBookId } from "../../services/transactionsService.js";
 
-const DisplayCard = ({ imgSrc, title, authors, _id, bcClassName = "" }) => {
-  const navigate = useNavigate();
-
-  function gotoDetails() {
-    storeBookId(_id);
-    navigate("/transaction");
-  }
-
+const DisplayCard = ({
+  imgSrc,
+  title,
+  authors,
+  _id,
+  bcClassName = "",
+  onClick,
+}) => {
   return (
     <div
       className={"display-card " + bcClassName}
-      onClick={gotoDetails}
+      onClick={onClick}
       title={`${title} by ${authors}`}
       style={{ backgroundImage: `url(${imgSrc || bgImage})` }}
     >

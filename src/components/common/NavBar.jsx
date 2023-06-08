@@ -129,8 +129,8 @@ const NavBar = ({ showHeadBar = true }) => {
               placeholder="Find books..."
               className="navbar__search-bar"
               onChange={(searchString) => handleSearchInput(searchString)}
-              formatFunc={(test) =>
-                test.map((book) => (
+              formatFunc={(searchResult) =>
+                searchResult.map((book) => (
                   <div
                     className="navbar__search-result-list"
                     onClick={() =>

@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import DisplayCardList from "./common/DisplayCardList.jsx";
+import { useNavigate } from "react-router-dom";
 import Footer from "./common/Footer.jsx";
 import Parallax from "./common/Parallax.jsx";
 import { getTransactions } from "../services/transactionsService.js";
+import ListSlider from "./common/ListSlider.jsx";
+import DisplayCard from "./common/DisplayCard.jsx";
 
 const HomePage = () => {
   const scrollRef = useRef(null);
@@ -12,10 +14,12 @@ const HomePage = () => {
   useEffect(() => {
     getTransactions((res, err) => {
       if (res) {
-        setBooksData(res.data.slice(0, 6));
+        setBooksData(res.data);
       }
     });
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -31,8 +35,40 @@ const HomePage = () => {
           <h1>Book, we got it!</h1>
         </header>
         <main>
-          <DisplayCardList title={"TRENDING RIGHT NOW..."} data={booksData} />
-          <DisplayCardList title={"NEW UPLOADS..."} data={booksData} />
+          <div className="home-page__card-list">
+            <h2>TRENDING RIGHT NOW...</h2>
+            <ListSlider>
+              {booksData.map((bookData) => (
+                <div className="home-page__display-card list-slider__item">
+                  <DisplayCard
+                    imgSrc={bookData?.imgSrc}
+                    title={bookData?.title}
+                    authors={bookData?.authors}
+                    _id={bookData?._id}
+                    onClick={() => {
+                      navigate("/transaction", { state: bookData._id });
+                    }}
+                  />
+                </div>
+              ))}
+            </ListSlider>
+            <h2>NEW UPLOADS...</h2>
+            <ListSlider>
+              {booksData.map((bookData) => (
+                <div className="home-page__display-card list-slider__item">
+                  <DisplayCard
+                    imgSrc={bookData?.imgSrc}
+                    title={bookData?.title}
+                    authors={bookData?.authors}
+                    _id={bookData?._id}
+                    onClick={() => {
+                      navigate("/transaction", { state: bookData._id });
+                    }}
+                  />
+                </div>
+              ))}
+            </ListSlider>
+          </div>
         </main>
         <div className="diagonal-separator"></div>
         <Footer />

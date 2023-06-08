@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import PicViewer from "./common/PicViewer.jsx";
 import TransactionContacts from "./common/TransactionContacts.jsx";
 import Footer from "./common/Footer.jsx";
@@ -10,8 +10,10 @@ const TransactionPage = () => {
   const [transaction, setTransaction] = useState({});
   const chatboxRef = useRef();
   const { state: id } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!id) return navigate("/");
     const bookId = id;
     getTransactionById(bookId, (res, err) => {
       if (res) {

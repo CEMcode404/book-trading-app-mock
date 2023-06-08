@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import defaultPhoto from "../assets/book-no-image.svg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ShowMoreDropDown from "./common/ShowMoreDropDown.jsx";
 import Footer from "./common/Footer.jsx";
 import { getTransactions } from "../services/transactionsService.js";
@@ -9,7 +9,9 @@ import ListSlider from "./common/ListSlider.jsx";
 
 const SearchResults = () => {
   const { state } = useLocation();
-  const [books, setBooks] = useState([]);
+  const [searchBooks, setSearchBooks] = useState([]);
+  const navigate = useNavigate();
+  const [recommendedBooks, setRecommendedBooks] = useState([]);
 
   let bookInfo = state;
   if (!bookInfo) {
@@ -30,9 +32,13 @@ const SearchResults = () => {
 
   useEffect(() => {
     getTransactions((res, err) => {
-      if (res) setBooks(res.data);
+      if (res) setRecommendedBooks(res.data);
     });
   }, []);
+
+  function handleCardsOnClick(_id) {
+    navigate("/transaction", { state: _id });
+  }
 
   return (
     <div className="search-results">
@@ -133,41 +139,47 @@ const SearchResults = () => {
                 )}
               </ShowMoreDropDown>
             )}
-            {books?.length < 1 && (
-              <div className="search-results__no-data">
-                <p>No book searches</p>
-              </div>
-            )}
-            {books?.length > 0 && (
-              <div className="search-results__data">
-                <div className="search-results__book-list">
+            <div className="search-results__data">
+              <p>Results for {title}</p>
+              {searchBooks?.length < 1 && (
+                <div className="search-results__no-data">
+                  <p>Book not found</p>
+                </div>
+              )}
+              <div className="search-results__book-list">
+                {searchBooks?.length > 0 && (
                   <ListSlider>
-                    {books.map((book) => (
+                    {searchBooks.map((book) => (
                       <div className="">
                         <BookSaleCard
                           title={book.title}
                           currency={book.currency}
                           price={book.price}
+                          onClick={() => handleCardsOnClick(book._id)}
                         />
                       </div>
                     ))}
                   </ListSlider>
-                </div>
-                <div className="search-results__book-list">
+                )}
+              </div>
+              <p>Recommended</p>
+              <div className="search-results__book-list">
+                {recommendedBooks?.length > 0 && (
                   <ListSlider>
-                    {books.map((book) => (
+                    {recommendedBooks.map((book) => (
                       <div className="">
                         <BookSaleCard
                           title={book.title}
                           currency={book.currency}
                           price={book.price}
+                          onClick={() => handleCardsOnClick(book._id)}
                         />
                       </div>
                     ))}
                   </ListSlider>
-                </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </main>

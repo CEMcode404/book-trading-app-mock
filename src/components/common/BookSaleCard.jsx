@@ -1,9 +1,9 @@
 import React from "react";
 import defaultPhoto from "../../assets/book-no-image.svg";
 
-const BookSaleCard = ({ imgSrc = "", title, price, currency }) => {
+const BookSaleCard = ({ imgSrc = "", title, price, currency, onClick }) => {
   return (
-    <div className="book-sale-card">
+    <div className="book-sale-card" onClick={onClick}>
       <div className="book-sale-card__img-info-wrapper">
         <div className="book-sale-card__img-wrapper">
           <img

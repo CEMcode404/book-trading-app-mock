@@ -157,7 +157,7 @@ const ImageUploader = forwardRef(function ImageUploader(
           <p>{error}</p>
         ))}
       </div>
-      <div>
+      <div className="image-uploader__clear-bttn-wrapper">
         <input
           type="button"
           value="Clear Images"

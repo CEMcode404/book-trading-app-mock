@@ -175,6 +175,7 @@
     display: flex;
     overflow-y: hidden;
     justify-content: center;
+    margin: 1rem;
 
     img {
         border-radius: 5px;
@@ -186,6 +187,7 @@
 
 .image-uploader__errors {
     overflow-x: hidden;
+    margin: 1rem;
 }
 
 .image-uploader__clear-bttn {
@@ -194,6 +196,10 @@
     outline: none;
     width: 100%;
     cursor: pointer;
+}
+
+.image-uploader__clear-bttn-wrapper {
+    margin: 1rem;
 }
 
 .image-uploader__clear-bttn:active {

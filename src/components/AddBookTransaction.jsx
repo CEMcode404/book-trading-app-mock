@@ -11,6 +11,7 @@ import bookLoading from "../assets/bookLoading.gif";
 import ImageUploader from "./common/ImageUploader.jsx";
 import getISBNrules from "../utility/getISBNrules.js";
 import { UserContext } from "./context/userContext";
+import IsbnInput from "./common/IsbnInput.jsx";
 
 yup.addMethod(
   yup.string,
@@ -87,7 +88,7 @@ const schema = yup
       .integer()
       .required()
       .label("Use Duration"),
-    isbn: yup.string().isValidISBN().label("ISBN"),
+    isbn: yup.string().isValidISBN().required().label("ISBN"),
     images: yup
       .mixed()
       .areImagesValid({ required: true })
@@ -172,7 +173,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
       className="my-transaction__add-book-dialog"
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="my-transaction__fied-wrapper">
+        <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__title-id"
@@ -188,7 +189,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           />
           <p className="my-transaction__p--error">{errors.title?.message}</p>
         </div>
-        <div className="my-transaction__fied-wrapper">
+        <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__author-id"
@@ -204,7 +205,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           />
           <p className="my-transaction__p--error">{errors.authors?.message}</p>
         </div>
-        <div className="my-transaction__fied-wrapper">
+        <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__price-id"
@@ -228,7 +229,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           />
           <p className="my-transaction__p--error">{errors.price?.message}</p>
         </div>
-        <div className="my-transaction__fied-wrapper">
+        <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__book-condition"
@@ -244,7 +245,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             <option>New</option>
           </select>
         </div>
-        <div className="my-transaction__fied-wrapper">
+        <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__use-duration-id"
@@ -271,37 +272,41 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             {errors.useDuration?.message}
           </p>
         </div>
-        <div className="my-transaction__fied-wrapper">
+        <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__isbn-id"
           >
-            ISBN(optional):
+            ISBN:
           </label>
-          <input
-            type="text"
-            id="my-transaction__isbn-id"
-            {...register("isbn")}
-            placeholder="9780877799306"
-            disabled={isSubmitting}
-          />
+          <div className="my-transaction__isbn-input-wrapper">
+            <IsbnInput
+              disabled={isSubmitting}
+              register={register}
+              setValue={setValue}
+              clearErrors={clearErrors}
+              id={"my-transaction__isbn-id"}
+            />
+          </div>
           <p className="my-transaction__p--error">{errors.isbn?.message}</p>
         </div>
-        <ImageUploader
-          openDialog={handleOpenForm}
-          closeDialog={() => dialogRef?.current?.close()}
-          ref={imgUploaderRef}
-          disabled={isSubmitting}
-          id={"my-transaction__img-uploader"}
-          register={register}
-          name="images"
-          maxImages={2}
-          maxByteSize={5000000}
-          clearImagesHook={handleClearImagesHook}
-        />
-        <p className="my-transaction__p--error--img">
-          {errors.images?.message}
-        </p>
+        <div className="my-transaction__field-wrapper">
+          <ImageUploader
+            openDialog={handleOpenForm}
+            closeDialog={() => dialogRef?.current?.close()}
+            ref={imgUploaderRef}
+            disabled={isSubmitting}
+            id={"my-transaction__img-uploader"}
+            register={register}
+            name="images"
+            maxImages={2}
+            maxByteSize={5000000}
+            clearImagesHook={handleClearImagesHook}
+          />
+          <p className="my-transaction__p--error--img">
+            {errors.images?.message}
+          </p>
+        </div>
 
         <img
           className={
@@ -312,18 +317,21 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           src={bookLoading}
           alt="loading..."
         />
-        <input
-          type="submit"
-          className="my-transaction__submit-bttn bttn--slide-up--green"
-          disabled={isSubmitting}
-        />
-        <input
-          type="button"
-          className="my-transaction__cancel-bttn bttn--slide-up--gray"
-          disabled={isSubmitting}
-          value="Cancel"
-          onClick={handleClosePrompt}
-        />
+
+        <div className="my-transaction__submit-and-cancel-bttn-wrappers">
+          <input
+            type="submit"
+            className="my-transaction__submit-bttn bttn--slide-up--green"
+            disabled={isSubmitting}
+          />
+          <input
+            type="button"
+            className="my-transaction__cancel-bttn bttn--slide-up--gray"
+            disabled={isSubmitting}
+            value="Cancel"
+            onClick={handleClosePrompt}
+          />
+        </div>
       </form>
     </dialog>
   );

@@ -198,9 +198,8 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     border: 1px solid white;
     box-shadow:  0 5px 15px gray;
     border-radius: 5px;
-    text-align: center;
     
-    div {
+    .my-transaction__field-wrapper {
         margin: 1rem;
     }
     
@@ -223,6 +222,7 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
 }
 
 .my-transaction__p--error--img {
+    text-align: center;
     margin: 0;
     color: red;
     margin-bottom: .5rem;
@@ -242,6 +242,10 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     cursor: pointer;
 }
 
+.my-transaction__submit-and-cancel-bttn-wrappers {
+    text-align: center;
+}
+
 .my-transaction__loading-gif {
     width: 50px;
     margin: 1rem auto;
@@ -250,6 +254,11 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
 
 .my-transaction__loading-gif--hide {
     display: none;
+}
+
+.my-transaction__isbn-input-wrapper {
+    display: flex;
+    justify-content: flex-end;
 }
 
 @media only screen and (max-width: 48em) { //767px
@@ -318,7 +327,7 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
         padding-left: 0;
     }
 
-    .my-transaction__fied-wrapper {
+    .my-transaction__field-wrapper {
         text-align: left;
     }
 

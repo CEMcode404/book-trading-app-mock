@@ -81,6 +81,9 @@
 }
 
 .search-results__book-list {
+    .arrow {
+        z-index: 1;
+    }
     margin: 1rem;
 }
 

@@ -169,6 +169,7 @@ const SearchResults = () => {
                     {recommendedBooks.map((book) => (
                       <div className="">
                         <BookSaleCard
+                          imgSrc={book?.images && book?.images[0]?.img}
                           title={book.title}
                           currency={book.currency}
                           price={book.price}

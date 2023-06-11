@@ -48,6 +48,7 @@
     cursor: pointer;
     z-index: 0;
     transition: color 250ms ease-in-out;
+    background-size: cover;
 }
 
 .display-card:hover {
@@ -56,16 +57,17 @@
 
 .display-card__title {
     display: inline-block;
-    color: gray;
+    color: white;
     white-space: nowrap;
 }
 
 .display-card__title-wrapper {
     position: absolute;
-    width: 90%;
-    bottom: 1rem;
+    width: 100%;
+    bottom: 0.5rem;
+    left: 0;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.199);
+    background-color: rgba(0, 0, 0, 0.745);
 }
 
 .display-card__p {

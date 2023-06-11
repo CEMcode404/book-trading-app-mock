@@ -9,16 +9,19 @@ import DisplayCard from "./common/DisplayCard.jsx";
 const HomePage = () => {
   const scrollRef = useRef(null);
   const [parallaxState, setParallaxState] = useState(0);
-  const [booksData, setBooksData] = useState([]);
+  const [trendingBooks, setTrendingBooksData] = useState([]);
+  const [newUploads, setNewUploads] = useState([]);
 
   useEffect(() => {
     getTransactions((res, err) => {
       if (res) {
-        setBooksData(res.data);
+        const trending = res.data.slice(0, 6);
+        const newlyUploaded = res.data.slice(6);
+        setTrendingBooksData(trending);
+        setNewUploads(newlyUploaded);
       }
     });
   }, []);
-
   const navigate = useNavigate();
 
   return (
@@ -38,10 +41,10 @@ const HomePage = () => {
           <div className="home-page__card-list">
             <h2>TRENDING RIGHT NOW...</h2>
             <ListSlider>
-              {booksData.map((bookData) => (
+              {trendingBooks.map((bookData) => (
                 <div className="home-page__display-card list-slider__item">
                   <DisplayCard
-                    imgSrc={bookData?.imgSrc}
+                    imgSrc={bookData?.images && bookData?.images[0]?.img}
                     title={bookData?.title}
                     authors={bookData?.authors}
                     _id={bookData?._id}
@@ -54,10 +57,10 @@ const HomePage = () => {
             </ListSlider>
             <h2>NEW UPLOADS...</h2>
             <ListSlider>
-              {booksData.map((bookData) => (
+              {newUploads.map((bookData) => (
                 <div className="home-page__display-card list-slider__item">
                   <DisplayCard
-                    imgSrc={bookData?.imgSrc}
+                    imgSrc={bookData?.images && bookData?.images[0]?.img}
                     title={bookData?.title}
                     authors={bookData?.authors}
                     _id={bookData?._id}

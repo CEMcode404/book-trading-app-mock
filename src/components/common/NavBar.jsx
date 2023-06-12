@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, Fragment, useContext, useRef } from "react";
 import { logout } from "../../services/userService.js";
 import { NavLink, useNavigate } from "react-router-dom";
 import NavBarOverlay from "./NavBarOverlay.jsx";
@@ -15,23 +15,8 @@ const NavBar = ({ showHeadBar = true }) => {
     return null;
   }
 
+  const sideBarRef = useRef();
   const navigate = useNavigate();
-
-  const [slideStatus, setSlide] = useState("");
-  const open_closeSidebar = () => {
-    switch (slideStatus) {
-      case "":
-        setSlide("slideIn");
-        break;
-      case "slideIn":
-        setSlide("slideOut");
-        break;
-      case "slideOut":
-        setSlide("slideIn");
-        break;
-      default:
-    }
-  };
 
   const [timeOutHandle, setTimeOutHandle] = useState();
 
@@ -60,15 +45,13 @@ const NavBar = ({ showHeadBar = true }) => {
     <Fragment>
       <div className="navPlaceHolder"></div>
       <nav className="navbar" aria-label="Primary Navigation">
-        {
-          <NavBarOverlay
-            slideStatus={slideStatus}
-            open_closeSidebar={open_closeSidebar}
-          />
-        }
+        {<NavBarOverlay ref={sideBarRef} />}
         <div className="navbar__ul-wrapper">
           <ul className="navbar__ul">
-            <li className="navbar__li menu-icon" onClick={open_closeSidebar}>
+            <li
+              className="navbar__li menu-icon"
+              onClick={() => sideBarRef.current.openSideBar()}
+            >
               <object
                 style={{ pointerEvents: "none" }}
                 type="image/svg+xml"

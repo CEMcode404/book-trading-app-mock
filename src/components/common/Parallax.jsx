@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import welcomeSign from "../../assets/Foreground-welcome.svg";
 import books from "../../assets/Foreground-books.svg";
@@ -15,21 +15,7 @@ import { searchBookWithName } from "../../services/searchService.js";
 
 const Parallax = ({ parallaxState }) => {
   const navigate = useNavigate();
-  const [slideStatus, setSlide] = useState("");
-  const open_closeSidebar = () => {
-    switch (slideStatus) {
-      case "":
-        setSlide("slideIn");
-        break;
-      case "slideIn":
-        setSlide("slideOut");
-        break;
-      case "slideOut":
-        setSlide("slideIn");
-        break;
-      default:
-    }
-  };
+  const sideBarRef = useRef();
 
   const [timeOutHandle, setTimeOutHandle] = useState();
 
@@ -56,14 +42,12 @@ const Parallax = ({ parallaxState }) => {
 
   return (
     <div className="parallax__wrapper">
-      {
-        <NavBarOverlay
-          slideStatus={slideStatus}
-          open_closeSidebar={open_closeSidebar}
-        />
-      }
+      {<NavBarOverlay ref={sideBarRef} />}
       <nav aria-label="Primary Navigation" className="parallax__navbar">
-        <span className="parallax__menu-icon" onClick={open_closeSidebar}>
+        <span
+          className="parallax__menu-icon"
+          onClick={() => sideBarRef.current.openSideBar()}
+        >
           <object
             style={{ pointerEvents: "none" }}
             type="image/svg+xml"

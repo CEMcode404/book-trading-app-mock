@@ -74,7 +74,7 @@
 }
 
 .dropDownV2__body {
-    max-height: 0;
+    height: 0;
     overflow: hidden;
 }
 
@@ -89,6 +89,10 @@
 
 .dropDownV2__headbar {
     position: relative;
+}
+
+.dropDownV2__headbar:hover {
+    cursor: pointer;
 }
 
 .show-more-drop-down__contents {

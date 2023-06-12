@@ -20,9 +20,16 @@ const ListSlider = ({ children }) => {
   return (
     <div className="list-slider">
       <div className="list-slider__contents-wrapper" ref={contentSliderRef}>
-        <span className="arrow left" onClick={scrollLeft}></span>
+        <span className="list-slider__left-arrow-wrapper" onClick={scrollLeft}>
+          <span className="arrow left"></span>
+        </span>
         {children}
-        <span className="arrow right" onClick={scrollRight}></span>
+        <span
+          className="list-slider__right-arrow-wrapper"
+          onClick={scrollRight}
+        >
+          <span className="arrow right"></span>
+        </span>
       </div>
     </div>
   );

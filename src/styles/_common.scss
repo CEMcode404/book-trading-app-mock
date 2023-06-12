@@ -318,22 +318,33 @@
     .slider-item {
         flex-shrink: 0;
     }
-
-    .left {
-        position: sticky;
-        left: 2rem;
-    }
     
-    .right {
-        position: sticky;
-        right: 2rem;
-    }
-
     /* Hide scrollbar for IE, Edge and Firefox */
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     
+    
+}
+
+.list-slider__left-arrow-wrapper {
+    transition: 500ms;
+    position: sticky;
+    left: 2rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.list-slider__right-arrow-wrapper {
+    transition: 500ms;
+    position: sticky;
+    right: 2rem;
+    border-radius: 5px 0 0 5px;
+}
+
+.list-slider__left-arrow-wrapper:hover, .list-slider__right-arrow-wrapper:hover {
+    padding: 1rem;
+    background-color: white;
+    cursor: pointer;
+    box-shadow:  0 5px 15px gray;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -349,11 +360,6 @@
 }
 
 
-.arrow:hover {
-    cursor: pointer;
-    border-width: 0 6px 6px 0;
-    padding: 6px;
-}
   
 .right {
     transform: rotate(-45deg);

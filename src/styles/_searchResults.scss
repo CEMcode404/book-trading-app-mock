@@ -81,7 +81,7 @@
 }
 
 .search-results__book-list {
-    .arrow {
+    .list-slider__right-arrow-wrapper, .list-slider__left-arrow-wrapper {
         z-index: 1;
     }
     margin: 1rem;

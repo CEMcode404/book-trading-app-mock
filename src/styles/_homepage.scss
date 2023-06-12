@@ -87,8 +87,8 @@
     margin: 1rem auto;
     max-width: 1170px;
     padding: 2rem;
-
-    .arrow {
+  
+    .list-slider__left-arrow-wrapper, .list-slider__right-arrow-wrapper {
         z-index: 1;
     }
 }

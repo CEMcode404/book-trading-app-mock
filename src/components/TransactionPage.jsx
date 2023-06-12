@@ -33,27 +33,28 @@ const TransactionPage = () => {
           }
         />
         <div className="transaction__details">
-          <p>
-            Book Title:
-            <span className="transaction__span">{transaction?.title}</span>
-          </p>
-          <p>
-            Book Author/s:
-            <span className="transaction__span">{transaction?.authors}</span>
-          </p>
-          <p>
-            ISBN:
-            <span className="transaction__span">
+          <div className="transaction__field-wrapper">
+            <p className="transaction__field-name">Title:</p>
+            <p className="transaction__field-data">{transaction?.title}</p>
+          </div>
+
+          <div className="transaction__field-wrapper">
+            <p className="transaction__field-name">Author/s:</p>
+            <p className="transaction__field-data">{transaction?.authors}</p>
+          </div>
+          <div className="transaction__field-wrapper">
+            <p className="transaction__field-name">ISBN:</p>
+            <p className="transaction__field-data">
               {transaction?.isbn || "-"}
-            </span>
-          </p>
-          <p>
-            Owner:{" "}
-            <span className="transaction__span">{`${transaction?.owner}`}</span>
-          </p>
-          <p>
-            Book Condition:
-            <span className="transaction__span">
+            </p>
+          </div>
+          <div className="transaction__field-wrapper">
+            <p className="transaction__field-name">Owner:</p>
+            <p className="transaction__field-data">{`${transaction?.owner}`}</p>
+          </div>
+          <div className="transaction__field-wrapper">
+            <p className="transaction__field-name">Condition:</p>
+            <p className="transaction__field-data">
               <span
                 className="transaction__status-box"
                 style={
@@ -63,22 +64,22 @@ const TransactionPage = () => {
                 }
               ></span>
               {transaction?.bookCondition}
-            </span>
-          </p>
-          <p>
-            Price:{" "}
-            <span className="transaction__span">{`${transaction?.currency}${transaction?.price}`}</span>
-          </p>
-          <p>
-            Use Duration:{" "}
-            <span className="transaction__span">{`${transaction?.useDuration} ${transaction.timeUnit}`}</span>
-          </p>
-          <p>
-            Status:
-            <span className="transaction__span">
-              {transaction.status ? "Pending transaction" : "On market"}
-            </span>
-          </p>
+            </p>
+          </div>
+          <div className="transaction__field-wrapper">
+            <p className="transaction__field-name">Price:</p>
+            <p className="transaction__field-data">{`${transaction?.currency}${transaction?.price}`}</p>
+          </div>
+          <div className="transaction__field-wrapper">
+            <p className="transaction__field-name">Use Duration:</p>
+            <p className="transaction__field-data">{`${transaction?.useDuration} ${transaction.timeUnit}`}</p>
+          </div>
+          <div className="transaction__field-wrapper">
+            <p className="transaction__field-name">Status:</p>
+            <p className="transaction__field-data">
+              {transaction.status ? "PENDING" : "AVAILABLE"}
+            </p>
+          </div>
         </div>
         <TransactionContacts openChat={chatboxRef?.current?.openChat} />
       </main>

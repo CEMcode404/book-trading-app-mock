@@ -49,9 +49,21 @@
     width: 90%;
 }
 
-.transaction__span {
-    position: absolute;
-    right: 0;
+.transaction__field-wrapper {
+    margin: 0;
+    display: flex;
+}
+
+.transaction__field-name {
+    margin: 0.5rem auto 0.5rem 0;
+    font-weight: bold;
+    padding-right: .5rem;
+    width: 8rem;
+}
+
+.transaction__field-data {
+    text-align: end;
+    margin: 0.5rem 0 0.5rem auto;
 }
 
 .transaction-contact {

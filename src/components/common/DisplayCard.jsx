@@ -9,6 +9,7 @@ const DisplayCard = ({
   bcClassName = "",
   onClick,
 }) => {
+  const animationDuration = title?.length < 10 ? "20s" : title.length + "s";
   return (
     <div
       className={"display-card " + bcClassName}
@@ -21,7 +22,7 @@ const DisplayCard = ({
         <div className="display-card__title-wrapper">
           <p
             className="display-card__title animate--moveToRight"
-            style={{ animationDuration: `${title.length}s` }}
+            style={{ animationDuration }}
           >{`${title}`}</p>
         </div>
       )}

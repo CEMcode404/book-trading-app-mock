@@ -26,7 +26,12 @@ const TransactionPage = () => {
     <div>
       <main className="transaction">
         <h1 className="transaction__h1">Transaction Details</h1>
-        <PicViewer />
+        <PicViewer
+          imgSrcs={
+            transaction?.images &&
+            transaction?.images.map((imgObj) => imgObj?.img)
+          }
+        />
         <div className="transaction__details">
           <p>
             Book Title:

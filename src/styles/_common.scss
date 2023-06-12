@@ -309,7 +309,7 @@
 .list-slider__contents-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     overflow-y: hidden;
     width: 100%;
     flex-wrap: nowrap;
@@ -331,6 +331,7 @@
     position: sticky;
     left: 2rem;
     border-radius: 0 5px 5px 0;
+    margin-right: auto;
 }
 
 .list-slider__right-arrow-wrapper {
@@ -338,6 +339,7 @@
     position: sticky;
     right: 2rem;
     border-radius: 5px 0 0 5px;
+    margin-left: auto;
 }
 
 .list-slider__left-arrow-wrapper:hover, .list-slider__right-arrow-wrapper:hover {

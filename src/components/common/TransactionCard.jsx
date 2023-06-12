@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import BinaryPrompt from "./BinaryPrompt.jsx";
 import ImageViewer from "./ImageViewer.jsx";
 
@@ -86,7 +86,10 @@ const TransactionCard = ({
           value="Show Image/s"
           className="transaction-card__show-images-bttn"
         />
-        <ImageViewer ref={imageViewerRef} imgSrcs={images} />
+        <ImageViewer
+          ref={imageViewerRef}
+          imgSrcs={Array.isArray(images) && images.map((imgObj) => imgObj.img)}
+        />
       </div>
       <div>
         <input

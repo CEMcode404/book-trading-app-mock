@@ -147,6 +147,10 @@
         transform: translateX(-200px);
         transition: transform 1s;
     }
+
+    .navbar-overlay__side-bar::backdrop {
+        background-color: rgba(0, 0, 0, 0.263);
+    }
     
     .navbar_overlay__NavLink {
         display: block;

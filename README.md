@@ -22,23 +22,43 @@ Install dependencies
   npm install
 ```
 
-Start the server
-
-```bash
-  npm run dev
-```
-
 Create production build
 ```bash
   npm run build
 ```
+Start demo server
+
+```bash
+  npm run demo
+```
 
 
+
+
+
+
+## Environment Variables
+
+To run this project with all its features using the demo server, you will need to add the following environment variables to your .env file
+
+`G_BOOKS_API_KEY` - without  this the search feature is disabled.
+
+`JWT_PRIVATE_KEY` - this is optional since the demo server already has a default key.
+
+`PORT` - the default port is 3000.
+
+You can get Google Books API key at https://developers.google.com/books/docs/v1/getting_started
+
+
+
+
+## 🚀 About Me
+I'm a full stack developer...
 
 
 ## Tech Stack
 
 **Client:** React
 
-**Server:** Node
+**Server:** Node Express
 

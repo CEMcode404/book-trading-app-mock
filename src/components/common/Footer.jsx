@@ -25,7 +25,6 @@ const Footer = ({ fclass, display = true }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
-    console.log(data);
     reset();
   };
 

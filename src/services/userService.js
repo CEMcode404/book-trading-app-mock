@@ -46,10 +46,12 @@ function fetchUserData(cb) {
   http
     .get("/api/user")
     .then((result) => {
-      cb(result);
+      let err;
+      cb(result, err);
     })
     .catch((err) => {
-      console.log(err);
+      let result;
+      cb(result, err);
     });
 }
 

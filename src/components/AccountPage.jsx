@@ -27,8 +27,8 @@ const AccounPage = () => {
   ];
 
   useEffect(() => {
-    fetchUserData((result) => {
-      setUserInfo(result.data);
+    fetchUserData((result, err) => {
+      if (result) setUserInfo(result.data);
     });
   }, []);
 

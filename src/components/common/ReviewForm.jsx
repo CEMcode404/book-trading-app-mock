@@ -21,7 +21,6 @@ const ReviewForm = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
-    console.log(data);
     reset();
   };
 

@@ -3,11 +3,10 @@ import { getToken } from "./tokenService";
 
 axios.interceptors.response.use(
   (response) => {
-    console.log(response, "reponse intercept");
     return response;
   },
   (error) => {
-    console.log(error, "error intercept");
+    console.log(error);
     return Promise.reject(error);
   }
 );

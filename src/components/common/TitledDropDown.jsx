@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const DropDownV2 = ({ children, title = "Title" }) => {
+const TitledDropDown = ({ children, title = "Title" }) => {
   const [isHidden, setIsHidden] = useState(true);
   const [onTransition, setOnTransition] = useState(false);
   const [isArrowUp, setIsArrowUp] = useState(false);
@@ -37,12 +37,15 @@ const DropDownV2 = ({ children, title = "Title" }) => {
   }
 
   return (
-    <section aria-label={title} className="dropDownV2">
-      <div className="dropDownV2__headbar" onClick={toggleContentVisibility}>
-        <h2 className="dropDownV2__title">{title}</h2>
-        <hr className="dropDownV2__hr"></hr>
+    <section aria-label={title} className="titled-drop-down">
+      <div
+        className="titled-drop-down__headbar"
+        onClick={toggleContentVisibility}
+      >
+        <h2 className="titled-drop-down__title">{title}</h2>
+        <hr className="titled-drop-down__hr"></hr>
         <div
-          className="dropDownV2__triangle-up"
+          className="titled-drop-down__triangle-up"
           style={
             isArrowUp
               ? { transition: "transform 1s" }
@@ -51,7 +54,7 @@ const DropDownV2 = ({ children, title = "Title" }) => {
         ></div>
       </div>
       <div
-        className="dropDownV2__body"
+        className="titled-drop-down__body"
         ref={containerRef}
         style={{ transition: "height 1s" }}
       >
@@ -61,10 +64,10 @@ const DropDownV2 = ({ children, title = "Title" }) => {
         >
           {children}
         </div>
-        <hr className="dropDownV2__hr"></hr>
+        <hr className="titled-drop-down__hr"></hr>
       </div>
     </section>
   );
 };
 
-export default DropDownV2;
+export default TitledDropDown;

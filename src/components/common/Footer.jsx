@@ -1,5 +1,5 @@
 import React from "react";
-import DropDownV2 from "./DropDownV2.jsx";
+import TitledDropDown from "./TitledDropDown.jsx";
 import logo from "../../assets/noBG-logo.svg";
 import facebookLogo from "../../assets/Facebook.svg";
 import twitterLogo from "../../assets/Twitter.svg";
@@ -32,14 +32,14 @@ const Footer = ({ fclass, display = true }) => {
   const footer = !display ? null : (
     <footer className={"footer " + fclass}>
       <div className="footer__dropDowns">
-        <DropDownV2 title="ABOUT US">
+        <TitledDropDown title="ABOUT US">
           <p className="footer__p">
             Booktrade.com is a company created and aimed to provide a channel
             for students to easily find secondhand books as well as find ways to
             reuse the books you have already read.
           </p>
-        </DropDownV2>
-        <DropDownV2 title="MESSAGE US">
+        </TitledDropDown>
+        <TitledDropDown title="MESSAGE US">
           <form onSubmit={handleSubmit(onSubmit)}>
             <textarea
               className="footer__textarea highlight"
@@ -62,7 +62,7 @@ const Footer = ({ fclass, display = true }) => {
               className="footer__send-bttn bttn--slide-up--purple"
             />
           </form>
-        </DropDownV2>
+        </TitledDropDown>
       </div>
 
       <hr className="footer__hr"></hr>

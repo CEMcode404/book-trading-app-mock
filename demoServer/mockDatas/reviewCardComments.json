@@ -1,0 +1,50 @@
+[
+    {
+        "imgSrc": "",
+        "star": 5,
+        "name": "Carlo Senas",
+        "message": "This is a good website."
+    },
+    {
+        "imgSrc": "",
+        "star": 4,
+        "name": "John Duwa",
+        "message": "Excellent."
+    },
+    {
+        "imgSrc": "",
+        "star": 4,
+        "name": "Alex Belima",
+        "message": "Keeps going back on this website."
+    },
+    {
+        "imgSrc": "",
+        "star": 5,
+        "name": "Yun Xi",
+        "message": "Good job."
+    },
+    {
+        "imgSrc": "",
+        "star": 3,
+        "name": "Anne Sy",
+        "message": "Always on point."
+    },
+    {
+        "imgSrc": "",
+        "star": 5,
+        "name": "Marlon Rivera",
+        "message": "Very useful website."
+    },
+    {   
+        "imgSrc": "",
+        "star": 4,
+        "name": "Julius Devera",
+        "message": "Lifesaver."
+    },
+    {
+        "imgSrc": "",
+        "star": 5,
+        "name": "YunYun Seba",
+        "message": "Five Star."
+    }
+]

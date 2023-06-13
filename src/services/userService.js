@@ -7,7 +7,10 @@ function register(data, cb) {
     .post("/api/signup", data)
     .then((response) => {
       let err;
-      storeToken(response.headers.get("Authorization"));
+      const token = response.headers.get("Authorization");
+      if (token) {
+        storeToken(token);
+      }
       cb(response, err);
     })
     .catch((err) => {

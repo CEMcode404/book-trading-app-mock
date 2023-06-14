@@ -34,7 +34,7 @@ Start demo server
   npm run demo
 ```
 
-The demo server doesn't use any databases and instead store data in a makeshift storage ,in the memory, to reduce dependencies since it is just a demo. Log out website on server restart since it my cause odd behaviors since data don't persist on server restart.
+The demo server doesn't use any databases and instead store data in a makeshift storage ,in the memory, to reduce dependencies. Log out website on server restart to prevent odd behaviors since data don't persist on server restart.
 
 ## Environment Variables
 

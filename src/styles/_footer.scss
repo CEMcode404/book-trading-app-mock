@@ -5,9 +5,14 @@
     padding: 1px 0;
 } 
 
-.footer__twitter, .footer__facebook, .footer__instagram {
+.footer__facebook, .footer__instagram {
     width: 35px;
-    margin-right: 10px;
+    margin: 0 10px;
+}
+
+.footer__twitter {
+    height: 35px;
+    margin: 0 10px;
 }
 
 .footer__socmed-icons {

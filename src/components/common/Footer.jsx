@@ -3,7 +3,7 @@ import TitledDropDown from "./TitledDropDown.jsx";
 import logo from "../../assets/noBG-logo.svg";
 import facebookLogo from "../../assets/Facebook.svg";
 import twitterLogo from "../../assets/Twitter.svg";
-import instagramLogo from "../../assets/Twitter.svg";
+import instagramLogo from "../../assets/Instagram.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { NavLink } from "react-router-dom";

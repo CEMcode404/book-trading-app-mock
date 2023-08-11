@@ -84,14 +84,13 @@ const IsbnInput = ({ register, setValue, clearErrors, id, disabled }) => {
 
       {!isbnDisplayData && (
         <select
+          value={"title"}
           disabled={disabled}
           onChange={handleSearchTypeSelect}
           className="isbn-input__select"
         >
           <option value="isbn">ISBN</option>
-          <option selected value="title">
-            TITLE
-          </option>
+          <option value="title">TITLE</option>
         </select>
       )}
 

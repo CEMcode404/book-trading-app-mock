@@ -38,8 +38,8 @@ const ImageViewer = forwardRef(function ImageViewer({ imgSrcs }, externalRef) {
     >
       {imgSrcs && (
         <div className="image-viewer__img-list">
-          {imgSrcs.map((src) => (
-            <img className="image-viewer__imgs" src={src}></img>
+          {imgSrcs.map((src, index) => (
+            <img key={index} className="image-viewer__imgs" src={src}></img>
           ))}
         </div>
       )}

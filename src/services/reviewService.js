@@ -2,7 +2,7 @@ import http from "./httpService";
 
 function getReviews(cb) {
   http
-    .get("/api/reviews")
+    .get("http://localhost:8000/api/reviews")
     .then((reviews) => {
       let err;
       cb(reviews, err);

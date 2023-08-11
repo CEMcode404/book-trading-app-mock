@@ -2,7 +2,7 @@ import http from "./httpService";
 
 function searchBookWithName(bookName, cb) {
   http
-    .get("/api/books/" + bookName)
+    .get("http://localhost:8000/api/books/" + bookName)
     .then((searchResult) => {
       let err;
       cb(searchResult, err);

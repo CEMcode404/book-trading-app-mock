@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import TransactionCard from "./common/TransactionCard.jsx";
 import Pagination from "./common/Pagination.jsx";
 import AddBookTransaction from "./AddBookTransaction.jsx";
@@ -8,15 +8,17 @@ import {
   addTransaction,
   deleteTransaction,
 } from "../services/transactionsService.js";
+import { UserContext } from "./context/userContext.js";
 
 const MyTransaction = () => {
   const [transactions, setTransactions] = useState([]);
   const [currentPage, changeCurrentPageNo] = useState(1);
+  const { user } = useContext(UserContext);
 
   const bookFormRef = useRef();
 
   useEffect(() => {
-    getUserTransactions((res, err) => {
+    getUserTransactions(user._id, null, (res, err) => {
       if (res) setTransactions(res.data);
     });
   }, []);

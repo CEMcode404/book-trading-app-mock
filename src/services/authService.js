@@ -2,7 +2,7 @@ import http from "../services/httpService";
 
 function changeUserInfo(data, cb) {
   http
-    .put("/api/user", data)
+    .put("http://localhost:8000/api/user/updateUserData", data)
     .then((result) => {
       let err;
       cb(result, err);

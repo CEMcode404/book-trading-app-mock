@@ -41,8 +41,11 @@ const HomePage = () => {
           <div className="home-page__card-list">
             <h2>TRENDING RIGHT NOW...</h2>
             <ListSlider>
-              {trendingBooks.map((bookData) => (
-                <div className="home-page__display-card list-slider__item">
+              {trendingBooks.map((bookData, index) => (
+                <div
+                  key={index}
+                  className="home-page__display-card list-slider__item"
+                >
                   <DisplayCard
                     imgSrc={bookData?.images && bookData?.images[0]?.img}
                     title={bookData?.title}

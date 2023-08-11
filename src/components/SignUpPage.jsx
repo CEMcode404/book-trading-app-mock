@@ -138,6 +138,7 @@ const SignUpPage = () => {
                         defaultCountry="PH"
                         className="sign-up__input--mobileNo"
                         disabled={isSubmitting}
+                        key={fieldName[0]}
                       />
                     );
                   return (

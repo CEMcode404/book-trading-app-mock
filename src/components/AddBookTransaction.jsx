@@ -1,6 +1,7 @@
 import React, {
   forwardRef,
   useContext,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -12,6 +13,7 @@ import ImageUploader from "./common/ImageUploader.jsx";
 import getISBNrules from "../utility/getISBNrules.js";
 import { UserContext } from "./context/userContext";
 import IsbnInput from "./common/IsbnInput.jsx";
+import InputWithList from "./common/InputWithList.jsx";
 
 yup.addMethod(
   yup.string,
@@ -71,7 +73,12 @@ yup.addMethod(yup.mixed, "areImagesValid", function (options = {}) {
 const schema = yup
   .object({
     title: yup.string().max(256).required().label("Title"),
-    authors: yup.string().max(256).required().label("Author/s"),
+    authors: yup
+      .array()
+      .of(yup.string().min(1).max(256).label("Author"))
+      .min(1)
+      .required()
+      .label("Authors"),
     price: yup
       .number()
       .typeError("You must specify a number")
@@ -107,12 +114,18 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     clearErrors,
     register,
     handleSubmit,
+    trigger,
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(schema) });
+
+  useEffect(() => {
+    register("authors");
+  }, []);
 
   const { user } = useContext(UserContext);
   const dialogRef = useRef();
   const imgUploaderRef = useRef();
+  const authorListRef = useRef();
 
   function handleClosePrompt(e) {
     const dialogElement = dialogRef.current;
@@ -148,6 +161,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
       onSubmitHookFunc(data);
       reset();
       imgUploaderRef.current.clearImagesPreview();
+      authorListRef.current.clearList();
     });
     dialogRef.current.close();
   };
@@ -166,6 +180,11 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     []
   );
 
+  const handleAuthorListUpdate = async (list) => {
+    setValue("authors", [...list]);
+    await trigger("authors");
+  };
+
   return (
     <dialog
       ref={dialogRef}
@@ -180,14 +199,16 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           >
             Title:
           </label>
-          <input
-            type="text"
-            id="my-transaction__title-id"
-            {...register("title")}
-            placeholder="Meriam-Webster"
-            disabled={isSubmitting}
-          />
-          <p className="my-transaction__p--error">{errors.title?.message}</p>
+          <div>
+            <input
+              type="text"
+              id="my-transaction__title-id"
+              {...register("title")}
+              placeholder="Meriam-Webster"
+              disabled={isSubmitting}
+            />
+            <p className="my-transaction__p--error">{errors.title?.message}</p>
+          </div>
         </div>
         <div className="my-transaction__field-wrapper">
           <label
@@ -196,14 +217,17 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           >
             Author/s:
           </label>
-          <input
-            type="text"
-            id="my-transaction__author-id"
-            {...register("authors")}
-            placeholder="George Meriam/Charles Merriam"
-            disabled={isSubmitting}
-          />
-          <p className="my-transaction__p--error">{errors.authors?.message}</p>
+          <div>
+            <InputWithList
+              ref={authorListRef}
+              id="my-transaction__author-id"
+              disabled={isSubmitting}
+              updates={handleAuthorListUpdate}
+            />
+            <p className="my-transaction__p--error">
+              {errors.authors?.message}
+            </p>
+          </div>
         </div>
         <div className="my-transaction__field-wrapper">
           <label
@@ -212,22 +236,24 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           >
             Price:
           </label>
-          <select
-            className="my-transaction__currency-select"
-            {...register("currency")}
-            disabled={isSubmitting}
-          >
-            <option>₱</option>
-            <option>$</option>
-          </select>
-          <input
-            type="text"
-            id="my-transaction__price-id"
-            {...register("price")}
-            placeholder="50"
-            disabled={isSubmitting}
-          />
-          <p className="my-transaction__p--error">{errors.price?.message}</p>
+          <div>
+            <select
+              className="my-transaction__currency-select"
+              {...register("currency")}
+              disabled={isSubmitting}
+            >
+              <option>₱</option>
+              <option>$</option>
+            </select>
+            <input
+              type="text"
+              id="my-transaction__price-id"
+              {...register("price")}
+              placeholder="50"
+              disabled={isSubmitting}
+            />
+            <p className="my-transaction__p--error">{errors.price?.message}</p>
+          </div>
         </div>
         <div className="my-transaction__field-wrapper">
           <label
@@ -252,61 +278,64 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
           >
             Use Duration:
           </label>
-          <input
-            type="text"
-            id="my-transaction__use-duration-id"
-            {...register("useDuration")}
-            placeholder="1"
-            disabled={isSubmitting}
-          />
-          <select
-            className="my-transaction__duration-select"
-            {...register("timeUnit")}
-            disabled={isSubmitting}
-          >
-            <option>Month/s</option>
-            <option>Day/s</option>
-            <option>Year/s</option>
-          </select>
-          <p className="my-transaction__p--error">
-            {errors.useDuration?.message}
-          </p>
+          <div>
+            <input
+              type="text"
+              id="my-transaction__use-duration-id"
+              {...register("useDuration")}
+              placeholder="1"
+              disabled={isSubmitting}
+            />
+            <select
+              className="my-transaction__duration-select"
+              {...register("timeUnit")}
+              disabled={isSubmitting}
+            >
+              <option>Month/s</option>
+              <option>Day/s</option>
+              <option>Year/s</option>
+            </select>
+            <p className="my-transaction__p--error">
+              {errors.useDuration?.message}
+            </p>
+          </div>
         </div>
-        <div className="my-transaction__field-wrapper">
+        <div className="my-transaction__field-wrapper--isbn">
           <label
             className="my-transaction__form-label"
             htmlFor="my-transaction__isbn-id"
           >
             ISBN:
           </label>
-          <div className="my-transaction__isbn-input-wrapper">
-            <IsbnInput
-              disabled={isSubmitting}
-              register={register}
-              setValue={setValue}
-              clearErrors={clearErrors}
-              id={"my-transaction__isbn-id"}
-            />
+          <div>
+            <div className="my-transaction__isbn-input-wrapper">
+              <IsbnInput
+                disabled={isSubmitting}
+                register={register}
+                setValue={setValue}
+                clearErrors={clearErrors}
+                id={"my-transaction__isbn-id"}
+              />
+            </div>
+            <p className="my-transaction__p--error">{errors.isbn?.message}</p>
           </div>
-          <p className="my-transaction__p--error">{errors.isbn?.message}</p>
         </div>
-        <div className="my-transaction__field-wrapper">
-          <ImageUploader
-            openDialog={handleOpenForm}
-            closeDialog={() => dialogRef?.current?.close()}
-            ref={imgUploaderRef}
-            disabled={isSubmitting}
-            id={"my-transaction__img-uploader"}
-            register={register}
-            name="images"
-            maxImages={2}
-            maxByteSize={5000000}
-            clearImagesHook={handleClearImagesHook}
-          />
-          <p className="my-transaction__p--error--img">
-            {errors.images?.message}
-          </p>
-        </div>
+
+        <ImageUploader
+          openDialog={handleOpenForm}
+          closeDialog={() => dialogRef?.current?.close()}
+          ref={imgUploaderRef}
+          disabled={isSubmitting}
+          id={"my-transaction__img-uploader"}
+          register={register}
+          name="images"
+          maxImages={2}
+          maxByteSize={5000000}
+          clearImagesHook={handleClearImagesHook}
+        />
+        <p className="my-transaction__p--error--img">
+          {errors.images?.message}
+        </p>
 
         <img
           className={

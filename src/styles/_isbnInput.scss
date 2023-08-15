@@ -1,11 +1,11 @@
 .isbn-input {
-    margin-top: 1rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .isbn-input__input-wrapper {
-    margin-left: 1rem;
+    margin-top: .5rem;
 }
 
 .isbn-input__search-result-format {
@@ -21,14 +21,19 @@
 
 .isbn-input__search-result-format--display {
     position: relative;
-    max-width: 350px;
+    width: 13rem;
     border-radius: 5px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     font-size: 1rem;
     text-align: center;
     color: gray;
     background-color: white;
+
+    img {
+        padding-top: 1rem;
+    }
 }
 
 .isbn-input__search-result-format:hover {
@@ -55,4 +60,17 @@
     font-size: 1.5rem;
     cursor: pointer;
     color: black;
+}
+
+
+@media only screen and (max-width: 48em) { //767px
+    .isbn-input__search-result-format--display {
+        width: 12rem;
+    }
+}
+
+@media only screen and (max-width: 30em) {//479
+    .isbn-input__search-bar .search-bar__input {
+        width: 11rem;
+    }
 }

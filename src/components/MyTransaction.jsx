@@ -68,7 +68,7 @@ const MyTransaction = () => {
       prompt.closeBinaryPrompt();
       prompt.disableButtons(false);
     });
-  }; //skipped this
+  };
 
   const handleOpenAddTransactionForm = () => {
     bookFormRef?.current?.openForm();
@@ -84,8 +84,9 @@ const MyTransaction = () => {
 
   return (
     <div>
-      {dataOnDisplay.map((data) => (
+      {dataOnDisplay.map((data, index) => (
         <TransactionCard
+          key={index}
           data={data}
           onDelete={handleDeleteBookTrasaction}
           onChangeStatus={handleChangeStatus}

@@ -145,16 +145,17 @@ const ImageUploader = forwardRef(function ImageUploader(
         />
       </div>
       <div className="image-uploader__preview">
-        {imagesURL.map((imageURL) => (
+        {imagesURL.map((imageURL, index) => (
           <img
+            key={index}
             src={imageURL}
             onLoad={() => URL.revokeObjectURL(imageURL)}
           ></img>
         ))}
       </div>
       <div className="image-uploader__errors">
-        {imageErrors.map((error) => (
-          <p>{error}</p>
+        {imageErrors.map((error, index) => (
+          <p key={index}>{error}</p>
         ))}
       </div>
       <div className="image-uploader__clear-bttn-wrapper">

@@ -107,6 +107,7 @@ const IsbnInput = ({ register, setValue, clearErrors, id, disabled }) => {
           )}
           {searchType === "title" && (
             <SearchBar
+              className="isbn-input__search-bar"
               hideFindIcon
               placeholder="Find ISBN by title"
               onChange={(searchString) => handleSearchInput(searchString)}

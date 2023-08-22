@@ -14,7 +14,6 @@ const MyTransaction = () => {
   const [transactions, setTransactions] = useState([]);
   const [currentPage, changeCurrentPageNo] = useState(1);
   const { user } = useContext(UserContext);
-
   const bookFormRef = useRef();
 
   useEffect(() => {
@@ -24,7 +23,6 @@ const MyTransaction = () => {
   }, []);
 
   const handlePageChange = (e) => {
-    //an event or pageNo
     if (e?.target?.textContent)
       return changeCurrentPageNo(parseInt(e.target.textContent));
 
@@ -32,7 +30,7 @@ const MyTransaction = () => {
   };
 
   const handleAddBookTransaction = (transaction) => {
-    addTransaction({ transaction }, (res, err) => {
+    addTransaction(transaction, (res, err) => {
       if (res) setTransactions([...transactions, res.data]);
     });
   };
@@ -40,31 +38,43 @@ const MyTransaction = () => {
   const handleDeleteBookTrasaction = (_id, prompt) => {
     const originalBooks = [...transactions];
     const changedBooks = originalBooks.filter((book) => book._id !== _id);
+
+    //disable pop up prompt activities while request is not finished
     prompt.disableButtons(true);
 
     deleteTransaction(_id, (res, err) => {
       if (res) setTransactions(changedBooks);
 
+      //close and reenable buttons of pop up prompt
       prompt.closeBinaryPrompt();
       prompt.disableButtons(false);
     });
   };
 
   const handleChangeStatus = (transactionId, status, prompt) => {
+    //duplicate book transactions state in case the change request fail
     const originalBooks = transactions.map((transaction) =>
       Object.assign({}, transaction)
     );
+
+    //find specific book transaction, make a copy and switch status
     const index = originalBooks.findIndex((book) => book._id === transactionId);
     const modifiedCopy = originalBooks.map((transaction) =>
       Object.assign({}, transaction)
     );
-    modifiedCopy[index].status = !status;
+    let newStatus = status === "AVAILABLE" ? "PENDING" : "AVAILABLE";
+    modifiedCopy[index].status = newStatus;
+
     setTransactions(modifiedCopy);
+
+    //disable prompt buttons while request is pending
     prompt.disableButtons(true);
 
-    requestTransactionUpdate(transactionId, { status: !status }, (res, err) => {
+    requestTransactionUpdate(transactionId, newStatus, (res, err) => {
+      // if error revert to original state
       if (err) setTransactions(originalBooks);
 
+      //reenable and close prompt
       prompt.closeBinaryPrompt();
       prompt.disableButtons(false);
     });
@@ -74,6 +84,7 @@ const MyTransaction = () => {
     bookFormRef?.current?.openForm();
   };
 
+  //pagination
   const pageShown = 7;
   const itemCount = transactions.length;
   const maxItemsPerPage = 5;

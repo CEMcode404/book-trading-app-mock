@@ -11,7 +11,6 @@ import { useForm } from "react-hook-form";
 import bookLoading from "../assets/bookLoading.gif";
 import ImageUploader from "./common/ImageUploader.jsx";
 import getISBNrules from "../utility/getISBNrules.js";
-import { UserContext } from "./context/userContext";
 import IsbnInput from "./common/IsbnInput.jsx";
 import InputWithList from "./common/InputWithList.jsx";
 
@@ -20,8 +19,10 @@ yup.addMethod(
   "isValidISBN",
   function (options = { message: "Invalid ISBN" }) {
     const { message } = options;
+
     return this.test("isValidISBN", message, function (value) {
       const { path, createError } = this;
+
       if (value === "") return true;
 
       const isValidISBN = yup
@@ -30,6 +31,7 @@ yup.addMethod(
         .isValidSync(value);
 
       if (!isValidISBN) return createError({ path, message });
+
       return true;
     });
   }
@@ -37,16 +39,26 @@ yup.addMethod(
 
 yup.addMethod(yup.mixed, "areImagesValid", function (options = {}) {
   const {
+    //defaults
     message = "Invalid Images",
     allowedExtensions = ["png", "jpg", "jpeg"],
-    maxByteSize = 5000000,
+    maxByteSize = 2 * 1000 * 1000,
     maxImageLimit = 2,
+    minImageLimit = 2,
     required = false,
   } = options;
+
   return this.test("areImagesValid", message, function (images) {
     const { path, createError } = this;
+
     if (required && images.length < 1)
       return createError({ path, message: `Image/s required` });
+
+    if (images.length < minImageLimit)
+      return createError({
+        path,
+        message: `Failed to meet minimum ${minImageLimit} image limit`,
+      });
 
     if (images.length > maxImageLimit)
       return createError({
@@ -54,6 +66,7 @@ yup.addMethod(yup.mixed, "areImagesValid", function (options = {}) {
         message: `Exceeded ${maxImageLimit} image limit`,
       });
 
+    //reject if an image exceed bytes limit
     for (let i = 0; i < images.length; i++) {
       if (images[i].size > maxByteSize)
         return createError({
@@ -62,6 +75,7 @@ yup.addMethod(yup.mixed, "areImagesValid", function (options = {}) {
         });
 
       const imageExtension = images[i].name.split(".").pop();
+
       if (!allowedExtensions.includes(imageExtension))
         return createError({ path, message });
     }
@@ -96,11 +110,7 @@ const schema = yup
       .required()
       .label("Use Duration"),
     isbn: yup.string().isValidISBN().required().label("ISBN"),
-    images: yup
-      .mixed()
-      .areImagesValid({ required: true })
-      .required()
-      .label("Images"),
+    images: yup.mixed().areImagesValid().required().label("Images"),
   })
   .required();
 
@@ -122,7 +132,6 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     register("authors");
   }, []);
 
-  const { user } = useContext(UserContext);
   const dialogRef = useRef();
   const imgUploaderRef = useRef();
   const authorListRef = useRef();
@@ -131,17 +140,21 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
     const dialogElement = dialogRef.current;
     const dialogDimensions = dialogElement.getBoundingClientRect();
     if (isSubmitting) return;
+    //close if click outside dialog
     if (
       e.clientY < dialogDimensions.top ||
       e.clientY > dialogDimensions.bottom ||
       e.clientX < dialogDimensions.left ||
       e.clientX > dialogDimensions.right
     ) {
+      //clean up form before closing dialog
       clearErrors();
       dialogElement.close();
+
       return;
     }
 
+    //if cancel button is click close
     if (e.target.className.indexOf("my-transaction__cancel-bttn") > -1) {
       clearErrors();
       dialogElement.close();
@@ -153,16 +166,33 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
   }
 
   const onSubmit = (data) => {
-    const { firstName, lastName } = user;
-    data.status = false;
-    data.owner = `${firstName} ${lastName}`;
-    imgUploaderRef.current.getBase64Imgs((img) => {
-      data.images = img;
-      onSubmitHookFunc(data);
-      reset();
-      imgUploaderRef.current.clearImagesPreview();
-      authorListRef.current.clearList();
-    });
+    data.status = "AVAILABLE";
+
+    //append fields to form data
+    let formData = new FormData();
+    for (let key in data) {
+      if (key === "authors") {
+        for (const value of data[key]) {
+          formData.append(key, value);
+        }
+      } else if (key === "images") continue;
+      else formData.append(key, data[key]);
+    }
+
+    //separated and appended images last to send it first
+    //to the server and validate txt field first
+    for (const image of data.images) {
+      formData.append("images", image);
+    }
+
+    //pass data
+    onSubmitHookFunc(formData);
+
+    //clean up before closing dialog
+    reset();
+    imgUploaderRef.current.clearImagesPreview();
+    authorListRef.current.clearList();
+
     dialogRef.current.close();
   };
 
@@ -210,6 +240,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             <p className="my-transaction__p--error">{errors.title?.message}</p>
           </div>
         </div>
+
         <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
@@ -229,6 +260,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             </p>
           </div>
         </div>
+
         <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
@@ -255,6 +287,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             <p className="my-transaction__p--error">{errors.price?.message}</p>
           </div>
         </div>
+
         <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
@@ -271,6 +304,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             <option>New</option>
           </select>
         </div>
+
         <div className="my-transaction__field-wrapper">
           <label
             className="my-transaction__form-label"
@@ -300,6 +334,7 @@ const AddBookTransaction = forwardRef(function AddBookTransaction(
             </p>
           </div>
         </div>
+
         <div className="my-transaction__field-wrapper--isbn">
           <label
             className="my-transaction__form-label"

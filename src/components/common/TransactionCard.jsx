@@ -35,11 +35,6 @@ const TransactionCard = ({
     deleletTransactionBttnRef.current.open();
   }
 
-  const interpretStatus = (currentStatus) => {
-    if (currentStatus) return "PENDING";
-    return "AVAILABLE";
-  };
-
   return (
     <section className="transaction-card">
       <input
@@ -77,7 +72,7 @@ const TransactionCard = ({
       </div>
       <div>
         <label>Status:</label>
-        <span>{interpretStatus(status)}</span>
+        <span>{status}</span>
       </div>
       <div>
         <input

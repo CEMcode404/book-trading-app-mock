@@ -70,6 +70,7 @@ const LoginPage = () => {
             disabled={isSubmitting}
           />
           <input
+            autoComplete="on"
             type="password"
             className="login-page__input-field highlight"
             placeholder="Password"

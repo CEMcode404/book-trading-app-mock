@@ -113,8 +113,9 @@ const NavBar = ({ showHeadBar = true }) => {
               className="navbar__search-bar"
               onChange={(searchString) => handleSearchInput(searchString)}
               formatFunc={(searchResult) =>
-                searchResult.map((book) => (
+                searchResult.map((book, index) => (
                   <div
+                    key={index}
                     className="navbar__search-result-list"
                     onClick={() =>
                       navigate("/search-results", {

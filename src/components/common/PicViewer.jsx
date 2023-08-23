@@ -9,8 +9,9 @@ const PicViewer = ({ imgSrcs }) => {
       <hr className="picviewer__hr"></hr>
       {imgSrcs && (
         <ListSlider>
-          {imgSrcs.map((imgSrc) => (
+          {imgSrcs.map((imgSrc, index) => (
             <img
+              key={index}
               className="picviewer__picture list-viewer__item"
               src={imgSrc}
               onClick={() => {

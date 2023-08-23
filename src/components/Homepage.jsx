@@ -60,8 +60,11 @@ const HomePage = () => {
             </ListSlider>
             <h2>NEW UPLOADS...</h2>
             <ListSlider>
-              {newUploads.map((bookData) => (
-                <div className="home-page__display-card list-slider__item">
+              {newUploads.map((bookData, index) => (
+                <div
+                  key={index}
+                  className="home-page__display-card list-slider__item"
+                >
                   <DisplayCard
                     imgSrc={bookData?.images && bookData?.images[0]?.img}
                     title={bookData?.title}

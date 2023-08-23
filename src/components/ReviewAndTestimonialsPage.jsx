@@ -41,8 +41,9 @@ const ReviewsAndTestimonials = () => {
         </header>
         <main>
           <div className="reviews__review-list">
-            {dataOnDisplay.map(({ name, message, star, imgSrc }) => (
+            {dataOnDisplay.map(({ name, message, star, imgSrc }, index) => (
               <ReviewCard
+                key={index}
                 name={name}
                 review={message}
                 star={star}

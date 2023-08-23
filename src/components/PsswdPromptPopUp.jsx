@@ -67,6 +67,7 @@ const PsswdPromptPopUp = forwardRef(function PasswdPromptPopUp(
         <label htmlFor="psswdPrompt">Enter your password:</label>
         <div>
           <input
+            autoComplete="on"
             id="psswdPrompt"
             type="password"
             {...register("password")}

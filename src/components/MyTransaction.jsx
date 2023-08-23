@@ -16,9 +16,24 @@ const MyTransaction = () => {
   const { user } = useContext(UserContext);
   const bookFormRef = useRef();
 
+  //continue this
   useEffect(() => {
     getUserTransactions(user._id, null, (res, err) => {
-      if (res) setTransactions(res.data);
+      if (res) {
+        //Modify image field and add server baseurl
+        const modifiedData = res.data.map(({ images, ...rest }) => {
+          const newImages = images.map(
+            ({ path, fileName }) => `http://localhost:8000/${path}/${fileName}`
+          );
+
+          return {
+            images: newImages,
+            ...rest,
+          };
+        });
+
+        setTransactions(modifiedData);
+      }
     });
   }, []);
 
@@ -31,7 +46,18 @@ const MyTransaction = () => {
 
   const handleAddBookTransaction = (transaction) => {
     addTransaction(transaction, (res, err) => {
-      if (res) setTransactions([...transactions, res.data]);
+      if (res) {
+        //Modify image field and add server baseurl
+        let { images, ...rest } = res.data;
+        const modifiedImageField = images.map(
+          (imagePath) => `http://localhost:8000/${imagePath}`
+        );
+
+        setTransactions([
+          ...transactions,
+          { ...rest, images: modifiedImageField },
+        ]);
+      }
     });
   };
 

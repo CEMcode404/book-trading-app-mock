@@ -83,7 +83,7 @@ const TransactionCard = ({
         />
         <ImageViewer
           ref={imageViewerRef}
-          imgSrcs={Array.isArray(images) && images.map((imgObj) => imgObj.img)}
+          imgSrcs={Array.isArray(images) && images}
         />
       </div>
       <div>

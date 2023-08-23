@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import findIcon from "../../assets/find_icon.svg";
 
 const SearchBar = ({
+  id = "#search-bar-id",
   hideFindIcon,
   className = "",
   placeholder = "",
@@ -58,7 +59,7 @@ const SearchBar = ({
           value={inputValue}
           onFocus={() => setListHidden(false)}
           onBlur={handleOnBlur}
-          id="#search-bar-id"
+          id={id}
         ></input>
         <img
           onClick={handleOnClick}

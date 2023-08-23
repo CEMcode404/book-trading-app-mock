@@ -47,6 +47,7 @@ const Footer = ({ fclass, display = true }) => {
               disabled={isSubmitting}
             ></textarea>
             <input
+              autoComplete="on"
               type="text"
               className="footer__input-text highlight"
               placeholder="Your email..."

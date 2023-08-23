@@ -45,33 +45,33 @@ const TransactionCard = ({
       />
       <h3>{title}</h3>
       <div>
-        <label>Author/s:</label>
+        <p className="transaction-card__label">Author/s:</p>
         <span>{authors}</span>
       </div>
       <div>
-        <label>Price:</label>
+        <p className="transaction-card__label">Price:</p>
         <span>
           {currency}
           {price}
         </span>
       </div>
       <div>
-        <label>Book Condition:</label>
+        <p className="transaction-card__label">Book Condition:</p>
         <span>{bookCondition}</span>
       </div>
       <div>
-        <label>Use Duration:</label>
+        <p className="transaction-card__label">Use Duration:</p>
         <span>
           {useDuration}
           {"  " + timeUnit}
         </span>
       </div>
       <div>
-        <label>ISBN:</label>
+        <p className="transaction-card__label">ISBN:</p>
         <span>{isbn}</span>
       </div>
       <div>
-        <label>Status:</label>
+        <p className="transaction-card__label">Status:</p>
         <span>{status}</span>
       </div>
       <div>

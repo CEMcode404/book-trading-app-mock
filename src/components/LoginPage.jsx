@@ -62,6 +62,7 @@ const LoginPage = () => {
         </object>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
+            autoComplete="on"
             type="text"
             className="login-page__input-field highlight"
             placeholder="Email"

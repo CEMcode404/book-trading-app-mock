@@ -84,10 +84,11 @@ const IsbnInput = ({ register, setValue, clearErrors, id, disabled }) => {
 
       {!isbnDisplayData && (
         <select
-          value={"title"}
+          value={searchType}
           disabled={disabled}
           onChange={handleSearchTypeSelect}
           className="isbn-input__select"
+          id="isbn-input__select"
         >
           <option value="isbn">ISBN</option>
           <option value="title">TITLE</option>
@@ -107,6 +108,7 @@ const IsbnInput = ({ register, setValue, clearErrors, id, disabled }) => {
           )}
           {searchType === "title" && (
             <SearchBar
+              id={id}
               className="isbn-input__search-bar"
               hideFindIcon
               placeholder="Find ISBN by title"

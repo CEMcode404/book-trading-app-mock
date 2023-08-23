@@ -51,11 +51,12 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     margin-bottom: 1rem;
     padding: 0.5rem 1rem 1rem;
     background-color: white;
+}
 
-    label {
-        width: 10rem;
-        display: inline-block;
-    }
+.transaction-card__label {
+    width: 10rem;
+    display: inline-block;
+    margin: 0 0 .5rem;
 }
 
 .transaction-card__delete-bttn {

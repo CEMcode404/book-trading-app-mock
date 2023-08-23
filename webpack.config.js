@@ -14,7 +14,7 @@ module.exports = {
     assetModuleFilename: "images/[hash][ext][query]",
     clean: true,
   },
-  // devtool: "source-map",
+  devtool: "source-map",
   devServer: {
     static: {
       directory: path.resolve(__dirname, "build"),

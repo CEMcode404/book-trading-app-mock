@@ -150,6 +150,7 @@ const SignUpPage = () => {
                           ? "text"
                           : "password"
                       }
+                      autoComplete="on"
                       className="sign-up__input"
                       {...register(fieldName[0])}
                       placeholder={fieldName[1]}

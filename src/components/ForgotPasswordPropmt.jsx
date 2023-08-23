@@ -46,13 +46,14 @@ const ForgotPasswordPrompt = forwardRef(function ForgotPasswordPrompt({}, ref) {
       {!isEmailSent && (
         <form onSubmit={handleSubmit(onSubmit)}>
           <label
-            htmlFor="forgot-password___email-input"
+            htmlFor="forgot-password__email-input"
             className="forgot-password__label"
           >
             Please enter your email to search for your account.
           </label>
           <div>
             <input
+              autoComplete="on"
               type="text"
               id="forgot-password__email-input"
               {...register("email")}

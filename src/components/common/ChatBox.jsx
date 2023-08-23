@@ -100,8 +100,9 @@ const ChatBox = forwardRef(function ChatBox({ showHeaderOnClose }, ref) {
         style={!isChatOpen ? { height: 0 } : null}
       >
         <div className="chat-box__display" ref={chatDisplayRef}>
-          {messages.map((message) => (
+          {messages.map((message, index) => (
             <div
+              key={index}
               className={`chat-box__message-wrapper ${
                 message.user === user.firstName
                   ? "chat-box__message-wrapper--me"
@@ -121,6 +122,7 @@ const ChatBox = forwardRef(function ChatBox({ showHeaderOnClose }, ref) {
           ))}
         </div>
         <input
+          id="chat-box__input"
           type="text"
           className="chat-box__input"
           placeholder="Chat with the owner..."

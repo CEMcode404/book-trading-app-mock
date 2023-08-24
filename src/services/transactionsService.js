@@ -81,7 +81,7 @@ function addTransaction(data, cb) {
 
 function deleteTransaction(_id, cb) {
   http
-    .delete(`${baseUrl}/api/bookTransactions/${_id}`)
+    .delete(`${baseUrl}/api/bookTransactions/deleteTransaction/${_id}`)
     .then((result) => {
       let err;
       cb(result, err);

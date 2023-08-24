@@ -34,6 +34,7 @@ const TransactionCard = ({
   function handleOpenDeletePrompt() {
     deleletTransactionBttnRef.current.open();
   }
+  console.log(authors);
 
   return (
     <section className="transaction-card">
@@ -44,35 +45,39 @@ const TransactionCard = ({
         onClick={handleOpenDeletePrompt}
       />
       <h3>{title}</h3>
-      <div>
+      <div className="transaction-card__field-wrapper">
         <p className="transaction-card__label">Author/s:</p>
-        <span>{authors}</span>
+        <div className="transaction-card__field-value">
+          {authors.map((author, index) => (
+            <span key={index}>{author}</span>
+          ))}
+        </div>
       </div>
-      <div>
+      <div className="transaction-card__field-wrapper">
         <p className="transaction-card__label">Price:</p>
-        <span>
+        <span className="transaction-card__field-value">
           {currency}
           {price}
         </span>
       </div>
-      <div>
+      <div className="transaction-card__field-wrapper">
         <p className="transaction-card__label">Book Condition:</p>
-        <span>{bookCondition}</span>
+        <span className="transaction-card__field-value">{bookCondition}</span>
       </div>
-      <div>
+      <div className="transaction-card__field-wrapper">
         <p className="transaction-card__label">Use Duration:</p>
-        <span>
+        <span className="transaction-card__field-value">
           {useDuration}
           {"  " + timeUnit}
         </span>
       </div>
-      <div>
+      <div className="transaction-card__field-wrapper">
         <p className="transaction-card__label">ISBN:</p>
-        <span>{isbn}</span>
+        <span className="transaction-card__field-value">{isbn}</span>
       </div>
-      <div>
+      <div className="transaction-card__field-wrapper">
         <p className="transaction-card__label">Status:</p>
-        <span>{status}</span>
+        <span className="transaction-card__field-value">{status}</span>
       </div>
       <div>
         <input

@@ -53,10 +53,24 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     background-color: white;
 }
 
+.transaction-card__field-wrapper {
+    overflow: hidden;
+    display: flex;
+}
+
 .transaction-card__label {
-    width: 10rem;
+    flex-shrink: 0;
+    width: 15rem;
     display: inline-block;
-    margin: 0 0 .5rem;
+    margin: 0 0 0.5rem;
+}
+
+.transaction-card__field-value {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    white-space: nowrap;
+    margin: 0 0 0.5rem;
 }
 
 .transaction-card__delete-bttn {
@@ -87,17 +101,32 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     .account__body {
         flex-direction: column;
     }
-
+    
     .account__content-wrapper {
         padding: 0 9%;
     }
-
+    
     .account__toc {
         margin-right: 0;
         height: auto;
-
+        
         p {
             text-align: left;
         }
+    }
+
+    .transaction-card__label {
+        flex-shrink: 0;
+        width: 10rem;
+    }
+}
+
+@media only screen and (max-width: 25em) { //400px
+    .transaction-card__label {
+        width: 5rem;
+    }
+
+    .transaction-card__field-value {
+        text-align: right;
     }
 }

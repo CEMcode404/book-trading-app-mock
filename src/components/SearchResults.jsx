@@ -40,6 +40,8 @@ const SearchResults = () => {
     navigate("/transaction", { state: _id });
   }
 
+  const baseUrl = "http://localhost:8000/";
+
   return (
     <div className="search-results">
       <main className="search-results__main">
@@ -155,6 +157,7 @@ const SearchResults = () => {
                           title={book.title}
                           currency={book.currency}
                           price={book.price}
+                          imgSrc={`${baseUrl}${book?.images && book.images[0]}`}
                           onClick={() => handleCardsOnClick(book._id)}
                         />
                       </div>
@@ -169,7 +172,7 @@ const SearchResults = () => {
                     {recommendedBooks.map((book, index) => (
                       <div key={index}>
                         <BookSaleCard
-                          imgSrc={book?.images && book?.images[0]?.img}
+                          imgSrc={`${baseUrl}${book?.images && book.images[0]}`}
                           title={book.title}
                           currency={book.currency}
                           price={book.price}

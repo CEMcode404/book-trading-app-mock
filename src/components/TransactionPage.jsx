@@ -17,7 +17,11 @@ const TransactionPage = () => {
     const bookId = id;
     getTransactionById(bookId, (res, err) => {
       if (res) {
-        setTransaction({ ...res.data });
+        const { images, ...rest } = res.data;
+        const modifiedImagesUrl = images.map(
+          (path) => `http://localhost:8000/${path}`
+        );
+        setTransaction({ ...rest, images: modifiedImagesUrl });
       }
     });
   }, [setTransaction]);
@@ -26,12 +30,7 @@ const TransactionPage = () => {
     <div>
       <main className="transaction">
         <h1 className="transaction__h1">Transaction Details</h1>
-        <PicViewer
-          imgSrcs={
-            transaction?.images &&
-            transaction?.images.map((imgObj) => imgObj?.img)
-          }
-        />
+        <PicViewer imgSrcs={transaction?.images && transaction.images} />
         <div className="transaction__details">
           <div className="transaction__field-wrapper">
             <p className="transaction__field-name">Title:</p>

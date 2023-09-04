@@ -16,14 +16,13 @@ const MyTransaction = () => {
   const { user } = useContext(UserContext);
   const bookFormRef = useRef();
 
-  //continue this
   useEffect(() => {
     getUserTransactions(user._id, null, (res, err) => {
       if (res) {
         //Modify image field and add server baseurl
         const modifiedData = res.data.map(({ images, ...rest }) => {
           const newImages = images.map(
-            ({ path, fileName }) => `http://localhost:8000/${path}/${fileName}`
+            (path) => `http://localhost:8000/${path}`
           );
 
           return {

@@ -23,6 +23,7 @@ const HomePage = () => {
     });
   }, []);
   const navigate = useNavigate();
+  const baseUrl = "http://localhost:8000/";
 
   return (
     <div
@@ -47,7 +48,9 @@ const HomePage = () => {
                   className="home-page__display-card list-slider__item"
                 >
                   <DisplayCard
-                    imgSrc={bookData?.images && bookData?.images[0]?.img}
+                    imgSrc={
+                      bookData?.images && `${baseUrl}${bookData?.images[0]}`
+                    }
                     title={bookData?.title}
                     authors={bookData?.authors}
                     _id={bookData?._id}

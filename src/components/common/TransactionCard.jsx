@@ -34,7 +34,6 @@ const TransactionCard = ({
   function handleOpenDeletePrompt() {
     deleletTransactionBttnRef.current.open();
   }
-  console.log(authors);
 
   return (
     <section className="transaction-card">

@@ -26,7 +26,7 @@ const TransactionPage = () => {
   }, [setTransaction]);
 
   return (
-    <div>
+    <div className="transaction__wrapper">
       <main className="transaction">
         <h1 className="transaction__h1">Transaction Details</h1>
         <PicViewer imgSrcs={transaction?.images && transaction.images} />

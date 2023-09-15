@@ -1,10 +1,15 @@
 @use "variables";
 
 .sign-up {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     margin: 3rem auto;
     max-width: 2000px;
     min-width: 320px;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
 }
 
 .sign-up__book-wrapper {
@@ -138,13 +143,13 @@
 
 @media only screen and (max-width: 30em){ //479px
 
-.book-page1 {
-    margin: 0  1rem;
-}
+    .book-page1 {
+        margin: 0  1rem;
+    }
 
-.sign-up__error-container {
-    width: 85%;
-}
+    .sign-up__error-container {
+        width: 85%;
+    }
 
     .sign-up__book {
         display: flex;

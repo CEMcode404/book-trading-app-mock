@@ -2,12 +2,17 @@
 
 .login-page-wrapper {
     min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-page {
     text-align: center;
     width: 300px;
-    margin: 80px auto 0;
+    margin: 2rem auto;
 }
   
 .login-page__logo {
@@ -37,10 +42,9 @@
 }
 
 .login-page__p {
-    color: gray;
+    color: lightgray;
     margin: 0;
     font-size: 1rem;
-    color: lightgray;
 }
 
 .login-page__p:hover {

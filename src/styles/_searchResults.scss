@@ -21,11 +21,13 @@
 }
 
 .search-results__thumb-nail {
+    box-sizing: border-box;
     width: 250px;
     margin: 2rem 2rem auto ;
 }
 
 .search-results__book-details {
+    box-sizing: border-box;
     padding: 1rem;
     box-shadow:  0 5px 15px gray;
     flex-grow: 1;
@@ -33,7 +35,7 @@
     background-color: white;
     border-radius: 5px;
     width: 50%;
-    margin: 2rem 2rem auto 0;
+    margin: 2rem 2rem 2rem 0;
 }
 
 .search-results__field-wrappers {
@@ -41,6 +43,7 @@
 }
 
 .search-results__field-col1 {
+    box-sizing: border-box;
     width: 8rem;
     flex-shrink: 0;
     margin: .5rem;
@@ -48,10 +51,12 @@
 }
 
 .search-results__field-col2 {
+    box-sizing: border-box;
     margin: 0.5rem;
 }
 
 .search-results__no-data {
+    box-sizing: border-box;
     border-radius: 5px;
     background-color: white;
     box-shadow:  0 1px 15px gray inset;
@@ -76,6 +81,7 @@
 }
 
 .search-results__book-list {
+    box-sizing: border-box;
     .list-slider__right-arrow-wrapper, .list-slider__left-arrow-wrapper {
         z-index: 1;
     }
@@ -84,7 +90,7 @@
 
 @media only screen and (max-width: 58em){//940px
     .search-results__book-info-bar {
-        padding: 1rem;
+        padding: 1rem 0 0;
         box-sizing: border-box;
         width: 100%;
         display: flex;
@@ -96,6 +102,6 @@
         box-shadow:  none;
         border-radius: none;
         width: 100%;
-        margin: 0;
+        margin: 2rem 0 0 0;
     }
 }

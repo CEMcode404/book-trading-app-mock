@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Footer from "./common/Footer.jsx";
 import { useLocation, NavLink } from "react-router-dom";
 
 const PolicyPage = () => {
@@ -279,10 +278,6 @@ const PolicyPage = () => {
           <div className="policy-page__nav-placeholder"></div>
         </aside>
       </div>
-      <footer>
-        <div className="diagonal-separator"></div>
-        <Footer fclass="policy-page__footer" />
-      </footer>
     </div>
   );
 };

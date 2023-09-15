@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import defaultPhoto from "../assets/book-no-image.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import ShowMoreDropDown from "./common/ShowMoreDropDown.jsx";
-import Footer from "./common/Footer.jsx";
 import { getTransactions } from "../services/transactionsService.js";
 import BookSaleCard from "./common/BookSaleCard.jsx";
 import ListSlider from "./common/ListSlider.jsx";
@@ -187,10 +186,6 @@ const SearchResults = () => {
           </div>
         </div>
       </main>
-      <footer className="search-results__footer">
-        <div className="diagonal-separator search-results__ds"></div>
-        <Footer />
-      </footer>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React, { Fragment, useRef, useContext, useState } from "react";
-import Footer from "./common/Footer.jsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -206,8 +205,6 @@ const SignUpPage = () => {
             </div>
           </div>
         </div>
-        <div className="diagonal-separator"></div>
-        <Footer fclass="footer--bg-light-green" />
       </main>
     </Fragment>
   );

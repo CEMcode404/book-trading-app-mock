@@ -67,7 +67,7 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 10px solid white;
+    border-bottom: 10px solid black;
     position: absolute;
     top: 10%;
     right: 2%;
@@ -84,7 +84,7 @@
 }
 
 .titled-drop-down__hr {
-    border-color: white;
+    border-color: black;
 }
 
 .titled-drop-down__headbar {
@@ -442,24 +442,6 @@
     
     .inputWithList__list-item {
         width: 8.5rem;
-    }
-}
-
-.diagonal-separator {
-    @include variables.diagonal-separator($color: rgb(24, 81, 47));
-}
-
-@media screen and (min-width: 125em){ //2000px
-    .diagonal-separator {
-        @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -278px, 
-                                                    $b-right: 2000px, $b-bottom: 278px )
-    }
-}
-
-@media screen and (max-width: 20em){ //320px
-    .diagonal-separator {
-        @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -44.480px, 
-        $b-right: 320px, $b-bottom: 44px)
     }
 }
 

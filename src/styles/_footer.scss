@@ -1,17 +1,19 @@
 @use "variables";
 
 .footer {
-    @include variables.theme($bg: rgb(24, 81, 47));
+    margin-top: auto;
+    @include variables.theme($bg: green, $color: black);
     padding: 1px 0;
+    min-width: 320px;
 } 
 
 .footer__facebook, .footer__instagram {
-    width: 35px;
+    width: 25px;
     margin: 0 10px;
 }
 
 .footer__twitter {
-    height: 35px;
+    height: 25px;
     margin: 0 10px;
 }
 
@@ -20,32 +22,25 @@
     margin: 15px 0;
 }
 
-.footer__logo-wrapper {
-    text-align: center;
-    
-    p {
-        margin: 5px;
-    }
-    margin: 30px 0;
-} 
-
 .footer__textarea, .footer__input-text, .footer__send-bttn{
+    box-sizing: border-box;
     display: block;
     margin: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: .5rem;
+    width: 50%;
+
 }
 
 .footer__input-text {
-    width: 50%;
     max-width: 300px;
-    padding: 5px;
 }
 
 .footer__textarea {
-    width: 50%;
     height: 100px;
     resize: none;
     max-width: 300px;
-    padding: 5px;
 }
 
 .footer__textarea::placeholder, .footer__input-text::placeholder {
@@ -53,9 +48,6 @@
 }
 
 .footer__send-bttn {
-    border-radius: 5%;
-    border: none;
-    padding: 7px;
     width: 100px;
 }
 
@@ -64,11 +56,15 @@
     margin: 5px 10px;
 }
 
+.footer__p--copyright {
+    text-align: center;
+}
+
 .footer__navlink {
     text-decoration: none;
     display: inline-block;
     margin: 5px 10px;
-    color: white;
+    color: black;
 }
 
 .footer__navlink:hover {
@@ -77,7 +73,7 @@
 }
 
 .footer__hr {
-    border: 1px solid white;
+    border: 1px solid black;
 }
 
 .footer__links {
@@ -101,9 +97,6 @@
 }
 
 @media screen and (max-width: 30em) { //479px
-    .footer__logo-wrapper {
-        text-align: center;
-    }
 
     .footer__navlink {
         display: block;
@@ -113,11 +106,5 @@
     .footer__links {
         padding: 0 5%;
         text-align: left;
-    }
-}
-
-@media only screen and (max-width: 20em) { //320px
-    .footer {
-        width: 320px;
     }
 }

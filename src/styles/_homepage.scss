@@ -1,130 +1,82 @@
-@use "variables";
-
-.home-page {
-    @include variables.theme($bg: black);
-    min-width: 320px;
-    overflow-x: hidden;
-    height: 100vh;
-    margin: 0 auto;
-
-    table {
-        margin:  0 auto;
-        text-align: center;
-        padding: 0 10%;
-    }
-
-    th {
-        text-align: left;
-    }
-
-    h1 {
-        @include variables.theme();
-        display: inline-block;
-        padding: 2%;
-        font-size: 4rem;
-    }
-
-    h2 {
-        font-size: 1.4rem;
-    }
-}
-
-.home-page__contents-max-width {
-    max-width: 2000px;
-    margin: 0 auto;
-}
-
-.display-card {
-    overflow: hidden;
-    text-align: center;
-    display: inline-block;
-    padding: 1%;
-    @include variables.theme($bg: white, $color: transparent);
-    border-radius: 3%;
-    width: 200px;
-    height: 200px;
-    margin: 0.5% 0.5% 0.5% 0.5%;
-    position: relative;
-    cursor: pointer;
-    z-index: 0;
-    transition: color 250ms ease-in-out;
-    background-size: cover;
-}
-
-.display-card:hover {
-    color: white;
-}
-
-.display-card__title {
-    display: inline-block;
-    color: white;
-    white-space: nowrap;
-    min-width: 100%;
-}
-
-.display-card__title-wrapper {
-    position: absolute;
+.homepage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    box-sizing: border-box;
     width: 100%;
-    bottom: 0.5rem;
-    left: 0;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.745);
 }
 
-.display-card__p {
-    position: relative;
-    top: 30%;
+.homepage__book-img {
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgb(234, 234, 234);
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    width: 20rem;
+    max-width: 20rem;
 }
 
-.display-card::after {
-    @include variables.bttnWaveEffectAfter();
+.homepage .search-bar__suggestion-list {
+    box-sizing: border-box;
+    max-width: 700px;
+    min-width: 250px;
+    width: 80vw;
 }
 
-.display-card:hover::after {
-    @include variables.bttnWaveEffectHover();
-}
-
-.home-page__card-list {
-    margin: 1rem auto;
-    max-width: 1170px;
-    padding: 2rem;
-  
-    .list-slider__left-arrow-wrapper, .list-slider__right-arrow-wrapper {
-        z-index: 1;
-    }
-}
-
-.home-page__display-card {
+.homepage__search-result-list {
+    border-radius: 5px;
     margin: 1rem;
+    padding: .5rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    background-color: rgb(241, 241, 241);
 }
 
-
-@media only screen and (max-width: 52em) { //831px
-    .display-card {
-        width: 150px;
-        height: 150px;
-    }
+.homepage__search-result-list:hover {
+    cursor: pointer;
+    background-color: lightgray;
 }
 
-@media only screen and (max-width: 25em) { //406px
-    .display-card {
-        width: 110px;
-        height: 110px;
-    }
+.homepage__search-result-img {
+    margin-right: 1rem;
+    height: 50px;
+}
 
-    .display-card__p {
-        top: 20%;
-    }
+.homepage .search-bar__typing {
+    box-sizing: border-box;
+    margin-top: .5rem;
+    max-width: 700px;
+    min-width: 250px;
+    width: 80vw;
+}
+
+.homepage .search-bar__input {
+    box-sizing: border-box;
+    max-width: 700px;
+    width: 80vw;
+    min-width: 250px;
+    height: 50px;
+    padding: 0 1rem;
+    box-shadow:  0 5px 15px gray;
+}
+
+.homepage .search-bar__input-wrapper {
+    overflow: visible;
 }
 
 @media screen and (max-width: 48em) { //767px
-    .home-page {
-        h1 {
-            font-size: 2rem;
-        }
-    
-        h2 {
-            font-size: 1.2rem;
-        }
+    .homepage__book-img {
+        width: 18rem;
+    }
+}
+
+@media only screen and (max-width: 30em){ //479px
+    .homepage__book-img {
+        padding: 0 2rem;
+        width: 100%;
     }
 }

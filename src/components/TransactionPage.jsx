@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import PicViewer from "./common/PicViewer.jsx";
 import TransactionContacts from "./common/TransactionContacts.jsx";
-import Footer from "./common/Footer.jsx";
 import { getTransactionById } from "../services/transactionsService.js";
 import ChatBox from "./common/ChatBox.jsx";
 
@@ -82,7 +81,6 @@ const TransactionPage = () => {
         </div>
         <TransactionContacts openChat={chatboxRef?.current?.openChat} />
       </main>
-      <Footer fclass="footer--bg-light-green" />
       <ChatBox ref={chatboxRef} />
     </div>
   );

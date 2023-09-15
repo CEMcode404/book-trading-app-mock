@@ -1,6 +1,5 @@
 import React from "react";
 import TitledDropDown from "./TitledDropDown.jsx";
-import logo from "../../assets/noBG-logo.svg";
 import facebookLogo from "../../assets/Facebook.svg";
 import twitterLogo from "../../assets/Twitter.svg";
 import instagramLogo from "../../assets/Instagram.svg";
@@ -115,13 +114,10 @@ const Footer = ({ fclass, display = true }) => {
           Facebook
         </object>
       </section>
-      <hr className="footer__hr"></hr>
-      <div className="footer__logo-wrapper">
-        <object type="image/svg+xml" data={logo} className="footer__logo">
-          Logo
-        </object>
-        <p>Copyright 2023. All rights reserved</p>
-      </div>
+
+      <p className="footer__p--copyright">
+        Copyright 2023. All rights reserved
+      </p>
     </footer>
   );
 

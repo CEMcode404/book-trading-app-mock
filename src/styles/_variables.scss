@@ -16,14 +16,6 @@ $ThirdColor: darkgray;
     color: $color;
 }
 
-@mixin diagonal-separator($color: black, $marginTop: -13.9vw, $b-right: 100vw, $b-bottom: 13.9vw) {
-    width: 0;
-    height: 0;
-    border-right: $b-right solid transparent;
-    border-bottom: $b-bottom solid $color;
-    margin-top: $marginTop;
-}
-
 @mixin bttnWaveEffectAfter($bg: rgba(0, 0, 0, 0.5), $transOrig: right, $trans: scaleX(0), 
                         $transition: transform 250ms ease-in-out) {
     content:"";

@@ -5,11 +5,10 @@
 
 .policy-page__toc-range {
     h1, h2, p {
-        padding: 0 3rem 0 5rem;
         text-align: justify;
     }
     display: flex;
-    margin: 1rem 0 5rem;
+    margin: 3rem 2.5rem;
 }
 
 .policy-page__toc {
@@ -17,7 +16,8 @@
 
     nav {
         position: fixed;
-        top: 5rem;
+        padding: 1rem;
+        top: 6rem;
         right: 2rem;
         background-color: rgba(255, 255, 255, 0.635);
         border-radius: 5px;
@@ -34,7 +34,7 @@
     display: block;
     white-space: nowrap;
     text-decoration: none;
-    color: gray;
+    color: black;
     margin: 1rem 0;
 }
 
@@ -45,21 +45,29 @@
 }
 
 .policy-page__header-main {
+    padding: 3rem;
     background-color: rgba(255, 255, 255, 0.635);
 }
 
 @media only screen and (max-width: 47em) { //767px
     .policy-page__toc {
         display: none;
-        padding: 1rem;
     }
 
     .policy-page__toc-range {
         h1, h2, p {
-            padding: 0 2rem 0 3rem;
             text-align: justify;
         }
+
         display: flex;
-        margin: 1rem 0 3rem;
+    }
+}
+
+@media only screen and (max-width: 30em){ //479px
+    .policy-page__header-main {
+        padding: 1rem;
+    }
+    .policy-page__toc-range {
+        margin: 2rem 1.5rem;
     }
 }

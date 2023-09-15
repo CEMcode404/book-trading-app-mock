@@ -1,9 +1,8 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 import NavBar from "./common/NavBar.jsx";
 import HomePage from "./Homepage.jsx";
 import LoginPage from "./LoginPage.jsx";
-import isNavbarAllowed from "../utility/isNavbarAllowed.js";
 import SignUpPage from "./SignUpPage.jsx";
 import TransactionPage from "./TransactionPage.jsx";
 import AccounPage from "./AccountPage.jsx";

@@ -1,34 +1,11 @@
-// import React, { useState, useRef, useEffect } from "react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import defaultImg from "../assets/book-no-image.svg";
-// import Footer from "./common/Footer.jsx";
-// import Parallax from "./common/Parallax.jsx";
-// import { getTransactions } from "../services/transactionsService.js";
-// import ListSlider from "./common/ListSlider.jsx";
-// import DisplayCard from "./common/DisplayCard.jsx";
-// import BookSaleCard from "./common/BookSaleCard.jsx";
 import SearchBar from "./common/SearchBar.jsx";
 import { searchBookWithName } from "../services/searchService.js";
-import books from "../assets/books.svg";
 import bookTradeFont from "../assets/bookTrade-fontLogo.svg";
 
 const HomePage = () => {
-  // const scrollRef = useRef(null);
-  // const [newUploads, setNewUploads] = useState([]);
-  // const baseUrl = "http://localhost:8000/";
-
-  // useEffect(() => {
-  //   getTransactions((res, err) => {
-  //     if (res) {
-  //       const newlyUploaded = res.data.map(({ images, ...rest }) => {
-  //         const modifiedImagesURl = images.map((image) => baseUrl + image);
-  //         return { ...rest, images: modifiedImagesURl };
-  //       });
-  //       setNewUploads(newlyUploaded);
-  //     }
-  //   });
-  // }, []);
   const navigate = useNavigate();
   const [timeOutHandle, setTimeOutHandle] = useState();
 

@@ -11,12 +11,14 @@
 
 .account__content-wrapper {
     padding: 0 50px;
+
     aside {
         min-width: 255px;
     }
+
     main {
         width: 90%;
-        background-color: #93a4663f;
+        background-color: #b0bd96;
         padding: 1rem;
     }
 }
@@ -98,12 +100,19 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
 
 
 @media only screen and (max-width: 48em) { //767px
+    .account__content-wrapper {
+
+        main {
+            width: auto;
+        }
+    }
+
     .account__body {
         flex-direction: column;
     }
     
     .account__content-wrapper {
-        padding: 0 9%;
+        padding: 0 2.5rem;
     }
     
     .account__toc {
@@ -121,7 +130,12 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
     }
 }
 
-@media only screen and (max-width: 25em) { //400px
+@media only screen and (max-width: 30em) { //467px
+
+    .account__content-wrapper {
+        padding: 0 1.5rem;
+    }
+    
     .transaction-card__label {
         width: 5rem;
     }

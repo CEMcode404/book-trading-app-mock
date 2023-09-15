@@ -1,19 +1,18 @@
 .my-transaction__add-bttn {
-    position: relative;
-    z-index: -2;
+    cursor: pointer;
     margin: 0 auto;
     display: block;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin: 0 auto;
-    background-color: transparent;
+    background-color: white;
     border: rgba(0, 0, 0, 0.248) solid 1px;
 }
 
 .my-transaction__add-bttn-wrapper {
     box-shadow:  0 5px 15px gray;
-    background-color: rgba(255, 255, 255, 0.418);
+    background-color: white;
     padding: 2rem;
     border-radius: 5px;
     cursor: pointer;

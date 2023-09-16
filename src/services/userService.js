@@ -2,7 +2,7 @@ import "jwt-decode";
 import http from "./httpService";
 import { storeToken, removeToken } from "./tokenService.js";
 
-const baseUrl = "http://localhost:8000";
+const baseUrl = process.env.RESOURCE_SERVER_URL;
 
 function register(data, cb) {
   http

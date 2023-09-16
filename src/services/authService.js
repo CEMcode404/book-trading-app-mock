@@ -1,8 +1,10 @@
 import http from "../services/httpService";
 
+const baseUrl = process.env.RESOURCE_SERVER_URL;
+
 function changeUserInfo(data, cb) {
   http
-    .put("http://localhost:8000/api/user/updateUserData", data)
+    .put(`${baseUrl}/api/user/updateUserData`, data)
     .then((result) => {
       let err;
       cb(result, err);

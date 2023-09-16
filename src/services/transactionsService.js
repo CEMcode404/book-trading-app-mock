@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const baseUrl = "http://localhost:8000";
+const baseUrl = process.env.RESOURCE_SERVER_URL;
 
 function getTransactions(cb) {
   http

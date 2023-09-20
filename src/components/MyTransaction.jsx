@@ -15,15 +15,14 @@ const MyTransaction = () => {
   const [currentPage, changeCurrentPageNo] = useState(1);
   const { user } = useContext(UserContext);
   const bookFormRef = useRef();
+  const baseUrl = process.env.RESOURCE_SERVER_URL;
 
   useEffect(() => {
     getUserTransactions(user._id, null, (res, err) => {
       if (res) {
         //Modify image field and add server baseurl
         const modifiedData = res.data.map(({ images, ...rest }) => {
-          const newImages = images.map(
-            (path) => `http://localhost:8000/${path}`
-          );
+          const newImages = images.map((path) => `${baseUrl}/${path}`);
 
           return {
             images: newImages,
@@ -49,7 +48,7 @@ const MyTransaction = () => {
         //Modify image field and add server baseurl
         let { images, ...rest } = res.data;
         const modifiedImageField = images.map(
-          (imagePath) => `http://localhost:8000/${imagePath}`
+          (imagePath) => `${baseUrl}/${imagePath}`
         );
 
         setTransactions([

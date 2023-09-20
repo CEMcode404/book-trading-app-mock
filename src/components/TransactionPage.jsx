@@ -10,6 +10,7 @@ const TransactionPage = () => {
   const chatboxRef = useRef();
   const { state: id } = useLocation();
   const navigate = useNavigate();
+  const baseUrl = process.env.RESOURCE_SERVER_URL;
 
   useEffect(() => {
     if (!id) return navigate("/");
@@ -17,9 +18,7 @@ const TransactionPage = () => {
     getTransactionById(bookId, (res, err) => {
       if (res) {
         const { images, ...rest } = res.data;
-        const modifiedImagesUrl = images.map(
-          (path) => `http://localhost:8000/${path}`
-        );
+        const modifiedImagesUrl = images.map((path) => `${baseUrl}/${path}`);
         setTransaction({ ...rest, images: modifiedImagesUrl });
       }
     });

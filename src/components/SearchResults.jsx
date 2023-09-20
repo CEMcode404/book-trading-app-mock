@@ -39,7 +39,7 @@ const SearchResults = () => {
     navigate("/transaction", { state: _id });
   }
 
-  const baseUrl = "http://localhost:8000/";
+  const baseUrl = process.env.RESOURCE_SERVER_URL;
 
   return (
     <div className="search-results">
@@ -156,7 +156,9 @@ const SearchResults = () => {
                           title={book.title}
                           currency={book.currency}
                           price={book.price}
-                          imgSrc={`${baseUrl}${book?.images && book.images[0]}`}
+                          imgSrc={`${baseUrl}/${
+                            book?.images && book.images[0]
+                          }`}
                           onClick={() => handleCardsOnClick(book._id)}
                         />
                       </div>
@@ -171,7 +173,9 @@ const SearchResults = () => {
                     {recommendedBooks.map((book, index) => (
                       <div key={index}>
                         <BookSaleCard
-                          imgSrc={`${baseUrl}${book?.images && book.images[0]}`}
+                          imgSrc={`${baseUrl}/${
+                            book?.images && book.images[0]
+                          }`}
                           title={book.title}
                           currency={book.currency}
                           price={book.price}

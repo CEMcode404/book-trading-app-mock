@@ -6,7 +6,7 @@ module.exports = merge(common, {
   mode: "production",
   plugins: [
     new EnvironmentPlugin({
-      RESOURCE_SERVER_URL: "https://demo-booktrading.carlomiradorjr.com",
+      RESOURCE_SERVER_URL: "https://server-booktrading.carlomiradorjr.com",
     }),
   ],
 });

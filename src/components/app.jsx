@@ -13,6 +13,7 @@ import { getCurrentUser } from "../services/tokenService.js";
 import { UserContext } from "./context/userContext.js";
 import SearchResults from "./SearchResults.jsx";
 import Footer from "./common/Footer.jsx";
+import NotFoundAndRedirect from "./NotFoundAndRedirect.jsx";
 
 const App = () => {
   const [user, changeUser] = useState(getCurrentUser());
@@ -37,6 +38,7 @@ const App = () => {
             path="/account"
             element={<ProtectedRoute component={AccounPage} />}
           />
+          <Route path="*" element={<NotFoundAndRedirect />} />
         </Routes>
       </div>
       <Footer></Footer>

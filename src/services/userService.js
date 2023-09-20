@@ -9,8 +9,8 @@ function register(data, cb) {
     .post(`${baseUrl}/api/user/signup`, data)
     .then((response) => {
       let err;
+
       const token = response.headers.get("Authorization");
-      console.log(response);
       if (token) {
         storeToken(token);
       }

@@ -21,7 +21,6 @@ const HomePage = () => {
 
     const timeOutId = setTimeout(() => {
       searchBookWithName(search.inputValue, (res, err) => {
-        console.log(res, err);
         search.setIsTyping(false);
         if (res) search.showSuggestionList(res.data.items);
       });

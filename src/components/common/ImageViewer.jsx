@@ -1,6 +1,9 @@
 import React, { useRef, useImperativeHandle, forwardRef } from "react";
 
-const ImageViewer = forwardRef(function ImageViewer({ imgSrcs }, externalRef) {
+const ImageViewer = forwardRef(function ImageViewer(
+  { imgSrcs, crossOrigin = "anonymous" },
+  externalRef
+) {
   const imagesDialogRef = useRef();
   function handleCloseImagesDialog(e) {
     const dialogElement = imagesDialogRef.current;
@@ -39,7 +42,12 @@ const ImageViewer = forwardRef(function ImageViewer({ imgSrcs }, externalRef) {
       {imgSrcs && (
         <div className="image-viewer__img-list">
           {imgSrcs.map((src, index) => (
-            <img key={index} className="image-viewer__imgs" src={src}></img>
+            <img
+              key={index}
+              className="image-viewer__imgs"
+              src={src}
+              crossOrigin={crossOrigin}
+            ></img>
           ))}
         </div>
       )}

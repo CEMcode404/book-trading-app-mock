@@ -89,7 +89,23 @@
     outline: 1px solid green;
 }
 
+.sign-up__bttns-wrapper {
+    display: flex;
+}
+
 .sign-up__submit-bttn {
+    margin: 0 .5rem;
+    box-sizing: border-box;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.sign-up__demo-login-bttn {
+    margin: 0 .5rem;
     box-sizing: border-box;
     width: 200px;
     border-radius: 5px;
@@ -131,6 +147,18 @@
 }
 
 @media only screen and (max-width: 55em){ //885px
+    .sign-up__bttns-wrapper {
+        flex-direction: column;
+    }
+
+    .sign-up__submit-bttn {
+        margin: 0.5rem 0
+    }
+    
+    .sign-up__demo-login-bttn {
+        margin: 0.5rem 0;
+    }
+
     .book-page2 {
         display: none;
     }

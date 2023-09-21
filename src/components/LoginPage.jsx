@@ -9,6 +9,7 @@ import { login } from "../services/userService";
 import { getCurrentUser } from "../services/tokenService.js";
 import { UserContext } from "./context/userContext.js";
 import ForgotPasswordPrompt from "./ForgotPasswordPropmt.jsx";
+import DemoLoginBttn from "./common/DemoLoginBttn.jsx";
 
 const schema = yup
   .object()
@@ -83,6 +84,7 @@ const LoginPage = () => {
             className="login-page__bttn bttn--slide-up--green"
             disabled={isSubmitting}
           />
+          <DemoLoginBttn className="login-page__demo-login-bttn bttn--slide-up--gray" />
         </form>
         <div
           className={

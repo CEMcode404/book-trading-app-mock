@@ -240,13 +240,19 @@ const PolicyPage = () => {
               <h2>Credits</h2>
               <ul>
                 <li>
-                  <a href="https://www.freepik.com/free-vector/green-fluid-background-frame_16324335.htm#page=2&query=green%20background&position=0&from_view=keyword&track=ais">
+                  <a
+                    target="_blank"
+                    href="https://www.freepik.com/free-vector/green-fluid-background-frame_16324335.htm#page=2&query=green%20background&position=0&from_view=keyword&track=ais"
+                  >
                     Image by rawpixel.com
                   </a>{" "}
                   on Freepik
                 </li>
                 <li>
-                  <a href="https://www.freepik.com/free-vector/sign-up-concept-illustration_20602852.htm#query=sign%20up&position=13&from_view=keyword&track=ais">
+                  <a
+                    target="_blank"
+                    href="https://www.freepik.com/free-vector/sign-up-concept-illustration_20602852.htm#query=sign%20up&position=13&from_view=keyword&track=ais"
+                  >
                     Image by storyset
                   </a>{" "}
                   on Freepik

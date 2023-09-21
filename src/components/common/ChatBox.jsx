@@ -28,20 +28,18 @@ const ChatBox = forwardRef(function ChatBox({ showHeaderOnClose }, ref) {
 
   useEffect(() => {
     setMessages([
-      { user: "John", message: "yeah" },
-      { user: "Carlo", message: "this" },
-      { user: "John", message: "is" },
-      { user: "John", message: "test" },
-      { user: "Carlo", message: "this is really just a test!" },
+      { user: "John", message: "Hi" },
+      { user: user.firstName, message: "Hello" },
+      { user: "John", message: "Can you lower the price?" },
+      { user: "John", message: "Please." },
+      { user: user.firstName, message: "Yeah, sure." },
       {
-        user: "Carlo",
-        message:
-          "this is really just a test!This is a test this is a test this is a test this is a test this is a test",
+        user: user.firstName,
+        message: "As long as it's not too much.",
       },
       {
-        user: "Carlo",
-        message:
-          "this is really just a test!This is a test this is a test this is a test this is a test this is a test",
+        user: "John",
+        message: "Thank you very much! I really appreaciate it.",
       },
     ]);
   }, []);

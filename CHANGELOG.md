@@ -6,6 +6,7 @@
 
 - Change the theme and design
 - Change adding book transaction payload
+- Change image format from base64 to formdata
 
 ## Added
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Footer from "./common/Footer.jsx";
 import MyDetails from "./MyDetails.jsx";
 import MyTransaction from "./MyTransaction.jsx";
 import { fetchUserData } from "../services/userService.js";
@@ -73,8 +72,6 @@ const AccounPage = () => {
           </main>
         </div>
       </div>
-      <div className="diagonal-separator"></div>
-      <Footer />
     </div>
   );
 };

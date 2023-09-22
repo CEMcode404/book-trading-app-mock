@@ -2,15 +2,17 @@ import React, { useState, useRef } from "react";
 import ListSlider from "./ListSlider.jsx";
 import ImageViewer from "./ImageViewer.jsx";
 
-const PicViewer = ({ imgSrcs }) => {
+const PicViewer = ({ imgSrcs, crossOrigin = "anonymous" }) => {
   const imgViewerRef = useRef();
   return (
     <div className="picviewer">
       <hr className="picviewer__hr"></hr>
       {imgSrcs && (
         <ListSlider>
-          {imgSrcs.map((imgSrc) => (
+          {imgSrcs.map((imgSrc, index) => (
             <img
+              crossOrigin={crossOrigin}
+              key={index}
               className="picviewer__picture list-viewer__item"
               src={imgSrc}
               onClick={() => {
@@ -28,7 +30,11 @@ const PicViewer = ({ imgSrcs }) => {
         </section>
       )}
       <hr className="picviewer__hr"></hr>
-      <ImageViewer imgSrcs={imgSrcs} ref={imgViewerRef} />
+      <ImageViewer
+        imgSrcs={imgSrcs}
+        ref={imgViewerRef}
+        crossOrigin={crossOrigin}
+      />
     </div>
   );
 };

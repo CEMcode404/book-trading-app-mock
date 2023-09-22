@@ -1,8 +1,10 @@
 import http from "./httpService";
 
+const baseUrl = process.env.RESOURCE_SERVER_URL;
+
 function getTransactions(cb) {
   http
-    .get("/api/bookTransactions")
+    .get(`${baseUrl}/api/bookTransactions/getFeaturedTransactions`)
     .then((transaction) => {
       let err;
       cb(transaction, err);
@@ -13,9 +15,18 @@ function getTransactions(cb) {
     });
 }
 
-function getUserTransactions(cb) {
+function getUserTransactions(_id, paginate, cb) {
+  if (!paginate) {
+    paginate = { skip: 0, limit: 20 };
+  }
+
   http
-    .get("/api/bookTransactions/user")
+    .get(`${baseUrl}/api/bookTransactions/getUserTransactions`, {
+      params: {
+        ...paginate,
+        _id,
+      },
+    })
     .then((transactions) => {
       let err;
       cb(transactions, err);
@@ -28,7 +39,7 @@ function getUserTransactions(cb) {
 
 function getTransactionById(_id, cb) {
   http
-    .get("/api/bookTransactions/" + _id)
+    .get(`${baseUrl}/api/bookTransactions/getTransaction/${_id}`)
     .then((transaction) => {
       let err;
       cb(transaction, err);
@@ -41,7 +52,10 @@ function getTransactionById(_id, cb) {
 
 function requestTransactionUpdate(_id, data, cb) {
   http
-    .put("/api/bookTransactions/" + _id, data)
+    .put(`${baseUrl}/api/bookTransactions/updateTransactionStatus`, {
+      _id,
+      status: data,
+    })
     .then((transaction) => {
       let err;
       cb(transaction, err);
@@ -54,7 +68,7 @@ function requestTransactionUpdate(_id, data, cb) {
 
 function addTransaction(data, cb) {
   http
-    .post("/api/bookTransactions", data)
+    .post(`${baseUrl}/api/bookTransactions/createTransaction`, data)
     .then((transaction) => {
       let err;
       cb(transaction, err);
@@ -67,7 +81,7 @@ function addTransaction(data, cb) {
 
 function deleteTransaction(_id, cb) {
   http
-    .delete("/api/bookTransactions/" + _id)
+    .delete(`${baseUrl}/api/bookTransactions/deleteTransaction/${_id}`)
     .then((result) => {
       let err;
       cb(result, err);

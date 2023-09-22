@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Footer from "./common/Footer.jsx";
 import { useLocation, NavLink } from "react-router-dom";
 
 const PolicyPage = () => {
@@ -239,21 +238,26 @@ const PolicyPage = () => {
             </section>
             <section aria-label="credits" id="credits" ref={refs.credits}>
               <h2>Credits</h2>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Aperiam eligendi dolor fuga a deserunt deleniti quae dicta
-                alias! Animi obcaecati consequatur cupiditate, pariatur eos
-                commodi unde voluptatibus reiciendis maxime? Hic obcaecati amet
-                qui vero error repellendus, ullam repudiandae fugiat nesciunt
-                incidunt animi dicta illo quam ratione aspernatur voluptas velit
-                inventore voluptatibus? Accusantium earum unde quod sit
-                doloribus nisi reiciendis repudiandae amet deleniti quia!
-                Necessitatibus, voluptate? Eveniet porro pariatur quo itaque
-                blanditiis illo harum, quos error nesciunt. Aliquam, voluptatum
-                dicta! Amet, error cupiditate placeat fugit officiis recusandae
-                libero praesentium iusto architecto ut impedit eveniet harum id
-                sunt voluptas nostrum velit sit?
-              </p>
+              <ul>
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://www.freepik.com/free-vector/green-fluid-background-frame_16324335.htm#page=2&query=green%20background&position=0&from_view=keyword&track=ais"
+                  >
+                    Image by rawpixel.com
+                  </a>{" "}
+                  on Freepik
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://www.freepik.com/free-vector/sign-up-concept-illustration_20602852.htm#query=sign%20up&position=13&from_view=keyword&track=ais"
+                  >
+                    Image by storyset
+                  </a>{" "}
+                  on Freepik
+                </li>
+              </ul>
             </section>
           </main>
         </section>
@@ -279,10 +283,6 @@ const PolicyPage = () => {
           <div className="policy-page__nav-placeholder"></div>
         </aside>
       </div>
-      <footer>
-        <div className="diagonal-separator"></div>
-        <Footer fclass="policy-page__footer" />
-      </footer>
     </div>
   );
 };

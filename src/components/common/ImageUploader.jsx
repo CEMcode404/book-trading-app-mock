@@ -75,42 +75,17 @@ const ImageUploader = forwardRef(function ImageUploader(
     setErrors(errors);
   }
 
-  let base64Imgs = [];
-
   function clearImagesPreview() {
     inputFileRef.current.files = null;
     if (clearImagesHook) clearImagesHook();
     setImagesURL([]);
     setErrors([]);
-    while (base64Imgs.length > 0) {
-      base64Imgs.pop();
-    }
-  }
-
-  function convertImgsToBase64(files, startingIndex, cb) {
-    let counter = startingIndex;
-    if (counter === files.length) return cb(base64Imgs);
-
-    const fileName = files[counter].name;
-    const reader = new FileReader();
-    reader.onloadend = function () {
-      base64Imgs.push({ fileName, img: reader.result });
-      counter++;
-      convertImgsToBase64(files, counter, cb);
-    };
-
-    reader.readAsDataURL(files[counter]);
-  }
-
-  function getBase64Imgs(cb) {
-    convertImgsToBase64(inputFileRef.current.files, 0, cb);
   }
 
   useImperativeHandle(
     externalRef,
     () => {
       return {
-        getBase64Imgs,
         clearImagesPreview,
       };
     },
@@ -145,16 +120,17 @@ const ImageUploader = forwardRef(function ImageUploader(
         />
       </div>
       <div className="image-uploader__preview">
-        {imagesURL.map((imageURL) => (
+        {imagesURL.map((imageURL, index) => (
           <img
+            key={index}
             src={imageURL}
             onLoad={() => URL.revokeObjectURL(imageURL)}
           ></img>
         ))}
       </div>
       <div className="image-uploader__errors">
-        {imageErrors.map((error) => (
-          <p>{error}</p>
+        {imageErrors.map((error, index) => (
+          <p key={index}>{error}</p>
         ))}
       </div>
       <div className="image-uploader__clear-bttn-wrapper">

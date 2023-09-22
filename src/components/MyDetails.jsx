@@ -164,7 +164,6 @@ const MyDetails = ({ getProps }) => {
           label={"First Name"}
           className="my-details__input-txt"
           isReadOnly={!isEdit}
-          defaultValues={userInfo.firstName}
           register={register("firstName")}
           errorMessage={errors.firstName?.message}
           disabled={isSubmitting}
@@ -173,7 +172,6 @@ const MyDetails = ({ getProps }) => {
           label={"Last Name"}
           className="my-details__input-txt"
           isReadOnly={!isEdit}
-          defaultValues={userInfo.lastName}
           register={register("lastName")}
           errorMessage={errors.lastName?.message}
           disabled={isSubmitting}
@@ -201,7 +199,6 @@ const MyDetails = ({ getProps }) => {
           label={"Email"}
           className="my-details__input-txt"
           isReadOnly={!isEdit}
-          defaultValues={userInfo.email}
           register={register("email")}
           errorMessage={errors.email?.message}
           disabled={isSubmitting}

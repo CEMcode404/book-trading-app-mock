@@ -1,9 +1,8 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 import NavBar from "./common/NavBar.jsx";
 import HomePage from "./Homepage.jsx";
 import LoginPage from "./LoginPage.jsx";
-import isNavbarAllowed from "../utility/isNavbarAllowed.js";
 import SignUpPage from "./SignUpPage.jsx";
 import TransactionPage from "./TransactionPage.jsx";
 import AccounPage from "./AccountPage.jsx";
@@ -13,6 +12,8 @@ import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import { getCurrentUser } from "../services/tokenService.js";
 import { UserContext } from "./context/userContext.js";
 import SearchResults from "./SearchResults.jsx";
+import Footer from "./common/Footer.jsx";
+import NotFoundAndRedirect from "./NotFoundAndRedirect.jsx";
 
 const App = () => {
   const [user, changeUser] = useState(getCurrentUser());
@@ -20,7 +21,7 @@ const App = () => {
   return (
     <UserContext.Provider value={{ user, changeUser }}>
       <div className="app">
-        <NavBar showHeadBar={!isNavbarAllowed(useLocation().pathname)} />
+        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/index" element={<HomePage />} />
@@ -37,8 +38,10 @@ const App = () => {
             path="/account"
             element={<ProtectedRoute component={AccounPage} />}
           />
+          <Route path="*" element={<NotFoundAndRedirect />} />
         </Routes>
       </div>
+      <Footer></Footer>
     </UserContext.Provider>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Footer from "./common/Footer.jsx";
 import ReviewCard from "./common/ReviewCard.jsx";
 import Pagination from "./common/Pagination.jsx";
 import ReviewForm from "./common/ReviewForm.jsx";
@@ -41,8 +40,9 @@ const ReviewsAndTestimonials = () => {
         </header>
         <main>
           <div className="reviews__review-list">
-            {dataOnDisplay.map(({ name, message, star, imgSrc }) => (
+            {dataOnDisplay.map(({ name, message, star, imgSrc }, index) => (
               <ReviewCard
+                key={index}
                 name={name}
                 review={message}
                 star={star}
@@ -60,10 +60,6 @@ const ReviewsAndTestimonials = () => {
           </div>
         </main>
       </div>
-      <footer>
-        <div className="diagonal-separator"></div>
-        <Footer />
-      </footer>
     </section>
   );
 };

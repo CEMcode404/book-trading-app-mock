@@ -1,8 +1,10 @@
 import http from "./httpService";
 
+const baseUrl = process.env.RESOURCE_SERVER_URL;
+
 function searchBookWithName(bookName, cb) {
   http
-    .get("/api/books/" + bookName)
+    .get(`${baseUrl}/api/books/${bookName}`)
     .then((searchResult) => {
       let err;
       cb(searchResult, err);

@@ -35,11 +35,6 @@ const TransactionCard = ({
     deleletTransactionBttnRef.current.open();
   }
 
-  const interpretStatus = (currentStatus) => {
-    if (currentStatus) return "PENDING";
-    return "AVAILABLE";
-  };
-
   return (
     <section className="transaction-card">
       <input
@@ -49,35 +44,39 @@ const TransactionCard = ({
         onClick={handleOpenDeletePrompt}
       />
       <h3>{title}</h3>
-      <div>
-        <label>Author/s:</label>
-        <span>{authors}</span>
+      <div className="transaction-card__field-wrapper">
+        <p className="transaction-card__label">Author/s:</p>
+        <div className="transaction-card__field-value">
+          {authors.map((author, index) => (
+            <span key={index}>{author}</span>
+          ))}
+        </div>
       </div>
-      <div>
-        <label>Price:</label>
-        <span>
+      <div className="transaction-card__field-wrapper">
+        <p className="transaction-card__label">Price:</p>
+        <span className="transaction-card__field-value">
           {currency}
           {price}
         </span>
       </div>
-      <div>
-        <label>Book Condition:</label>
-        <span>{bookCondition}</span>
+      <div className="transaction-card__field-wrapper">
+        <p className="transaction-card__label">Book Condition:</p>
+        <span className="transaction-card__field-value">{bookCondition}</span>
       </div>
-      <div>
-        <label>Use Duration:</label>
-        <span>
+      <div className="transaction-card__field-wrapper">
+        <p className="transaction-card__label">Use Duration:</p>
+        <span className="transaction-card__field-value">
           {useDuration}
           {"  " + timeUnit}
         </span>
       </div>
-      <div>
-        <label>ISBN:</label>
-        <span>{isbn}</span>
+      <div className="transaction-card__field-wrapper">
+        <p className="transaction-card__label">ISBN:</p>
+        <span className="transaction-card__field-value">{isbn}</span>
       </div>
-      <div>
-        <label>Status:</label>
-        <span>{interpretStatus(status)}</span>
+      <div className="transaction-card__field-wrapper">
+        <p className="transaction-card__label">Status:</p>
+        <span className="transaction-card__field-value">{status}</span>
       </div>
       <div>
         <input
@@ -88,7 +87,7 @@ const TransactionCard = ({
         />
         <ImageViewer
           ref={imageViewerRef}
-          imgSrcs={Array.isArray(images) && images.map((imgObj) => imgObj.img)}
+          imgSrcs={Array.isArray(images) && images}
         />
       </div>
       <div>

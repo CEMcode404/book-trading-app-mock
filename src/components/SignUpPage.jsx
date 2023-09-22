@@ -1,5 +1,4 @@
 import React, { Fragment, useRef, useContext, useState } from "react";
-import Footer from "./common/Footer.jsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -17,6 +16,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import getEmailRules from "../utility/getEmailRules.js";
 import bookLoading from "../assets/bookLoading.gif";
+import DemoLoginBttn from "./common/DemoLoginBttn.jsx";
 
 yup.addMethod(
   yup.string,
@@ -138,6 +138,7 @@ const SignUpPage = () => {
                         defaultCountry="PH"
                         className="sign-up__input--mobileNo"
                         disabled={isSubmitting}
+                        key={fieldName[0]}
                       />
                     );
                   return (
@@ -149,6 +150,7 @@ const SignUpPage = () => {
                           ? "text"
                           : "password"
                       }
+                      autoComplete="on"
                       className="sign-up__input"
                       {...register(fieldName[0])}
                       placeholder={fieldName[1]}
@@ -181,13 +183,16 @@ const SignUpPage = () => {
               </object>
             </div>
           </div>
-          <input
-            form="sign-up-form-id"
-            type="submit"
-            value="Submit"
-            className="sign-up__submit-bttn bttn--slide-up--green"
-            disabled={isSubmitting}
-          ></input>
+          <div className="sign-up__bttns-wrapper">
+            <input
+              form="sign-up-form-id"
+              type="submit"
+              value="Submit"
+              className="sign-up__submit-bttn bttn--slide-up--green"
+              disabled={isSubmitting}
+            ></input>
+            <DemoLoginBttn className="sign-up__demo-login-bttn bttn--slide-up--gray" />
+          </div>
           <div
             className={
               "sign-up__error-container" + (!haveErrors ? "-hide" : "")
@@ -204,8 +209,6 @@ const SignUpPage = () => {
             </div>
           </div>
         </div>
-        <div className="diagonal-separator"></div>
-        <Footer fclass="footer--bg-light-green" />
       </main>
     </Fragment>
   );

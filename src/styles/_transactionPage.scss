@@ -1,11 +1,21 @@
-@use "variables";
+.transaction__wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+    align-items: center;
+    justify-content: center;
+}
 
 .transaction {
+    border-radius: 5px;
+    background-color: rgb(15, 21, 15);
     box-sizing: border-box;
-    padding: 0 30px;
-    color: gray;
-    margin: 5% auto;
+    padding: 4rem 0;
+    color: white;
+    margin: 4rem auto;
     max-width: 1000px;
+    width: 100%;
+    box-shadow:  0 5px 15px gray;
 }
 
 .transaction__h1 {
@@ -100,9 +110,20 @@
     border-radius: 5px;
 }
 
+.transaction .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+}
+
+.transaction .list-slider__left-arrow-wrapper:hover > .arrow, .transaction .list-slider__right-arrow-wrapper:hover > .arrow{
+    border: solid black;
+    border-width: 0 3px 3px 0;
+}
+
 .chat-box {
     box-sizing: border-box;
     position: fixed;
+    z-index: 1;
     bottom: 0;
     right: 0;
     width: 300px;
@@ -115,7 +136,7 @@
     width: 100%;
     height: 35px;
     cursor: pointer;
-    background-color: #93a466;
+    background-color: green;
     position: relative;
 }
 
@@ -188,11 +209,7 @@
 }
 
 @media screen and (max-width: 20em){ //320px
-    .diagonal-separator {
-        @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -44.480px, 
-                                                    $b-right: 320px, $b-bottom: 44px)
-    }
-
+  
     .transaction {
         width: 320px;
     }

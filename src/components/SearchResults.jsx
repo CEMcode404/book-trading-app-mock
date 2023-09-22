@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import defaultPhoto from "../assets/book-no-image.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import ShowMoreDropDown from "./common/ShowMoreDropDown.jsx";
-import Footer from "./common/Footer.jsx";
 import { getTransactions } from "../services/transactionsService.js";
 import BookSaleCard from "./common/BookSaleCard.jsx";
 import ListSlider from "./common/ListSlider.jsx";
@@ -40,6 +39,8 @@ const SearchResults = () => {
     navigate("/transaction", { state: _id });
   }
 
+  const baseUrl = process.env.RESOURCE_SERVER_URL;
+
   return (
     <div className="search-results">
       <main className="search-results__main">
@@ -72,10 +73,10 @@ const SearchResults = () => {
                     <p className="search-results__field-col2">
                       {authors.map((author, index, authorsArray) => {
                         if (index === authorsArray.length - 1)
-                          return <span>{author}</span>;
+                          return <span key={index}>{author}</span>;
                         if (index === authorsArray.length - 2)
-                          return <span>{author + " and "}</span>;
-                        return <span>{author + ", "}</span>;
+                          return <span key={index}>{author + " and "}</span>;
+                        return <span key={index}>{author + ", "}</span>;
                       })}
                     </p>
                   </div>
@@ -86,10 +87,10 @@ const SearchResults = () => {
                     <p className="search-results__field-col2">
                       {categories.map((category, index, categoriesArray) => {
                         if (index === categoriesArray.length - 1)
-                          return <span>{category}</span>;
+                          return <span key={index}>{category}</span>;
                         if (index === categoriesArray.length - 2)
-                          return <span>{category + " and "}</span>;
-                        return <span>{category + ", "}</span>;
+                          return <span key={index}>{category + " and "}</span>;
+                        return <span key={index}>{category + ", "}</span>;
                       })}
                     </p>
                   </div>
@@ -120,8 +121,8 @@ const SearchResults = () => {
                 )}
 
                 {industryIdentifiers &&
-                  industryIdentifiers.map((identifiers) => (
-                    <div className="search-results__field-wrappers">
+                  industryIdentifiers.map((identifiers, index) => (
+                    <div key={index} className="search-results__field-wrappers">
                       <p className="search-results__field-col1">
                         {identifiers?.type}
                       </p>
@@ -149,12 +150,15 @@ const SearchResults = () => {
               <div className="search-results__book-list">
                 {searchBooks?.length > 0 && (
                   <ListSlider>
-                    {searchBooks.map((book) => (
-                      <div className="">
+                    {searchBooks.map((book, index) => (
+                      <div key={index}>
                         <BookSaleCard
                           title={book.title}
                           currency={book.currency}
                           price={book.price}
+                          imgSrc={`${baseUrl}/${
+                            book?.images && book.images[0]
+                          }`}
                           onClick={() => handleCardsOnClick(book._id)}
                         />
                       </div>
@@ -166,10 +170,12 @@ const SearchResults = () => {
               <div className="search-results__book-list">
                 {recommendedBooks?.length > 0 && (
                   <ListSlider>
-                    {recommendedBooks.map((book) => (
-                      <div className="">
+                    {recommendedBooks.map((book, index) => (
+                      <div key={index}>
                         <BookSaleCard
-                          imgSrc={book?.images && book?.images[0]?.img}
+                          imgSrc={`${baseUrl}/${
+                            book?.images && book.images[0]
+                          }`}
                           title={book.title}
                           currency={book.currency}
                           price={book.price}
@@ -184,10 +190,6 @@ const SearchResults = () => {
           </div>
         </div>
       </main>
-      <footer className="search-results__footer">
-        <div className="diagonal-separator search-results__ds"></div>
-        <Footer />
-      </footer>
     </div>
   );
 };

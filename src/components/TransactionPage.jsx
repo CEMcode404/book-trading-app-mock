@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import PicViewer from "./common/PicViewer.jsx";
 import TransactionContacts from "./common/TransactionContacts.jsx";
-import Footer from "./common/Footer.jsx";
 import { getTransactionById } from "../services/transactionsService.js";
 import ChatBox from "./common/ChatBox.jsx";
 
@@ -11,27 +10,25 @@ const TransactionPage = () => {
   const chatboxRef = useRef();
   const { state: id } = useLocation();
   const navigate = useNavigate();
+  const baseUrl = process.env.RESOURCE_SERVER_URL;
 
   useEffect(() => {
     if (!id) return navigate("/");
     const bookId = id;
     getTransactionById(bookId, (res, err) => {
       if (res) {
-        setTransaction({ ...res.data });
+        const { images, ...rest } = res.data;
+        const modifiedImagesUrl = images.map((path) => `${baseUrl}/${path}`);
+        setTransaction({ ...rest, images: modifiedImagesUrl });
       }
     });
   }, [setTransaction]);
 
   return (
-    <div>
+    <div className="transaction__wrapper">
       <main className="transaction">
         <h1 className="transaction__h1">Transaction Details</h1>
-        <PicViewer
-          imgSrcs={
-            transaction?.images &&
-            transaction?.images.map((imgObj) => imgObj?.img)
-          }
-        />
+        <PicViewer imgSrcs={transaction?.images && transaction.images} />
         <div className="transaction__details">
           <div className="transaction__field-wrapper">
             <p className="transaction__field-name">Title:</p>
@@ -83,7 +80,6 @@ const TransactionPage = () => {
         </div>
         <TransactionContacts openChat={chatboxRef?.current?.openChat} />
       </main>
-      <Footer fclass="footer--bg-light-green" />
       <ChatBox ref={chatboxRef} />
     </div>
   );

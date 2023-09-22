@@ -4,11 +4,12 @@
 @use "navbar";
 @use "homepage";
 @use "footer";
-@use "parallax";
 @use "loginPage";
 @use "signUp";
 @use "transactionPage";
 @use "accountPage";
+@use "my-transaction";
+@use "my-details";
 @use "policyPage";
 @use "reviewAndTestimonials";
 @use "searchResults";
@@ -22,12 +23,20 @@ html {
 }
 
 body {
+    background-image: url("../assets/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
     font-size: 1.2rem;
 }
 
 .app {
+    box-sizing: border-box;
+    min-height: 85vh;
     max-width: 2000px;
+    min-width: 320px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 47em) { //767px

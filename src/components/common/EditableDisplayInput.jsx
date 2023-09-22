@@ -14,6 +14,7 @@ const EditableDisplayInput = ({
       <label style={{ pointerEvents: editable }}>
         {label + " : "}
         <input
+          autoComplete="on"
           type={inputType}
           readOnly={isReadOnly}
           aria-readonly={isReadOnly}

@@ -1,59 +1,27 @@
-# A book trading web app clone.
+# Book Trading App - Demo
 
-A website created to provide a platform to buy and sell used and new books. This is especially useful to people , eg. students, who are looking for affordable textbooks.
+Welcome to the Book Trading App (Demo) project! This is a demonstration web application designed to showcase the concept of a book trading platform as well gain experience and knowledge in building a full stack app. While it is a simplified version of the actual app, it still offers a glimpse into the functionality and features you can expect from such an application. Please note that the messaging system in this demo is for demonstration purposes only and does not actually send messages.
 
-## Run Locally
+## Features
 
-Clone the project
+- Live Demo - https://demo-booktrading.carlomiradorjr.com .
 
-```bash
-  git clone https://github.com/CEMcode404/book-trading-app.git
-```
+- User Registration - Users can create accounts with basic details.
 
-Go to the project directory
+- Book Listing - Users can add sample books they want to trade to their profile, including book details such as title, author, genre, and condition as well as delete these sample books.
 
-```bash
-  cd book-trading-app
-```
+- Search and Browse - Users can search for sample books or browse through the available listings to see how the app would function. This feature make use of Goggle books API to gather data such as thumbnails, ISBN and etc.
 
-Install dependencies
+- User Messaging - The messaging system in this demo is for demonstration purposes only and does not send actual messages.
 
-```bash
-  npm install
-```
-
-Create production build
-
-```bash
-  npm run build
-```
-
-Start demo server
-
-```bash
-  npm run demo
-```
-
-The demo server doesn't use any databases and instead store data in a makeshift storage ,in the memory, to reduce dependencies. Log out website on server restart to prevent odd behaviors since data don't persist on server restart.
-
-## Environment Variables
-
-To run this project with all its features using the demo server, you will need to add the following environment variables to your .env file
-
-`G_BOOKS_API_KEY` - without this the search feature is disabled.
-
-`JWT_PRIVATE_KEY` - this is optional since the demo server already has a default key.
-
-`PORT` - the default port is 3000.
-
-You can get Google Books API key at https://developers.google.com/books/docs/v1/getting_started
-
-## 🚀 About Me
-
-I'm a full stack developer...
+- Profile Management - Users can manage their profiles, although in this demo, it's limited to basic functionality.
 
 ## Tech Stack
 
-**Client:** React
+**Client:** React, Scss,
 
-**Server:** Node Express
+**Server:** Node, Express, MongoDB, Apache
+
+## Contributing
+
+This is a demo project and is not intended for further development. However, if you have ideas for improvements or additional features in a real Book Trading App, please consider contributing to a full-fledged project based on this concept.

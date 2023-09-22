@@ -2,11 +2,14 @@ import "jwt-decode";
 import http from "./httpService";
 import { storeToken, removeToken } from "./tokenService.js";
 
+const baseUrl = process.env.RESOURCE_SERVER_URL;
+
 function register(data, cb) {
   http
-    .post("/api/signup", data)
+    .post(`${baseUrl}/api/user/signup`, data)
     .then((response) => {
       let err;
+
       const token = response.headers.get("Authorization");
       if (token) {
         storeToken(token);
@@ -21,7 +24,7 @@ function register(data, cb) {
 
 async function checkEmailAvailability(email) {
   try {
-    return await http.post("/api/signup/email", email);
+    return await http.post(`${baseUrl}/api/user/signup/email`, email);
   } catch (err) {
     return err;
   }
@@ -29,7 +32,7 @@ async function checkEmailAvailability(email) {
 
 function login(data, cb) {
   http
-    .post("/api/auth", data)
+    .post(`${baseUrl}/api/auth/login`, data)
     .then((result) => {
       let err;
       storeToken(result.data);
@@ -47,7 +50,7 @@ function logout() {
 
 function fetchUserData(cb) {
   http
-    .get("/api/user")
+    .get(`${baseUrl}/api/user/getUserData`)
     .then((result) => {
       let err;
       cb(result, err);
@@ -60,7 +63,7 @@ function fetchUserData(cb) {
 
 function verifyUserIdentity(password, cb) {
   http
-    .post("/api/auth/withID", { password })
+    .post(`${baseUrl}/api/auth/withID`, { password })
     .then((result) => {
       let err;
       cb(result, err);

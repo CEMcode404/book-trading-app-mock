@@ -28,6 +28,7 @@ const Pagination = ({
         {pagesArray &&
           pagesArray.map((number) => (
             <li
+              key={number}
               onClick={pageChange}
               style={
                 number === currentPage ? { backgroundColor: activeColor } : null

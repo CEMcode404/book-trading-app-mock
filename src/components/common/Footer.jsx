@@ -1,8 +1,7 @@
 import React from "react";
 import TitledDropDown from "./TitledDropDown.jsx";
-import logo from "../../assets/noBG-logo.svg";
 import facebookLogo from "../../assets/Facebook.svg";
-import twitterLogo from "../../assets/Twitter.svg";
+import xLogo from "../../assets/x-logo.svg";
 import instagramLogo from "../../assets/Instagram.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -47,6 +46,7 @@ const Footer = ({ fclass, display = true }) => {
               disabled={isSubmitting}
             ></textarea>
             <input
+              autoComplete="on"
               type="text"
               className="footer__input-text highlight"
               placeholder="Your email..."
@@ -92,12 +92,8 @@ const Footer = ({ fclass, display = true }) => {
         aria-label="social media accounts"
         className="footer__socmed-icons"
       >
-        <object
-          type="image/svg+xml"
-          data={twitterLogo}
-          className="footer__twitter"
-        >
-          Twitter
+        <object type="image/svg+xml" data={xLogo} className="footer__x">
+          x logo
         </object>
         <object
           type="image/svg+xml"
@@ -114,13 +110,10 @@ const Footer = ({ fclass, display = true }) => {
           Facebook
         </object>
       </section>
-      <hr className="footer__hr"></hr>
-      <div className="footer__logo-wrapper">
-        <object type="image/svg+xml" data={logo} className="footer__logo">
-          Logo
-        </object>
-        <p>Copyright 2023. All rights reserved</p>
-      </div>
+
+      <p className="footer__p--copyright">
+        Copyright 2023. All rights reserved
+      </p>
     </footer>
   );
 

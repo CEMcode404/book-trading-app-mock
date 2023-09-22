@@ -67,7 +67,7 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 10px solid white;
+    border-bottom: 10px solid black;
     position: absolute;
     top: 10%;
     right: 2%;
@@ -84,7 +84,7 @@
 }
 
 .titled-drop-down__hr {
-    border-color: white;
+    border-color: black;
 }
 
 .titled-drop-down__headbar {
@@ -386,27 +386,71 @@
     -webkit-transform: rotate(45deg);
 }
 
+.inputWithList {
+    display: inline-block;
+}
+
+.inputWithList__input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.inputWithList__add-bttn {
+    border-radius: 5px;
+    border: 1px lightgray solid;
+    position: absolute;
+    right: .5rem;
+    top: .4rem;
+    cursor: pointer;
+}
+
+.inputWithList__add-bttn:active {
+    background-color: lightgray;
+    cursor: grab;
+}
+
+.inputWithList__list {
+    overflow: hidden;
+    margin: .5rem 0 0;
+    max-width: 10.5rem;
+}
+
+.inputWithList__list-item {
+    width: 10.5rem;
+    position: relative;
+    right: 1.3rem;
+    padding: .25rem;
+    border-radius: 5px;
+}
+
+.inputWithList__list-item:hover {
+    color: white;
+    background-color: red;
+    cursor: pointer;
+    padding-left: 1rem;
+    list-style-type: "ⓧ";
+}
+
 @media screen and (max-width: 48em) { //767px
     .titled-drop-down__title {
         @include variables.title();
     }
-}
 
-.diagonal-separator {
-    @include variables.diagonal-separator($color: rgb(24, 81, 47));
-}
-
-@media screen and (min-width: 125em){ //2000px
-    .diagonal-separator {
-        @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -278px, 
-                                                    $b-right: 2000px, $b-bottom: 278px )
+    .inputWithList__list {
+        max-width: 8.5rem;
+    }
+    
+    .inputWithList__list-item {
+        width: 8.5rem;
     }
 }
 
-@media screen and (max-width: 20em){ //320px
-    .diagonal-separator {
-        @include variables.diagonal-separator($color: rgb(24, 81, 47),$marginTop: -44.480px, 
-                                                    $b-right: 320px, $b-bottom: 44px)
+@media only screen and (max-width: 30em) {//479
+    .inputWithList__list {
+        max-width: 9.5rem;
+    }
+    
+    .inputWithList__list-item {
+        width: 9.5rem;
     }
 }
-

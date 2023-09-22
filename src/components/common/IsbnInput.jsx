@@ -65,8 +65,8 @@ const IsbnInput = ({ register, setValue, clearErrors, id, disabled }) => {
             <div className="isbn-input__isbn-and-title-wrapper">
               <p>{isbnDisplayData?.volumeInfo?.title}</p>
               {isbnDisplayData?.volumeInfo?.industryIdentifiers.map(
-                ({ type, identifier }) => (
-                  <div>
+                ({ type, identifier }, index) => (
+                  <div key={index}>
                     <p>{`${type}: ${identifier}`}</p>
                   </div>
                 )
@@ -84,14 +84,14 @@ const IsbnInput = ({ register, setValue, clearErrors, id, disabled }) => {
 
       {!isbnDisplayData && (
         <select
+          value={searchType}
           disabled={disabled}
           onChange={handleSearchTypeSelect}
           className="isbn-input__select"
+          id="isbn-input__select"
         >
           <option value="isbn">ISBN</option>
-          <option selected value="title">
-            TITLE
-          </option>
+          <option value="title">TITLE</option>
         </select>
       )}
 
@@ -108,15 +108,18 @@ const IsbnInput = ({ register, setValue, clearErrors, id, disabled }) => {
           )}
           {searchType === "title" && (
             <SearchBar
+              id={id}
+              className="isbn-input__search-bar"
               hideFindIcon
               placeholder="Find ISBN by title"
               onChange={(searchString) => handleSearchInput(searchString)}
               formatFunc={(searchResult) =>
-                searchResult.map((book) => {
+                searchResult.map((book, index) => {
                   const isbns = book?.volumeInfo?.industryIdentifiers;
                   if (!isbns) return;
                   return (
                     <div
+                      key={index}
                       className="isbn-input__search-result-format"
                       onClick={() => handleSearchResultsClick(book)}
                     >
@@ -131,8 +134,8 @@ const IsbnInput = ({ register, setValue, clearErrors, id, disabled }) => {
                       <div>
                         <p>{book?.volumeInfo?.title}</p>
                         {isbns &&
-                          isbns.map(({ type, identifier }) => (
-                            <div>
+                          isbns.map(({ type, identifier }, index) => (
+                            <div key={index}>
                               <p>{`${type}: ${identifier}`}</p>
                             </div>
                           ))}

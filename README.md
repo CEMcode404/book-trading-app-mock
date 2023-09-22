@@ -1,8 +1,10 @@
-
 # Book Trading App - Demo
 
 Welcome to the Book Trading App (Demo) project! This is a demonstration web application designed to showcase the concept of a book trading platform as well gain experience and knowledge in building a full stack app. While it is a simplified version of the actual app, it still offers a glimpse into the functionality and features you can expect from such an application. Please note that the messaging system in this demo is for demonstration purposes only and does not actually send messages.
+
 ## Features
+
+- Live Demo - https://demo-booktrading.carlomiradorjr.com .
 
 - User Registration - Users can create accounts with basic details.
 
@@ -14,16 +16,12 @@ Welcome to the Book Trading App (Demo) project! This is a demonstration web appl
 
 - Profile Management - Users can manage their profiles, although in this demo, it's limited to basic functionality.
 
-
-
 ## Tech Stack
 
 **Client:** React, Scss,
 
-**Server:** Node, Express, MongoDB
-
+**Server:** Node, Express, MongoDB, Apache
 
 ## Contributing
 
 This is a demo project and is not intended for further development. However, if you have ideas for improvements or additional features in a real Book Trading App, please consider contributing to a full-fledged project based on this concept.
-

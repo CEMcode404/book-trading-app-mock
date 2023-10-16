@@ -1,0 +1,43 @@
+.image-slider {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.image-slider__default-img-list {
+    text-align: center;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.image-slider__img {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    border-radius: 5px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.image-slider__hr {
+    width: 100%;
+    border-top: 1px solid lightgray;
+}
+
+@media only screen and (max-width: 31em){ //500px
+
+    .image-slider__img {
+        width: 75px;
+        height: 75px;
+    }
+    
+}
+
+
+
+
+

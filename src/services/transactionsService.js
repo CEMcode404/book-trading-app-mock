@@ -66,7 +66,7 @@ function requestTransactionUpdate(_id, data, cb) {
     });
 }
 
-function addTransaction(data, cb) {
+function requestAddTransaction(data, cb) {
   http
     .post(`${baseUrl}/api/bookTransactions/createTransaction`, data)
     .then((transaction) => {
@@ -79,7 +79,7 @@ function addTransaction(data, cb) {
     });
 }
 
-function deleteTransaction(_id, cb) {
+function requestDeleteTransaction(_id, cb) {
   http
     .delete(`${baseUrl}/api/bookTransactions/deleteTransaction/${_id}`)
     .then((result) => {
@@ -96,7 +96,7 @@ export {
   getTransactions,
   getTransactionById,
   requestTransactionUpdate,
-  addTransaction,
+  requestAddTransaction,
   getUserTransactions,
-  deleteTransaction,
+  requestDeleteTransaction,
 };

@@ -1,0 +1,110 @@
+@use "../../styles/variables";
+
+.footer {
+    margin-top: auto;
+    @include variables.theme($bg: green, $color: black);
+    padding: 1px 0;
+    min-width: 320px;
+} 
+
+.footer__facebook, .footer__instagram {
+    width: 25px;
+    margin: 0 10px;
+}
+
+.footer__x {
+    height: 23px;
+    margin: 0 10px;
+}
+
+.footer__hr {
+    border: 1px solid black;
+}
+
+.footer__logo {
+    width: 100px;
+}
+
+.footer__links {
+    padding: 0 5%;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.footer__dropdowns {
+    padding: 0 8%;
+    margin: 50px auto;
+    max-width: 1000px;
+}
+
+.footer__socmed-icons {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.footer__textarea, .footer__input-text, .footer__send-bttn{
+    box-sizing: border-box;
+    display: block;
+    margin: 15px;
+    border-radius: 5px;
+    border: none;
+    padding: .5rem;
+    width: 50%;
+
+}
+
+.footer__input-text {
+    max-width: 300px;
+}
+
+.footer__textarea {
+    height: 100px;
+    resize: none;
+    max-width: 300px;
+}
+
+.footer__textarea::placeholder, .footer__input-text::placeholder {
+    color: lightgray;
+}
+
+.footer__send-bttn {
+    width: 100px;
+}
+
+.footer__p {
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.footer__p--copyright {
+    text-align: center;
+}
+
+.footer__navlink {
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 10px;
+    color: black;
+}
+
+.footer__navlink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.footer__error-message {
+    padding-left: 15px;
+}
+
+@media screen and (max-width: 30em) { //479px
+
+    .footer__navlink {
+        display: block;
+        margin: 16px;
+    }
+
+    .footer__links {
+        padding: 0 5%;
+        text-align: left;
+    }
+}

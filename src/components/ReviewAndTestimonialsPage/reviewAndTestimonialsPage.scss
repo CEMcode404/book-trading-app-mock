@@ -1,0 +1,29 @@
+.review-and-testimonials-page {
+    min-width: 20rem;
+}
+
+.review-and-testimonials-page__review-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-and-testimonials-page__reviews-section {
+    background-color: rgba(147,164,102,.2470588235);
+    position: relative;
+    z-index: 1;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 5px;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 30em){ //479px
+
+    .review-and-testimonials-page__reviews-section {
+        margin: 1rem;
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,72 @@
+.transaction-card {
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px gray;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem 1rem;
+    background-color: white;
+}
+
+.transaction-card__label {
+    flex-shrink: 0;
+    width: 15rem;
+    display: inline-block;
+    margin: 0 0 0.5rem;
+}
+
+.transaction-card__field-value {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    white-space: nowrap;
+    margin: 0 0 0.5rem;
+}
+
+.transaction-card__delete-bttn {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    transform: rotate(45deg);
+    border: none;
+    background-color: transparent;
+    color: red;
+    width: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.transaction-card__field-wrapper {
+    overflow: hidden;
+    display: flex;
+}
+
+.transaction-card__show-images-bttn, .transaction-card__change-status-bttn {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: .5rem;
+    cursor: pointer;
+    color: gray;
+    margin-bottom: .5rem;
+}
+
+
+@media only screen and (max-width: 48em) { //767px
+    
+    .transaction-card__label {
+        flex-shrink: 0;
+        width: 10rem;
+    }
+
+}
+
+@media only screen and (max-width: 30em) { //467px
+    
+    .transaction-card__label {
+        width: 5rem;
+    }
+
+    .transaction-card__field-value {
+        text-align: right;
+    }
+}

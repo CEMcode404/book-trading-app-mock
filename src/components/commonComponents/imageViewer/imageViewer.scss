@@ -1,0 +1,23 @@
+
+.image-viewer {
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    box-shadow:  0 5px 15px gray;
+    padding: 1rem;
+}
+
+.image-viewer__img {
+    display: inline-block;
+    margin: .5rem;
+    width: 97%;
+    height: 97%;
+    border-radius: 5px;
+}
+
+.image-viewer__img-list {
+    display: flex;
+    max-width: 500px;
+    max-height: 500px;
+    overflow-y: hidden;
+}

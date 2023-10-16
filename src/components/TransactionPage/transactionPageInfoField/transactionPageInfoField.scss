@@ -1,0 +1,16 @@
+.transaction-page-info-field {
+    margin: 0;
+    display: flex;
+}
+
+.transaction-page-info-field__field-name {
+    margin: 0.5rem auto 0.5rem 0;
+    font-weight: bold;
+    padding-right: .5rem;
+    width: 8rem;
+}
+
+.transaction-page-info-field__field-value {
+    text-align: end;
+    margin: 0.5rem 0 0.5rem auto;
+}

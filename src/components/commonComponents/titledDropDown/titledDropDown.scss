@@ -1,0 +1,36 @@
+@use "../../../styles/variables";
+
+.titled-dropdown__hr {
+    border-color: black;
+}
+
+.titled-dropdown__title {
+    margin: 0;
+    @include variables.title($fontSize: 1.4rem);
+}
+
+.titled-dropdown__headbar {
+    position: relative;
+}
+
+.titled-dropdown__headbar:hover {
+    cursor: pointer;
+}
+
+.titled-dropdown__triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: 10%;
+    right: 2%;
+}
+
+@media screen and (max-width: 48em) { //767px
+    .titled-dropdown__title {
+        @include variables.title();
+    }
+
+}

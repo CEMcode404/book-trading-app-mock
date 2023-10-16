@@ -1,0 +1,21 @@
+.isbn-search-result-card {
+    border-radius: 5px;
+    margin: .5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    text-align: center;
+    color: gray;
+    background-color: rgba(211, 211, 211, 0.202);
+}
+
+.isbn-search-result-card:hover {
+    cursor: pointer;
+    background-color: lightgray;
+    color: black;
+}
+
+.isbn-search-result-card__img {
+    width: 35px;
+    height: 45px;
+}

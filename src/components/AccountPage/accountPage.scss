@@ -1,0 +1,73 @@
+@use "../../styles/variables";
+
+.account-page {
+    padding: 0 50px;
+
+    aside {
+        min-width: 255px;
+    }
+
+    main {
+        width: 90%;
+        background-color: #b0bd96;
+        padding: 1rem;
+    }
+}
+
+.account-page__toc {
+    margin-right: 50px;
+    height: 50vh;
+    p {
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 15px;
+        text-align: center;
+    }
+    
+}
+
+.account-page__sections-and-titles {
+    display: flex;
+    margin-bottom: 75px;
+}
+
+.account-page__section-title {
+    @include variables.theme()
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus // needed this to fix the browser changing the style when using autocomplete
+ {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media only screen and (max-width: 48em) { //767px
+
+    .account-page {
+        main {
+            width: auto;
+        }
+        padding: 0 2.5rem;
+    }
+
+    .account-page__toc {
+        margin-right: 0;
+        height: auto;
+        
+        p {
+            text-align: left;
+        }
+    }
+
+    .account-page__sections-and-titles {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 30em) { //467px
+
+    .account-page {
+        padding: 0 1.5rem;
+    }
+}

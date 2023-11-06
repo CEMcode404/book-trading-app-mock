@@ -1,0 +1,19 @@
+{
+    "_id": "6552e37808a39b65c6d55904",
+    "owner": "Juan Dela Cruz",
+    "title": "React",
+    "bookCondition": "Used",
+    "currency": "₱",
+    "price": 100,
+    "useDuration": 11,
+    "timeUnit": "Month/s",
+    "authors": [
+        "Johnny Test"
+    ],
+    "isbn": "1783551623",
+    "status": "AVAILABLE",
+    "images": [
+        "test/book-no-image.svg",
+        "test/book-no-image.svg"
+    ]
+  }

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import defaultPhoto from "../../../assets/book-no-image.svg";
+import "./bookSaleCard.scss";
 
 const BookSaleCard = ({
   currency,

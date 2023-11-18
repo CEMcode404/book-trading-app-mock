@@ -3,12 +3,14 @@
 }
 
 .input-with-list__add-bttn {
+    background-color: rgb(228, 228, 228);
+    padding: 0 .5rem;
     border-radius: 5px;
     border: 1px lightgray solid;
-    position: absolute;
-    right: .5rem;
-    top: .4rem;
+    right: .2rem;
+    top: 0;
     cursor: pointer;
+    position: absolute;
 }
 
 .input-with-list__add-bttn:active {
@@ -39,8 +41,8 @@
 }
 
 .input-with-list__input-and-add-bttn {
+    display: inline;
     position: relative;
-    display: inline-block;
 }
 
 @media screen and (max-width: 48em) { //767px

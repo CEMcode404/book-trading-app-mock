@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import ChatBox from "../commonComponents/chatBox/ChatBox.jsx";
@@ -41,7 +41,23 @@ const TransactionPage = () => {
           </TransactionPageInfoField>
 
           <TransactionPageInfoField fieldName="Author/s">
-            {transaction?.authors}
+            {transaction?.authors?.map((author, index) => (
+              <Fragment key={index}>
+                <span
+                  style={
+                    index === 0
+                      ? null
+                      : {
+                          marginTop: "1rem",
+                          display: "inline-block",
+                        }
+                  }
+                >
+                  {author}
+                </span>
+                <br />
+              </Fragment>
+            ))}
           </TransactionPageInfoField>
 
           <TransactionPageInfoField fieldName="ISBN">

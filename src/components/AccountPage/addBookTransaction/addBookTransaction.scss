@@ -1,23 +1,46 @@
 #add-book-transaction__use-duration {
-    width: 5.2rem;
+    width: 5.3rem;
 }
 
 #add-book-transaction__price {
-    width: 8.4rem;
+    width: 8.5rem;
+}
+
+#add-book-transaction__author, #add-book-transaction__title {
+    width: 12rem;
+}
+
+#add-book-transaction__isbn {
+    width: 12rem;
 }
 
 .add-book-transaction__dialog {
+    overflow-x: hidden;
+    box-sizing: border-box;
     background-color: lightgray;
     border: 1px solid white;
     box-shadow:  0 5px 15px gray;
     border-radius: 5px;
-    width: 23.8rem;
+    width: 26rem;
     
     input, select {
         outline: none;
         border: none;
         padding: .5rem;
         border-radius: 5px;
+    }
+    
+    select {
+        //This removed the defauilt styling in safari
+        background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGRhdGEtbmFtZT0iTGF5ZXIgMSIgdmlld0JveD0iMCAwIDQuOTUgMTAiPg0KICA8cGF0aCBkPSJNMS40MSA0LjY3bDEuMDctMS40OSAxLjA2IDEuNDlIMS40MXptMi4xMy42NkwyLjQ4IDYuODIgMS40MSA1LjMzaDIuMTN6Ii8+DQo8L3N2Zz4=) no-repeat 95% 50%;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+
+        //style the select element here
+        background-color: white;
+        padding-right: 25px;
+        cursor: pointer;
     }
     
     input::placeholder {
@@ -30,6 +53,7 @@
     margin: 1rem 0 1.5rem;
     align-items: center;
 }
+
 .add-book-transaction__errors {
     margin: .5rem 0 0 0;
     color: red;
@@ -67,28 +91,29 @@
 
 @media only screen and (max-width: 48em) { //767px
 
-    .add-book-transaction__errors {
-        width: 12rem;
-    }
-
-    .add-book-transaction__dialog {
-        width: 19.8rem;
-    }
-
     #add-book-transaction__use-duration {
-        width: 4rem;
+        width: 7.2rem;
     }
     
     #add-book-transaction__price {
-        width: 6.5rem;
+        width: 10.5rem;
     }
+    
+    #add-book-transaction__author, #add-book-transaction__title {
+        width: 14rem;
+    }
+    
+    #add-book-transaction__isbn {
+        width: 14rem;
+    }
+    
 }
 
 
 @media only screen and (max-width: 30em) {//479
 
     .add-book-transaction__dialog {
-        width: 13rem;
+        width: 15rem;
     }
 
     .add-book-transaction__errors {
@@ -105,15 +130,19 @@
         align-self: flex-start;
     }
 
-    #add-book-transaction__author, #add-book-transaction__title {
-        width: 11rem;
-    }
-
     #add-book-transaction__use-duration {
-        width: 4.7rem;
+        width: 5.4em;
     }
     
     #add-book-transaction__price {
-        width: 7.5rem;
+        width: 8rem;
+    }
+    
+    #add-book-transaction__author, #add-book-transaction__title {
+        width: 11.3rem;
+    }
+    
+    #add-book-transaction__isbn {
+        width: 11.3rem;
     }
 }

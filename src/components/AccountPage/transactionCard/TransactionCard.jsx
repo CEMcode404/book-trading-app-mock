@@ -89,9 +89,9 @@ const TransactionCard = ({
           value="Show Image/s"
         />
         <ImageViewer
-          backDropClickCallBack={() => setIsImageViewerOpen(false)}
           isOpen={isImageViewerOpen}
           imgSrcs={Array.isArray(imgSrcs) && imgSrcs}
+          onClose={() => setIsImageViewerOpen(false)}
         />
       </div>
 

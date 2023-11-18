@@ -34,17 +34,17 @@ test("'Chat Owner' button click should open chatbox", async ({ page }) => {
   await expect(chatBox).toBeVisible();
 });
 
-test("Image click should open image slider", async ({ page }) => {
+test("Image click should open image viewer", async () => {
   await imageSliderImg.first().click();
 
   await expect(imageSlider).toBeVisible();
 });
 
-test("Image Slider backdrop click should close image slider", async ({
+test("Image Slider close button click should close image viewer", async ({
   page,
 }) => {
   await imageSliderImg.first().click();
-  await page.locator("#root").click({ position: { x: 5, y: 5 } });
+  await page.getByRole("dialog").getByText("+").click();
 
   await expect(imageSlider).toBeHidden();
 });

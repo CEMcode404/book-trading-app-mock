@@ -1,4 +1,6 @@
-.my-transaction__add-bttn {
+//Need to to specify input element because of firefox and safari not showing 
+//the border color
+input.my-transaction__add-bttn {
     cursor: pointer;
     margin: 0 auto;
     display: block;

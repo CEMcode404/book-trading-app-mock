@@ -44,6 +44,20 @@ function login(data, cb) {
     });
 }
 
+function loginDemo(cb) {
+  http
+    .get(`${baseUrl}/api/auth/login-demo`)
+    .then((result) => {
+      let err;
+      storeToken(result.data);
+      cb(result, err);
+    })
+    .catch((err) => {
+      let result;
+      cb(result, err);
+    });
+}
+
 function logout() {
   removeToken();
 }
@@ -77,6 +91,7 @@ function verifyUserIdentity(password, cb) {
 export {
   register,
   login,
+  loginDemo,
   logout,
   fetchUserData,
   verifyUserIdentity,

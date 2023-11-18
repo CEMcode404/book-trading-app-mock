@@ -8,11 +8,6 @@ test.beforeEach(async ({ page }) => {
   logoutLink = page.getByRole("link", { name: "Log-out" });
   submitBttn = page.getByRole("button", { name: "Submit" });
 
-  await page.route(`/api/auth/login`, async (route) => {
-    await route.fulfill({
-      json: generateJWT(),
-    });
-  });
   await page.route(`/api/user/signup/email`, async (route) => {
     await route.fulfill({
       json: "Email is available.",
@@ -61,6 +56,11 @@ test("Submit button should login new user", async ({ page }) => {
 });
 
 test("Demo login button should login demo account", async ({ page }) => {
+  await page.route(`/api/auth/login-demo`, async (route) => {
+    await route.fulfill({
+      json: generateJWT(),
+    });
+  });
   await page.getByRole("button", { name: "Demo login" }).click();
 
   await expect(logoutLink).toBeVisible();

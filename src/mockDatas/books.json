@@ -1,0 +1,303 @@
+{
+    "items": [
+        {
+            "volumeInfo": {
+                "title": "React in Action",
+                "authors": [
+                    "Mark Tielens Thomas"
+                ],
+                "publisher": "Manning",
+                "publishedDate": "2018-07-08",
+                "description": "Summary React in Action introduces front-end developers to the React framework and related tools. This clearly written, example-rich book begins by introducing you to React, diving into some of the fundamental ideas in React, and working with components. In the second section, you'll explore the different ways that data works in React as well as learning more about components. You'll also find several useful appendixes covering related topics like React tooling and the React ecosystem. Purchase of the print book includes a free eBook in PDF, Kindle, and ePub formats from Manning Publications. About the Technology Facebook created React to help deliver amazing user experiences on a website with thousands of components and an incomprehensible amount of traffic. The same powerful tools are available to you too! The key is a clever design for managing state, data flow, and rendering, so your application is easy to think about and runs smoothly. Add an incredibly rich ecosystem of components and libraries, and you've got a recipe for building web apps that will delight both developers and users. About the Book React in Action teaches you to think like a pro about user interfaces and building them with React. This practical book gets you up and running quickly with hands-on examples in every chapter. You'll master core topics like rendering, lifecycle methods, JSX, data flow, forms, routing, integrating with third-party libraries, and testing. And the included application design ideas will help make your apps pop. As you learn to integrate React into full-stack applications, you'll explore state management with Redux and server-side rendering, and even dabble in React Native for mobile UIs. What's Inside React from the ground up Implementing a routing system with components Server-side rendering in Node.js Working with third-party libraries Testing React components About the Reader Written for developers familiar with HTML, CSS, and JavaScript. About the Author Mark Thomas is an experienced software engineer who works daily with React, JavaScript, and Node.js. He loves clean code, beautiful systems, and good coffee. Table of Contents PART 1 - MEET REACT Meet React Our first component PART 2 - COMPONENTS AND DATA IN REACT Data and data flow in React Rendering and lifecycle methods in React Working with forms in React Integrating third-party libraries with React Routing in React More routing and integrating Firebase Testing React components PART 3 - REACT APPLICATION ARCHITECTURE Redux application architecture More Redux and integrating Redux with React React on the server and integrating React Router An introduction to React Native",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1617293857"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781617293856"
+                    }
+                ],
+                "pageCount": 0,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "Beginning ReactJS Foundations Building User Interfaces with ReactJS",
+                "subtitle": "An Approachable Guide",
+                "authors": [
+                    "Chris Minnick"
+                ],
+                "publisher": "John Wiley & Sons",
+                "publishedDate": "2022-02-03",
+                "description": "Quickly learn the most widely used front-end development language with ease and confidence React JS Foundations: Building User Interfaces with ReactJS - An Approachable Guide walks readers through the fundamental concepts of programming with the explosively popular front-end tool known as React JS. Written by an accomplished full-stack engineer, speaker, and community organizer, React JS Foundations teaches readers how to understand React and how to begin building applications with it. The book: Explains and clarifies technical terminology with relevant and modern examples to assist people new to programming understand the language Helps experienced programmers quickly get up to speed with React Is stocked throughout with practical and applicable examples of day-to-day React work Perfect for beginner, intermediate, and advanced programmers alike, React JS Foundations will quickly bring you up to speed on one of the most useful and widely used front-end languages on the web today. You can start building your first application today.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781119685586"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1119685583"
+                    }
+                ],
+                "pageCount": 726,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "React 17 Design Patterns and Best Practices",
+                "subtitle": "Design, build, and deploy production-ready web applications using industry-standard practices",
+                "authors": [
+                    "Carlos Santana Roldan"
+                ],
+                "publisher": "Packt Publishing Ltd",
+                "publishedDate": "2021-05-17",
+                "description": "Build scalable, maintainable, and powerful React web apps with design patterns and insightful best practices Key Features Make the most of design patterns in React – including render props and controlled and uncontrolled inputs Master React Hooks with the help of this updated third edition Work through examples that can be used to create reusable code and extensible designs Book Description Filled with useful React patterns that you can use in your projects straight away, this book will help you save time and build better web applications with ease. React 17 Design Patterns and Best Practices is a hands-on guide for those who want to take their coding skills to a new level. You'll spend most of your time working your way through the principles of writing maintainable and clean code, but you'll also gain a deeper insight into the inner workings of React. As you progress through the chapters, you'll learn how to build components that are reusable across the application, how to structure applications, and create forms that actually work. Then you'll build on your knowledge by exploring how to style React components and optimize them to make applications faster and more responsive. Once you've mastered the rest, you'll learn how to write tests effectively and how to contribute to React and its ecosystem. By the end of this book, you'll be able to avoid the process of trial and error and developmental headaches. Instead, you'll be able to use your new skills to efficiently build and deploy real-world React web applications you can be proud of. What you will learn Get to grips with the techniques of styling and optimizing React components Create components using the new React Hooks Use server-side rendering to make applications load faster Get up to speed with the new React Suspense technique and using GraphQL in your projects Write a comprehensive set of tests to create robust and maintainable code Build high-performing applications by optimizing components Who this book is for This book is for web developers who want to understand React better and apply it to real-life app development. You'll need an intermediate-level experience with React and JavaScript before you get started.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781800561762"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1800561768"
+                    }
+                ],
+                "pageCount": 381,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "React.js Essentials",
+                "subtitle": "A Fast-paced Guide to Designing and Building Scalable and Maintainable Web Apps with React.js",
+                "authors": [
+                    "Artemij Fedosejev"
+                ],
+                "publishedDate": "2015",
+                "description": "This book will help you understand why big organizations use React.js to build web applications with maintainable and performant user interfaces. From creating UI elements to testing and exploring scaling solutions, this book will take you through building your own maintainable React.js application in no time.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1783551623"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781783551620"
+                    }
+                ],
+                "pageCount": 0,
+                "categories": [
+                    "Application software"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "React Projects",
+                "subtitle": "Build 12 real-world applications from scratch using React, React Native, and React 360",
+                "authors": [
+                    "Roy Derks"
+                ],
+                "publisher": "Packt Publishing Ltd",
+                "publishedDate": "2019-12-20",
+                "description": "Build cross-platform applications of varying complexity for the web, mobile, and VR devices using React tooling Key FeaturesBuild React applications at scale using effective React patterns and best practicesExplore React features such as Hooks, the Context API, and the Suspense APIExtend React’s integration with React Native for building cross-platform mobile apps and gamesBook Description Developed by Facebook, React is a popular library for building impressive user interfaces. React extends its capabilities to the mobile platform using the React Native framework and integrates with popular web and mobile tools to build scalable applications. React Projects is your guide to learning React development by using modern development patterns and integrating React with powerful web tools such as GraphQL, Expo, and React 360. You'll start building a real-world project right from the first chapter and get hands on with developing scalable applications as you advance to building more complex projects. Throughout the book, you'll use the latest versions of React and React Native to explore features such as Higher Order Components (HOC), Context, and Hooks on multiple platforms, which will help you build full stack web and mobile applications efficiently. Finally, you'll delve into unit testing with Jest to build test-driven apps. By the end of this React book, you'll have developed the skills necessary to start building scalable React apps across web and mobile platforms. What you will learnCreate a wide range of applications using various modern React tools and frameworksDiscover how React Hooks modernize state management for React appsDevelop progressive web applications using React componentsBuild test-driven React applications using the Jest and Enzyme frameworksUnderstand full stack development using React, Apollo, and GraphQLPerform server-side rendering using React and React RouterDesign gestures and animations for a cross-platform game using React NativeWho this book is for The book is for JavaScript developers who want to explore React tooling and frameworks for building cross-platform applications. Basic knowledge of web development, ECMAScript, and React will assist with understanding key concepts covered in this book.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781789953398"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1789953391"
+                    }
+                ],
+                "pageCount": 465,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "React and React Native",
+                "subtitle": "A Complete Hands-on Guide to Modern Web and Mobile Development with React.js",
+                "authors": [
+                    "Adam Boduch",
+                    "Roy Derks"
+                ],
+                "publishedDate": "2020-04-29",
+                "description": "Discover and learn how to use React and React Native to build mobile, desktop and web apps. From composable and Native UIs through to device-specific APIs and offline development, this book has everything you need to create engaging and user-friendly React applications which run on all major platforms.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1839211148"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781839211140"
+                    }
+                ],
+                "pageCount": 526,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "Pro React 16",
+                "authors": [
+                    "Adam Freeman"
+                ],
+                "publisher": "Apress",
+                "publishedDate": "2019-03-20",
+                "description": "Use the enormously popular React framework to build dynamic JavaScript applications that take advantage of the capabilities of modern browsers and devices. You will learn how React brings the power of strong architecture and responsive data to the client, providing the foundation for complex and rich user interfaces. Best-selling author Adam Freeman explains how to get the most from React. He begins by describing the React architecture and the benefits it offers and then shows you how to use React and its associated tools and libraries in your projects, starting from the nuts and bolts and building up to the most advanced and sophisticated features, going in-depth to give you the knowledge you need. Each topic is presented clearly and concisely. Chapters include common problems and how to avoid them. What You’ll Learn Gain a solid understanding of the React design Create rich and dynamic web app clients using React Create data stores using Redux Consume data using REST and GraphQL Test your React projects Who This Book Is For JavaScript developers who want to use React to create dynamic client-side applications",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1484244508"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781484244500"
+                    }
+                ],
+                "pageCount": 745,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "React for Real",
+                "subtitle": "Front-End Code, Untangled",
+                "authors": [
+                    "Ludovico Fischer"
+                ],
+                "publisher": "Pragmatic Bookshelf",
+                "publishedDate": "2017-09-06",
+                "description": "When traditional web development techniques don't cut it, try React. Use React to create highly interactive web pages faster and with fewer errors. With a little JavaScript experience under your belt, you'll be up and running in no time creating dynamic web applications. Craft isolated components that make your apps easier to develop and maintain, with plenty of guidance on best practices. Set up automated tests, and make pages render fast for your users. See how to use your React skills to integrate with other front-end technologies when needed. Dive right into React by defining components, the basic building blocks of a React application. Integrate modern JavaScript language features such as classes and arrow functions in your app. Analyze the relationships in your data to isolate state, and sync the data model with what your users see. Once you're familiar with how a React application works, organize your code base with modules. Configure a production build and deliver your app as efficiently as possible with Webpack. Master testing with React-specific advice and tools to catch the most bugs with the least amount of code. Learn the basics of the Redux library. Define actions and manage an immutable central state with reducers, then connect Redux to your React components to build even larger and more complex interfaces. Package your React code as a standalone widget so anyone can use it in their own applications. Reuse existing JavaScript code in your React components, and build a new React view on top of an existing data model shared with a legacy application. When you finish this book, you'll be well on your way to solving your front-end problems with React. What You Need: Node.js 6.x or later, and a modern web browser.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781680504484"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1680504487"
+                    }
+                ],
+                "pageCount": 164,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "Hands-On Design Patterns with React Native",
+                "subtitle": "Proven techniques and patterns for efficient native mobile development with JavaScript",
+                "authors": [
+                    "Mateusz Grzesiukiewicz"
+                ],
+                "publisher": "Packt Publishing Ltd",
+                "publishedDate": "2018-09-29",
+                "description": "Learn how to write cross platform React Native code by using effective design patterns in the JavaScript world. Get to know industry standard patterns as well as situational patterns. Decouple your application with these set of “Idea patterns”. Key FeaturesMobile development in React Native should be done in a reusable way. Learn how to build scalable applications using JavaScript patterns that are battle tested.Try effective techniques on your own using over 80 standalone examples.Book Description React Native helps developers reuse code across different mobile platforms like iOS and Android. This book will show you effective design patterns in the React Native world and will make you ready for professional development in big teams. The book will focus only on the patterns that are relevant to JavaScript, ECMAScript, React and React Native. However, you can successfully transfer a lot of the skills and techniques to other languages. I call them “Idea patterns”. This book will start with the most standard development patterns in React like component building patterns, styling patterns in React Native and then extend these patterns to your mobile application using real world practical examples. Each chapter comes with full, separate source code of applications that you can build and run on your phone. The book is also diving into architectural patterns. Especially how to adapt MVC to React environment. You will learn Flux architecture and how Redux is implementing it. Each approach will be presented with its pros and cons. You will learn how to work with external data sources using libraries like Redux thunk and Redux Saga. The end goal is the ability to recognize the best solution for a given problem for your next mobile application. What you will learnExplore the design Patterns in React NativeLearn the best practices for React Native developmentExplore common React patterns that are highly used within React Native developmentLearn to decouple components and use dependency injection in your applicationsExplore the best ways of fetching data from the backend systemsLearn the styling patterns and how to implement custom mobile designsExplore the best ways to organize your application code in big codebasesWho this book is for The ideal target audience for this book are people eager to learn React Native design patterns who already know the basics of JavaScript. We can assume that the target audience already knows how to write Hello World in JavaScript and know what are the functions, recursive functions, JavaScript types and loops.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781788999540"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1788999541"
+                    }
+                ],
+                "pageCount": 297,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        },
+        {
+            "volumeInfo": {
+                "title": "Fullstack React",
+                "subtitle": "The Complete Guide to ReactJS and Friends",
+                "authors": [
+                    "Accomazzo Anthony",
+                    "Murray Nathaniel",
+                    "Ari Lerner"
+                ],
+                "publisher": "Fullstack.IO",
+                "publishedDate": "2017-03",
+                "description": "LEARN REACT TODAY The up-to-date, in-depth, complete guide to React and friends. Become a ReactJS expert today",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "0991344626"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780991344628"
+                    }
+                ],
+                "pageCount": 836,
+                "categories": [
+                    "Computers"
+                ],
+                "imageLinks": {
+                    "smallThumbnail": "http://localhost:3000/test/book-no-image.svg",
+                    "thumbnail": "http://localhost:3000/test/book-no-image.svg"
+                }
+            }
+        }
+    ]
+}

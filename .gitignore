@@ -17,12 +17,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# demo server
-
-node_modules/
-.DS_Store
 logs/
 *.log
 
-.env
+#test
+
 .npm
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+auth.json
+

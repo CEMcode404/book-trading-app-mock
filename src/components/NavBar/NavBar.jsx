@@ -42,24 +42,15 @@ const NavBar = () => {
                   className="navbar__li navbar__li--menu-icon"
                   onClick={() => setIsSideBarOpen(true)}
                 >
-                  <object
+                  <img
+                    alt="Menu Icon"
                     className="navbar__menu-icon"
-                    data={burgerMenu}
-                    style={{ pointerEvents: "none" }}
-                    type="image/svg+xml"
-                  >
-                    Menu Icon
-                  </object>
+                    src={burgerMenu}
+                  />
                 </li>
 
                 <li className="navbar__li--logo">
-                  <object
-                    className="navbar__logo"
-                    data={logo}
-                    type="image/svg+xml"
-                  >
-                    Logo
-                  </object>
+                  <img alt="Logo" className="navbar__logo" src={logo} />
                 </li>
 
                 <li className="navbar__li">

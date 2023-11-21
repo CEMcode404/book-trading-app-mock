@@ -245,6 +245,7 @@ const AddBookTransaction = ({
             className="add-book-transaction__submit-bttn bttn--slide-up--green"
             disabled={isSubmitting}
             type="submit"
+            value="Submit"
           />
           <input
             className="add-book-transaction__cancel-bttn bttn--slide-up--gray"

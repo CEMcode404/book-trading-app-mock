@@ -95,7 +95,7 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
   }
 
   return (
-    <div>
+    <div className="my-details">
       <form className="my-details__form" onSubmit={handleSubmit(save)}>
         <EditableDisplayInput
           className="my-details__input"

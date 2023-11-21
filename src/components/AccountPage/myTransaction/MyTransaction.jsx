@@ -98,7 +98,7 @@ const MyTransaction = () => {
   };
 
   return (
-    <div>
+    <div className="my-transaction">
       <Pagination
         insertFooterElement={
           <div

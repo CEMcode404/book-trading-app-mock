@@ -38,7 +38,10 @@ const Footer = () => {
         </TitledDropDown>
 
         <TitledDropDown title="MESSAGE US">
-          <form onSubmit={handleSubmit(() => reset())}>
+          <form
+            aria-label="message form"
+            onSubmit={handleSubmit(() => reset())}
+          >
             <textarea
               className="footer__textarea highlight"
               disabled={isSubmitting}

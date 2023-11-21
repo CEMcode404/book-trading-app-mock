@@ -28,14 +28,12 @@ test.describe("Non-edit state", () => {
   });
 
   test("Input fields should be readonly", async ({ page }) => {
-    //mobile field is using disabled instead of readonly because it is from
-    //third party package
-    const inputFields = page.locator(".my-details__input");
-    const mobileNoField = page.getByPlaceholder("Mobile No.");
+    const inputFields = page
+      .locator(".my-details__input")
+      .or(page.getByPlaceholder("Mobile No."));
 
     for (let inputField of await inputFields.all())
       await expect(inputField).toHaveAttribute("readOnly");
-    await expect(mobileNoField).toBeDisabled();
   });
 
   test.describe("Password prompt", () => {

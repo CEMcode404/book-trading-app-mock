@@ -18,9 +18,9 @@ Welcome to the Book Trading App (Demo) project! This is a demonstration web appl
 
 ## Tech Stack
 
-**Client:** React, Scss,
+**Client:** React, Scss, Playwright
 
-**Server:** Node, Express, MongoDB, Apache
+**Server:** Node, Express, MongoDB, Apache , Jest
 
 ## Contributing
 

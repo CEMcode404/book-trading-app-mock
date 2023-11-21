@@ -119,12 +119,13 @@ const MyDetails = ({ userInfo, setUserInfo }) => {
             <label htmlFor="mobileNoField">Mobile No. :</label>
             <PhoneInput
               control={control}
-              id="mobileNoField"
               className="my-details__input--mobile-no"
               defaultCountry="PH"
-              disabled={!isEdit || isSubmitting}
+              disabled={isSubmitting}
+              id="mobileNoField"
               name="mobileNo"
               placeholder="Mobile No."
+              readOnly={!isEdit}
             />
           </div>
           <p>{errors.mobileNo?.message}</p>

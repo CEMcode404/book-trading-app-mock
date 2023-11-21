@@ -32,6 +32,11 @@ test.describe("Login Butons", () => {
   test("'Demo login' button should login the demo account", async ({
     page,
   }) => {
+    await page.route(`/api/auth/login-demo`, async (route) => {
+      await route.fulfill({
+        json: generateJWT(),
+      });
+    });
     await page.getByRole("button", { name: "Demo login" }).click();
 
     await expect(logoutLink).toBeVisible();

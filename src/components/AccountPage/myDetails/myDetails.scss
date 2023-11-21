@@ -25,12 +25,16 @@
 .my-details__input--mobile-no {
     margin-left: 0.5rem;
     width: 50%;
-
+    
     input {
         border: none;
         width: 100%;
         background-color: transparent;
         color: black;
+    }
+
+    input:read-only {
+        outline: none;
     }
 }
 

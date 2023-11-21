@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.0.1 - 2023-11-21
+
+### Changed
+
+- Update README (6325948)
+- Refactor (3d69d03)
+- Change demo account login implementation (780cede)
+- Update node_modules (299e0b3)
+
+## Added
+
+- Add tests (583b410)
+
+## Fixed
+
+- Fix browser compatibility issues (8c928f9)
+- Fix button style bugs (17e3c39)
+
 ## 2.0.0 - 2023-09-22
 
 ### Changed

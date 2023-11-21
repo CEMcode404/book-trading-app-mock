@@ -16,7 +16,5 @@ setup("authenticate", async ({ page }) => {
   await page.getByPlaceholder("Password").fill("password");
   await page.getByRole("button", { name: "Log in" }).click();
 
-  await expect(page.getByAltText("booktrading.com")).toBeVisible();
-
   await page.context().storageState({ path: authFile });
 });

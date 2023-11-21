@@ -11,6 +11,7 @@ setup("authenticate", async ({ page }) => {
   });
   await page.goto("/login");
   await page
+    .locator(".login-page__input-field")
     .getByPlaceholder("Email", { exact: true })
     .fill("username@gmail.com");
   await page.getByPlaceholder("Password").fill("password");

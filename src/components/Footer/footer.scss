@@ -5,6 +5,10 @@
     @include variables.theme($bg: green, $color: black);
     padding: 1px 0;
     min-width: 320px;
+
+    hr {
+        border: 1px solid black;
+    }
 } 
 
 .footer__facebook, .footer__instagram {
@@ -15,10 +19,6 @@
 .footer__x {
     height: 23px;
     margin: 0 10px;
-}
-
-.footer__hr {
-    border: 1px solid black;
 }
 
 .footer__logo {

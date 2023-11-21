@@ -39,7 +39,8 @@
     padding: 5%;
 }
 
-.login-page__bttn--demo {
+//element specification is needed to override normalize.css padding styling in firefox
+input.login-page__bttn--demo {
     border: none;
     width: 100%;
     border-radius: 5px;

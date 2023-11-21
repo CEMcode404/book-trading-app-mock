@@ -71,7 +71,7 @@ const PasswordPrompt = ({
             {...register("password")}
             type="password"
           />
-          <input disabled={isSubmitting} type="submit" />
+          <input value="Submit" disabled={isSubmitting} type="submit" />
         </div>
         <p>{errors.password?.message}</p>
         <p>{errors.apiErrors?.message}</p>

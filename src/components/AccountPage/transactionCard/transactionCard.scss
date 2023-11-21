@@ -40,14 +40,20 @@
     display: flex;
 }
 
-.transaction-card__show-images-bttn, .transaction-card__change-status-bttn {
+//element specification is needed to override normalize.css padding styling in firefox
+input.transaction-card__show-images-bttn, input.transaction-card__change-status-bttn {
     width: 100%;
     border: none;
     border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.148);
     padding: .5rem;
     cursor: pointer;
     color: gray;
     margin-bottom: .5rem;
+}
+
+input.transaction-card__show-images-bttn:hover, input.transaction-card__change-status-bttn:hover {
+    background-color: rgba(128, 128, 128, 0.216);
 }
 
 

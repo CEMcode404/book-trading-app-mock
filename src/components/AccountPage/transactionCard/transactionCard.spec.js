@@ -34,10 +34,10 @@ test.describe("Image Viewer and Show Image Button", () => {
     await expect(imageViewer).toBeVisible();
   });
 
-  test("Image Viewer backdrop click should close Image Viewer", async ({
+  test("Image Viewer close button click should close Image Viewer", async ({
     page,
   }) => {
-    await page.locator("#root").click({ position: { x: 5, y: 5 } });
+    await page.getByRole("dialog").getByText("+").click();
 
     await expect(imageViewer).toBeHidden();
   });

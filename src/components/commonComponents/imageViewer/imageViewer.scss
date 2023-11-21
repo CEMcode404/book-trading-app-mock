@@ -1,23 +1,99 @@
 
 .image-viewer {
+    outline: none;
     box-sizing: border-box;
     border: none;
     border-radius: 5px;
-    box-shadow:  0 5px 15px gray;
-    padding: 1rem;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+}
+
+.image-viewer::backdrop {
+    background-color: rgba(0, 0, 0, 0.884);
 }
 
 .image-viewer__img {
-    display: inline-block;
-    margin: .5rem;
-    width: 97%;
-    height: 97%;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 5px;
+    box-shadow:  0 5px 15px gray;
 }
 
-.image-viewer__img-list {
+.image-viewer__container {
     display: flex;
-    max-width: 500px;
-    max-height: 500px;
-    overflow-y: hidden;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
+
+.image-viewer__close-bttn-wrapper {
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 50%;
+    margin: 1rem;
+    transform: rotate(45deg);
+}
+
+.image-viewer__close-bttn-wrapper:active {
+    cursor: grabbing;
+}
+
+.image-viewer__close-bttn {
+    font-size: 2rem;
+    padding: 0 .57rem;
+}
+
+.image-viewer__next-arrow {
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.066);
+    height: 100%;
+    position: fixed;
+    right: 0;
+}
+
+.image-viewer__prev-arrow {
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.066);
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.image-viewer__arrow-wrapper {
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: white;
+    padding: .5rem 1rem;
+}
+
+.image-viewer__arrow-wrapper:active {
+    cursor: grabbing;
+}
+
+.image-viewer__arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+  
+.image-viewer__right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+  
+.image-viewer__left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+

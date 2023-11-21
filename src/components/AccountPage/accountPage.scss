@@ -46,6 +46,7 @@ input:-webkit-autofill:focus // needed this to fix the browser changing the styl
 
     .account-page {
         main {
+            min-height: 300px;
             width: auto;
         }
         padding: 0 2.5rem;

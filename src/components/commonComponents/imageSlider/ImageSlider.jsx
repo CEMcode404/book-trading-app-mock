@@ -40,10 +40,10 @@ const ImageSlider = ({ imgSrcs, crossOrigin = "anonymous" }) => {
 
       <hr className="image-slider__hr" />
       <ImageViewer
-        backDropClickCallBack={() => setIsImageViewerOpen(false)}
         crossOrigin={crossOrigin}
         isOpen={isImageViewerOpen}
         imgSrcs={imgSrcs}
+        onClose={() => setIsImageViewerOpen(false)}
       />
     </div>
   );

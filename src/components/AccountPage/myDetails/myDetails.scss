@@ -34,13 +34,14 @@
     }
 }
 
-.my-details__edit-bttn {
+//element specification is needed to override normalize padding styling in firefox
+input.my-details__edit-bttn {
     border-radius: 5px;
     border: none;
     padding: .3rem 1rem;
 }
 
-.my-details__cancel-bttn {
+input.my-details__cancel-bttn {
     margin-left: 1rem;
     border-radius: 5px;
     border: none;
@@ -57,8 +58,21 @@
    div {
     margin: 1rem;
    }
+
    p {
     color: red;
+   }
+
+   input[type=submit] {
+    background-color: white;
+    border: none;
+    margin-left: .5rem;
+    cursor: pointer;
+   }
+
+   input[type=submit]:active {
+    cursor: grab;
+    background-color: rgb(228, 228, 228);
    }
 }
 

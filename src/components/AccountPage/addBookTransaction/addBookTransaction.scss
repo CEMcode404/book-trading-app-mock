@@ -1,0 +1,119 @@
+#add-book-transaction__use-duration {
+    width: 5.2rem;
+}
+
+#add-book-transaction__price {
+    width: 8.4rem;
+}
+
+.add-book-transaction__dialog {
+    background-color: lightgray;
+    border: 1px solid white;
+    box-shadow:  0 5px 15px gray;
+    border-radius: 5px;
+    width: 23.8rem;
+    
+    input, select {
+        outline: none;
+        border: none;
+        padding: .5rem;
+        border-radius: 5px;
+    }
+    
+    input::placeholder {
+        color: lightgrey;
+    }
+}
+
+.add-book-transaction__isbn {
+    display: inline-flex;
+    margin: 1rem 0 1.5rem;
+    align-items: center;
+}
+.add-book-transaction__errors {
+    margin: .5rem 0 0 0;
+    color: red;
+    width: 14rem;
+}
+
+.add-book-transaction__errors--img {
+    text-align: center;
+    margin: .5rem 0 0 0;
+    color: red;
+    margin-bottom: .5rem;
+}
+
+.add-book-transaction__select-currency {
+    margin-right: .5rem;
+}
+
+.add-book-transaction__select-duration {
+    margin-left: .5rem;
+}
+
+.add-book-transaction__submit-bttn, .add-book-transaction__cancel-bttn {
+    margin: 1.5rem .5rem 1rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.add-book-transaction__submit-and-cancel-bttn-wrapper {
+    text-align: center;
+}
+
+.add-book-transaction__isbn-input-wrapper {
+    display: flex;
+}
+
+@media only screen and (max-width: 48em) { //767px
+
+    .add-book-transaction__errors {
+        width: 12rem;
+    }
+
+    .add-book-transaction__dialog {
+        width: 19.8rem;
+    }
+
+    #add-book-transaction__use-duration {
+        width: 4rem;
+    }
+    
+    #add-book-transaction__price {
+        width: 6.5rem;
+    }
+}
+
+
+@media only screen and (max-width: 30em) {//479
+
+    .add-book-transaction__dialog {
+        width: 13rem;
+    }
+
+    .add-book-transaction__errors {
+        padding-left: 0;
+    }
+
+    .add-book-transaction__isbn {
+        text-align: left;
+        flex-direction: column;
+        margin: .5rem .5rem 1.5rem .5rem;
+    }
+
+    #add-book-transaction__book-condition {
+        align-self: flex-start;
+    }
+
+    #add-book-transaction__author, #add-book-transaction__title {
+        width: 11rem;
+    }
+
+    #add-book-transaction__use-duration {
+        width: 4.7rem;
+    }
+    
+    #add-book-transaction__price {
+        width: 7.5rem;
+    }
+}

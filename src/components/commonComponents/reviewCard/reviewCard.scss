@@ -1,0 +1,34 @@
+.review-card {
+    box-shadow:  0 5px 15px gray;
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    display: inline-block;
+    margin: 1rem;
+    overflow: hidden;
+}
+
+.review-card__star {
+    width: 75px;
+}
+
+.review-card__user-photo {
+    width: 50px;
+}
+
+.review-card__name {
+    display: block;
+    font-weight: bold;
+}
+
+.review-card__user-photo-and-name {
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 30em){ //479px
+
+    .review-card {
+        margin: 1rem 0;
+    }
+}

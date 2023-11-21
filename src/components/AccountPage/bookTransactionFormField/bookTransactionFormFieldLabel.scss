@@ -1,0 +1,31 @@
+.book-transaction-form-field-label__label {
+    text-align: end;
+    width: 9rem;
+    display: inline-block;
+    margin: .5rem .5rem .5rem 0;
+    align-self: flex-start;
+}
+
+.book-transaction-form-field-label {
+    display: inline-flex;
+    margin: 1rem 0;
+    align-items: center;
+}
+
+@media only screen and (max-width: 48em) { //767px
+    .book-transaction-form-field-label__label {
+        width: 7rem;
+    }
+}
+
+
+@media only screen and (max-width: 30em) {//479
+    .book-transaction-form-field-label__label {
+        text-align: left;
+    }
+
+    .book-transaction-form-field-label {
+        flex-direction: column;
+        margin: .5rem;
+    }
+}

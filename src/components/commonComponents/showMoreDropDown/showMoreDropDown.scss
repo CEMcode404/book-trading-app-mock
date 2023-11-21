@@ -1,0 +1,19 @@
+
+.showmore-dropdown__bttn {
+    color: gray;
+}
+
+.showmore-dropdown__bttn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.showmore-dropdown__bttn-wrapper {
+    text-align: center;
+}
+.showmore-dropdown__bttn-wrapper::before {
+    content: '';
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+    display: block;
+    height: 10px;
+}

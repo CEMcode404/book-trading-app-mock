@@ -1,0 +1,53 @@
+.isbn-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.isbn-input__input-wrapper {
+    margin-top: .5rem;
+}
+
+.isbn-input__selected-isbn-card {
+    position: relative;
+    width: 13rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    text-align: center;
+    color: gray;
+    background-color: white;
+
+    img {
+        padding-top: 1rem;
+    }
+}
+
+.isbn-input__isbn-and-title-wrapper {
+    padding: .5rem;
+}
+
+.isbn-input__deselect-isbn-card-bttn {
+    transform: rotateZ(45deg);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: .5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: black;
+}
+
+@media only screen and (max-width: 48em) { //767px
+    .isbn-input__selected-isbn-card {
+        width: 12rem;
+    }
+}
+
+@media only screen and (max-width: 30em) {//479
+    .isbn-input__search-bar .search-bar__input {
+        width: 11rem;
+    }
+}

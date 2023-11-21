@@ -1,0 +1,17 @@
+
+.search-results-info-field {
+    display: flex;
+}
+
+.search-results-info-field__field-name {
+    box-sizing: border-box;
+    width: 8rem;
+    flex-shrink: 0;
+    margin: .5rem;
+    font-weight: bold;
+}
+
+.search-results-info-field__field-value {
+    box-sizing: border-box;
+    margin: 0.5rem;
+}

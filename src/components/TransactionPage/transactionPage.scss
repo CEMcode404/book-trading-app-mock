@@ -1,0 +1,102 @@
+.transaction__wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.transaction {
+    border-radius: 5px;
+    background-color: rgb(15, 21, 15);
+    box-sizing: border-box;
+    padding: 4rem 0;
+    color: white;
+    margin: 4rem auto;
+    max-width: 1000px;
+    width: 100%;
+    box-shadow:  0 5px 15px gray;
+}
+
+.transaction__h1 {
+    text-align: center;
+    color: #93A466;
+}
+
+.transaction__details {
+    margin: 0 auto;
+    position: relative;
+    width: 90%;
+}
+
+.transaction__contact-section {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.transaction__chat {
+    width: 100%;
+    max-width: 400px;
+}
+
+.transaction__chat-bttn {
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    height: 50px;
+}
+
+.transaction__hr {
+    border-top: solid 1px lightgray;
+}
+
+.transaction__status-box {
+    display: inline-block;
+    background-color: #2DFC75;
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.transaction .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+}
+
+.transaction .list-slider__left-arrow-wrapper:hover > .arrow, .transaction .list-slider__right-arrow-wrapper:hover > .arrow{
+    border: solid black;
+    border-width: 0 3px 3px 0;
+}
+
+@media screen and (max-width: 20em){ //320px
+  
+    .transaction {
+        width: 320px;
+    }
+}
+
+@media only screen and (max-width: 31em){ //500px
+    .transaction__contact-section {
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .transaction__chat {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+}
+
+
+
+
+

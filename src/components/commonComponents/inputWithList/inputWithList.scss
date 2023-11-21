@@ -1,0 +1,64 @@
+.input-with-list {
+    display: inline-block;
+}
+
+.input-with-list__add-bttn {
+    border-radius: 5px;
+    border: 1px lightgray solid;
+    position: absolute;
+    right: .5rem;
+    top: .4rem;
+    cursor: pointer;
+}
+
+.input-with-list__add-bttn:active {
+    background-color: lightgray;
+    cursor: grab;
+}
+
+.input-with-list__list {
+    overflow: hidden;
+    margin: .5rem 0 0;
+    max-width: 10.5rem;
+}
+
+.input-with-list__list-item {
+    width: 10.5rem;
+    position: relative;
+    right: 1.3rem;
+    padding: .25rem;
+    border-radius: 5px;
+}
+
+.input-with-list__list-item:hover {
+    color: white;
+    background-color: red;
+    cursor: pointer;
+    padding-left: 1rem;
+    list-style-type: "ⓧ";
+}
+
+.input-with-list__input-and-add-bttn {
+    position: relative;
+    display: inline-block;
+}
+
+@media screen and (max-width: 48em) { //767px
+    .input-with-list__list {
+        max-width: 8.5rem;
+    }
+    
+    .input-with-list__list-item {
+        width: 8.5rem;
+    }
+}
+
+@media only screen and (max-width: 30em) {//479
+    .input-with-list__list {
+        max-width: 9.5rem;
+    }
+    
+    .input-with-list__list-item {
+        width: 9.5rem;
+    }
+}

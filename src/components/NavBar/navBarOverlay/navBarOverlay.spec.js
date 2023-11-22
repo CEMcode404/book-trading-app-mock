@@ -14,10 +14,10 @@ test.use({
 
 test("close on backdrop click", async ({ page }) => {
   await page.locator("#root").click({ position: { x: 5, y: 5 }, force: true });
-  //500 time out is alloted to allow animation to finish before checking visibility
-  await page.waitForTimeout(500);
 
-  await expect(page.getByRole("dialog")).toBeHidden();
+  await expect(
+    page.getByRole("dialog").getByLabel("Pop up Navigation")
+  ).toBeHidden();
 });
 
 test.describe("navigation", () => {

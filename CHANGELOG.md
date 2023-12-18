@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.2 - 2023-12-18
+
+## Fixed
+
+- Fix searchbar typing notifcation not closing because of space character input (60475f3)
+- Fix pagination 'maxItemsPerPage' and 'noOfPageVisible' props causing inifite loop (22a691e)
+
 ## 2.0.1 - 2023-11-21
 
 ### Changed

@@ -11,19 +11,22 @@ function paginate(currentPage, itemsCount, maxItemsPerPage, noOfPageVisible) {
   if (!isInclusivelyWithinRange(currentPage, totalPages, pageNoLowerLimit))
     throw Error("'currentPage' is out of bounds.'");
 
+  if (totalPages === 1) return [1];
+  if (totalPages === 2) return [1, 2];
+
   //prevent noOfPageVisible from going out of bounds
-  noOfPageVisible = clamp(noOfPageVisible, totalPages, pageNoLowerLimit);
+  //min is 3 because 1 and 2 will result in navigational problem navigational problems
+  noOfPageVisible = clamp(noOfPageVisible, totalPages, 3);
 
   let pageNums = [];
   let rightCounter = currentPage + 1;
   let leftCounter = currentPage;
 
-  while (
-    !(pageNums.length === noOfPageVisible) ||
-    !(pageNums.length === totalPages)
-  ) {
-    if (rightCounter <= totalPages) pageNums.push(rightCounter++);
+  while (true) {
+    if (pageNums.length >= noOfPageVisible) break;
     if (leftCounter >= pageNoLowerLimit) pageNums.unshift(leftCounter--);
+    if (pageNums.length >= noOfPageVisible) break;
+    if (rightCounter <= totalPages) pageNums.push(rightCounter++);
   }
 
   return pageNums;

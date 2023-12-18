@@ -25,16 +25,14 @@ const SearchBar = ({
   useEffect(() => {
     if (disabled) return;
 
-    //I used a time out here to prevent triggering onChange while typing. This prevents multiple request
-    //while typing which is expensive
-
+    //use a timeout here to prevent multiple request while typing which is expensive
     clearTimeout(timeOutHandleRef.current);
     hideSearchResults();
     !inputValue ? setIsTyping(false) : setIsTyping(true);
 
     const isValidInput = inputValue.trim();
-    if (isValidInput) {
-      timeOutHandleRef.current = setTimeout(() => {
+    timeOutHandleRef.current = setTimeout(() => {
+      if (isValidInput) {
         const response = onChange({
           inputValue: isValidInput,
           resolveCallback: showSearchResults,
@@ -43,8 +41,8 @@ const SearchBar = ({
 
         if (response === waitForCallback()) return;
         else showSearchResults(response);
-      }, [1000]);
-    }
+      } else setIsTyping(false);
+    }, 1000);
   }, [inputValue]);
 
   function hideSearchResults() {
